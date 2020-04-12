@@ -1,4 +1,9 @@
-Searching for optimal keyboard layout
+Searching for the optimal keyboard layout
+=========================================
+
+***Empirically quantifying and optimizing keyboard layouts using computer simulation***
+
+**Author:** *Felix Kuehling*
 
 # Introduction
 
@@ -8,7 +13,9 @@ I have personally used QWERTZ (German version of QWERTY), QWERTY, Dvorak and Col
 
 This study attempts to tackle the problem of the optimal keyboard layout by computer simulation and solving it as an optimization problem. The quality of the existing layouts can be quantified objectively using different criteria, and a potentially more optimal layout could be found by searching the space of all possible keyboard layouts for a global optimum.
 
-# Assumptions and choices
+---
+
+# Assumptions and limitations
 
 Typical computer keyboards have between roughly 50 to 100 keys. Many of those keys are assigned to special functions or rarely used symbols. Many of those special keys are used very differently by different users, depending on whether they are writing text, computer programs, performing data entry, using CAD applications, gaming, etc. Therefore this study is going to focus on the central area of the keyboard containing the alphabetical keys and the most common punctuation characters. This should make it applicable to a wide range of keyboards, including minimalist ones.
 
@@ -18,13 +25,17 @@ Any user willing to adopt a radically different keyboard layout for purposes of 
 
 I am going to assume three rows of keys with 12 keys per row available for typing. A QWERTY layout can be represented in this reduced keyboard as follows:
 
-       Q  W  E  R  T  Y  U  I  O  P
-    -_ A  S  D  F  G  H  J  K  L  ;: '"
-       Z  X  C  V  B  N  M  ,< .> /?
+        Q | W | E | R   T || Y   U | I | O | P
+    -_  A | S | D | F   G || H   J | K | L | ;:  '"
+        Z | X | C | V   B || N   M | ,<| .>| /?
+          |   |   |       ||       |   |   |
+     Pinky|Rng|Mid| Index || Index |Mid|Rng|Pinky
+                          ||
+          Left hand       ||      Right hand
 
-The `-_` key was moved from the number row because it is commonly used for punctuation and is hard to reach in its usual position. Less common punctuation keys were dropped from consideration in this study: `\[\{`, `\]\}`, `\`~`, `=+`, `\\|`. The numbers row is missing altogether. On a keyboard with a numbers row, it can be added back. On a smaller keyboard it would be reached on a separate layer. Either way, it is not considered for layout optimization in this study.
+The `-_` key was moved from the number row because it is commonly used for punctuation and is hard to reach in its usual position. Less common punctuation keys were dropped from consideration in this study: `[{`, `]}`, \`~, `=+`, `\|`. The numbers row is missing altogether. On a keyboard with a numbers row, it can be added back. On a smaller keyboard it would be reached on a separate layer. Either way, it is not considered for layout optimization in this study.
 
-This leaves four keys unassigned in positions which are harder to reach for the pinky. They can be used for domain-specific punctuation or modifier keys. They will not be used in this optimization.
+This leaves four keys unassigned in positions which are harder to reach for the pinkys. They can be used for domain-specific punctuation or modifier keys. They will not be used in this optimization.
 
 ## Search space
 
@@ -32,7 +43,11 @@ With the keyboard layout assumed above, there are 32 key positions to be assigne
 
 The optimization will need to use a heuristic or statistical approach, such as a genetic algorithm or simulated annealing.
 
+---
+
 # Quality function
+
+In order to quantify how good or bad a keyboard layout is, a quality function is needed. That function includes the potential speed and comfort of typing a specific benchmark text. Computing the function for different keyboard layouts will give different results. Computing the function for different texts will also give different results. Texts written in the same language should give similar results.
 
 ## Criteria
 
@@ -45,7 +60,7 @@ Typing text can be broken down into short sequences of key-presses, for example 
 * Same or different row
 * Keys in adjacent columns of further separated
 
-The influence of these factors can be guessed or measured.
+The influence of these factors can be guessed or measured. Once these parameters are known, the potential typing speed of a given test can be estimated.
 
 ### Comfort
 
@@ -56,28 +71,17 @@ The goal for comfortable typing is to maximize use of the home row and the use o
 * Middle finger: 3
 * Index finger: 6
 
-A comfortable layout should not over-stress one finger. Part of that is automatically handled by optimizing typing speed. Having many common characters on the same finger results in many words that use the same finger twice in a row, which is slow. However, I don't want to leave the proportion of key-strokes for each finger to chance. It should still be roughly balanced, with heavier weight on stronger fingers. Proposed ideal weights per finger:
+A comfortable layout should not over-stress one finger while under-utilizing another. Part of that is automatically handled by optimizing typing speed. Having many common characters on the same finger results in many words that use the same finger twice in a row, which is slow. However, I don't want to leave the proportion of key-strokes for each finger to chance. It should still be roughly balanced, with heavier weight on stronger fingers.
 
-* Pinky: 1
-* Ring finger: 2
-* Middle finger: 3
-* Index finger: 3
-
-The ring finger is relatively weak. But the pinky tends to get used more for special keys within its reach. Therefore it should get less typing work. Middle and index finger are about equally strong. But the index finger handles twice as many keys. Therefore it would likely handle less frequent characters.
-
-Deviating from the home row should incur a penalty. Again, optimizing typing speed may favour the home row automatically, but a lot can be compensated with additional effort and discomfort. Therefore the algorithm should explicitly favour the home row. Proposed ideal weights per row:
-
-* Top: 1
-* Home: 3
-* Bottom: 1
+Deviating from the home row should incur a penalty. Again, optimizing typing speed may favour the home row automatically, but a lot can be compensated with additional effort and discomfort. Therefore the algorithm should explicitly favour the home row.
 
 There may also be an argument for favouring one hand over the other. A right-handed person may want to favour the right hand. On the other hand, the right hand may have other jobs (e.g. operating a mouse or function keys), so one may want to reduce use of the strong hand for pure typing. Finally, an ambidextrous layout may be more widely acceptable by more users. I am leaning towards assuming an ambidextrous layout due to uncertainty about what's actually better, and to generate a layout that's more generally applicable.
 
-Given a probability distribution of characters in a text, each character probability can be multiplied with its row and column weight using a given keyboard layout. An keyboard layout optimized for comfort would maximize the weighted sum.
+Weights can be used to express how common the use of a particular key should be. Given a probability distribution of characters in a text, each character probability can be multiplied with its corresponding key weight using a given keyboard layout. A keyboard layout optimized for comfort would maximize the weighted sum.
 
 ## Determining parameters of the quality function
 
-The quality function has many parameters. This section goes over those parameters and how they can be determined.
+The quality function has many parameters or coefficients. Some of these can be measured in the real world. Others are based on intuition. This section goes over those parameters and how they can be determined.
 
 ### Speed of typing short sequences
 
@@ -117,3 +121,55 @@ Putting it all together, following algorithm is proposed for generating a reduce
 
 3. Combine pairs by matching the second key of the first pair with the first key of the second pair.  Generate triplets according to the categories listed above. For each pair generate two triplets per category, one for the leading key and one for the trailing one. Eliminate any duplicates.
 
+### Per-row weights
+
+Per-row weights describe the relative proportion of key-strokes that should occur in a particular row. Proposed ideal weights per row:
+
+* Top: 1
+* Home: 3
+* Bottom: 1
+
+The home row should be used for most key-strokes.
+
+### Per-finger weights
+
+Per-finger weights describe the relative proportion of key-strokes that should be handled by a particular finger. Proposed ideal weights per finger:
+
+* Pinky: 1
+* Ring finger: 2
+* Middle finger: 3
+* Index finger: 3
+
+The ring finger is relatively weak. But the pinky tends to get used more for special keys within its reach. Therefore it should get less typing work. Middle and index finger are about equally strong and should handle most of the keystrokes between them. However, the index finger handles twice as many keys as the middle finger. Furthermore, the keys for which the index and pinky fingers have to stretch sideways should have a smaller weight. Thus the home-keys of the fingers should count twice as much as the stretch-keys. That changes the weighted number of keys handled by the fingers to:
+
+* Pinky: 1 + 3\*2 = 7
+* Ring finger: 3\*2 = 6
+* Middle finger: 3\*2 = 6
+* Index finger: 3\*1 + 3\*2 = 9
+
+The per-row weights from above further multiply the weighted number of keys because the home-row keys count three times as much as top and bottom-row keys:
+
+* Pinky: 1\*3 + 1\*3\*2 + 2\*1\*2 = 13
+* Ring finger: 1\*3\*2 + 2\*1\*2 = 10
+* Middle finger: 1\*3\*2 + 2\*1\*2 = 10
+* Index finger: 1\*3 + 2\*1 + 1\*3\*2 + 2\*1\*2 = 15
+
+### Resulting per-key weights
+
+The figure below shows only the left hand. The right hand is the mirror image of that. Below each finger is the sum of the weights for that finger. On the right is the sum of the weights in each row.
+
+          2/13| 4/10| 6/10| 6/15  3/15 ||   684/390 = 1.753846154
+    3/13  6/13|12/10|18/10|18/15  9/15 ||  2142/390 = 5.492307692
+          2/13| 4/10| 6/10| 6/15  3/15 ||   684/390 = 1.753846154
+    ==========|=====|=====|===========
+           1  |  2  |  3  |  3
+
+The row-sum of the weights are not numerically the same as the desired row-weights. However their ratio is close to the desired ratio: 1 : 3.13 : 1.
+
+Expressed as decimals rounded to two decimal places, the weights are:
+
+          0.15| 0.40| 0.60| 0.40  0.20 ||  1.75
+    0.23  0.47| 1.20| 1.80| 1.20  0.60 ||  5.50
+          0.15| 0.40| 0.60| 0.40  0.20 ||  1.75
+    ==========|=====|=====|===========
+           1  |  2  |  3  |  3
