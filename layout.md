@@ -60,7 +60,13 @@ Typing text can be broken down into short sequences of key-presses, for example 
 * Same or different row
 * Keys in adjacent columns of further separated
 
-The influence of these factors can be guessed or measured. Once these parameters are known, the potential typing speed of a given test can be estimated.
+The influence of these factors can be guessed or measured. Once these parameters are known, the potential typing speed of a given text can be estimated.
+
+When measuring typing speed, there is a trade-off between speed and comfort. Key sequences that are hard to type can still be typed fast with additional effort. For anecdotal evidence, see typing speed records on websites such as [10 Fast Fingers](https://10fastfingers.com/). Any typing speed measurements should be taken without incurring discomfort. This is somewhat subjective and will vary from person to person.
+
+### Bio-mechanics
+
+Some keyboard layout analyzers look at the distance that fingers travel during typing. However, one should also take into account, that fingers are not bio-mechanically independent. In particular motion of the ring finger is linked to movement of adjacent fingers.
 
 ### Comfort
 
@@ -127,36 +133,23 @@ Per-finger weights describe the relative proportion of key-strokes that should b
 * Middle finger: 3
 * Index finger: 3
 
-The ring finger is relatively weak. But the pinky tends to get used more for special keys within its reach. Therefore it should get less typing work. Middle and index finger are about equally strong and should handle most of the keystrokes between them. However, the index finger handles twice as many keys as the middle finger. Furthermore, the keys for which the index and pinky fingers have to stretch sideways should have a smaller weight. Thus the home-keys of the fingers should count twice as much as the stretch-keys. That changes the weighted number of keys handled by the fingers to:
+The ring finger is relatively weak. But the pinky tends to get used more for special keys within its reach. Therefore it should get less typing work. Middle and index finger are about equally strong and should handle most of the keystrokes between them. However, the index finger handles twice as many keys as the middle finger. Furthermore, the keys for which the index and pinky fingers have to stretch sideways should have a smaller weight. Thus the home-keys of the fingers should count twice as much as the stretch-keys. Therefore the pinky and index finger weight needs to be split into two columns each, with a 1:2 ratio. To accomplish that, all finger weights are multiplied with 3 without changing their ratio to one another. Resulting column weights on the left hand: 1 2 6 9 6 3.
 
-* Pinky: 1 + 3×2 = 7
-* Ring finger: 3×2 = 6
-* Middle finger: 3×2 = 6
-* Index finger: 3×1 + 3×2 = 9
+To get individual key weights, we multiply those numbers with 5 (the sum of the row weights) so the column weights can be split into individual key weights according to the row weighting:
 
-The per-row weights from above further multiply the weighted number of keys because the home-row keys count three times as much as top and bottom-row keys:
+    1    2 |  6 |  9 |  6    3  ||  3    6 |  9 |  6 |  2    1
+    3    6 | 18 | 27 | 18    9  ||  9   18 | 27 | 18 |  6    3
+    1    2 |  6 |  9 |  6    3  ||  3    6 |  9 |  6 |  2    1
+    =======|====|====|==========||=========|====|====|========
+     Pinky |Ring| Mid| Index    ||   Index |Mid |Ring| Pinky
+                                ||
+                Left hand       ||      Right hand
 
-* Pinky: 1×3 + 1×3×2 + 2×1×2 = 13
-* Ring finger: 1×3×2 + 2×1×2 = 10
-* Middle finger: 1×3×2 + 2×1×2 = 10
-* Index finger: 1×3 + 2×1 + 1×3×2 + 2×1×2 = 15
+There are weights of 1 on two keys that each pinky never uses in the proposed model of keyboard layouts. However, those keys will carry other functions (e.g. shift, tab, enter, backspace, or special punctuation symbols). Therefore I am not correcting for those weights to avoid overuse of the pinkies.
 
-### Resulting per-key weights
+# References
 
-The figure below shows only the left hand. The right hand is the mirror image of that. Below each finger is the sum of the weights for that finger. On the right is the sum of the weights in each row.
-
-          2/13| 4/10| 6/10| 6/15  3/15 ||   684/390 = 1.753846154
-    3/13  6/13|12/10|18/10|18/15  9/15 ||  2142/390 = 5.492307692
-          2/13| 4/10| 6/10| 6/15  3/15 ||   684/390 = 1.753846154
-    ==========|=====|=====|===========
-           1  |  2  |  3  |  3
-
-The row-sum of the weights are not numerically the same as the desired row-weights. However their ratio is close to the desired ratio: 1 : 3.13 : 1.
-
-Expressed as decimals rounded to two decimal places, the weights are:
-
-          0.15| 0.40| 0.60| 0.40  0.20 ||  1.75
-    0.23  0.47| 1.20| 1.80| 1.20  0.60 ||  5.50
-          0.15| 0.40| 0.60| 0.40  0.20 ||  1.75
-    ==========|=====|=====|===========
-           1  |  2  |  3  |  3
+[Colemak Keyboard Layout](https://colemak.com/)<br>
+[Workman Keyboard Layout](https://workmanlayout.org/)<br>
+Patrick Gillespie’s [Keyboard Layout Analyzer](http://patorjk.com/keyboard-layout-analyzer/#/main)<br>
+[10 Fast Fingers typing test](https://10fastfingers.com/typing-test/english)
