@@ -2,6 +2,7 @@
 
 import sys
 import math
+import random
 
 # Keyboard layout evaluator
 
@@ -110,8 +111,6 @@ keymaps = {}
 for name, layout in layouts.items():
     keymaps[name] = make_keymap(layout)
 
-text = sys.stdin.read()
-
 def calculate_strokes(keymap, text):
     return sum([1 for c in text if c in keymap])
 
@@ -144,7 +143,7 @@ def score_heatmap(heatmap):
     return (score - worst_score) / (best_score - worst_score)
 
 def normalize(heatmap, factor):
-    return [int(math.ceil(h * factor)) for h in heatmap]
+    return [h * factor for h in heatmap]
 
 def calculate_finger_travel(keymap, text):
     finger_pos = [(0, 0) for f in range(8)]
@@ -183,7 +182,7 @@ def calculate_adjusted_travel(keymap, text):
 
     return [int(a) for a in dist]
 
-def calculate_hand_runs(keymap, text, debug = False):
+def calculate_hand_runs(keymap, text, debug = 0):
     last_hand = -1
     run_length = 0
     runs = ({}, {})
@@ -204,7 +203,7 @@ def calculate_hand_runs(keymap, text, debug = False):
                     runs[last_hand][run_length] += 1
                 else:
                     runs[last_hand][run_length] = 1
-                if debug:
+                if debug and run_length >= debug:
                     print("Run (%d): %s" % (run_length, run))
             run_length = 1
             run = c
@@ -243,6 +242,52 @@ def calculate_median_runs(runs):
 def calculate_max_runs(runs):
     return (max(runs[0].keys()), max(runs[1].keys()))
 
+def mutate(layout, rand):
+    a = rand.randint(0, 31)
+    b = rand.randint(0, 30)
+    if b >= a:
+        b += 1
+    new_layout = [i == a and layout[b] or i == b and layout[a] or layout[i] for i in range(32)]
+    return new_layout
+
+def anneal(layout, function):
+    """Simulated annealing optimizatio
+
+    Start with layout. Use function to calculate a score for the
+    layout. The function should return floats in range 0-1 with 0
+    being the worst and 1 the best possible score.
+
+    Returns the optimized layout.
+
+    """
+    rand = random.Random()
+    rand.seed(0xdeadbeef)
+    noise = 0.1
+    noise_step = 0.999
+    countdown = 1000
+
+    score = function(layout)
+    while noise > 0.00001 and countdown > 0:
+        new_layout = mutate(layout, rand)
+        new_score = function(new_layout)
+        if noise > 0:
+            noisy_score = new_score + rand.uniform(0, noise)
+            noise *= noise_step
+        else:
+            noisy_score = new_score
+        if noisy_score > score:
+            layout = new_layout
+            score = new_score
+            print("%.5f %4d %.5f" % (noise, countdown, new_score))
+            countdown = 1000
+        else:
+            countdown -= 1
+#        print(noise)
+
+    return new_layout
+
+text = sys.stdin.read()
+
 strokes = {}
 heatmaps = {}
 heatmap_scores = {}
@@ -265,16 +310,64 @@ for name, keymap in keymaps.items():
     hand_runs[name] = calculate_hand_runs(keymap, text)
 
 def print_heatmap(h):
-    print("     %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d" % tuple(h[0:10]))
-    print("%4d %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d %4d" % tuple(h[10:22]))
-    print("     %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d" % tuple(h[22:32]))
+    print("      %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
+    print("%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:22]))
+    print("      %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[22:32]))
+
+def print_layout(layout):
+    l = [a + b for a, b in layout]
+    print("    %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s" % tuple(l[0:10]))
+    print("%3s %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s %3s" % tuple(l[10:22]))
+    print("    %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s" % tuple(l[22:32]))
 
 for name, score in heatmap_scores.items():
     print("*** Layout: %s ***" % name)
     print_heatmap(normalized_heatmaps[name])
     print("Heatmap score: %f" % score)
-    print("Finger travel: %d: %s" % (sum(finger_travel[name]), repr(normalized_travel[name])))
-    print("Adjusted travel: %d: %s" % (sum(adjusted_travel[name]), repr(norm_adj_travel[name])))
+    print("Finger travel: %d: %s" % (sum(finger_travel[name]), [int(a) for a in normalized_travel[name]]))
+    print("Adjusted travel: %d: %s" % (sum(adjusted_travel[name]), [int(a) for a in norm_adj_travel[name]]))
     print("Hand runs mean: %s" % repr(calculate_mean_runs(hand_runs[name])))
     print("Hand runs median: %s" % repr(calculate_median_runs(hand_runs[name])))
     print("Hand runs max: %s" % repr(calculate_max_runs(hand_runs[name])))
+
+def optimize_runs(keymap):
+    global text
+
+    runs = calculate_hand_runs(keymap, text)
+    means = calculate_mean_runs(runs)
+    mean = sum(means) / len(means)
+    return (1.0 - 1/mean)
+
+def optimize_weights(keymap):
+    global text
+
+    heatmap = calculate_heatmap(keymap, text)
+    return score_heatmap(heatmap)
+
+def optimize(layout):
+    keymap = make_keymap(layout)
+    scores = (optimize_runs(keymap),
+              optimize_weights(keymap))
+    w = (1, 1)
+    wsum = sum([w[i] * scores[i] for i in range(len(scores))])
+
+    return wsum / sum(w)
+
+new_layout = anneal(layout_QWERTY, optimize)
+
+new_keymap = make_keymap(new_layout)
+print_layout(new_layout)
+stroke = calculate_strokes(new_keymap, text)
+heatmap = normalize(calculate_heatmap(new_keymap, text), sum(key_weights) / stroke)
+runs = calculate_hand_runs(new_keymap, text, 7)
+print_heatmap(heatmap)
+print("Hand runs: %s" % runs)
+print("Hand runs mean: %s" % repr(calculate_mean_runs(runs)))
+print("Hand runs median: %s" % repr(calculate_median_runs(runs)))
+print("Hand runs max: %s" % repr(calculate_max_runs(runs)))
+
+#rand = random.Random()
+#rand.seed()
+#new_layout = mutate(layout_QWERTY, rand)
+#new_layout = mutate(new_layout, rand)
+#print_layout(layout_QWERTY)
