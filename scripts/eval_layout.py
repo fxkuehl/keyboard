@@ -73,7 +73,7 @@ layouts = {
 # where each symbol maps to a tuple of shift, hand, finger and x/y
 # coordinate. x/y is relative to the finger's home position.
 #
-# Fingers are numbered: 0=index, 1=middle, 2=ring, 3=pinky
+# Fingers are numbered left to right 0 to 7
 def calculate_key_props(key):
     if key >= 22:
         row = 2
@@ -85,7 +85,7 @@ def calculate_key_props(key):
     row_start = (-1, 10, 21)
     col = key - row_start[row]
 
-    fingers = (3, 3, 2, 1, 0, 0, 0, 0, 1, 2, 3, 3)
+    fingers = (0, 0, 1, 2, 3, 3, 4, 4, 5, 6, 7, 7)
     finger = fingers[col]
 
     hand = (col >= 6)
@@ -112,6 +112,9 @@ for name, layout in layouts.items():
 
 text = sys.stdin.read()
 
+def calculate_strokes(keymap, text):
+    return sum([1 for c in text if c in keymap])
+
 def calculate_heatmap(keymap, text):
     heatmap = [0 for k in range(32)]
     for c in text:
@@ -132,12 +135,16 @@ def score_heatmap(heatmap):
 
     score = sum([a * b for a, b in zip(heatmap, key_weights)])
 
-    heatmap.sort()
-    best_score = sum([a * b for a, b in zip(heatmap, sorted_key_weights)])
-    heatmap.reverse()
-    worst_score = sum([a * b for a, b in zip(heatmap, sorted_key_weights)])
+    sorted_heatmap = heatmap[:]
+    sorted_heatmap.sort()
+    best_score = sum([a * b for a, b in zip(sorted_heatmap, sorted_key_weights)])
+    sorted_heatmap.reverse()
+    worst_score = sum([a * b for a, b in zip(sorted_heatmap, sorted_key_weights)])
 
     return (score - worst_score) / (best_score - worst_score)
+
+def normalize(heatmap, factor):
+    return [int(math.ceil(h * factor)) for h in heatmap]
 
 def calculate_finger_travel(keymap, text):
     finger_pos = [(0, 0) for f in range(8)]
@@ -145,10 +152,6 @@ def calculate_finger_travel(keymap, text):
     for c in text:
         if c in keymap:
             (key, shift, hand, f, x, y) = keymap[c]
-            if hand:
-                f += 4
-            else:
-                f = 3 - f
             d = math.sqrt((x - finger_pos[f][0])**2 + (y - finger_pos[f][1])**2)
             finger_pos[f] = (x, y)
             dist[f] += d
@@ -170,10 +173,6 @@ def calculate_adjusted_travel(keymap, text):
     for c in text:
         if c in keymap:
             (key, shift, hand, f, x, y) = keymap[c]
-            if hand:
-                f += 4
-            else:
-                f = 3 - f
             dx = x - finger_pos[f][0]
             dy = y - finger_pos[f][1]
             d = math.sqrt(dx*dx + dy*dy)
@@ -244,24 +243,38 @@ def calculate_median_runs(runs):
 def calculate_max_runs(runs):
     return (max(runs[0].keys()), max(runs[1].keys()))
 
+strokes = {}
 heatmaps = {}
 heatmap_scores = {}
+normalized_heatmaps = {}
 finger_travel = {}
 adjusted_travel = {}
+normalized_travel = {}
+norm_adj_travel = {}
 hand_runs = {}
 
 for name, keymap in keymaps.items():
+    strokes[name] = calculate_strokes(keymap, text)
     heatmaps[name] = calculate_heatmap(keymap, text)
     heatmap_scores[name] = score_heatmap(heatmaps[name])
+    normalized_heatmaps[name] = normalize(heatmaps[name], sum(key_weights) / strokes[name])
     finger_travel[name] = calculate_finger_travel(keymap, text)
     adjusted_travel[name] = calculate_adjusted_travel(keymap, text)
+    normalized_travel[name] = normalize(finger_travel[name], 1000 / strokes[name])
+    norm_adj_travel[name] = normalize(adjusted_travel[name], 1000 / strokes[name])
     hand_runs[name] = calculate_hand_runs(keymap, text)
+
+def print_heatmap(h):
+    print("     %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d" % tuple(h[0:10]))
+    print("%4d %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d %4d" % tuple(h[10:22]))
+    print("     %4d %4d %4d %4d %4d |%4d %4d %4d %4d %4d" % tuple(h[22:32]))
 
 for name, score in heatmap_scores.items():
     print("*** Layout: %s ***" % name)
+    print_heatmap(normalized_heatmaps[name])
     print("Heatmap score: %f" % score)
-    print("Finger travel: %d: %s" % (sum(finger_travel[name]), repr(finger_travel[name])))
-    print("Adjusted travel: %d: %s" % (sum(adjusted_travel[name]), repr(adjusted_travel[name])))
+    print("Finger travel: %d: %s" % (sum(finger_travel[name]), repr(normalized_travel[name])))
+    print("Adjusted travel: %d: %s" % (sum(adjusted_travel[name]), repr(norm_adj_travel[name])))
     print("Hand runs mean: %s" % repr(calculate_mean_runs(hand_runs[name])))
     print("Hand runs median: %s" % repr(calculate_median_runs(hand_runs[name])))
     print("Hand runs max: %s" % repr(calculate_max_runs(hand_runs[name])))
