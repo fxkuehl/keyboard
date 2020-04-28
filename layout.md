@@ -145,6 +145,16 @@ To get individual key weights, we multiply those numbers with 5 (the sum of the 
                                 ||
                 Left hand       ||      Right hand
 
+Finally it's useful to take into account the different lengths of fingers. The middle and ring fingers have no trouble reaching the top row, but need to bend uncomfortably or move the whole hand to reach the bottom row. The pinky on the other hand is a lot shorter and really prefers the bottom two rows. These updated weights reflect that:
+
+    1    1 | 12 | 21 |  6    3  ||  3    6 | 21 | 12 |  1    1
+    3    5 | 12 | 18 | 18    9  ||  9   18 | 18 | 12 |  5    3
+    1    4 |  6 |  6 |  6    3  ||  3    6 |  6 |  6 |  4    1
+    =======|====|====|==========||=========|====|====|========
+     Pinky |Ring| Mid| Index    ||   Index |Mid |Ring| Pinky
+                                ||
+                Left hand       ||      Right hand
+
 There are weights of 1 on two keys that each pinky never uses in the proposed model of keyboard layouts. However, those keys will carry other functions (e.g. shift, tab, enter, backspace, or special punctuation symbols). Therefore I am not correcting for those weights to avoid overuse of the pinkies.
 
 # References

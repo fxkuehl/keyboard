@@ -123,9 +123,9 @@ def calculate_heatmap(keymap, text):
 
     return heatmap
 
-key_weights = [2,      6,  9,  6, 3,   3,  6,  9,  6,  2,
-               3,  6, 18, 27, 18, 9,   9, 18, 27, 18,  6,  3,
-               2,      6,  9,  6, 3,   3,  6,  9,  6,  2]
+key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
+               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
+               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
 sorted_key_weights = key_weights[:]
 sorted_key_weights.sort()
 
@@ -348,7 +348,7 @@ def optimize(layout):
     keymap = make_keymap(layout)
     scores = (optimize_runs(keymap),
               optimize_weights(keymap))
-    w = (1, 1)
+    w = (1, 2)
     wsum = sum([w[i] * scores[i] for i in range(len(scores))])
 
     return wsum / sum(w)
@@ -361,7 +361,7 @@ stroke = calculate_strokes(new_keymap, text)
 heatmap = normalize(calculate_heatmap(new_keymap, text), sum(key_weights) / stroke)
 runs = calculate_hand_runs(new_keymap, text, 7)
 print_heatmap(heatmap)
-print("Hand runs: %s" % runs)
+print("Hand runs: %s" % repr(runs))
 print("Hand runs mean: %s" % repr(calculate_mean_runs(runs)))
 print("Hand runs median: %s" % repr(calculate_median_runs(runs)))
 print("Hand runs max: %s" % repr(calculate_max_runs(runs)))
