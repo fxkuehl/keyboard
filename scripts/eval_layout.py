@@ -61,11 +61,21 @@ layout_WORKMAN = [
     ('k', 'K'), ('l', 'L'), (',', '<'), ('.', '>'), ('/', '?')
 ]
 
+layout_SOUL = [
+    ('z', 'Z'), ('q', 'Q'), ('t', 'T'), ('h', 'H'), ('-', '_'),
+    (',', '<'), ('g', 'G'), ('e', 'E'), ('i', 'I'), (';', ':'),
+    ('k', 'K'), ('p', 'P'), ('a', 'A'), ('d', 'D'), ('n', 'N'), ('r', 'R'),
+    ('c', 'C'), ('s', 'S'), ('o', 'O'), ('u', 'U'), ('l', 'L'), ('\'' '\"'),
+    ('b', 'B'), ('x', 'X'), ('m', 'M'), ('v', 'V'), ('/', '?'),
+    ('.', '>'), ('f', 'F'), ('j', 'J'), ('y', 'Y'), ('w', 'W')
+]
+
 layouts = {
     "QWERTY": layout_QWERTY,
     "Dvorak": layout_DVORAK,
     "Colemak": layout_COLEMAK,
-    "Workman": layout_WORKMAN
+    "Workman": layout_WORKMAN,
+    "SOUL": layout_SOUL
 }
 
 class TextStats:
@@ -77,9 +87,25 @@ class TextStats:
             else:
                 self.symbol_freq[c] = 1
 
+    def __calc_bigraphs(self):
+        self.bigraphs = {}
+        prev = ' '
+        for c in self.text.lower():
+            if c.isalpha() and prev.isalpha():
+                bigraph = (prev, c)
+                if bigraph in self.bigraphs:
+                    self.bigraphs[bigraph] += 1
+                else:
+                    self.bigraphs[bigraph] = 1
+            prev = c
+
     def __init__(self, text):
         self.text = text
         self.__calc_symbol_freqs()
+        self.__calc_bigraphs()
+        #b = [(s[0]+s[1], f) for s, f in self.bigraphs.items()]
+        #b.sort(key=lambda a: a[1])
+        #print(b)
 
 # Translate layouts into efficient lookup tables (maps):
 # keymap_... = {symbol : (key, shift, hand, finger, x, y), ...}
@@ -130,7 +156,7 @@ class Keymap:
             self.keymap[layout[i][1]] = (i, True ) + self.key_props[i]
 
     def key_strokes(self, t):
-        return sum([1 for c in t.text if c in self.keymap])
+        return len([1 for c in t.text if c in self.keymap])
 
     def calc_heatmap(self, t):
         heatmap = [0 for k in range(32)]
@@ -181,14 +207,75 @@ class Keymap:
                     else:
                         runs[last_hand][run_length] = 1
                     if debug and run_length >= debug:
-                        print("Run (%d): %s" % (run_length, t.text[i-run_length:i]))
+                        print("'%s'(%d), " % (t.text[i-run_length:i], run_length), end="")
                 run_length = 0
                 last_hand = hand
 
             run_length += 1
             i += 1
 
+        if debug:
+            print()
         return runs
+
+    def calc_bigraphs_same_finger(self, t, debug = 0):
+        num = 0
+        for sym, freq in t.bigraphs.items():
+            if sym[0] == sym[1]:
+                continue
+            if sym[0] in self.keymap and sym[1] in self.keymap:
+                f1 = self.keymap[sym[0]][3]
+                f2 = self.keymap[sym[1]][3]
+                if f1 == f2:
+                    num += freq
+                    if debug:
+                        print("%s%s(%d), " % (sym[0], sym[1], freq), end="")
+        if debug:
+            print()
+        return num
+
+    def eval(self, text, debug = 0):
+        self.strokes = self.key_strokes(text)
+
+        self.heatmap = self.calc_heatmap(text)
+        self.heatmap_score = score_heatmap(self.heatmap)
+        self.normalized_heatmap = normalize(self.heatmap, sum(key_weights) / self.strokes)
+
+        self.finger_travel = self.calc_finger_travel(text)
+        self.adjusted_travel = self.calc_adjusted_travel(text)
+        self.normalized_travel = normalize(self.finger_travel, 1000 / self.strokes)
+        self.norm_adj_travel = normalize(self.adjusted_travel, 1000 / self.strokes)
+
+        self.hand_runs = self.calc_hand_runs(text, debug)
+
+        self.bad_bigraphs = self.calc_bigraphs_same_finger(text, debug)
+
+    def print_layout_heatmap(self):
+        l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
+        h = self.normalized_heatmap
+        f = (h[ 0]+h[10]+h[11]+h[22],
+             h[ 1]+h[12]+h[23],
+             h[ 2]+h[13]+h[24],
+             h[ 3]+h[ 4]+h[14]+h[15]+h[25]+h[26],
+             h[ 5]+h[ 6]+h[16]+h[17]+h[27]+h[28],
+             h[ 7]+h[18]+h[29],
+             h[ 8]+h[19]+h[30],
+             h[ 9]+h[20]+h[21]+h[31])
+        print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]))
+        print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:22]))
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:22]))
+        print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[22:32]))
+        print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[22:32]))
+        print("      %5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % f)
+
+    def print_summary(self):
+        self.print_layout_heatmap()
+        print("Heatmap score: %f" % self.heatmap_score)
+        print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]))
+        print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]))
+        print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))))
+        print("Bad bigraphs: %d" % self.bad_bigraphs)
 
 keymaps = {}
 for name, layout in layouts.items():
@@ -268,7 +355,7 @@ def anneal(layout, function):
     rand = random.Random()
     rand.seed(0xdeadbeef)
     noise = 0.1
-    noise_step = 0.999
+    noise_step = 0.9999
     countdown = 1000
 
     score = function(layout)
@@ -283,60 +370,21 @@ def anneal(layout, function):
         if noisy_score > score:
             layout = new_layout
             score = new_score
-            print("%.5f %4d %.5f" % (noise, countdown, new_score))
+            print("%.5f %4d %.5f" % (noise, countdown, new_score), end='\r')
             countdown = 1000
         else:
             countdown -= 1
 #        print(noise)
 
+    print()
     return new_layout
 
 text = TextStats(sys.stdin.read())
 
-strokes = {}
-heatmaps = {}
-heatmap_scores = {}
-normalized_heatmaps = {}
-finger_travel = {}
-adjusted_travel = {}
-normalized_travel = {}
-norm_adj_travel = {}
-hand_runs = {}
-
 for name, keymap in keymaps.items():
-    strokes[name] = keymap.key_strokes(text)
-
-    heatmaps[name] = keymap.calc_heatmap(text)
-    heatmap_scores[name] = score_heatmap(heatmaps[name])
-    normalized_heatmaps[name] = normalize(heatmaps[name], sum(key_weights) / strokes[name])
-
-    finger_travel[name] = keymap.calc_finger_travel(text)
-    adjusted_travel[name] = keymap.calc_adjusted_travel(text)
-    normalized_travel[name] = normalize(finger_travel[name], 1000 / strokes[name])
-    norm_adj_travel[name] = normalize(adjusted_travel[name], 1000 / strokes[name])
-
-    hand_runs[name] = keymap.calc_hand_runs(text)
-
-def print_heatmap(h):
-    print("      %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
-    print("%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:22]))
-    print("      %5.1f %5.1f %5.1f %5.1f %5.1f |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[22:32]))
-
-def print_layout(layout):
-    l = [a + b for a, b in layout]
-    print("    %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s" % tuple(l[0:10]))
-    print("%3s %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s %3s" % tuple(l[10:22]))
-    print("    %3s %3s %3s %3s %3s |%3s %3s %3s %3s %3s" % tuple(l[22:32]))
-
-for name, score in heatmap_scores.items():
     print("*** Layout: %s ***" % name)
-    print_heatmap(normalized_heatmaps[name])
-    print("Heatmap score: %f" % score)
-    print("Finger travel: %d: %s" % (sum(finger_travel[name]), [int(a) for a in normalized_travel[name]]))
-    print("Adjusted travel: %d: %s" % (sum(adjusted_travel[name]), [int(a) for a in norm_adj_travel[name]]))
-    print("Hand runs mean: %s" % repr(mean_runs(hand_runs[name])))
-    print("Hand runs median: %s" % repr(median_runs(hand_runs[name])))
-    print("Hand runs max: %s" % repr(max_runs(hand_runs[name])))
+    keymap.eval(text)
+    keymap.print_summary()
 
 def optimize_runs(keymap):
     global text
@@ -352,11 +400,21 @@ def optimize_weights(keymap):
     heatmap = keymap.calc_heatmap(text)
     return score_heatmap(heatmap)
 
+def optimize_bigraphs(keymap):
+    global text
+
+    bad_bigraphs = keymap.calc_bigraphs_same_finger(text) / keymap.key_strokes(text)
+    if bad_bigraphs < 0.05:
+        return 1.0 - bad_bigraphs * 10
+    else:
+        return 0.525 - bad_bigraphs / 2
+
 def optimize(layout):
     keymap = Keymap(layout)
-    scores = (optimize_runs(keymap),
-              optimize_weights(keymap))
-    w = (1, 2)
+    scores = (#optimize_runs(keymap),
+              optimize_weights(keymap),
+              optimize_bigraphs(keymap))
+    w = (1, 1)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
     return wsum / sum(w)
@@ -364,18 +422,5 @@ def optimize(layout):
 new_layout = anneal(layout_QWERTY, optimize)
 
 new_keymap = Keymap(new_layout)
-print_layout(new_layout)
-stroke = new_keymap.key_strokes(text)
-heatmap = normalize(new_keymap.calc_heatmap(text), sum(key_weights) / stroke)
-runs = new_keymap.calc_hand_runs(text, 7)
-print_heatmap(heatmap)
-print("Hand runs: %s" % repr(runs))
-print("Hand runs mean: %s" % repr(mean_runs(runs)))
-print("Hand runs median: %s" % repr(median_runs(runs)))
-print("Hand runs max: %s" % repr(max_runs(runs)))
-
-#rand = random.Random()
-#rand.seed()
-#new_layout = mutate(layout_QWERTY, rand)
-#new_layout = mutate(new_layout, rand)
-#print_layout(layout_QWERTY)
+new_keymap.eval(text, 6)
+new_keymap.print_summary();
