@@ -77,7 +77,9 @@ The goal for comfortable typing is to maximize use of the home row and the use o
 * Middle finger: 3
 * Index finger: 6
 
-A comfortable layout should not over-stress one finger while under-utilizing another. Part of that is automatically handled by optimizing typing speed. Having many common characters on the same finger results in many words that use the same finger twice in a row, which is slow. However, I don't want to leave the proportion of key-strokes for each finger to chance. It should still be roughly balanced, with heavier weight on stronger fingers.
+A comfortable layout should not over-stress one finger while under-utilizing another. Part of that is automatically handled by optimizing typing speed. Having many common characters on the same finger results in many words that use the same finger twice in a row, which is slow. However, I don't want to leave the proportion of key-strokes for each finger to chance.
+
+Weighing the fingers equally can help reduce average finger travel distances. By contrast, very uneven weighing can result in the heavily weighted fingers travelling a lot because they need to handle multiple frequent keys and alternate between them. If the most frequent keys are more evenly spread out across the home row on all fingers, the most frequent keys will incur zero finger travel cost and only less frequent keys require fingers to move away from their home position.
 
 Deviating from the home row should incur a penalty. Again, optimizing typing speed may favour the home row automatically, but a lot can be compensated with additional effort and discomfort. Therefore the algorithm should explicitly favour the home row.
 
@@ -114,48 +116,21 @@ By further filtering down to triplets starting in one hand (e.g. the left hand),
 
 Assuming one minute training and measurements for each triplet, this would take about 52 hours to complete. Doing this for two hours per day, it would take about four weeks or five work weeks or 13 weekends.
 
-### Per-row weights
+### Weights
 
-Per-row weights describe the relative proportion of key-strokes that should occur in a particular row. Proposed ideal weights per row:
+The following weights are proposed:
 
-* Top: 1
-* Home: 3
-* Bottom: 1
-
-The home row should be used for most key-strokes.
-
-### Per-finger weights
-
-Per-finger weights describe the relative proportion of key-strokes that should be handled by a particular finger. Proposed ideal weights per finger:
-
-* Pinky: 1
-* Ring finger: 2
-* Middle finger: 3
-* Index finger: 3
-
-The ring finger is relatively weak. But the pinky tends to get used more for special keys within its reach. Therefore it should get less typing work. Middle and index finger are about equally strong and should handle most of the keystrokes between them. However, the index finger handles twice as many keys as the middle finger. Furthermore, the keys for which the index and pinky fingers have to stretch sideways should have a smaller weight. Thus the home-keys of the fingers should count twice as much as the stretch-keys. Therefore the pinky and index finger weight needs to be split into two columns each, with a 1:2 ratio. To accomplish that, all finger weights are multiplied with 3 without changing their ratio to one another. Resulting column weights on the left hand: 1 2 6 9 6 3.
-
-To get individual key weights, we multiply those numbers with 5 (the sum of the row weights) so the column weights can be split into individual key weights according to the row weighting:
-
-    1    2 |  6 |  9 |  6    3  ||  3    6 |  9 |  6 |  2    1
-    3    6 | 18 | 27 | 18    9  ||  9   18 | 27 | 18 |  6    3
-    1    2 |  6 |  9 |  6    3  ||  3    6 |  9 |  6 |  2    1
+    1    2 |  7 |  7 |  2    1  ||  1    2 |  7 |  7 |  2    1
+    3    7 | 10 | 10 |  7    3  ||  3    7 | 10 | 10 |  7    3
+    2    5 |  3 |  3 |  5    2  ||  2    5 |  3 |  3 |  5    2
     =======|====|====|==========||=========|====|====|========
      Pinky |Ring| Mid| Index    ||   Index |Mid |Ring| Pinky
-                                ||
-                Left hand       ||      Right hand
 
-Finally it's useful to take into account the different lengths of fingers. The middle and ring fingers have no trouble reaching the top row, but need to bend uncomfortably or move the whole hand to reach the bottom row. The pinky on the other hand is a lot shorter and really prefers the bottom two rows. These updated weights reflect that:
+The weights of the keys of each finger add up to the same number, 20. That means, each finger should be about equally heavily used. Furthermore, the home row on each finger is weighted 10, which means half of all keystrokes should be in the home row. The total weight of the home row is 80. The weight of the top and bottom row is 40 respectively. Thus, about a quarter of all keystrokes is expected in the top and bottom row respectively.
 
-    1    1 | 12 | 21 |  6    3  ||  3    6 | 21 | 12 |  1    1
-    3    5 | 12 | 18 | 18    9  ||  9   18 | 18 | 12 |  5    3
-    1    4 |  6 |  6 |  6    3  ||  3    6 |  6 |  6 |  4    1
-    =======|====|====|==========||=========|====|====|========
-     Pinky |Ring| Mid| Index    ||   Index |Mid |Ring| Pinky
-                                ||
-                Left hand       ||      Right hand
+Middle and ring fingers prefer to reach up while index finger and pinky prefer to reach down. Sideways and diagonal reaching are discouraged.
 
-There are weights of 1 on two keys that each pinky never uses in the proposed model of keyboard layouts. However, those keys will carry other functions (e.g. shift, tab, enter, backspace, or special punctuation symbols). Therefore I am not correcting for those weights to avoid overuse of the pinkies.
+There are some symmetries that make some of the columns interchangeable without destroying any desirable properties of the keyboard layout. This fact can be exploited to tweak an optimized layout for cosmetic reasons (spelling out a word on the home row) or to optimize for secondary objectives, such as alternating hands between keystrokes or not.
 
 # References
 
