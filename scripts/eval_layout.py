@@ -349,8 +349,8 @@ def mutate(layout, rand):
     b = rand.randint(0, 28)
     if b >= a:
         b += 1
-    new_layout = [i == a and layout[b] or i == b and layout[a] or layout[i] for i in range(30)]
-    return new_layout
+    return [i == a and layout[b] or
+            i == b and layout[a] or layout[i] for i in range(30)]
 
 def anneal(layout, function):
     """Simulated annealing optimizatio
@@ -366,28 +366,33 @@ def anneal(layout, function):
     rand.seed(0xdeadbeef)
     noise = 0.5
     noise_step = 0.9999
-    countdown = 1000
+    best_score = function(layout)
+    best_layout = layout
 
-    score = function(layout)
-    while noise > 0.00001 and countdown > 0:
+    while noise > 0.00001:
         new_layout = mutate(layout, rand)
         new_score = function(new_layout)
+
+        if new_score > best_score:
+            best_score = new_score
+            best_layout = new_layout
+
         if noise > 0:
-            noisy_score = new_score + rand.uniform(0, noise)
+            noisy_score = new_score + abs(rand.normalvariate(0, noise))
             noise *= noise_step
         else:
             noisy_score = new_score
-        if noisy_score > score:
+
+        if noisy_score > best_score:
             layout = new_layout
-            score = new_score
-            print("%.5f %4d %.5f" % (noise, countdown, new_score), end='\r')
-            countdown = 1000
-        else:
-            countdown -= 1
-#        print(noise)
+            print("%.5f %.5f %.5f" % (noise, new_score, best_score), end='\r')
+        elif new_score + 5*noise < best_score:
+            # We're stuck in a local optimum with little hope of
+            # getting back to the best known optimum. Reset.
+            layout = best_layout
 
     print()
-    return new_layout
+    return best_layout
 
 def swap_fingers(layout, mask):
     swap = (((0, 9), (10, 19), (20, 29)),
