@@ -264,10 +264,10 @@ for name, layout in layouts.items():
 #key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
 #               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
 #               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
-key_weights = [2,  6,  8,  2, 1,   1,  2,  8,  6,  2,
-               8, 12, 10,  8, 3,   3,  8, 10, 12,  8,
-               4,  2,  2,  4, 2,   2,  4,  2,  2,  4]
-finger_weights = [15, 15, 25, 25,   25, 25, 15, 15]
+key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
+               10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
+                4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
+finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
 sorted_key_weights = key_weights[:]
 sorted_key_weights.sort()
 sorted_finger_weights = finger_weights[:]
