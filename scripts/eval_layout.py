@@ -441,7 +441,7 @@ def optimize(layout):
     scores = (#optimize_runs(keymap),
               optimize_weights(keymap),
               optimize_bigraphs(keymap))
-    w = (1, 1)
+    w = (1, 3)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
     return wsum / sum(w)
