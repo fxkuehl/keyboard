@@ -454,16 +454,15 @@ def optimize_weights(keymap):
 
     heatmap = keymap.calc_heatmap(text)
     fingers = finger_heat(heatmap)
-    return (score_heatmap(heatmap) + score_finger_heat(fingers)) / 2
+    key_score = score_heatmap(heatmap)
+    finger_score = score_finger_heat(fingers)
+    return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
 
-def optimize_bigraphs(keymap):
+def optimize_bad_bigraphs(keymap):
     global text
 
     bad_bigraphs = keymap.calc_bigraphs_same_finger(text) / keymap.key_strokes(text)
-    if bad_bigraphs < 0.05:
-        return 1.0 - bad_bigraphs * 10
-    else:
-        return 0.525 - bad_bigraphs / 2
+    return 1.0 - math.sqrt(bad_bigraphs)
 
 def optimize_travel(keymap):
     global text
@@ -474,9 +473,8 @@ def optimize_travel(keymap):
 def optimize(layout):
     keymap = Keymap(layout)
     scores = (optimize_weights(keymap),
-              optimize_bigraphs(keymap),
-              optimize_travel(keymap))
-    w = (1, 3, 1)
+              optimize_bad_bigraphs(keymap))
+    w = (1, 2)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
     return wsum / sum(w)
