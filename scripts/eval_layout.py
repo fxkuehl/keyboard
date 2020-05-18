@@ -61,6 +61,24 @@ layout_AIR = [
     'pP', 'yY', 'mM', 'fF', 'vV',   ',<', 'hH', '.>', 'jJ', 'cC'
 ]
 
+layout_KYX = [
+    ';:', 'lL', 'oO', 'wW', 'zZ',   'qQ', 'vV', 'mM', 'uU', 'jJ',
+    'aA', 'rR', 'eE', 'dD', 'gG',   'hH', 'nN', 'tT', 'iI', 'sS',
+    '/?', '.>', ',<', 'cC', 'fF',   'bB', 'pP', 'kK', 'yY', 'xX'
+]
+
+layout_JUMVQ = [
+    'jJ', 'uU', 'mM', 'vV', 'qQ',   'zZ', 'wW', 'oO', 'lL', ';:',
+    'sS', 'iI', 'tT', 'nN', 'hH',   'gG', 'dD', 'eE', 'rR', 'aA',
+    'xX', 'yY', 'kK', 'pP', 'bB',   'fF', 'cC', ',<', '.>', '/?'
+]
+
+layout_KAROVD = [
+    'jJ', 'mM', 'lL', 'vV', 'qQ',   'zZ', 'wW', 'oO', 'uU', ';:',
+    'sS', 'tT', 'rR', 'nN', 'hH',   'gG', 'dD', 'eE', 'iI', 'aA',
+    'xX', 'kK', ',<', 'pP', 'bB',   'fF', 'cC', '.>', 'yY', '/?'
+]
+
 layouts = {
     "QWERTY": layout_QWERTY,
     "Dvorak": layout_DVORAK,
@@ -68,6 +86,9 @@ layouts = {
     "Workman": layout_WORKMAN,
     "SOUL": layout_SOUL,
     "AIR": layout_AIR,
+    "KYX": layout_KYX,
+    "JUMVQ": layout_JUMVQ,
+    "KAROVD": layout_KAROVD
 }
 
 class TextStats:
@@ -418,6 +439,8 @@ for name, keymap in keymaps.items():
     keymap.eval(text)
     keymap.print_summary()
 
+
+
 def optimize_runs(keymap):
     global text
 
@@ -442,12 +465,18 @@ def optimize_bigraphs(keymap):
     else:
         return 0.525 - bad_bigraphs / 2
 
+def optimize_travel(keymap):
+    global text
+
+    travel = sum(keymap.calc_finger_travel(text)) / keymap.key_strokes(text) / 2
+    return 1 - travel
+
 def optimize(layout):
     keymap = Keymap(layout)
-    scores = (#optimize_runs(keymap),
-              optimize_weights(keymap),
-              optimize_bigraphs(keymap))
-    w = (1, 3)
+    scores = (optimize_weights(keymap),
+              optimize_bigraphs(keymap),
+              optimize_travel(keymap))
+    w = (1, 3, 1)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
     return wsum / sum(w)
