@@ -365,11 +365,12 @@ def anneal(layout, function):
     rand = random.Random()
     rand.seed(0xdeadbeef)
     noise = 0.5
-    noise_step = 0.9999
+    noise_step = 0.00005
+    noise_floor = noise_step * 100
     best_score = function(layout)
     best_layout = layout
 
-    while noise > 0.00001:
+    while noise > noise_floor:
         new_layout = mutate(layout, rand)
         new_score = function(new_layout)
 
@@ -379,7 +380,7 @@ def anneal(layout, function):
 
         if noise > 0:
             noisy_score = new_score + abs(rand.normalvariate(0, noise))
-            noise *= noise_step
+            noise *= 1 - noise_step
         else:
             noisy_score = new_score
 
