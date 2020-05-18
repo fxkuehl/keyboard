@@ -364,7 +364,7 @@ def anneal(layout, function):
     """
     rand = random.Random()
     rand.seed(0xdeadbeef)
-    noise = 0.1
+    noise = 0.5
     noise_step = 0.9999
     countdown = 1000
 
