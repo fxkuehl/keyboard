@@ -65,9 +65,18 @@ layout_SOUL = [
     ('z', 'Z'), ('q', 'Q'), ('t', 'T'), ('h', 'H'), ('-', '_'),
     (',', '<'), ('g', 'G'), ('e', 'E'), ('i', 'I'), (';', ':'),
     ('k', 'K'), ('p', 'P'), ('a', 'A'), ('d', 'D'), ('n', 'N'), ('r', 'R'),
-    ('c', 'C'), ('s', 'S'), ('o', 'O'), ('u', 'U'), ('l', 'L'), ('\'' '\"'),
+    ('c', 'C'), ('s', 'S'), ('o', 'O'), ('u', 'U'), ('l', 'L'), ('\'', '\"'),
     ('b', 'B'), ('x', 'X'), ('m', 'M'), ('v', 'V'), ('/', '?'),
     ('.', '>'), ('f', 'F'), ('j', 'J'), ('y', 'Y'), ('w', 'W')
+]
+
+layout_AIR = [
+    (';', ':'), ('u', 'U'), ('l', 'L'), ('q', 'Q'), ('x', 'X'),
+    ("'", '"'), ('z', 'Z'), ('o', 'O'), ('k', 'K'), ('w', 'W'),
+    (',', '<'), ('a', 'A'), ('i', 'I'), ('r', 'R'), ('s', 'S'), ('g', 'G'),
+    ('b', 'B'), ('n', 'N'), ('e', 'E'), ('t', 'T'), ('d', 'D'), ('p', 'P'),
+    ('.', '>'), ('y', 'Y'), ('m', 'M'), ('f', 'F'), ('v', 'V'),
+    ('/', '?'), ('h', 'H'), ("-", '_'), ('j', 'J'), ('c', 'C')
 ]
 
 layouts = {
@@ -75,7 +84,8 @@ layouts = {
     "Dvorak": layout_DVORAK,
     "Colemak": layout_COLEMAK,
     "Workman": layout_WORKMAN,
-    "SOUL": layout_SOUL
+    "SOUL": layout_SOUL,
+    "AIR": layout_AIR,
 }
 
 class TextStats:
@@ -240,6 +250,8 @@ class Keymap:
         self.heatmap = self.calc_heatmap(text)
         self.heatmap_score = score_heatmap(self.heatmap)
         self.normalized_heatmap = normalize(self.heatmap, sum(key_weights) / self.strokes)
+        self.finger_heatmap = finger_heat(self.normalized_heatmap)
+        self.finger_score = score_finger_heat(self.finger_heatmap)
 
         self.finger_travel = self.calc_finger_travel(text)
         self.adjusted_travel = self.calc_adjusted_travel(text)
@@ -253,21 +265,14 @@ class Keymap:
     def print_layout_heatmap(self):
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
         h = self.normalized_heatmap
-        f = (h[ 0]+h[10]+h[11]+h[22],
-             h[ 1]+h[12]+h[23],
-             h[ 2]+h[13]+h[24],
-             h[ 3]+h[ 4]+h[14]+h[15]+h[25]+h[26],
-             h[ 5]+h[ 6]+h[16]+h[17]+h[27]+h[28],
-             h[ 7]+h[18]+h[29],
-             h[ 8]+h[19]+h[30],
-             h[ 9]+h[20]+h[21]+h[31])
+        f = self.finger_heatmap
         print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]))
         print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
         print(" %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:22]))
         print("%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:22]))
         print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[22:32]))
         print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[22:32]))
-        print("      %5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % f)
+        print("      %5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f))
 
     def print_summary(self):
         self.print_layout_heatmap()
@@ -281,11 +286,17 @@ keymaps = {}
 for name, layout in layouts.items():
     keymaps[name] = Keymap(layout)
 
-key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
-               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
-               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
+#key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
+#               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
+#               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
+key_weights = [2,      6,  8,  2, 1,   1,  2,  8,  6,  2,
+               3,  8, 12, 10,  8, 3,   3,  8, 10, 12,  8,  3,
+               4,      2,  2,  4, 2,   2,  4,  2,  2,  4]
+finger_weights = [15, 15, 25, 25,   25, 25, 15, 15]
 sorted_key_weights = key_weights[:]
 sorted_key_weights.sort()
+sorted_finger_weights = finger_weights[:]
+sorted_finger_weights.sort()
 
 def score_heatmap(heatmap):
     global key_weights, sorted_key_weigts
@@ -302,6 +313,30 @@ def score_heatmap(heatmap):
 
 def normalize(heatmap, factor):
     return [h * factor for h in heatmap]
+
+def finger_heat(h):
+    f = [h[ 0]+h[10]+h[11]+h[22],
+         h[ 1]+h[12]+h[23],
+         h[ 2]+h[13]+h[24],
+         h[ 3]+h[ 4]+h[14]+h[15]+h[25]+h[26],
+         h[ 5]+h[ 6]+h[16]+h[17]+h[27]+h[28],
+         h[ 7]+h[18]+h[29],
+         h[ 8]+h[19]+h[30],
+         h[ 9]+h[20]+h[21]+h[31]]
+    return f
+
+def score_finger_heat(heatmap):
+    global finger_weights, sorted_finger_weights
+
+    score = sum((a * b for a, b in zip(heatmap, finger_weights)))
+
+    sorted_heatmap = heatmap[:]
+    sorted_heatmap.sort()
+    best_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_finger_weights)))
+    sorted_heatmap.reverse()
+    worst_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_finger_weights)))
+
+    return (score - worst_score) / (best_score - worst_score)
 
 def mean_runs(runs):
     mean = [0, 0]
@@ -379,6 +414,22 @@ def anneal(layout, function):
     print()
     return new_layout
 
+def swap_fingers(layout, mask):
+    swap = (((0, 9), (10, 21), (11, 20), (22, 31)),
+            ((1, 8), (12, 19), (23, 30)),
+            ((2, 7), (13, 18), (24, 29)),
+            ((3, 6), (4, 5), (14, 17), (15, 16), (25, 28), (26, 27)))
+
+    new_layout = layout[:]
+
+    for bit in range(4):
+        if (1 << bit) & mask:
+            for l, r in swap[bit]:
+                new_layout[r] = layout[l]
+                new_layout[l] = layout[r]
+
+    return new_layout
+
 text = TextStats(sys.stdin.read())
 
 for name, keymap in keymaps.items():
@@ -398,7 +449,8 @@ def optimize_weights(keymap):
     global text
 
     heatmap = keymap.calc_heatmap(text)
-    return score_heatmap(heatmap)
+    fingers = finger_heat(heatmap)
+    return (score_heatmap(heatmap) + score_finger_heat(fingers)) / 2
 
 def optimize_bigraphs(keymap):
     global text
@@ -420,7 +472,30 @@ def optimize(layout):
     return wsum / sum(w)
 
 new_layout = anneal(layout_QWERTY, optimize)
+#new_layout = layout_AIR
 
 new_keymap = Keymap(new_layout)
 new_keymap.eval(text, 6)
-new_keymap.print_summary();
+new_keymap.print_summary()
+
+max_means = 0
+min_means = 100
+max_keymap = None
+min_keymap = None
+for swap_mask in range(8):
+    swap_layout = swap_fingers(new_layout, swap_mask)
+    swap_keymap = Keymap(swap_layout)
+    runs = swap_keymap.calc_hand_runs(text)
+    means = sum(mean_runs(runs))
+    print("%d: %f" % (swap_mask, means))
+    if means > max_means:
+        max_means = means
+        max_keymap = swap_keymap
+    if means < min_means:
+        min_means = means
+        min_keymap = swap_keymap
+
+max_keymap.eval(text, 6)
+max_keymap.print_summary()
+min_keymap.eval(text, 6)
+min_keymap.print_summary()
