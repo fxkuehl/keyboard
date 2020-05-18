@@ -14,51 +14,51 @@ import random
 # - adjusted finger travel distance (taking into account linked movement of adjacent fingers)
 # - average run length within one hand
 
-# Layout format: Python list of pairs (lower, upper case) for 32 keys
+# Layout format: Python list of pairs (lower, upper case) for 30 keys
 # representing 3 rows of keys like this:
 #
 #       0 |  1 |  2 |  3    4 ||  5    6 |  7 |  8 |  9
-# 10   11 | 12 | 13 | 14   15 || 16   17 | 18 | 19 | 20   21
-#      22 | 23 | 24 | 25   26 || 27   28 | 29 | 30 | 31
+#      10 | 11 | 12 | 13   14 || 15   16 | 17 | 18 | 19
+#      20 | 21 | 22 | 23   24 || 25   26 | 27 | 28 | 29
 #         |    |    |         ||         |    |    |
 #   pinky |ring|mid |  index  ||  index  | mid|ring|pinky
 #                             ||
 #          left hand          ||         right hand
 
 layout_QWERTY = [
-          'qQ', 'wW', 'eE', 'rR', 'tT',   'yY', 'uU', 'iI', 'oO', 'pP',
-    '-_', 'aA', 'sS', 'dD', 'fF', 'gG',   'hH', 'jJ', 'kK', 'lL', ';:', '\'"',
-          'zZ', 'xX', 'cC', 'vV', 'bB',   'nN', 'mM', ',<', '.>', '/?'
+    'qQ', 'wW', 'eE', 'rR', 'tT',   'yY', 'uU', 'iI', 'oO', 'pP',
+    'aA', 'sS', 'dD', 'fF', 'gG',   'hH', 'jJ', 'kK', 'lL', ';:',
+    'zZ', 'xX', 'cC', 'vV', 'bB',   'nN', 'mM', ',<', '.>', '/?'
 ]
 
 layout_DVORAK = [
-         '\'"', ',<', '.>', 'pP', 'yY',   'fF', 'gG', 'cC', 'rR', 'lL',
-    '/?', 'aA', 'oO', 'eE', 'uU', 'iI',   'dD', 'hH', 'tT', 'nN', 'sS', '-_',
-          ';:', 'qQ', 'jJ', 'kK', 'xX',   'bB', 'mM', 'wW', 'vV', 'zZ'
+    '\'"',',<', '.>', 'pP', 'yY',   'fF', 'gG', 'cC', 'rR', 'lL',
+    'aA', 'oO', 'eE', 'uU', 'iI',   'dD', 'hH', 'tT', 'nN', 'sS',
+    ';:', 'qQ', 'jJ', 'kK', 'xX',   'bB', 'mM', 'wW', 'vV', 'zZ'
 ]
 
 layout_COLEMAK = [
-          'qQ', 'wW', 'fF', 'pP', 'gG',   'jJ', 'lL', 'uU', 'yY', ';:',
-    '-_', 'aA', 'rR', 'sS', 'tT', 'dD',   'hH', 'nN', 'eE', 'iI', 'oO', '\'"',
-          'zZ', 'xX', 'cC', 'vV', 'bB',   'kK', 'mM', ',<', '.>', '/?'
+    'qQ', 'wW', 'fF', 'pP', 'gG',   'jJ', 'lL', 'uU', 'yY', ';:',
+    'aA', 'rR', 'sS', 'tT', 'dD',   'hH', 'nN', 'eE', 'iI', 'oO',
+    'zZ', 'xX', 'cC', 'vV', 'bB',   'kK', 'mM', ',<', '.>', '/?'
 ]
 
 layout_WORKMAN = [
-          'qQ', 'dD', 'rR', 'wW', 'bB',   'jJ', 'fF', 'uU', 'pP', ';:',
-    '-_', 'aA', 'sS', 'hH', 'tT', 'gG',   'yY', 'nN', 'eE', 'oO', 'iI', '\'"',
-          'zZ', 'xX', 'mM', 'cC', 'vV',   'kK', 'lL', ',<', '.>', '/?'
+    'qQ', 'dD', 'rR', 'wW', 'bB',   'jJ', 'fF', 'uU', 'pP', ';:',
+    'aA', 'sS', 'hH', 'tT', 'gG',   'yY', 'nN', 'eE', 'oO', 'iI',
+    'zZ', 'xX', 'mM', 'cC', 'vV',   'kK', 'lL', ',<', '.>', '/?'
 ]
 
 layout_SOUL = [
-          'zZ', 'qQ', 'tT', 'hH', '-_',   ',<', 'gG', 'eE', 'iI', ';:',
-    'kK', 'pP', 'aA', 'dD', 'nN', 'rR',   'cC', 'sS', 'oO', 'uU', 'lL', '\'"',
-          'bB', 'xX', 'mM', 'vV', '/?',   '.>', 'fF', 'jJ', 'yY', 'wW'
+    'zZ', 'qQ', 'tT', 'hH', ';:',   ',<', 'gG', 'eE', 'iI', 'kK',
+    'pP', 'aA', 'dD', 'nN', 'rR',   'cC', 'sS', 'oO', 'uU', 'lL',
+    'bB', 'xX', 'mM', 'vV', '/?',   '.>', 'fF', 'jJ', 'yY', 'wW'
 ]
 
 layout_AIR = [
-          ';:', 'uU', 'lL', 'qQ', 'xX',  '\'"', 'zZ', 'oO', 'kK', 'wW',
-    ',<', 'aA', 'iI', 'rR', 'sS', 'gG',   'bB', 'nN', 'eE', 'tT', 'dD', 'pP',
-          '.>', 'yY', 'mM', 'fF', 'vV',   '/?', 'hH', '-_', 'jJ', 'cC'
+    ';:', 'uU', 'lL', 'qQ', 'xX',   '/?', 'zZ', 'oO', 'kK', 'wW',
+    'aA', 'iI', 'rR', 'sS', 'gG',   'bB', 'nN', 'eE', 'tT', 'dD',
+    'pP', 'yY', 'mM', 'fF', 'vV',   ',<', 'hH', '.>', 'jJ', 'cC'
 ]
 
 layouts = {
@@ -107,29 +107,22 @@ class TextStats:
 #
 # Fingers are numbered left to right 0 to 7
 def calculate_key_props(key):
-    if key >= 22:
-        row = 2
-    elif key >= 10:
-        row = 1
-    else:
-        row = 0
+    row = int(key / 10)
+    col = key - 10*row
 
-    row_start = (-1, 10, 21)
-    col = key - row_start[row]
-
-    fingers = (0, 0, 1, 2, 3, 3, 4, 4, 5, 6, 7, 7)
+    fingers = (0, 1, 2, 3, 3, 4, 4, 5, 6, 7)
     finger = fingers[col]
 
-    hand = (col >= 6)
+    hand = (col >= 5)
 
-    home_cols = (1, 1, 2, 3, 4, 4, 7, 7, 8, 9, 10, 10)
+    home_cols = (0, 1, 2, 3, 3, 6, 6, 7, 8, 9)
     x = col - home_cols[col]
     y = row - 1
 
     return (hand, finger, x, y)
 
 class Keymap:
-    key_props = [calculate_key_props(k) for k in range(32)]
+    key_props = [calculate_key_props(k) for k in range(30)]
     finger_linkage = ((1   , 0.25, 0  , 0  , 0  , 0  , 0   , 0   ),
                       (0.25, 1   , 0.5, 0  , 0  , 0  , 0   , 0   ),
                       (0   , 0.5 , 1  , 0.1, 0  , 0  , 0   , 0   ),
@@ -151,7 +144,7 @@ class Keymap:
         return len([1 for c in t.text if c in self.keymap])
 
     def calc_heatmap(self, t):
-        heatmap = [0 for k in range(32)]
+        heatmap = [0 for k in range(30)]
         for symbol, key_props in self.keymap.items():
             if symbol in t.symbol_freq:
                 heatmap[key_props[0]] += t.symbol_freq[symbol]
@@ -248,13 +241,13 @@ class Keymap:
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
         h = self.normalized_heatmap
         f = self.finger_heatmap
-        print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]))
-        print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:22]))
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:22]))
-        print("       %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[22:32]))
-        print("      %5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[22:32]))
-        print("      %5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f))
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]))
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:20]))
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:20]))
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[20:30]))
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[20:30]))
+        print("%5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f))
 
     def print_summary(self):
         self.print_layout_heatmap()
@@ -271,9 +264,9 @@ for name, layout in layouts.items():
 #key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
 #               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
 #               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
-key_weights = [2,      6,  8,  2, 1,   1,  2,  8,  6,  2,
-               3,  8, 12, 10,  8, 3,   3,  8, 10, 12,  8,  3,
-               4,      2,  2,  4, 2,   2,  4,  2,  2,  4]
+key_weights = [2,  6,  8,  2, 1,   1,  2,  8,  6,  2,
+               8, 12, 10,  8, 3,   3,  8, 10, 12,  8,
+               4,  2,  2,  4, 2,   2,  4,  2,  2,  4]
 finger_weights = [15, 15, 25, 25,   25, 25, 15, 15]
 sorted_key_weights = key_weights[:]
 sorted_key_weights.sort()
@@ -297,14 +290,14 @@ def normalize(heatmap, factor):
     return [h * factor for h in heatmap]
 
 def finger_heat(h):
-    f = [h[ 0]+h[10]+h[11]+h[22],
-         h[ 1]+h[12]+h[23],
-         h[ 2]+h[13]+h[24],
-         h[ 3]+h[ 4]+h[14]+h[15]+h[25]+h[26],
-         h[ 5]+h[ 6]+h[16]+h[17]+h[27]+h[28],
-         h[ 7]+h[18]+h[29],
-         h[ 8]+h[19]+h[30],
-         h[ 9]+h[20]+h[21]+h[31]]
+    f = [h[ 0]+h[10]+h[20],
+         h[ 1]+h[11]+h[21],
+         h[ 2]+h[12]+h[22],
+         h[ 3]+h[ 4]+h[13]+h[14]+h[23]+h[24],
+         h[ 5]+h[ 6]+h[15]+h[16]+h[25]+h[26],
+         h[ 7]+h[17]+h[27],
+         h[ 8]+h[18]+h[28],
+         h[ 9]+h[19]+h[29]]
     return f
 
 def score_finger_heat(heatmap):
@@ -352,11 +345,11 @@ def max_runs(runs):
     return (max(runs[0].keys()), max(runs[1].keys()))
 
 def mutate(layout, rand):
-    a = rand.randint(0, 31)
-    b = rand.randint(0, 30)
+    a = rand.randint(0, 29)
+    b = rand.randint(0, 28)
     if b >= a:
         b += 1
-    new_layout = [i == a and layout[b] or i == b and layout[a] or layout[i] for i in range(32)]
+    new_layout = [i == a and layout[b] or i == b and layout[a] or layout[i] for i in range(30)]
     return new_layout
 
 def anneal(layout, function):
@@ -397,10 +390,10 @@ def anneal(layout, function):
     return new_layout
 
 def swap_fingers(layout, mask):
-    swap = (((0, 9), (10, 21), (11, 20), (22, 31)),
-            ((1, 8), (12, 19), (23, 30)),
-            ((2, 7), (13, 18), (24, 29)),
-            ((3, 6), (4, 5), (14, 17), (15, 16), (25, 28), (26, 27)))
+    swap = (((0, 9), (10, 19), (20, 29)),
+            ((1, 8), (11, 18), (21, 28)),
+            ((2, 7), (12, 17), (22, 27)),
+            ((3, 6), (4, 5), (13, 16), (14, 15), (23, 26), (24, 25)))
 
     new_layout = layout[:]
 
