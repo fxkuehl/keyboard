@@ -79,6 +79,18 @@ layout_KAROVD = [
     'xX', 'kK', ',<', 'pP', 'bB',   'fF', 'cC', '.>', 'yY', '/?'
 ]
 
+layout_TEN = [
+    'wW', 'gG', 'oO', 'qQ', 'zZ',   '/?', 'jJ', 'uU', ',<', 'cC',
+    'rR', 'tT', 'eE', 'nN', 'fF',   'mM', 'lL', 'iI', 'aA', 'dD',
+    'vV', 'kK', ';:', 'hH', 'bB',   'xX', 'sS', 'yY', '.>', 'pP'
+]
+
+layout_MOWGLI = [
+    'qQ', 'gG', 'uU', 'jJ', ';:',   '/?', 'xX', 'oO', 'cC', 'zZ',
+    'iI', 'tT', 'eE', 'nN', 'bB',   'wW', 'dD', 'aA', 'sS', 'lL',
+    'yY', 'vV', ',<', 'hH', 'pP',   'kK', 'fF', '.>', 'mM', 'rR'
+]
+
 layouts = {
     "QWERTY": layout_QWERTY,
     "Dvorak": layout_DVORAK,
@@ -88,7 +100,9 @@ layouts = {
     "AIR": layout_AIR,
     "KYX": layout_KYX,
     "JUMVQ": layout_JUMVQ,
-    "KAROVD": layout_KAROVD
+    "KAROVD": layout_KAROVD,
+    "TEN": layout_TEN,
+    "MOWGLI": layout_MOWGLI
 }
 
 class TextStats:
@@ -141,6 +155,29 @@ def calculate_key_props(key):
     y = row - 1
 
     return (hand, finger, x, y)
+
+# Favourable bigrams that are easy and fast to type
+# Left hand only, right hand will be auto-generated
+fast_bigraphs = [( 1,  2), ( 1, 13),
+                 ( 2, 13),
+                 (10,  2), (10, 12), (10, 13), (10, 23),
+                 (11,  2), (11, 12), (11, 13), (11, 23),
+                 (12, 13), (12, 23),
+                 (13,  1), (13,  2), (13, 10), (13, 11), (13, 12), (13, 20),
+                 (20, 12), (20, 13), (20, 22), (20, 23),
+                 (21, 12), (21, 13), (21, 22), (21, 23),
+                 (22, 23),
+                 (23, 10), (23, 11), (23, 12), (23, 20), (23, 21), (23, 22)]
+def mirror_key(k):
+    return k + 9 - 2 * (k % 10)
+fast_bigraphs.extend([(mirror_key(a), mirror_key(b)) for a, b in fast_bigraphs])
+# Now turn it into a map for fasts lookup
+fast_bigraphs_map = {}
+for a, b in fast_bigraphs:
+    if a in fast_bigraphs_map:
+        fast_bigraphs_map[a].append(b)
+    else:
+        fast_bigraphs_map[a] = [b]
 
 class Keymap:
     key_props = [calculate_key_props(k) for k in range(30)]
@@ -240,6 +277,25 @@ class Keymap:
             print()
         return num
 
+    def calc_fast_bigraphs(self, t, debug = 0):
+        global fast_bigraphs_map
+
+        num = 0
+        for sym, freq in t.bigraphs.items():
+            if sym[0] == sym[1]:
+                continue
+            if sym[0] not in self.keymap or sym[1] not in self.keymap:
+                continue
+            a = self.keymap[sym[0]][0]
+            b = self.keymap[sym[1]][0]
+            if a in fast_bigraphs_map and b in fast_bigraphs_map[a]:
+                num += freq
+                if debug:
+                    print("%s%s(%d), " % (sym[0], sym[1], freq), end="")
+        if debug:
+            print()
+        return num
+
     def eval(self, text, debug = 0):
         self.strokes = self.key_strokes(text)
 
@@ -257,6 +313,7 @@ class Keymap:
         self.hand_runs = self.calc_hand_runs(text, debug)
 
         self.bad_bigraphs = self.calc_bigraphs_same_finger(text, debug)
+        self.fast_bigraphs = self.calc_fast_bigraphs(text, debug)
 
     def print_layout_heatmap(self):
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
@@ -277,6 +334,7 @@ class Keymap:
         print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]))
         print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))))
         print("Bad bigraphs: %d" % self.bad_bigraphs)
+        print("Fast bigraphs: %d" % self.fast_bigraphs)
 
 keymaps = {}
 for name, layout in layouts.items():
@@ -457,12 +515,19 @@ def optimize_weights(keymap):
     key_score = score_heatmap(heatmap)
     finger_score = score_finger_heat(fingers)
     return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
+    #return (math.sqrt(key_score) + math.sqrt(finger_score)) / 2
 
 def optimize_bad_bigraphs(keymap):
     global text
 
     bad_bigraphs = keymap.calc_bigraphs_same_finger(text) / keymap.key_strokes(text)
     return 1.0 - math.sqrt(bad_bigraphs)
+
+def optimize_fast_bigraphs(keymap):
+    global text
+
+    good_bigraphs = keymap.calc_fast_bigraphs(text) / keymap.key_strokes(text)
+    return math.sqrt(good_bigraphs)
 
 def optimize_travel(keymap):
     global text
@@ -473,37 +538,38 @@ def optimize_travel(keymap):
 def optimize(layout):
     keymap = Keymap(layout)
     scores = (optimize_weights(keymap),
-              optimize_bad_bigraphs(keymap))
-    w = (1, 2)
+              optimize_bad_bigraphs(keymap),
+              optimize_fast_bigraphs(keymap))
+    w = (1, 2, 1)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
     return wsum / sum(w)
 
 new_layout = anneal(layout_QWERTY, optimize)
-#new_layout = layout_AIR
+#new_layout = layout_MOWGLI
 
 new_keymap = Keymap(new_layout)
 new_keymap.eval(text, 6)
 new_keymap.print_summary()
 
-max_means = 0
-min_means = 100
-max_keymap = None
-min_keymap = None
-for swap_mask in range(8):
-    swap_layout = swap_fingers(new_layout, swap_mask)
-    swap_keymap = Keymap(swap_layout)
-    runs = swap_keymap.calc_hand_runs(text)
-    means = sum(mean_runs(runs))
-    print("%d: %f" % (swap_mask, means))
-    if means > max_means:
-        max_means = means
-        max_keymap = swap_keymap
-    if means < min_means:
-        min_means = means
-        min_keymap = swap_keymap
+# max_means = 0
+# min_means = 100
+# max_keymap = None
+# min_keymap = None
+# for swap_mask in range(8):
+#     swap_layout = swap_fingers(new_layout, swap_mask)
+#     swap_keymap = Keymap(swap_layout)
+#     runs = swap_keymap.calc_hand_runs(text)
+#     means = sum(mean_runs(runs))
+#     print("%d: %f" % (swap_mask, means))
+#     if means > max_means:
+#         max_means = means
+#         max_keymap = swap_keymap
+#     if means < min_means:
+#         min_means = means
+#         min_keymap = swap_keymap
 
-max_keymap.eval(text, 6)
-max_keymap.print_summary()
-min_keymap.eval(text, 6)
-min_keymap.print_summary()
+# max_keymap.eval(text, 6)
+# max_keymap.print_summary()
+# min_keymap.eval(text, 6)
+# min_keymap.print_summary()
