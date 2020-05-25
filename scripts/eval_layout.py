@@ -91,6 +91,12 @@ layout_MOWGLI = [
     'yY', 'vV', ',<', 'hH', 'pP',   'kK', 'fF', '.>', 'mM', 'rR'
 ]
 
+layout_GAU = [
+    'gG', 'aA', 'uU', '\'"','xX',   'zZ', 'qQ', 'sS', 'fF', 'jJ',
+    'cC', 'oO', 'eE', 'rR', 'wW',   'mM', 'tT', 'nN', 'hH', 'iI',
+    'pP', ';:', '.>', 'lL', ',<',   'kK', 'dD', 'vV', 'bB', 'yY'
+]
+
 layouts = {
     "QWERTY": layout_QWERTY,
     "Dvorak": layout_DVORAK,
@@ -102,7 +108,8 @@ layouts = {
     "JUMVQ": layout_JUMVQ,
     "KAROVD": layout_KAROVD,
     "TEN": layout_TEN,
-    "MOWGLI": layout_MOWGLI
+    "MOWGLI": layout_MOWGLI,
+    "GAU": layout_GAU
 }
 
 class TextStats:
@@ -514,8 +521,9 @@ def optimize_weights(keymap):
     fingers = finger_heat(heatmap)
     key_score = score_heatmap(heatmap)
     finger_score = score_finger_heat(fingers)
-    return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
-    #return (math.sqrt(key_score) + math.sqrt(finger_score)) / 2
+    #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
+    return (math.sqrt(key_score) + math.sqrt(finger_score)) / 2
+    #return (key_score + finger_score) / 2
 
 def optimize_bad_bigraphs(keymap):
     global text
@@ -545,8 +553,8 @@ def optimize(layout):
 
     return wsum / sum(w)
 
-new_layout = anneal(layout_QWERTY, optimize)
-#new_layout = layout_MOWGLI
+new_layout = anneal(layout_DVORAK, optimize)
+#new_layout = layout_GAU
 
 new_keymap = Keymap(new_layout)
 new_keymap.eval(text, 6)
