@@ -1,0 +1,676 @@
+Scientific Papers (www..org)
+Journal of Knowledge Management, Economics and Information Technology
+
+
+. , Issue 
+April 
+Binary Logistic Analysis: Empowerment of
+Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+Authors:   , Faculty of Economic and Business,
+  University, @gmail.com; 
+   ,  of Economic and Business,
+  University, @gmail.com
+The aim of this study was to analyze the variables that may affect the
+application of the technology to produce handicrafts. The method used to
+determine the sample unit of craft businesses of rural households that will be
+interviewed are  sampling.
+ This study uses a quantitative analytical approach. Quantitative
+analysis using descriptive statistics and regression of binary logistic analysis.
+Based on the analysis, it can be concluded that the variables that significantly
+influence the application of technology in rural craftsmen in  Regency is
+the income and education level.
+ The higher the income level, the higher the possibility of craftsmen
+applying modern technologies. Likewise, the education level, the higher the
+education level, assuming other variables constant, the possibility of applying
+the technology will be higher. While the age and type of business does not
+significantly influence the application of technology.
+
+Keywords: Empowerment, Household Industry, Income, Education,
+Technology
+
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+Introduction
+
+Empowerment of poor communities through strengthening capital,
+coaching, and mentoring has been done by the government through the
+relevant institutions. However, these efforts have not been felt by all
+households in rural craftsmen. This occurs because the craftsmen of rural
+households enormous amount of funds available to conduct training is still
+very limited, so the government programs related to community
+development primarily to the craftsmen of rural households is not optimal.
+In addition, the craftsmen who have produced results should be followed up
+by helping craft or facilitate the marketing of craft. This is also the problems
+faced by the craftsmen during this time.
+ Problems also arise because of the use of the existing opportunities
+optimally has not been achieved, which is more caused by the weak
+managerial capability of human resources. This will have an impact on the
+inability of small entrepreneurs run their business well. In addition to the
+importance of increasing the role of economic capital/financial and human
+capital as a factor of production to increase productivity handicraft business
+is generated, then the social capital, culture and skills of artisans in utilizing
+existing technology also needs to be improved. Social capital as an asset to
+the organization in creating value or an asset to the organization's members
+through improved job skills, including influence the success of the work, the
+creation of intellectual capital, and efficiency of multifunctional teams to
+strengthen relationships with suppliers, production network and
+organizational learning []. Social capital from time to time need to be
+developed, otherwise the company will not be able to compete []. Social
+capital of the poor people can also be  by combining with financial
+capital, human and physical capital to help them participate in development
+decisions that affect their well-being []. Social capital can be seen from the
+structure of liabilities, expectations, and beliefs, and social capital can play a
+role it must interact with the social structure []. In addition to financial
+capital, human capital, and social capital, then the use of technology is very
+important for this rural Small and Medium Entreprises (). Although
+the technology is still very simple, but it can speed up the production
+process.
+ Development of the use of technology for developing countries
+compared with developed industries are very different []. Developing
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+countries in the use of technology is still labor intensive, while the state
+industry, the use of advanced technology tends capital intensive.
+Technology can cause a shift in the nature of human materiality. For some
+people technology can help them to developing more advanced economies
+and may bring classes in public life []. In the long term, the use of
+appropriate technologies can enhance the role of business industry and be
+able to maintain the sales of products, services, and market share [].
+Technology can provide value and benefits of a strong impact to produce a
+better performance of the industry. In addition, strong social capital also
+have an impact on productivity improvement efforts [] [].
+ Weak empowerment of the poor people in accessing financial
+resources to improve the work is also found in the study []. In fulfillment of
+the capital of the business activities carried out in its efforts to obtain
+business credit is still very low. This has an impact on their weaknesses to
+improve empowerment efforts. By looking at the weaknesses of small
+businesses for poor households, the role is more real than the government
+through relevant institutions which can be done by providing credit without
+collateral in order to improve the empowerment of the business.
+ Poverty in rural areas is indicated from less helpless communities to
+improve the lives of more viable, low ability to access venture capital, and
+the low level of productivity of the effort that have done. The low level of
+productivity of the work done can also be demonstrated by the lack of their
+ability to absorb technology. Weak absorption technology is also due to
+their helplessness in accessing capital, and skills. For the craftsmen
+sometimes the technology used to be very simple and limited, however there
+are also craftsmen who have been using a number of technologies as needed.
+Therefore research conducted related to the application of technology can
+improve the craftsmen of empowerment efforts. Presence or absence of the
+application of technology (modern or traditional) in producing handicrafts,
+examined in this study.
+ There are several variables that can affect the possibility of applying
+a technology. Several variables that affect  in applying computer
+technology []. The results showed that gender, age, experience and nature
+of use (mandatory or voluntary) is a moderating effect on the use of
+information systems (the use of computer technology). Entrepreneurship
+technology as well as mediating variables also need to be further proof as
+endogenous or exogenous variables []. The purpose of this study was to
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+analyze the variables that may affect the application of the technology to
+produce handicrafts.
+
+Literature Review
+Empowerment
+Empowerments often seen as a tool to achieve certain goals and as an end in
+itself. Empowerment involves the ability to make choices and communicate
+the change process of all components that make up the social structure and
+reproduce the power relationships and subsequent unequal distribution of
+opportunities and community resources. Some experts postulate that there
+are three dimensions of empowerment: empowerment through individual
+action, collective empowerment that is interpersonal, and social
+empowerment in generating social action, all three dimensions are
+interdependent.
+ Empowerment is energizing to be concerned is able to move
+independently []. Empowerment basically have the intent to create a
+climate of fair competition and fair, which will provide opportunities to live
+and thrive for cooperatives and . The concept of empowerment is the
+result of an interactive process both at the ideological level and at the level
+of implementation. On an ideological level, the concept of empowerment is
+the result of interaction between concept of the top-down and bottom-up,
+the growth strategy and people-centered strategy. In terms of
+implementation, the interaction will occur through the struggle between
+autonomy. The concept of empowerment but it also contains the context to
+side with layers of society who are under the poverty line []. The study of
+empowerment stated []. aims to investigate multiculturalism in the
+workplace by using a method based diversity training and development of
+empowerment. A method based on the empowerment proved useful in
+directing the creation of an exclusive work organization. Empowerment is
+efforts were made, including the dissemination of information, providing
+knowledge and efforts made to improve the performance of the entire
+elements needed for everything. To increase employee competency we need
+a policy to act appropriately and can increase their services, thus the
+management is very important to give them the expertise, information and
+rewards required.
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+Technology
+Technology generally produce or create a certain effect, thus to be able to
+use it required considerable knowledge. Someone applying certain
+technologies certainly have the knowledge of how to use these technologies.
+Technology is part of the culture of knowledge and be able to do it right
+[]. Technology can cause a shift in the nature of human materiality [].
+Thus the application of technology in producing a particular product is
+needed by the industry in general. If knowledge of the application of these
+technologies, properly understood, the production process would be more
+efficient.
+ Technology also can help employees to speed up the production
+process to produce a particular product. The use of technology can promote
+the development of small and medium enterprises to diversify the economy
+of a country. Information technology is very useful in Small and Medium
+Enterprises () []. Information OF Technologies have a significant
+effect on small and medium business sector, especially in the when decrease
+of industrial or when there is a high unemployment rate. Small and medium
+businesses in India using information technology very quickly []. For small
+entrepreneurs who understand the benefits of information technology, then
+by adopting technology entrepreneurs can take advantage of the promised
+benefits as a result of the adoption of information technology, including
+improving the efficiency and effectiveness of the organization. However, as a
+criticism in creating jobs and employment opportunities, small and medium
+enterprises are still lagging behind compared to other countries.
+
+Regression with Qualitative Response (Analysis of Binary Logistic)
+Binary Logistic Analysis is a statistical technique that the dependent variable
+is in the form  (nominal or nonmetric) and the independent
+variable is the metric or nonmetric []. Regression Logistic Analysis is also
+called "Binary Logistic" Regression analysis," Multinominal Logistics
+Regression Analysis "and "Ordinal Logistics Regression Analysis", depending
+on the type of scale of the dependent variable that is used. For example, to
+classify the dependent variable, a nice guy working or idle, he is a member of
+the group or not, from the ruling party both from the right wing or left wing;
+a student either graduates or not []. Binary Logistic Regression Analysis is
+the regression analysis applied to the analysis, where the dependent variable
+in the form categorical, or the dependent variable is qualitative. the
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+dependent variable is qualitative (categorical) quantified by making variable
+artificial or dummy variable, with a value of  for the variable that appears
+and  for the other. If the answer to the dependent variable yes = , no = ,
+or applying technology = , not to apply technology = . this analysis resulted
+in a regression equation makes it possible to make an accurate estimate of
+the likelihood that an individual falls mistake one category (Yes or no).
+ Logistic regression is a model of cumulative distribution function
+(), which is able to guarantee the value of the dependent variable lies
+between  and  in accordance with the theory of probability.  has two
+properties, namely: ) if the independent variable goes up, then  ( =  |
+)also rose, but never past the range -, and ) the relationship between Pi
+and  is a non linear so that the rate of change is not the same, but the
+gains were bigger, then smaller. When the probability is close to zero, then
+the rate of decline is getting smaller, as well as the probability value close to
+one, then the rate of increase is smaller [].
+
+Figure : Cumulative Distribution Function ()
+In general logistic regression equation for the dependent variable  can be
+written as follows:
+()
+ln /(-) =  +   +   ......
+()
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+odds ( / ,, ...... ) = /(-)
+()
+The probability  i must be a value between  and , because it has a limit: 
+≤  ( i / i )≤ , which is the conditional expectation (conditional probability)
+must be a value between  and [].
+Research Methodology
+The study was conducted using a quantitative approach. The relationship
+between the independent variables affect the dependent variable is the
+associative nature. The study was conducted at the handicraft industry of
+rural households in  Regency of Bali Province. The election of rural
+household handicraft industry as the research object because the majority of
+people in rural areas are classified as less able to be in this business group. In
+addition, this business is able to absorb labor is relatively large. Although
+there have been economic crisis in a sustainable manner, but these efforts
+still survive and produce. The results of this effort is a product that is mostly
+used for the benefit and in the interests of supporting tourism and religious
+ceremonies. The research location chosen is  tourist village that
+has business units as supporting the tourism sector, which represents small
+businesses in rural areas.
+ The population in this study is the number of business units in
+ regency. Number of sample units to be chosen to represent this
+population using a quota sampling as many as  respondents. The method
+used to determine the sample unit of craft businesses of rural households
+that will be interviewed are  sampling. The number of samples that
+have met the requirements for using binary logistic regression analysis
+techniques. This research was conducted as an application of the
+strengthening of the course Econometrics, with examples of this research
+students will be more interested in using binary logistic analytical
+techniques of research they do.
+ The collection of data used in this study using interviews.
+Structured interviews were used to collect primary data through interviews
+to the respondent, using the list of questions prepared in advance. Besides, it
+also conducted in-depth interview to the informant craftsmen who
+represented the respondents.
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+ In this study, there are two types of variables: ) Variable
+independent , ) the dependent variable. The independent variables
+were age, income, education, type of business and the dependent variable is
+the application of technology. When applying modern technologies dummy
+=  and when traditional technologies, dummy = . This study uses a
+quantitative analytical approach. Quantitative analysis using descriptive
+statistics and binary logistic regression analysis.
+
+Analysis and Result
+Descriptive Analysis
+Descriptive analysis described in this study correlated with age, income,
+education, type of business and application of technology. Each respondent
+characteristics are presented as follows.
+. Characteristics of Respondents by Age
+Overall respondents belong to the age group - years of productive range
+as instructed in Table .. Cumulatively, about . percent of respondents
+less than  years old. At that age range can be said respondents are in the
+productive age, because productivity tends to increase and will tend to think
+at the age of  years. At the age of  years, will tend to start sickly which
+would result in a decrease in productivity. Stated age range are at high
+productivity is between - years, who shown by about  per cent of
+respondents. The characteristics of the respondent's age is presented in
+Figure .
+
+Figure : Characteristics of Respondents by Age
+
+. Characteristics of Respondents by
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+ this study is the income received by respondents for one month
+in running its business as a craft industry in rural households. The results
+showed that the respondents' income ranged between . , - .
+... Distribution of respondents based on income level are shown in
+Table .. On the average income of respondents   million per month.
+When traced further indicated only a small percentage of respondents had
+ above average, which is around  percent, and the rest is mostly
+income ≤ average income. Thus it can be said that the respondents' income
+is still very low.
+
+Figure : Characteristics of Respondents Based on Revenue
+
+. Characteristics of Respondents by
+ in this study is measured by years of success. The
+majority of respondents surveyed are educated finished elementary school
+( years), and only . percent were educated College (graduated Diploma).
+Distribution of respondents based on the level of education can be shown as
+Figure .
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+
+Figure : Characteristics of Respondents by Education
+
+. Characteristics of Respondents by Type of Business
+Type of business in this study was measured using dummy variables, one for
+the type of woven handicraft businesses and  for types other craft
+businesses. The results showed that only a small proportion of respondents
+who pursue woven bamboo crafts and others pursue handicrafts besides
+bamboo crafts such as wood carvings, household appliances from wood.
+
+. Characteristics of Respondents Based on Application of Technology
+The use of technology that is intended in this study are craftsmen who use
+the technology in producing handicrafts. The technology in question is
+modern technology (using an electric mower, electric drill, electric saw), and
+traditional technologies. If craftsmen using modern technology given
+dummy  and using traditional technologies given dummy . The results
+showed that  percent of respondents are still using traditional technology
+and only  percent are using modern technologies.
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+
+Figure : Characteristics of Respondents by Application of Technology
+
+Analysis Binary Logistic
+Data were analyzed with binary logistic using the program  results
+simpler, as shown Table ..
+
+Table : Logistic Regression Analysis
+Dependent Variable: TECHNOLOGY
+Method:  - Binary  (Quadratic hill climbing)
+Date: // Time: :
+Sample:  
+Included observations: 
+Convergence achieved after  iterations
+Covariance matrix computed using second derivatives
+Variable Coefficient Std. Error -Statistic Prob.
+ -. . -. .
+AGE . . . .
+INCOME . . . .
+EDUCATION . . . .
+ -. . -. .
+ -squared . Mean dependent var .
+.. dependent var . .. of regression .
+ info criterion . Sum squared  .
+ criterion . Log likelihood -.
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+- criter. . Deviance .
+. Deviance . . log likelihood -.
+ statistic . Avg. log likelihood -.
+Prob( statistic) .
+ with Dep=  Total  
+ with Dep= 
+The processed data may be presented in the form of the following equation:
+ln 
+− =
+-. + .
+(age)
++ .
+(income)
++ .
+(education)
+- .
+(business
+kind)
+  = (.) (.) (.) (.) (.)
+ = (-.) (.) (.) (.) (-.)
+Sig = (.) (.) (.) (.) (.)
+   = .  statistic = . Sig.=.
+
+Substituting these figures, then made the following equation:
+
+− =
+(-.+.+.+.-.)
+=/(+
+(-.+.+.+.-.)
+)
+
+ Simultaneously independent variables as age, income, education,
+and business types significantly affect the application of technology. This
+can be demonstrated by  statistic = . (equal to   = .) at ,
+greater value   table = . ( = - = ) at the level of significant 
+percent. The processed data can also be seen that   
+ for  the
+same as the coefficient of determination in the usual regression model. This
+means that . percent of the variation application of technology is affected
+by variations in age, income, educational level, and the type of business and
+the remaining . percent is influenced by other variables outside the
+model. Thus there are many other variables that affect the actual
+implementation of technology for the craftsmen. For example the
+experience as craftsmen, the need to apply modern technology, or other
+variables.
+
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+Discussion
+The influence of age on the application of technology
+Age may affect the craftsmen to use technology in conducting business
+activities. A young age tend to be very innovative and productive in
+production, so they tend to more quickly adopt the technology compared to
+the old age. Results of research conducted showed that age influence the
+application of technology in the management of  [].
+ The results of this study, when analyzed using binary logistic
+craftsmen showed that age does not affect the use of technology in
+producing handicrafts. Descriptively, the average age of the respondents
+tend to be still very productive. Respondents in this study had a statistically
+significant probability/possibility that in the application of modern
+technologies. This means that age does not determine a craftsman in the
+application of modern technology or traditional in this study. The results of
+statistical analysis indicated by the value of  =  and a probability
+value/significance .> ., not significant. This means that age does not
+significantly affect the craftsmen within their possibilities to apply modern
+technologies. This study differs from studies Teddy   (), which
+resulted in the conclusion that the age of the entrepreneur affect the use of
+technology in  studied [].
+
+Influence Of Technology Application Revenue
+Craftsmen revenue can influence their chances for adoption of the
+technology. The analysis showed that the income of a significant effect on
+the possibility of craftsmen to apply modern technologies. The higher the
+income level, the possibility of the craftsmen to implement the use of
+modern technology compared with traditional technology are also getting
+bigger. The results of this study, when analyzed using binary logistic showed
+that the craftsmen income effect on their likelihood to apply modern
+technology in producing handicrafts.  value count = ,, with a
+probability value . <.. The higher the income level there is a
+tendency craftsmen to implement the use of modern technologies. Until
+now, this research was conducted, mostly craftsmen still use traditional
+technologies to the production process. They are willing to use more
+modern technology, but the ability to purchase the equipment from the
+electricity is limited. Because of very limited capital owned then they still
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+carry out business activities as conducted sat. The desire to implement more
+modern technology than the actual craftsmen is their desire.
+ So it can be concluded that there is a desire from the craftsmen to
+implement more modern technology to produce handicraft items, but their
+ability to buy more modern equipment is still inadequate, because the
+income received is still relatively low. The craftsmen aware of the use of
+more modern technology can increase the production of handicraft business
+is done, so as to increase empowerment of craft businesses that occupied so
+far. That view also reinforces the opinion of the [], that technology very
+helpful in Small And Medium Enterprises (). Likewise reinforces the
+opinion expressed by  and  (), that technology, as well as
+information technology have a significant effect on the sector of small and
+medium enterprises []. From the interviews that have been done by the
+craftsmen, it can be said that when income increases, the likelihood of their
+craftsmen to apply modern technology will be even greater.
+
+Effect of Education Against Application of Technology
+The level of education is also expected to influence technology
+implementation. If the respondent's educational level is high then the
+chances of them apply the technology also higher. The results showed that
+the respondents' education level as measured by years of success affect the
+application of the technology significantly. This is indicated by the count -
+value ., with a probability value .<.. This means that the higher
+the education level of respondents their chances to apply modern
+technology also higher.
+
+Influence of The Type of Business the Application of Technology
+This type of business is also expected to affect the application of technology.
+Using or not using modern technology is also determined by the type of
+business generated. If the type of business that is generated is willed into
+their use of modern technology, the craftsmen are trying to use it. However,
+when using simple technology craftsmen can still produce craft items they
+perceive that the use of traditional technology is still quite adequate. In this
+study, the processed data showed that the type of business does not
+significantly influence the application of technology. Type of business using
+dummy variables in the analysis. When this type of business are woven
+bamboo given dummy  and the other is zero. Turns craftsmen who produce
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+handicrafts such as woven bamboo, the possibility of applying modern
+technologies lower than those producing craft items instead of woven
+bamboo. Results of the analysis showed -statistic = , with probability =
+> .. So it can be said that this type of business does not significantly
+influence the application of modern technologies.
+ Craftsmen who use traditional technology of the view that to
+produce handicrafts that occupied not have to use modern technology,
+although the production process more time consuming than using modern
+technologies.
+ The craftsmen who produce results woven bamboo crafts this did
+not have to use modern equipment, because they weave more use of hand
+skills. Another case when craftsmen that use materials from wood, may need
+more modern equipment higher. Craftsmen relationship with fellow
+craftsmen as friend connections are very strong. Mutual trust is very high
+and helping each other is a reflection of the strength of social capital in the
+business environment of the craftsmen. Relationship strong friendship can
+develop mutual respect between each other in a community. Sense of
+community and kinship form a network also helps artisans who lack the
+equipment to produce a product, can be helped by friends or other relatives
+in their environment. This indicates there is a relationship which reflects the
+strong social capital to run a business. With borrowed equipment with a
+neighbor or friend, then they can work more quickly and the time used to
+produce handicraft items are also shorter, thereby improving productivity.
+Social capital featuring the company's ability to benefit from the network.
+These advantages can include access to knowledge, resources, technology,
+market and business opportunities. A bond formed in the network as supply
+contracts between the companies with the other create social capital
+resources. When interactions in relationships between companies rose,
+social capital becomes better, thus potentially increase profits. This level of
+trust and dependence rational between companies in a special relationship
+is a qualitative indicator of the relational dimension. The higher the trust
+between each other, and the better relations can improve confidence.
+Conclusion and Recommendations
+Based on the analysis, it can be concluded that the variables that
+significantly influence the application of technology in rural craftsmen in
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+ Regency is the income and education level. The higher the income
+level, the higher the possibility of craftsmen applying modern technologies.
+Likewise, the education level, the higher the education level, assuming other
+variables constant, the possibility of applying the technology will be higher.
+The existence of strong fraternal relations in a community environment
+craftsmen can form a bond of trust between the network and they reflect
+strong social capital. This can help the process of production due to modern
+equipment that is used to speed up the production process they can borrow
+from friends or relatives. Thus, the production process can run more quickly
+to support increasing empowerment of the effort by the craftsmen. While
+the age and type of business does not significantly influence the application
+of technology.
+ Craftsmen should be still consider the use of modern technology
+such as drill and electric  to produce handicraft items, thus increasing
+productivity. By using modern technology, the time used to produce
+handicrafts shorter compared to just using traditional technology. The
+craftsmen are also advised to retain the social capital that has existed so far,
+and still maintain good relations with fellow craftsmen in the business
+environment.
+References
+[]. ,  . . Dissertation.Product
+commoditization, Technology, Entrepreneurship Fair Economists
+Against Revenue In Industrial Statue In Sub  ,
+[]. -, . . The Role of Information Technology
+in Small and Medium Sized Enterprises in . Fulbright
+Academy Conference.  of Economics, University of Pristina,
+.
+[]. ,  , , , , .
+. The Relationship between social capital and Inter-
+organizational entrepreneurship in  Industrial City, Iran.
+Journal of Basic Applied Scientific Research  (//): -.
+[].   and Life . . Analysis of
+Socio-Economic Empowerment Fishermen Fish In . Socio-
+Economic Dynamics Volume  Number  Issue May , PP: -.
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+[]. ,  . . Social Capital in the Creation of Human
+Capital. The American Journal of Sociology, ., Supplement:
+Organizations and Institutions: Sociological and Economic
+Approaches to the Analysis of Social Structure, pp. -.
+[]. ,  and , . . Social Cooperative
+Capital-Towards a LifecyclePerspective.Poster paper prepared for
+presentation at the   Congress "-Food and 
+Innovations for Healthier Scienties". Slovenia  to  August.
+[]. , -.. "Capital Power and Knowledge
+According to  : reinterpreting the Knowledge-Based
+Economy". . Journal of Economic Issues. . No.  (June). Pp
+-.
+[]. Gujarat,  . and Porter, Darwin .. Basics of
+Econometrics Book One, Issue . Translator: 
+,   and  , 
+Jakarta
+[]. Hair, . , William . Black,  . ,  . Anderson. .
+Multivariate Data Analysis, Seventh Edition. New Jersey. Person
+Prentice Hall.
+[].,  and , . . The Geographic
+Dimension and Rural Poverty. Media Economics. .  December
+[]. , Mandala. . Small and Medium Enterprises Policy and
+Role in the Economy. Study  (): -.
+[]. Hughes,  and Robert . . . Shaping and re-
+shaping of social capital in buyer-supplier relationships. Journal of
+BusinessResearch:-.an
+[]. , . ."Cooperative,The Brewing Pots for Social
+Capital An Exploration of Social Capital Creation in a Homecare
+Worker-",(ONLINE) (cited   )
+Available from: http://www..org/download/Cooperatives/
+Cooperatives-the-brewing-pots-for-social-capital.pdf.
+[].  . . Logistic Regression: Concept And Application.
+Ankara University Faculty of Educational Sciences, 
+Ankara/Turkey.
+[]. Prawirokusumo, . . People's Economy (Concepts,
+Policy and Strategy) , .
+Binary Logistic Analysis: Empowerment of Rural Household Craft Industry
+in  Regency, Bali, Indonesia
+
+
+. , Issue 
+April 
+[]. ,  &  . . Empowerment
+Network Social Institution in Strengthening Social Security Society
+of the Province of South Sumatra. Journal of Research and
+Development of Social Welfare .  , hal.-. http: //
+www.google.com.
+[]. , . . Developing culturally diverse organizations-
+a participative and empowerment-based method. Journal of Women
+in Management Review, volume , No. , pp: -.
+[]. .  And   . . The Role Of
+Information Technology In Small And Medium Sized Business.
+International Journal Of Scientific And Research Publications,
+Volume , Issue , February ,  -
+[].  . . Econometrics (Part One). 
+Economics and Business, University of .
+[]. Teddy , .  ,  . .
+Information Technology Acceptance Model Behavior: Effect of
+Variable Predictors, Moderating Effect, Impact Use of Information
+Technology on Productivity and Performance of Small Business.
+Seminar Presented at National Scientific Computing and
+Intelligence Systems ( ), University 
+
+[]. ,  . .  Economic Development in the Third
+World (Fourth Edition Volume I). Jakarta: 
+[]. , . . Culture and Society -.
+: Penguin .
+[].   . . Institutional Economics,
+Paradigms, Theory and Policy. Jakarta .
+
+
