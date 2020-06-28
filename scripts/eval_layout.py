@@ -539,6 +539,7 @@ def anneal(layout, function, seed=None, shuffle=False):
         new_score = function(new_keymap)
 
         if new_score > best_score:
+            print("%.5f %.5f %.5f" % (noise, new_score, best_score))
             # Improving the score is like going to a lower energy state,
             # which is exothermic. This allows finding more paths from
             # the new best solution.
