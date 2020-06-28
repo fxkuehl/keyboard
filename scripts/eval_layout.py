@@ -337,14 +337,17 @@ class Keymap:
         print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[20:30]))
         print("%5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f))
 
-    def print_summary(self):
+    def print_short_summary(self):
         self.print_layout_heatmap()
-        print("Heatmap score: %f" % self.heatmap_score)
+        print("Heatmap score: %.4f" % self.heatmap_score)
+        print("Bad bigraphs:  %6d" % self.bad_bigraphs)
+        print("Fast bigraphs: %6d" % self.fast_bigraphs)
+
+    def print_summary(self):
+        self.print_short_summary()
         print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]))
         print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]))
         print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))))
-        print("Bad bigraphs: %d" % self.bad_bigraphs)
-        print("Fast bigraphs: %d" % self.fast_bigraphs)
 
 keymaps = {}
 for name, layout in layouts.items():
@@ -540,6 +543,10 @@ def anneal(layout, function, seed=None, shuffle=False):
 
         if new_score > best_score:
             print("%.5f %.5f %.5f" % (noise, new_score, best_score))
+            print("                                                                     ")
+            new_keymap.print_short_summary()
+            # VT100: cursor up 11 rows
+            print("\x1b[11A", end="")
             # Improving the score is like going to a lower energy state,
             # which is exothermic. This allows finding more paths from
             # the new best solution.
