@@ -3,6 +3,7 @@
 import sys
 import math
 import random
+import operator
 
 # Keyboard layout evaluator
 
@@ -211,8 +212,10 @@ class Keymap:
     def calc_heatmap(self, t):
         heatmap = [0 for k in range(30)]
         for symbol, key_props in self.keymap.items():
-            if symbol in t.symbol_freq:
+            try:
                 heatmap[key_props[0]] += t.symbol_freq[symbol]
+            except KeyError:
+                pass
         return heatmap
 
     def calc_finger_travel(self, t):
@@ -362,13 +365,13 @@ sorted_finger_weights.sort()
 def score_heatmap(heatmap):
     global key_weights, sorted_key_weigts
 
-    score = sum((a * b for a, b in zip(heatmap, key_weights)))
+    score = sum(map(operator.mul, heatmap, key_weights))
 
     sorted_heatmap = heatmap[:]
     sorted_heatmap.sort()
-    best_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_key_weights)))
+    best_score = sum(map(operator.mul, sorted_heatmap, sorted_key_weights))
     sorted_heatmap.reverse()
-    worst_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_key_weights)))
+    worst_score = sum(map(operator.mul, sorted_heatmap, sorted_key_weights))
 
     return (score - worst_score) / (best_score - worst_score)
 
@@ -389,13 +392,13 @@ def finger_heat(h):
 def score_finger_heat(heatmap):
     global finger_weights, sorted_finger_weights
 
-    score = sum((a * b for a, b in zip(heatmap, finger_weights)))
+    score = sum(map(operator.mul, heatmap, finger_weights))
 
     sorted_heatmap = heatmap[:]
     sorted_heatmap.sort()
-    best_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_finger_weights)))
+    best_score = sum(map(operator.mul, sorted_heatmap, sorted_finger_weights))
     sorted_heatmap.reverse()
-    worst_score = sum((a * b for a, b in zip(sorted_heatmap, sorted_finger_weights)))
+    worst_score = sum(map(operator.mul, sorted_heatmap, sorted_finger_weights))
 
     return (score - worst_score) / (best_score - worst_score)
 
