@@ -513,7 +513,7 @@ def mutate(layout, rand):
     op = rand.randint(0, len(mutations)-1)
     return mutations[op](layout, rand)
 
-def anneal(layout, function, shuffle=False):
+def anneal(layout, function, seed=None, shuffle=False):
     """Simulated annealing optimizatio
 
     Start with layout. Use function to calculate a score for the
@@ -524,7 +524,7 @@ def anneal(layout, function, shuffle=False):
 
     """
     rand = random.Random()
-    rand.seed(0xdeadbeef)
+    rand.seed(seed)
     if shuffle:
         layout = rand.sample(layout, k=len(layout))
     noise = 0.5
@@ -629,7 +629,7 @@ def optimize(keymap):
 
     return wsum / sum(w)
 
-new_layout = anneal(layout_DVORAK, optimize, shuffle=True)
+new_layout = anneal(layout_DVORAK, optimize, seed=None, shuffle=True)
 #new_layout = layout_GAU
 
 new_keymap = Keymap(new_layout)
