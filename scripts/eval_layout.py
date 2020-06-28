@@ -433,13 +433,83 @@ def median_runs(runs):
 def max_runs(runs):
     return (max(runs[0].keys()), max(runs[1].keys()))
 
+# Different transformations to a keyboard layout that make bigger
+# changes while trying to leave some properties intact. The hope is,
+# that this will make it more likely to find good gradients to follow
+# in the search for an optimal layout.
+
+# Swapping fingers does not change same-finger bigraphs.
+def mutate_swap_fingers(layout, rand):
+    a, b = rand.sample((0, 1, 2, 3, 7, 8, 9), k=2)
+    if a == 3 or b == 3:
+        return [(lambda l, i, c:
+                 l[i + 9 - 2*c] if c >= 3 and c <= 6 else l[i])(layout, i, i%10)
+                for i in range(30)]
+    else:
+        return [(lambda l, i, c:
+                 l[i - a + b] if c == a else
+                 l[i - b + a] if c == b else
+                 l[i])(layout, i, i%10) for i in range(30)]
+
+# Swapping rows does not change same-finger bigraphs. Swap rows in one
+# hand only.
+def mutate_swap_rows(layout, rand):
+    h = rand.randint(0, 1)
+    a, b = rand.sample(range(3), k=2)
+    return [(lambda l, i, r:
+             l[i + (b - a) * 10] if r == a else
+             l[i + (a - b) * 10] if r == b else
+             l[i])(layout, i, int(i / 10)) if int((i % 10) / 5) == h else
+             layout[i] for i in range(30)]
+
+# Swapping keys belonging to the same finger does not change same finger
+# bigraphs.
+def mutate_swap_finger_keys(layout, rand):
+    f = rand.randint(0, 7)
+    if f < 3:
+        keys = (f, f + 10, f + 20)
+    elif f < 5:
+        c0 = f * 2 - 3
+        keys = (c0, c0 + 1, c0 + 10, c0 + 11, c0 + 20, c0 + 21)
+    else:
+        keys = (f + 2, f + 12, f + 22)
+    a, b = rand.sample(keys, k=2)
+    return [layout[b] if i == a else
+            layout[a] if i == b else
+            layout[i] for i in range(30)]
+
+# Swap a pair of keys with similar weight minimize impact on the heat
+# map score
+#
+# Calculate a ranking of keys by weight to help with that
+ranked_weight_index = [(key_weights[i], i) for i in range(30)]
+ranked_weight_index.sort(key = lambda a: a[0])
+key_from_rank = [wi[1] for wi in ranked_weight_index]
+rank_from_key = [key_from_rank.index(k) for k in range(30)]
+def mutate_swap_ranks(layout, rand):
+    a = rand.randint(0, 28)
+    return [layout[key_from_rank[a + 1]] if rank_from_key[i] == a     else
+            layout[key_from_rank[a    ]] if rank_from_key[i] == a + 1 else
+            layout[i] for i in range(30)]
+
+# Basic mutation by swapping a random pair of keys
+# This does not attemt to preserve any layout properties.
+def mutate_swap_keys(layout, rand):
+    a, b = rand.sample(range(30), k=2)
+    return [layout[b] if i == a else
+            layout[a] if i == b else
+            layout[i] for i in range(30)]
+
+mutations = (
+    mutate_swap_fingers,
+    mutate_swap_finger_keys,
+    mutate_swap_ranks,
+    mutate_swap_keys
+)
+
 def mutate(layout, rand):
-    a = rand.randint(0, 29)
-    b = rand.randint(0, 28)
-    if b >= a:
-        b += 1
-    return [i == a and layout[b] or
-            i == b and layout[a] or layout[i] for i in range(30)]
+    op = rand.randint(0, len(mutations)-1)
+    return mutations[op](layout, rand)
 
 def anneal(layout, function):
     """Simulated annealing optimizatio
