@@ -487,9 +487,11 @@ ranked_weight_index.sort(key = lambda a: a[0])
 key_from_rank = [wi[1] for wi in ranked_weight_index]
 rank_from_key = [key_from_rank.index(k) for k in range(30)]
 def mutate_swap_ranks(layout, rand):
-    a = rand.randint(0, 28)
-    return [layout[key_from_rank[a + 1]] if rank_from_key[i] == a     else
-            layout[key_from_rank[a    ]] if rank_from_key[i] == a + 1 else
+    window_size = 8
+    window_start = rand.randint(0, 30-window_size)
+    a, b = rand.sample(range(window_start, window_start+window_size), k=2)
+    return [layout[key_from_rank[b]] if rank_from_key[i] == a else
+            layout[key_from_rank[a]] if rank_from_key[i] == b else
             layout[i] for i in range(30)]
 
 # Basic mutation by swapping a random pair of keys
