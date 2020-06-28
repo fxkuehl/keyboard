@@ -529,7 +529,7 @@ def anneal(layout, function, seed=None, shuffle=False):
         layout = rand.sample(layout, k=len(layout))
     noise = 0.5
     noise_step = 0.00005
-    noise_floor = noise_step * 100
+    noise_floor = 0.0005
     best_score = function(Keymap(layout))
     best_layout = layout
 
@@ -539,6 +539,10 @@ def anneal(layout, function, seed=None, shuffle=False):
         new_score = function(new_keymap)
 
         if new_score > best_score:
+            # Improving the score is like going to a lower energy state,
+            # which is exothermic. This allows finding more paths from
+            # the new best solution.
+            noise += new_score - best_score
             best_score = new_score
             best_layout = new_layout
 
