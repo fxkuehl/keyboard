@@ -206,9 +206,6 @@ class Keymap:
             self.keymap[layout[i][0]] = (i, False) + self.key_props[i]
             self.keymap[layout[i][1]] = (i, True ) + self.key_props[i]
 
-    def key_strokes(self, t):
-        return len([1 for c in t.text if c in self.keymap])
-
     def calc_heatmap(self, t):
         heatmap = [0 for k in range(30)]
         for symbol, key_props in self.keymap.items():
@@ -306,14 +303,20 @@ class Keymap:
             print()
         return num
 
-    def eval(self, text, debug = 0):
-        self.strokes = self.key_strokes(text)
-
+    def eval_opt(self, text, debug = 0):
         self.heatmap = self.calc_heatmap(text)
+        self.strokes = sum(self.heatmap)
         self.heatmap_score = score_heatmap(self.heatmap)
-        self.normalized_heatmap = normalize(self.heatmap, sum(key_weights) / self.strokes)
+        self.normalized_heatmap = normalize(self.heatmap,
+                sum(key_weights) / self.strokes)
         self.finger_heatmap = finger_heat(self.normalized_heatmap)
         self.finger_score = score_finger_heat(self.finger_heatmap)
+
+        self.bad_bigraphs = self.calc_bigraphs_same_finger(text, debug)
+        self.fast_bigraphs = self.calc_fast_bigraphs(text, debug)
+
+    def eval(self, text, debug = 0):
+        self.eval_opt(text, debug)
 
         self.finger_travel = self.calc_finger_travel(text)
         self.adjusted_travel = self.calc_adjusted_travel(text)
@@ -321,9 +324,6 @@ class Keymap:
         self.norm_adj_travel = normalize(self.adjusted_travel, 1000 / self.strokes)
 
         self.hand_runs = self.calc_hand_runs(text, debug)
-
-        self.bad_bigraphs = self.calc_bigraphs_same_finger(text, debug)
-        self.fast_bigraphs = self.calc_fast_bigraphs(text, debug)
 
     def print_layout_heatmap(self):
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
@@ -528,12 +528,13 @@ def anneal(layout, function, shuffle=False):
     noise = 0.5
     noise_step = 0.00005
     noise_floor = noise_step * 100
-    best_score = function(layout)
+    best_score = function(Keymap(layout))
     best_layout = layout
 
     while noise > noise_floor:
         new_layout = mutate(layout, rand)
-        new_score = function(new_layout)
+        new_keymap = Keymap(new_layout)
+        new_score = function(new_keymap)
 
         if new_score > best_score:
             best_score = new_score
@@ -601,25 +602,23 @@ def optimize_weights(keymap):
     #return (key_score + finger_score) / 2
 
 def optimize_bad_bigraphs(keymap):
-    global text
-
-    bad_bigraphs = keymap.calc_bigraphs_same_finger(text) / keymap.key_strokes(text)
-    return 1.0 - math.sqrt(bad_bigraphs)
+    bad_bigraphs = keymap.bad_bigraphs / keymap.strokes
+    return 1.0 - bad_bigraphs**(1/3)
 
 def optimize_fast_bigraphs(keymap):
-    global text
-
-    good_bigraphs = keymap.calc_fast_bigraphs(text) / keymap.key_strokes(text)
+    good_bigraphs = keymap.fast_bigraphs / keymap.strokes
     return math.sqrt(good_bigraphs)
 
 def optimize_travel(keymap):
     global text
 
-    travel = sum(keymap.calc_finger_travel(text)) / keymap.key_strokes(text) / 2
+    travel = sum(keymap.calc_finger_travel(text)) / keymap.strokes / 2
     return 1 - travel
 
-def optimize(layout):
-    keymap = Keymap(layout)
+def optimize(keymap):
+    global text
+
+    keymap.eval_opt(text)
     scores = (optimize_weights(keymap),
               optimize_bad_bigraphs(keymap),
               optimize_fast_bigraphs(keymap))
