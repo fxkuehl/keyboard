@@ -38,6 +38,12 @@ layout_DVORAK = [
     ';:', 'qQ', 'jJ', 'kK', 'xX',   'bB', 'mM', 'wW', 'vV', 'zZ'
 ]
 
+layout_PLUM = [
+    'pP', 'lL', 'uU', 'mM', ';:',   '\'"','cC', 'fF', 'gG', 'qQ',
+    'rR', 'eE', 'aA', 'dD', 'oO',   'nN', 'tT', 'hH', 'iI', 'sS',
+    'kK', 'jJ', 'vV', 'bB', ',<',   '.>', 'wW', 'xX', 'yY', 'zZ'
+]
+
 layout_COLEMAK = [
     'qQ', 'wW', 'fF', 'pP', 'gG',   'jJ', 'lL', 'uU', 'yY', ';:',
     'aA', 'rR', 'sS', 'tT', 'dD',   'hH', 'nN', 'eE', 'iI', 'oO',
@@ -85,7 +91,7 @@ layout_STER = [
 layout_HSETG = [
     'xX', 'fF', '.>', 'kK', 'qQ',   'zZ', 'jJ', 'aA', 'uU', 'wW',
     'hH', 'sS', 'eE', 'tT', 'gG',   'mM', 'nN', 'oO', 'iI', 'cC',
-    'rR', 'vV', '\'"','dD', 'bB',   ';:', 'lL', ',<', 'yY', 'pP'
+    'rR', 'vV', ',<', 'dD', 'bB',   ';:', 'lL', '\'"','yY', 'pP'
 ]
 
 # [ B ] [ K ] [ H ] [; :] [ X ] | [ Z ] [ Q ] [. >] [ U ] [ W ]
@@ -130,6 +136,7 @@ layout_RIONB = [
 layouts = {
     "QWERTY": layout_QWERTY,
     "Dvorak": layout_DVORAK,
+    "PLUM": layout_PLUM,
     "Colemak": layout_COLEMAK,
     "Workman": layout_WORKMAN,
     "STER": layout_STER,
