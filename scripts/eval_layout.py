@@ -563,8 +563,8 @@ def anneal(layout, function, seed=None, shuffle=False):
     if shuffle:
         layout = rand.sample(layout, k=len(layout))
     noise = 0.5
-    noise_step = 0.00005
-    noise_floor = 0.0005
+    noise_step = 0.000001
+    noise_floor = 0.005
     best_score = function(Keymap(layout))
     best_layout = layout
 
