@@ -1,0 +1,1030 @@
+Scientific Papers (www.scientificpapers.org)
+Journal of Knowledge Management, Economics and Information Technology
+
+1
+Vol. VII, Issue 4
+August 2017
+Factors Affecting Contractors' Performance
+in Construction Project Delivery in Akure,
+Ondo State, Nigeria
+Authors: Olanipekun Emmanuel Abiodun, Department of
+ Building, Obafemi Awolowo University, Ile-Ife, Osun State,
+ Nigeria, eolanipe@oauife.edu.ng; Nunayon Sunday
+ Segbenu, Department of Building, Federal University of
+ Technology, Akure, Ondo State, Nigeria; Olugboyega
+ Oluseye, Department of Building, Obafemi
+ Awolowo University, Ile-Ife, Osun State, Nigeria
+Most of the construction projects delivered in Akure, Ondo State for public
+use depict evidence that they were not successfully executed. These effects
+result in time and cost overruns, poor project execution and outright
+abandonment. These could be attributed to lack of technical know-how on
+specific project types and corruption tendencies amongst others. This study
+focuses on factors affecting contractors' performance in construction project
+delivery in Akure, Ondo State with a view to enhancing their performance in
+construction project delivery. It assesses the success criteria for project
+performance in the study area; the causes of non-performance of contractors
+in project delivery in the study area; and evaluates factors for improving
+contractors' performance in project delivery. A well-structured
+questionnaire was used to harness information from construction
+stakeholders. Data was analyzed using mean item score and single factor
+analysis of variance. The results indicated that the top three criteria for
+contractors' performance were completion to time, budget and required
+quality. The results also showed that quality related factors, project
+management related factors and procurement related factors were factors
+affecting contractor's performance the most. Furthermore, the study
+revealed that contractors' performance could be improved through
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+2
+Vol. VII, Issue 4
+August 2017
+appropriate planning, good leadership and good communication. It was
+concluded that to improve performance of contractors on construction
+projects, appropriate planning, good leadership and good communication
+must be enhanced.
+
+Keywords: contractor performance, Ondo state, construction project
+delivery, performance factors.
+Introduction
+
+The goal of all parties (owners, consultants, contractors, subcontractors and
+suppliers) involved in construction projects in either the public or private is
+to successfully complete the project on schedule, within planned budget,
+with the highest quality and in the safest manner. Oyedele, (2013), remarked
+that construction projects are embarked upon with a view to achieving the
+key objectives of cost, schedule while meeting the quality standard initially
+set. As noted or revealed by Amade (2014), construction projects in Nigeria
+and the world over are confronted with a lot of complexities and ambiguities
+due basically to uncertainties in meeting their respective due dates.
+Unfortunately, the construction industry in Nigeria witnessed an
+unprecedented fall in the standards of construction projects delivery;
+Projects were poorly conceived, badly planned and executed
+unprofessionally. The life span of most construction projects in Nigeria is
+unpredictable as there are many abandoned projects littering everywhere as
+a result of poor planning (Oyedele, 2013; Ubani and Ononuju, 2013; Amade,
+2014). Most capital projects fail and are abandoned in different stages of
+their development, while others that were delivered performed poorly in
+delivering intended services. Frequent cases of failed and abandoned public
+sector projects are consistently causing serious nightmare to all the
+stakeholders within the construction industry (Olapade and Anthony, 2012;
+Amade, 2014). Onyekpere (2011) lamented the alarming figures representing
+abandoned public sector projects in Nigeria. The Presidential Project
+Assessment Committee (PPAC) set up in March 2010, by President Goodluck
+Jonathan to look into cases of abandoned Federal Government projects in
+Nigeria, reported or indicated that there were about 11,886 abandoned
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+3
+Vol. VII, Issue 4
+August 2017
+projects that would require an estimated sum of N7.78 trillion to complete.
+Even if the government does not embark on any new project, it will take an
+equivalent of over five years budgeting about N1.5 trillion annually to get
+them completed bearing in mind the non-inclusion of cost overruns and
+delays (Amade, 2014).
+ In Akure, Ondo State, most of the construction projects delivered
+for public use depict evidence that they were not successfully executed. The
+resultant effects were incidences of schedule and cost overruns, low quality
+projects and outright abandonment. This could be as a result of lack of
+experience from the contractors in executing the projects, lack of the
+knowledge in handling specific type of projects and corruptible tendencies
+amongst others. With this in mind, it would be interesting to view what
+factors project parties consider as important factors for a contractor to be
+successful in project delivery. But little research has been done from the
+stakeholders' perspective. This study investigates how to improve the
+performance of contractor in project delivery perspective.
+ An examination of the relevant recent literature indicates that
+construction projects are frequently completed with large cost overruns,
+extended schedules and quality concerns. There are many reasons and
+factors which are attributed to such problem. In US, Long et al., (2004),
+remarked that performance problem arise in large construction projects due
+to many reasons such as incompetent designers/contractors, poor
+estimation and change management, social and technological issues, site
+related and improper techniques and tools. Navon (2005) stated that the
+main performance problem can be divided into two groups: (a) unrealistic
+target setting (i.e. planning) or (b) causes originating from the actual
+construction (in many cases for deviation from both sources.
+ Generally, performance dimensions may have one or more
+indicators and could be influenced by various project characteristics and
+stakeholders. In construction project delivery, there are several parties that
+affect project performance, one of them is contractor. Greater percentages of
+projects are executed by contractors in Nigeria but have largely been met
+with poor quality. In Nigeria, the performance of contractors in project
+delivery is apparently below expectations. It is not uncommon to have local
+projects that are not been completed or significantly delayed. This poor
+performance has huge implication in terms of competitiveness. Contractors
+perform awfully regarding project delivery due to poor management skills,
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+4
+Vol. VII, Issue 4
+August 2017
+lack of technical and professional staff as well as poor skilled and unskilled
+labour. While attempting to directly examine and identify their causes as
+well as ways to avoid them, many view the client-contractor relationship as
+having the greatest impact (Odeh and Bettaineh, 2002).
+Literature Review
+An examination of relevant literature indicates that most problems
+encountered in construction industry are due to contractors' related
+problems. Common contractor-related problems are that the project is not
+completed or delivered within the specified period; reduced quality; use of
+unspecified materials; excessive budgets; unqualified employees safety
+problems such as project site accidents. This is no doubt, has significant
+negative effect on the productivity of the industry and its contribution to the
+GDP (Sharma and Kashiyani, 2015).
+ This notwithstanding, the contribution of contractors to
+construction industry cannot be overemphasized. Contractors rank among
+the most essential and important stakeholders needed in the delivery of
+construction projects. The contractor is the building expert and as such
+must be capable of delivering a project without a risk being placed on the
+client who is saddled with the ownership and occupation risks. Industry
+reports such as Latham (1994) and Egan (1998) have indicated the need for
+improvement in productivity/project delivery through the use of
+performance improvement measures. Therefore, if the performance of
+Nigerian contractors in project delivery must be improved, it is pertinent to
+seek for ways and factors to improve their performance in project delivery.
+Identifying ways and factors of improving contractor`s performance in
+project delivery, the client will benefit most as contractors will deliver
+projects without a risk being placed on the client who is saddled with the
+ownership and occupation risks. Following the above revelation and in
+response to non-performance of contractors in project delivery, the reasons
+for the underperformance of contractors in Nigeria in particular Ondo State
+were studied. This was with a view to suggesting possible remedial
+measures. This study assessed criteria for project construction performance;
+it also assessed the factors (established from literature) affecting contractors
+performance in construction project delivery according to their relative
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+5
+Vol. VII, Issue 4
+August 2017
+importance. In addition, the study evaluated factors for improving
+contractor performance in project delivery.
+ Success criteria are "measures by which success or failure of a
+project or business will be judged". No single list of criteria is totally
+comprehensive when it comes to a definition of success for a project.
+Indeed, measuring project success is a complex task since success is
+intangible and can hardly be agreed upon. People choose to define project
+success depending on various preferences. A project manager has to
+understand that his evaluation of project success not necessarily needs to be
+as important as other stakeholders'. Kuprenas (2003) states that the top
+management and client are the most important stakeholders and that this is
+something that the project managers have to adapt to. The general concept
+of project success remains ambiguously defined because of varying
+perceptions. Such a phenomenon also exists in the construction industry
+where so many different parties are involved, including the client, the
+architect, the contractor, the design team and various surveyors and
+engineers. Each project participant will have his or her own view of success.
+Moreover, the definition of success often changes from project to project
+depending on the participants, scope of services, project size, project
+complexity, sophistication of the owner related to the design of facilities,
+technological implications and a variety of other factors. Researches on
+project success show that it is impossible to generate a universal checklist of
+project success criteria suitable for all projects. On the other hand, common
+trends relating to success criteria often develop not only with an individual
+project but across the industry as we relate success to the perceptions and
+expectations of the owner, designer, or contractor (Kuprenas, 2003). Thus,
+project managers need better understanding of critical success/failure
+factors and how to measure them.
+ Early main criteria for success were assumed to be cost, schedule
+and quality. The iron triangle of project management emphasizes the
+relationships among cost, schedule and quality. The golden triangle of
+project management emphasizes the relationships among cost, schedule,
+quality and people by placing people at the Centre of the iron triangle.
+People are the one element that ties the other elements together. The
+emphasis on people in the golden triangle helps maintain a balance among
+cost, schedule and quality. Later more potentially competing criteria like
+''the satisfaction of all stakeholders'' were defined.
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+6
+Vol. VII, Issue 4
+August 2017
+
+ Kumaraswamy (2002) remarked that project performance
+measurement include time, budget, safety, quality and overall client
+satisfaction. Kuprenas (2003) stated that project performance measurement
+an improvement of cost, schedule and quality for design and construction.
+Long et al., (2004) stated that a project performance measurement is related
+to time, budget, quality, specification and stakeholders` satisfaction. Cheung
+et al., (2007) identified project performance categories such as people, cost,
+time, quality, safety and health, environment, client satisfaction and
+communication. Mic ̇hell et al., (2007) stated that timely completion of a
+construction project is frequently seen as a major criterion of project success
+by clients, contractors and consultant alike.
+ The concept of project performance in a construction project
+according to some researchers can be evaluated only when the performance
+criteria or evaluation dimensions are adequately defined. Project
+performance can be measured and evaluated using a large number of
+performance indicators that could be related to various dimensions
+(groups). Although criteria for 'project performance' vary according to
+individuals and organizations, generally, in any project the evaluation
+dimensions correspond to the traditional constraints of time, cost, and
+quality parameters, also known as iron triangle (Atkinson, 1996). However,
+these are not the only criteria. For instance, Kuprenas (2003) excluded
+quality as a criterion of success and added two additional criteria viz.
+'satisfying profit or fee goals' and 'having no legal claims'. So also according
+to Odeh and Bettaineh (2002), a project is termed successful if it passes four
+success test criteria of the time criterion (completed on time); the cost or
+money criterion (completed within budget); the effectiveness criterion
+(completed in accordance with the original set performance and quality
+standards); and client's satisfaction criterion (accepted by the intended users
+or clients whether the client is internal or from outside the organization).
+Minimizing construction aggravation is yet another criterion that is
+considered to determine project success. According to Cheung et al., (2004)
+criterion such as time, cost, quality, client satisfaction, client changes,
+business performance, health and safety can be employed. Another
+interesting way of evaluating project performance is through two common
+sets of indicators Pheng and Chuan, (2006), the first set is related to the
+owners, users, stakeholders and the general public; these groups of people
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+7
+Vol. VII, Issue 4
+August 2017
+will look at project performance from the macro viewpoint. The second
+comprises the developer and the contractors; these groups of people will
+look at project performance from the micro viewpoint. The criteria for
+project performance according to Navon (2005) are that the project is
+completed on time, completed to budget, completed to quality
+requirements, meets clients` expectations and needs, has happy
+stakeholders, exceed expectations, meet profits/fee goals, satisfy all
+requirements of stakeholders and is completed safely, have no legal claims,
+minimizes aggravation and have no conflict. This study also reveals that
+criteria such as risk, conflict, and safety though usually excluded and deliver
+need to be reckoned. In the Brunei construction industry, project
+performance is traditionally evaluated using schedule, cost and quality
+performance, also known as the "iron triangle" (Atkinson, 1999; Saleh, 2009).
+Moreover, the impact of such factors on project success varies. An example
+in point is the hierarchical model of project success proposed by Chua, Kog,
+and Loh (1999). Given this uncertainty there is doubt as to what factors
+project stakeholders would consider as important to achieve project success.
+Time, cost and quality are however, the three (3) predominant performance
+evaluation dimensions.
+ Construction project performance remains a prominent issue in
+project delivery all over the world. This is so because construction projects
+involve defined objectives which must be achieved and numerous which
+need to be efficiently utilized. The need for participants' involvement in
+construction project delivery to develop and use tools to improve their
+efficiency and effectiveness in project delivery was emphasized in UK and
+Sweden (Robinson et al., 2005).
+ A number of studies have been carried out to determine the various
+performance factors in construction projects. Kuprenas, (2003) reported that
+the impact of the project management related factors-organization
+structure, project manager training, frequency of design meeting and
+frequency of design report on design phase cost performance. In East
+African countries, the factors affecting cost performance are: project
+managers' competence, owners' competence, top management support,
+project manager`s coordination and feedback by the participants, decision
+making, coordination among project participants, social conditions,
+economical condition and climatic conditions. Coordination among project
+participants was seen as the most significant of all the factors having
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+8
+Vol. VII, Issue 4
+August 2017
+maximum influence on cost performance (Iyer and Jha, 2006). Chan, Scott
+and Chan (2004) examined factors affecting the success of a construction
+project. Five major groups of independent variables, namely project related
+factors, project procedures, project management actions, human related
+factors, and external environment were identified as crucial to project
+success. Navon (2005) noted that a control system is an important element
+to identify factors affecting project effort. Pheng and Chuan (2006) obtained
+that human factors played an important role in determining the
+performance of a project. The relationship between the client and the
+contractor is seen as one of the most important necessities for successful
+project delivery (Toor and Ogunlana, 2008 and Adelbäck and Johansson,
+2013). Kuprenas (2003) conducted a research on factors affecting contractor's
+performance in construction work in India. They found out that Top
+management support/time-related factors, cost related factors, scope related
+factors, quality related factors, owner-organization related factors,
+funding/cash flow related factors and Project characteristics-related factors
+affected contractors' performance the most.
+ Research has documented that sophisticated and specialized clients
+having a better chance of success are critical variables. The nature of the
+client (whether from the public or private sector), the clarity of the project
+mission, their competence in terms of ability to brief, make decisions, and
+define roles, have been found to significantly contribute to the quality of a
+project.
+ According to Toor and Ogunlana (2008), project scope, nature of
+the project and complexity of the project (the project characteristics) also
+have an influence on the performance of projects; in addition to the
+environment in which a project operates. Bryde and Robinson (2005)
+studied factors affecting performance of contractors as categorized into nine
+related factors, which are; economic factor, environmental factors, natural
+factor, political factor, time factors, quality factors, productivity factors,
+health and safety factors, client satisfaction factor. Long et al. (2004)
+identified 46 possible factors responsible for poor performance of
+construction contract. He further categorized these factors into eight groups
+as; factors caused by clients, factors caused by contractors, factors caused by
+consultants, factors related to subcontractors, factors related to material and
+labour, contractual relationship factors, project procedures and external
+environment factors. Unfortunately, Long et al. (2004) observed that due to
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+9
+Vol. VII, Issue 4
+August 2017
+many reasons, project performance and project success are not common in
+the construction industry especially in developing countries. This may not
+be unconnected with the fact that construction project development
+involves numerous parties, various processes, different phases and stages of
+work and a great deal of input from both the public and private sectors with
+the major aim of bringing the project to a successful conclusion. In citation
+of previous studies, little attention is being paid to poor construction
+performance in Ondo State, Nigeria.
+ Adelback and Johnson (2013) identified climate conditions at site as
+the most important factor affecting the performance of construction projects
+by owner, consultants and contractors because it affects the productivity
+and time performance of project. In a study of the Thai highway contractors,
+Kumaraswamy (2002) observed that the construction business is a sector
+that relies primarily on high utilization of machinery. Further, Iyer and Jha
+(2006) contended that equipment has long been considered as one of the
+key factors for improving contractors ‟ capability in performing their work
+efficiently and effectively. However, contractors usually face difficulties in
+getting all the equipment they need, especially capital investments, in the
+acquisition phase, due to financial constraints.
+Methodology
+The study investigated into factors affecting contractor's performance in
+construction project delivery in Akure, Ondo State, Nigeria. Questionnaire
+survey was adopted in gathering relevant data from parties involved in
+construction projects in Ondo State. Sixteen (16) contractors and 16 clients
+were purposively sampled. The population of Architects, Builders and
+Quantity Surveyor obtained from Ondo State Ministry of Works and
+Housing were 27, 40 and 57 respectively. Proportional sampling technique
+was used to select Architects, Builders and Quantity Surveyors. 75%
+Architects, 65% Builders and 55% Quantity Surveyors were selected. By
+doing this, 20, 26 and 32 respondents for Architects, Builders and Quantity
+Surveyors, respectively were sampled. The questionnaire was used to elicit
+the opinion of parties involved in construction project on factors affecting
+contractor's performance in construction project delivery in the study area.
+The participants were asked to rank and score the listed factors on scale 1 to
+5 where 1-least important and 5-highest important factor. A section of the
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+10
+Vol. VII, Issue 4
+August 2017
+questionnaire also contained participants' socio-economic information. The
+respondents were drawn from Akure, the capital city of Ondo State because
+large volumes of construction activities in the state take place in the state
+capital, Akure. This study identified eighteen contractors' performance
+criteria, twelve factors affecting contractors' performance and eighteen
+factors for improving contractors' performance from previous studies and
+presented to the respondents to rank according to their relative importance.
+Out of the total respondents sampled, 16, 14, 15, 15 and 15 filled questionnaire
+was retrieved from Clients, Contractors, Architects, Builders and Quantity
+Surveyors respectively. The analysis of data collected was done using mean
+item score and one-way analysis of variance. Mean score item was used to
+indicate the relative position of each factor using equation 1.
+ 𝑀 𝑒𝑎𝑛 𝑆 𝑐 𝑜𝑟𝑒 = 𝛴 𝑓𝑥
+𝛴𝑓 ... ... ... ... ... ... ... ... ... ... ... (1)
+𝑊 h𝑒 𝑟𝑒;
+𝑓 = 𝐹 𝑟 𝑒 𝑞 𝑢𝑒𝑛𝑐𝑦
+ 𝑥 = 𝑅 𝑎 𝑛 𝑘𝑖𝑛𝑔 𝑣 𝑎 𝑙𝑢𝑒�
+Results and Discussion
+In order to sufficiently examine stakeholders' preference for the factors
+affecting contractor's performance in construction project delivery in Akure,
+Ondo State, the respondents were asked to provide background information
+to show suitability in completing the questionnaire. Table 1 shows the socio-
+economic characteristics of the stakeholders in construction industry. It
+comprised information related to type of organization, years of experience,
+educational qualification, and designation of the respondent and
+professional qualification. The result on the type of qualification shows that
+out of seventy five (75) respondents that filled the questionnaire, forty three
+(43) representing 57.3% were private owned, thirty two (32) representing
+42.6% were Government owned. This implied that various ownership
+distribution of construction firms in Akure South LGA were adequately
+represented indicating that information obtained was not biased.
+ More so, two (2) respondent representing 2.7% have 21-25 years of
+experience, twenty five (25) respondents representing 33.3% have 11-15 years
+of experience, twenty two (22) respondents representing 29.3% have 6-10
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+11
+Vol. VII, Issue 4
+August 2017
+years of experience and ten (10) respondents representing 13.3% have 0-5
+years of experience. The result suggested that the respondents have acquired
+adequate experience, indicating their suitability for this study. Hence, the
+information supplied was reliable.
+ Analyzing the educational qualification of respondents, seven (7)
+respondents representing 9.3% had NCE/OND qualification, fourteen (14)
+respondents representing 18.7% had HND/PGD qualification, twenty seven
+(27) respondents representing 36.0% had BSC/BTECH qualification, twenty
+six (26) respondents representing 34.7% had MSC/MTECH qualification, one
+(1) respondent representing 1.3% had PhD qualification. This indicated that
+the questions provided in the questionnaire were well understood by the
+respondent considering their level of education. The results on the
+designation of the respondents showed that 21.3% of respondents were
+clients, 18.7% were contractor, 20.0% were architects, 20.0% were quantity
+surveyors, and 20.0% were builders. This implied proper distribution of
+respondents.
+ Furthermore, the results revealed that 18.7% of respondents were
+Members of Nigeria Institute of Building (NIOB), 25.3% of the respondents
+were Members of Nigeria Institute of Quantity Surveyors, 25.3% of the
+respondents were member of Nigeria Institute of Architects, and 9.3% of the
+respondents were member of Council of Registered Builders of Nigeria.
+
+Table 1: Background Information of Respondents
+Background
+Information
+
+Frequency
+
+Percent (%)
+
+Cumulative
+Percent
+
+Type of organization
+Government owned 32 42.6 42.6
+Private owned 43 57.3 100.0
+Total 75 100.0
+Years of experience
+0-5 years 10 13.3 16.9
+6-10 years 22 29.3 37.3
+11-15 years 25 33.3 59.3
+21-25 years 2 2.7 3.4
+Missing 16 21.3
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+12
+Vol. VII, Issue 4
+August 2017
+Total 75 100.0
+Educational
+Qualification
+NCE/OND 7 9.3 9.3
+HND/PGD 14 18.7 28.0
+BSC/BTECH 27 36.0 64.0
+MSC/MTECH
+PhD
+Total
+26
+1
+75
+34.7
+1.3
+100.0
+98.7
+100.0
+
+Designation
+Client 16 21.3 10.0
+Contractor 14 18.0 40.0
+Architect 15 20.0 60.0
+Quantity surveyor 15 20.0 80.0
+Builder 15 20.0 100.0
+Total 75 100.0
+Professional
+qualification
+NIOB 12 18.7 23.7
+NIQS 19 25.3 55.9
+NIA 19 25.3 88.1
+CORBON 7 9.3 100.0
+Total 75 100.0
+
+Performance Criteria for Construction Project Delivery
+Table 2 shows the criteria for construction project performance. The table
+shows that 'completed to time' is ranked 1st as the most important criterion
+with a mean score of 4.5, while 'completed to budget' and 'completed to
+quality requirement' ranked 2nd and 3rd with a mean score of 4.51 and 4.49.
+This suggest that time, cost and quality are the most important criteria for
+determining the performance of projects. Other important criterion for
+construction project performance as indicated by respondents were health
+and safety (mean score = 4.33), completed safely (mean score = 4.29), meet
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+13
+Vol. VII, Issue 4
+August 2017
+client expectation and needs (mean score = 4.27) and client satisfaction
+(mean score = 4.17). The least important factors were risk minimization
+(mean score = 3.95), satisfy all requirements of stakeholders and business
+performance (mean score = 3.88), and no legal claim (mean score = 3.57).
+ A single factor analysis of variance was conducted to test for
+differences among the means of performance criteria for construction
+project delivery. As shown in Table 3, the analysis was significant (F= 18.83, P
+=0.000121). This results suggest that completion of project to time (M = 4.52,
+V = 14.58) really do have an effect on construction project delivery.
+
+Table 2: Mean Ranking of Performance Criteria for Construction Project
+Delivery
+S/N Criteria Mean
+Score
+Coefficient
+of
+Variance
+Rank
+1 Completed to time 4.52 14.58 1
+2 Completed to budget 4.51 14.55 2
+3 Completed to quality
+requirements
+4.49 14.48 3
+4 Health and safety 4.33 13.96 4
+5 Completed safely 4.29 13.84 5
+6 Meet client expectation
+and needs
+4.27 13.77 6
+7 client satisfaction 4.17 13.45 7
+8 Meet profit/fee goals 4.07 13.13 8
+9 Directing and control 4.01 12.93 9
+10 Risk minimization 3.95 12.74 10
+11 Satisfy all requirements
+of stakeholders
+3.88 12.52 11
+12 Business performance 3.88 12.52 11
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+14
+Vol. VII, Issue 4
+August 2017
+13 Exceed expectation 3.77 12.16 12
+15 Has happy stakeholder 3.75 12.09 13
+15 Minimizing
+construction
+aggravation
+3.72 12.00 14
+16 client changes 3.71 11.96 15
+17 Have no conflict 3.65 11.77 16
+18 Have no legal claim 3.57 11.51 17 Table 3: Test of Difference among the Means of Performance Criteria
+Source of
+Variation SS
+d
+f MS F
+P-
+value F crit
+Between Groups
+269.288
+1 1
+269.288
+1
+18.8324
+7
+0.00012
+1
+4.13001
+8
+Within Groups
+486.170
+8
+3
+4
+14.2991
+4
+Total
+755.458
+9
+3
+5
+
+SS = sum of squares, df = degrees of freedom, MS = mean score
+
+Factors Affecting Contractors Performance
+
+Table 4 shows the mean score of factors affecting contractor's performance
+in construction project delivery and they were ranked accordingly using
+mean score. Fifty seven (57) factors affecting contractors' performance were
+identified from literature (Appendix A) and were carefully grouped into
+twelve (12) groups as presented in Table 4. From the table, quality related
+factors ranked 1st (mean score = 4.33) as the most important factors affecting
+contractors' performance, closely followed by project management related
+factors (mean score = 4.31). Procurement related factors ranked 3rd with a
+mean score of 4.30. This shows that the specified quality by clients,
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+15
+Vol. VII, Issue 4
+August 2017
+procurement systems used for projects, and the project management
+capabilities of contractors have great effects on their performances.
+ The least important factors affecting contractors' performance was
+owners' organization related factors with a mean score of 3.95, other factors
+were relatively important as ranked by the respondents. This suggests that
+all the stakeholders in a project have an input in determining the
+performance level of contractors. The management of the contracting firm,
+the clients' firm and the design team have a role to play in the performance
+of contractors. In order to test for differences among the means of factors
+affecting contractors' performance, a single factor analysis of variance was
+conducted. The result is as presented in Table 5. With F-value (0.924)
+greater than P-value (0.526), this shows that the analysis was significant.
+Therefore, it can be inferred that the performance of contractors is affected
+by factors relating to project management, procurement, clients and clients
+organizations, design team, contracting firm, top management, project
+scope and quality, and cash flow. The findings of this study support the
+findings in India and Thailand by Toor and Ogunlana, (2008) and Adelbäck
+and Johnson (2013) which indicated that top management support/time-
+related factors, cost related factors, scope related factors, quality related
+factors, owner-organization related factors, funding/cash flow related factors
+and Project characteristics-related factors affected contractors' performance
+the most.
+
+Table 4: Mean Ranking of the Factors Affecting Contractors' Performance
+Groups Count Sum
+Averag
+e
+Varianc
+e
+Mea
+n
+Ran
+k
+Project management related
+factors
+
+10 43.11 4.311 0.066366
+
+
+4.31
+
+2
+Project related factors 5 20.5 4.1 0.0398
+
+4.10
+
+9
+Procurement related factors 2 8.6 4.3 0.0098
+
+4.30
+
+3
+Client related factors 6 24.9 4.15 0.0838
+
+4.15
+
+8
+Design team related factors 3 12.49 4.163333 0.168133
+
+4.16
+
+6
+Human related factors 5 20.91 4.182 0.01987
+
+4.18
+
+5
+Contractor related factors 5 21.01 4.202 0.04927
+
+4.20
+
+4
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+16
+Vol. VII, Issue 4
+August 2017
+Top management related factors 6
+24.9
+6 4.16 0.08296
+
+4.16
+
+6
+Scope related factors 3 12.11
+4.03666
+7 0.047233
+
+4.03
+
+10
+Quality related factors 1 4.33 4.33 #DIV/0!
+
+4.33
+
+1
+Owners organization related
+factors 4 15.81 3.9525 0.042625
+
+3.95
+
+12
+Cash flow related factors 6
+24.0
+4
+4.00666
+7 0.105147
+
+4.00
+
+11
+
+Table 5: Test of Difference among the Factors Affecting Contractors'
+Performance
+Source of
+Variation SS df MS F P-value F crit
+Between Groups 0.684264 11 0.062206 0.924371 0.526245 2.014046
+Within Groups 2.960992 44 0.067295
+Total 3.645255 55
+
+Methods of Improving Contractor's Performance
+
+The methods of improving contractors' performance in construction project
+delivery in Akure, Ondo State, Nigeria was assessed as shown in Table 6.
+Table 6 shows that having appropriate planning with a mean score of 4.77
+was ranked the 1st, followed by good leadership with a mean score of 4.60.
+Other effective methods by which the performance of contractors could be
+improved were good communication (mean score = 4.65), stakeholder
+relationship (mean score = 4.56), accountability (mean score = 4.39),
+documentation (mean score = 4.31), and employee empowerment (mean
+score = 4.04). This shows that the performance of contractors can be
+improved upon by both the contractor and the client. The contractor can
+empower his employee with the aim of improving their workmanship and
+productivity, as this will in turn improve the work being carried out for the
+contractor. Also the contractor can invest in proper documentation of work
+on site, accountability and communication. All of these methods have
+positive influence on the performance of contractors in project delivery. On
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+17
+Vol. VII, Issue 4
+August 2017
+the other hand, the level at which the client relates with contractor and the
+manner and level of variation made by the client have impacts on the level
+of performance of contractor.
+ Test of difference for the methods of improving contractors'
+performance (Table 7) shows that the differences among the methods are
+significant (P=0.000173, F= 17.776). This suggests that appropriate planning;
+good leadership, good communication, stakeholder relationship,
+accountability, documentation, control and administrative system, effective
+contractors and workers relationship, employee empowerment, and
+minimizing variation can influence the performance of contractors in
+project delivery. This finding corroborates the report by Bryde and Robinson
+(2005) which indicated that stakeholder relationship, good communication,
+timely documentation, minimizing variation, and appropriate planning are
+key ways to improve the performance of contractors in project delivery.
+
+Table 6: Methods of improving Contractor Performance
+S/N Factors Mean
+score
+Coefficient of
+variance
+Rank
+1 Having appropriate planning 4.77 14.45 1
+2 Good leadership 4.60 13.94 2
+3 Good communication 4.65 14.09 3
+4 Stakeholder relationship 4.56 13.82 4
+5 Taking accountability 4.39 13.30 5
+6 Timely documentation 4.31 13.06 6
+7 Comprehensive analysis 4.23 12.82 7
+8 Control and administrative
+system
+4.21 12.76 8
+9 Understanding peoples
+requirements and needs
+
+4.19
+12.70 9
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+18
+Vol. VII, Issue 4
+August 2017
+10 Effective contractors and
+workers relationship
+4.17 12.64 10
+11 Serviceability 4.08 12.36 11
+12 Employee empowerment 4.04 12.24 12
+13 Existence of key personnel 4.01 12.15 13
+14 Reliability 4.00 12.12 14
+15 Minimizing variation 3.95 11.97 15
+16 Conformance 3.95 11.97 15
+17 Hassle free building solution 3.77 11.42 16
+18 Less paper work 3.44 10.42 17
+
+Table 7: Test of Difference among the Methods for Improving Contractors'
+Performance
+Source of Variation SS df MS F P-value F crit
+Between Groups 254.2962 1 254.2962 17.77686 0.000173 4.130018
+Within Groups 486.3664 34 14.3049
+Total 740.6626 35
+
+Conclusions
+Based on the analysis it was found that most of the respondents were from
+privately owned organizations and most of the respondents were
+construction project consultants. The most significant criteria for
+contractors' performance in construction project in Akure, Ondo state
+Nigeria are when projects are completion to time, completion to budget and
+completion to quality requirement. Quality related factors, project
+management related factors and procurement related factors are the most
+important factors affecting contractors performance in Akure, Ondo state
+Nigeria. Finally, to assist contractors improve their performance on
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+19
+Vol. VII, Issue 4
+August 2017
+construction projects, appropriate planning, good leadership and good
+communication must be enhanced.
+References
+[1]. Adelback, T., & Johansson, N. (2013). Success Factors in Large
+Infrastructure Projects: The contractor's perspective. Sweden:
+Chalmers University of Technology.
+[2]. Amade, B. (2014). Containing Failure and Abandonment of Public
+Sector Construction Projects in Nigeria. A Seminar Paper of the
+Department of Project Management Technology, for a P.hD of
+the Federal University of Technology, Owerri, Nigeria, December,
+2014. Pp 1-35.
+[3]. Atkinson, R. (1996). Project management: Cost, time and quality,
+two best guesses and a phenomenon, it's time to accept other
+success criteria. International Journal of Project Management, 1999,
+17 (6), pp. 337–342.
+[4]. Bryde, D. J. and Robinson, L. ( 2005). Client versus contractor
+perspectives on project success criteria. International Journal of
+Project Management, 23,622-629.
+[5]. Chan Albert P.C. and Chan Daniel W.M., (2004), Developing a
+benchmark model for project construction time performance in
+Hong Kong, Building and Environment, Vol. 39, PP. 339 – 349.
+[6]. Cheung Sai On, Suen Henry C.H. and Cheung Kevin K.W.,
+(2007), PPMS: a Web-based construction Project Performance
+Monitoring System, Automation in Construction, Vol. 13, PP. 361-
+376.
+[7]. Chua, D.K.H., Kog, Y.C. and Loh, P.K. (1999). Critical Success
+Factors for Different Project Objectives. Journal of Construction
+Engineering and Management. Vol. 125, No.3, pp 142-150.
+[8]. Egan, J. (1998). Rethinking construction. The report of the
+Construction Task Force on the scope for improving quality and
+efficiency in UK construction. Department of the Environment,
+Transport and the Regions, London.
+[9]. Iyer, K.C. and Jha, K.N. (2006). Factors affecting cost performance:
+Evidence from Indian construction projects. International Journal of
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+20
+Vol. VII, Issue 4
+August 2017
+Project Management, 23(4): 283–295. doi:
+10.1016/j.ijproman.2004.10.003.
+[10].Kuprenas, J. A. (2003). Project management actions to improve
+design phase cost performance, Journal of Management in
+Engineering,19(1): 25–32.
+[11]. Latham, M. (1994). Constructing the Team. Final Report of the
+Government /Industry Review of Procurement and Contractual
+Arrangements in the UK Construction Industry, July, 1994. ISBN:
+011752994X.1-130.
+[12]. Long, N. D., Ogunlana, S., Quang, T. and Lam, K. C. (2004).
+Large construction projects in developing countries: a case study
+from Vietnam, International Journal of Project Management, Vol.
+22, PP. 553–561.
+[13]. Michell, K., Bowen, P., Cattell, K., Edward, P. and Pearl, R.
+(2007). Stakeholder perceptions of contractor time, cost and quality
+management on building project. Proceedings: CIB World Building
+Conference on Construction for Development. Cape Town, South
+Africa, 14–18 May.
+[14]. Navon, R. (2005). Automated project performance control of
+construction projects, Automation in Construction, Vol. 14, PP. 467-
+476.
+[15]. Naik, N., S. D. Kominers, R. Raskar, E. L. Glaeser, and C. A. Hidalgo
+(2015). Do people shape cities, or do cities shape people? The co-
+evolution of physical, social, and economic change in five major US
+cities. NBER Working Paper No. 21620.
+[16]. Odeh, A. M. and Battaineh, H. T. (2002). Causes of
+construction delay: Traditional contracts. International Journal of
+Project Management, 2002, 20, pp. 67–73.
+[17]. Oladipo A. A. (2007). A Quantitative Assessment Of The Cost And
+Time Impact Of Variation Orders On Construction Projects. Journal
+of Engineering, Design and Technology. 5 (1): 35-48.
+[18].Onyekpere, E. (2011). Public Procurement Report 2011. A
+Publication of the Centre for Social Justice Ltd by Guarantee, Abuja.
+Pg 1-64. ISBN:978-978-932-000-4, www.csj-ng.org
+[19]. Olapade, O. and Anthony, O. (2012). Abandonment of
+Building Projects in Nigeria- A Review of Causes and Solutions.
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+21
+Vol. VII, Issue 4
+August 2017
+International Conference on Chemical, Civil and Environmental
+Engineering (ICCEE2012) 24-25 March, Dubai. Pg 253-255.
+[20]. Oyedele, L. (2013) Avoiding performance failure payment
+deductions in PFI/PPP projects: Model of critical success factors.
+Journal of Performance of Constructed Facilities, 27 (3). pp. 283-294.
+ISSN 0887-3828 Available from: http://eprints.uwe.ac.uk/21611
+[21]. Pheng, L. S. and Chuan, Q. T. (2006). Environmental factors and
+work performance of project managers in the construction
+industry, International Journal of Project Management, Vol. 24, PP.
+24 – 37.
+[22]. Toor, S. U. R. and Ogunlana, S. O. (2008). Critical COMs
+of success in large-scale construction projects: Evidence from
+Thailand construction industry. International Journal of Project
+Management, 26, 420-430
+[23]. Ubani, E. C. and Ononuju, C.N. (2013). A Study of Failure
+and Abandonment of Public Sector Driven Civil Engineering
+Projects in Nigeria: An Empirical Review. American Journal of
+Scientific and Industrial Research. Pg 75-82. ISSN:2153-649X.
+Appendix
+Appendix A: Factors Affecting Contractor Performance
+Factors Mean Score
+(M.S.)
+Ranking
+Project management related factor
+strong monitoring 4.55 1
+effectiveness of coordination 4.52 2
+adequate team selection 4.45 3
+Training 4.44 4
+effective project scheduling and budgeting 4.43 5
+Effective communication 4.40 6
+Integration of project action 4.32 7
+development and motivation 4.32 7
+project manager competence 4.20 8
+decision making skills 4.11 9
+Troubleshooting 3.69 10
+Project related factors
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+22
+Vol. VII, Issue 4
+August 2017
+sequencing of work according to schedule 4.27 1
+Project complexity 4.23 2
+Management labour relationship 4.16 3
+Absenteeism rate through project 4.07 4
+owners familiarity with project 3.77 5
+Procurement related factor
+procurement method 4.37 1
+tendering method 4.23 2
+Client related factor
+project financing 4.49 1
+client confidence in contractor 4.33 2
+Client characteristic 4.31 3
+owners risk aversion 4.08 4
+client project management 4.01 5
+client type and experience 3.68 6
+Design team related factor
+design team experience 4.57 1
+project design complexity 4.17 2
+mistake/delays in producing design document 3.75 3
+Human related factor
+client satisfaction 4.36 1
+contractor characteristics 4.23 2
+Stakeholder relationship 4.19 3
+Manufacturer 4.16 4
+Supplier 3.97 5
+Contractor related factor
+site management 4.44 1
+Table 4.3 cont.
+Factors Mean score
+(M.S.)
+Ranking
+contractor cash flow 4.33 2
+effectiveness of cost control system 4.20 3
+Supervision and involvement of subcontracting 4.19 4
+speed of information flow 3.85 5
+Top management support/time
+completion on schedule 4.48 1
+Factors Affecting Contractors' Performance in Construction
+Project Delivery in Akure, Ondo State, Nigeria
+
+23
+Vol. VII, Issue 4
+August 2017
+cost related factor 4.33 2
+On-time completion 4.29 3
+ensuring the lowest cost 4.12 4
+ensuring completion within budget 4.09 5
+technological issues 3.65 6
+Scope related factor
+capitalizing on a well-defined scope 4.27 1
+potential for changes during construction 4.00 2
+owner desire for flexibility to make change during
+construction
+3.84 3
+Quality related factor
+desire to deliver quality products 4.33 1
+Owners organization related factor
+need for construction professional input during
+design
+4.21 1
+level of in-house management experience 4.00 2
+Owner desire for single project contract 3.88 3
+Owner desire for single construction contract 3.72 4
+Funding/cash flow related factor
+desire for early estimates 4.47 1
+need for financing 4.24 2
+risk and relationship related factor 4.05 3
+Delaying or minimizing expenditure rate 3.95 4
+amount of risk 3.76 5
+minimizing adversarial relationship 3.57 6
+
