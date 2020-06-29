@@ -11,7 +11,7 @@ with open(sys.argv[1]) as wordfile:
     in_words_sep = re.split(r"([^\w']+)", in_text)
     
     while in_words_sep:
-        word = in_words_sep.pop(0)
+        word = in_words_sep.pop(0).strip("'")
         sep = None
         if in_words_sep:
             sep = in_words_sep.pop(0)
