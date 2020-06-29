@@ -555,7 +555,7 @@ def anneal(layout, function, seed=None, shuffle=False):
             best_layout = new_layout
 
         if noise > 0:
-            noisy_score = new_score + abs(rand.normalvariate(0, noise))
+            noisy_score = new_score + noise
             noise *= 1 - noise_step
         else:
             noisy_score = new_score
