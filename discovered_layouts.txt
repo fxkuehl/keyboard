@@ -1,0 +1,652 @@
+Early experiments
+=================
+
+*** Layout: SOUL ***
+ [ Z ] [ Q ] [ T ] [ H ] [; :] | [, <] [ G ] [ E ] [ I ] [ K ]
+  0.1   0.2  15.0   9.8   0.3  |  2.5   3.3  20.3  11.8   1.2
+ [ P ] [ A ] [ D ] [ N ] [ R ] | [ C ] [ S ] [ O ] [ U ] [ L ]
+  3.4  12.7   6.1  11.6   8.9  |  5.4  10.3  12.6   4.7   7.8
+ [ B ] [ X ] [ M ] [ V ] [/ ?] | [. >] [ F ] [ J ] [ Y ] [ W ]
+  2.7   0.1   4.0   1.7   0.2  |  2.8   4.0   0.2   3.0   3.3
+  6.2  13.0  25.0  32.5        |       28.2  33.1  19.5  12.4
+Heatmap score: 0.7516
+Bad bigraphs:     522
+Fast bigraphs:   7141
+Finger travel: 37086: [18, 3, 112, 165, 163, 100, 87, 42]
+Adjusted travel: 39245: [19, 24, 114, 165, 163, 111, 89, 45]
+Hand runs mean, max: (1.4853718500307314, 1.6683722781283756), (7, 13)
+*** Layout: AIR ***
+ [; :] [ U ] [ L ] [ Q ] [ X ] | [/ ?] [ Z ] [ O ] [ K ] [ W ]
+  0.3   4.7   7.8   0.2   0.1  |  0.2   0.1  12.6   1.2   3.3
+ [ A ] [ I ] [ R ] [ S ] [ G ] | [ B ] [ N ] [ E ] [ T ] [ D ]
+ 12.7  11.8   8.9  10.3   3.3  |  2.7  11.6  20.3  15.0   6.1
+ [ P ] [ Y ] [ M ] [ F ] [ V ] | [, <] [ H ] [. >] [ J ] [ C ]
+  3.4   3.0   4.0   4.0   1.7  |  2.5   9.8   2.8   0.2   5.4
+ 16.4  19.5  20.7  19.6        |       26.9  35.7  16.4  14.8
+Heatmap score: 0.9335
+Bad bigraphs:     617
+Fast bigraphs:  11645
+Finger travel: 32535: [33, 74, 89, 84, 119, 124, 15, 66]
+Adjusted travel: 34849: [39, 82, 92, 85, 120, 126, 36, 66]
+Hand runs mean, max: (1.6379781420765027, 1.7262099602525134), (9, 8)
+*** Layout: KYX ***
+ [; :] [ L ] [ O ] [ W ] [ Z ] | [ Q ] [ V ] [ M ] [ U ] [ J ]
+  0.3   7.8  12.6   3.3   0.1  |  0.2   1.7   4.0   4.7   0.2
+ [ A ] [ R ] [ E ] [ D ] [ G ] | [ H ] [ N ] [ T ] [ I ] [ S ]
+ 12.7   8.9  20.3   6.1   3.3  |  9.8  11.6  15.0  11.8  10.3
+ [/ ?] [. >] [, <] [ C ] [ F ] | [ B ] [ P ] [ K ] [ Y ] [ X ]
+  0.2   2.8   2.5   5.4   4.0  |  2.7   3.4   1.2   3.0   0.1
+ 13.2  19.5  35.4  22.2        |       29.4  20.1  19.5  10.6
+Heatmap score: 0.9422
+Bad bigraphs:     286
+Fast bigraphs:   6657
+Finger travel: 32853: [6, 75, 125, 134, 143, 50, 74, 3]
+Adjusted travel: 35107: [14, 75, 136, 135, 144, 61, 75, 10]
+Hand runs mean, max: (1.6924679964275082, 1.5952562635126541), (15, 11)
+*** Layout: JUMVQ ***
+ [ J ] [ U ] [ M ] [ V ] [ Q ] | [ Z ] [ W ] [ O ] [ L ] [; :]
+  0.2   4.7   4.0   1.7   0.2  |  0.1   3.3  12.6   7.8   0.3
+ [ S ] [ I ] [ T ] [ N ] [ H ] | [ G ] [ D ] [ E ] [ R ] [ A ]
+ 10.3  11.8  15.0  11.6   9.8  |  3.3   6.1  20.3   8.9  12.7
+ [ X ] [ Y ] [ K ] [ P ] [ B ] | [ F ] [ C ] [, <] [. >] [/ ?]
+  0.1   3.0   1.2   3.4   2.7  |  4.0   5.4   2.5   2.8   0.2
+ 10.6  19.5  20.1  29.4        |       22.2  35.4  19.5  13.2
+Heatmap score: 0.9422
+Bad bigraphs:     286
+Fast bigraphs:   6657
+Finger travel: 32853: [3, 74, 50, 143, 134, 125, 75, 6]
+Adjusted travel: 35107: [10, 75, 61, 144, 135, 136, 75, 14]
+Hand runs mean, max: (1.5952562635126541, 1.6924679964275082), (11, 15)
+*** Layout: KAROVD ***
+ [ J ] [ M ] [ L ] [ V ] [ Q ] | [ Z ] [ W ] [ O ] [ U ] [; :]
+  0.2   4.0   7.8   1.7   0.2  |  0.1   3.3  12.6   4.7   0.3
+ [ S ] [ T ] [ R ] [ N ] [ H ] | [ G ] [ D ] [ E ] [ I ] [ A ]
+ 10.3  15.0   8.9  11.6   9.8  |  3.3   6.1  20.3  11.8  12.7
+ [ X ] [ K ] [, <] [ P ] [ B ] | [ F ] [ C ] [. >] [ Y ] [/ ?]
+  0.1   1.2   2.5   3.4   2.7  |  4.0   5.4   2.8   3.0   0.2
+ 10.6  20.1  19.2  29.4        |       22.2  35.7  19.5  13.2
+Heatmap score: 0.9310
+Bad bigraphs:     286
+Fast bigraphs:   4336
+Finger travel: 32820: [3, 50, 75, 143, 134, 124, 74, 6]
+Adjusted travel: 35133: [9, 61, 79, 144, 135, 134, 77, 14]
+Hand runs mean, max: (1.3043909570302303, 1.4519313959997964), (4, 9)
+*** Layout: TEN ***
+ [ W ] [ G ] [ O ] [ Q ] [ Z ] | [/ ?] [ J ] [ U ] [, <] [ C ]
+  3.3   3.3  12.6   0.2   0.1  |  0.2   0.2   4.7   2.5   5.4
+ [ R ] [ T ] [ E ] [ N ] [ F ] | [ M ] [ L ] [ I ] [ A ] [ D ]
+  8.9  15.0  20.3  11.6   4.0  |  4.0   7.8  11.8  12.7   6.1
+ [ V ] [ K ] [; :] [ H ] [ B ] | [ X ] [ S ] [ Y ] [. >] [ P ]
+  1.7   1.2   0.3   9.8   2.7  |  0.1  10.3   3.0   2.8   3.4
+ 13.9  19.5  33.2  28.5        |       22.6  19.5  17.9  14.9
+Heatmap score: 0.9211
+Bad bigraphs:     477
+Fast bigraphs:  11696
+Finger travel: 33276: [48, 47, 99, 134, 93, 74, 52, 71]
+Adjusted travel: 35210: [50, 56, 106, 135, 95, 78, 61, 72]
+Hand runs mean, max: (1.8812217194570136, 1.5527164965426408), (9, 8)
+*** Layout: MOWGLI ***
+ [ Q ] [ G ] [ U ] [ J ] [; :] | [/ ?] [ X ] [ O ] [ C ] [ Z ]
+  0.2   3.3   4.7   0.2   0.3  |  0.2   0.1  12.6   5.4   0.1
+ [ I ] [ T ] [ E ] [ N ] [ B ] | [ W ] [ D ] [ A ] [ S ] [ L ]
+ 11.8  15.0  20.3  11.6   2.7  |  3.3   6.1  12.7  10.3   7.8
+ [ Y ] [ V ] [, <] [ H ] [ P ] | [ K ] [ F ] [. >] [ M ] [ R ]
+  3.0   1.7   2.5   9.8   3.4  |  1.2   4.0   2.8   4.0   8.9
+ 15.0  19.9  27.5  28.1        |       15.0  28.0  19.6  16.8
+Heatmap score: 0.9432
+Bad bigraphs:     429
+Fast bigraphs:  10052
+Finger travel: 31595: [31, 52, 73, 129, 71, 104, 80, 47]
+Adjusted travel: 33852: [37, 59, 83, 130, 72, 113, 84, 50]
+Hand runs mean, max: (1.7454367266936175, 1.5448650651516087), (10, 9)
+*** Layout: GAU ***
+ [ G ] [ A ] [ U ] [' "] [ X ] | [ Z ] [ Q ] [ S ] [ F ] [ J ]
+  3.3  12.6   4.7   1.4   0.1  |  0.1   0.2  10.2   4.0   0.2
+ [ C ] [ O ] [ E ] [ R ] [ W ] | [ M ] [ T ] [ N ] [ H ] [ I ]
+  5.4  12.5  20.2   8.8   3.3  |  3.9  14.9  11.5   9.7  11.7
+ [ P ] [; :] [. >] [ L ] [, <] | [ K ] [ D ] [ V ] [ B ] [ Y ]
+  3.4   0.3   2.7   7.8   2.4  |  1.2   6.1   1.7   2.7   2.9
+ 12.0  25.4  27.6  23.8        |       26.4  23.4  16.4  14.9
+Heatmap score: 0.9380
+Bad bigraphs:     285
+Fast bigraphs:  11675
+Finger travel: 32856: [54, 76, 72, 114, 106, 89, 63, 31]
+Adjusted travel: 34820: [56, 81, 86, 116, 107, 94, 66, 35]
+Hand runs mean, max: (1.694260618457466, 1.5197329552168262), (13, 7)
+
+Processed Junglebook
+====================
+
+0.00500 0.82819 0.83307
+'hunting'(7), 'ophobi'(6), 'beginning'(9), 'nothing'(7), 'hunting'(7), 'ithout'(6), 'nothing'(7), 'enough'(6), 'nothing'(7), 'neithe'(6), 'eeping'(6), 'enough'(6), 'nything'(7), 'ithout'(6), 'hunting'(7), 'untige'(6), 'ething'(6), 'though'(6), 'togethe'(7), 'ithout'(6), 'rward,'(6), 'gotten'(6), 'enough'(6), 'eeting'(6), 'unning'(6), 'thought'(7), 'ughing'(6), 'ighting'(7), 'unning'(6), 'ipping'(6), 'bought'(6), 'bought'(6), 'nothing'(7), 'nothing'(7), 'thinking'(8), 'ontent'(6), 'though'(6), 'unning'(6), 'nything'(7), 'eption'(6), 'enough'(6), 'bought'(6), 'ything'(6), 'enough'(6), 'bought'(6), 'nothing'(7), 'though'(6), 'though'(6), 'tongue'(6), 'ontent'(6), 'ething'(6), 'though'(6), 'notion'(6), 'eeping'(6), 'though'(6), 'ething'(6), 'ything'(6), 'tongue'(6), 'bought'(6), 'hunting'(7), 'unning'(6), 'ething'(6), 'tonight'(7), 'hunting'(7), 'nything'(7), 'nothing'(7), 'hining'(6), 'tnight'(6), 'ooking'(6), 'enough'(6), 'ughing'(6), 'togethe'(7), 'ightene'(7), 'ething'(6), 'wards,'(6), 'ithout'(6), 'ithout'(6), 'ighting'(7), 'bought'(6), 'beginning'(9), 'tonight'(7), 'piteou'(6), 'tongue'(6), 'though'(6), 'ething'(6), 'though'(6), 'beginning'(9), 
+ms(7), rl(13), ui(21), ph(3), eo(18), mf(1), oe(9), sm(1), gt(4), yi(7), hn(1), 
+th(986), he(992), rs(57), no(148), te(116), in(319), ng(235), ni(37), gh(84), ht(61), ds(19), ar(157), hu(42), hi(284), al(105), on(165), un(146), nt(92), as(190), en(202), rm(11), ls(17), sc(15), cr(27), ne(131), to(224), ge(46), sl(11), dr(25), ue(8), sa(100), yo(32), ma(106), ie(33), ny(22), am(54), eh(4), io(13), dl(5), dm(1), tn(1), gn(1), 
+ [ K ] [ Y ] [ O ] [ Q ] [ Z ] | [ X ] [ J ] [ L ] [, <] [ W ]
+  2.1   2.6  12.4   0.2   0.0  |  0.1   0.4   8.1   3.2   5.0
+ [ T ] [ I ] [ E ] [ N ] [ B ] | [ F ] [ S ] [ R ] [ A ] [ D ]
+ 15.2   9.9  20.5  10.4   3.0  |  4.0   9.3   8.2  13.3   6.8
+ [ G ] [ U ] [; :] [ H ] [ P ] | [ V ] [ M ] [. >] [/ ?] [ C ]
+  3.3   4.6   0.3  13.1   2.2  |  1.4   3.8   2.6   0.3   3.6
+ 20.6  17.1  33.2  29.0        |       19.0  19.0  16.8  15.4
+Heatmap score: 0.900375
+Finger travel: 15925: [56, 66, 96, 128, 88, 77, 36, 72]
+Adjusted travel: 16899: [60, 73, 105, 130, 89, 77, 51, 72]
+Hand runs mean, max: (1.8500862281350086, 1.333796940194715), (9, 6)
+Bad bigraphs: 85
+Fast bigraphs: 5324
+
+real	6m14.256s
+user	6m13.693s
+sys	0m0.176s
+
+0.00100 0.84346 0.84353
+'again.'(6), 'uttled'(6), 'remembered'(10), 'ginning.'(8), 'joicing'(7), 'singsong'(8), 'beetle'(6), 'ason,fo'(7), 'mutter'(6), 'tumbled'(7), 'oosing'(6), 'nosing'(6), 'facing'(6), 'agains'(6), 'murderer'(8), 'nning,'(6), 'tumbled'(7), 'pebble'(6), 'member'(6), 'purred'(6), 'nowing'(6), 'better'(6), 'saying'(6), 'pebble'(6), 'eebler'(6), 'better'(6), 'ssons,'(6), 'remembered'(10), 'ossing'(6), 'eebler'(6), 'agains'(6), 'better'(6), 'pulled'(6), 'pulled'(6), 'agains'(6), 'Remember'(8), 'remember'(8), 'ttered'(6), 'thered'(6), 'ttlebut'(7), 'dered:'(6), 'leverl'(6), 'elled:'(6), 'agains'(6), 'agains'(6), 'agains'(6), 'ginning'(7), 'ossing'(6), 'anions'(6), 'mpered'(6), 'remember'(8), 'ginning'(7), 
+ue(8), ns(29), pt(11), sn(8), oa(13), rv(1), lm(4), hm(1), yi(7), bt(2), 
+th(986), he(992), no(148), te(116), in(319), ng(235), ni(37), ht(61), et(77), re(316), rd(30), hu(42), ut(101), an(442), ed(240), wn(34), is(248), de(84), on(165), ca(92), go(40), le(227), wa(108), as(190), ve(196), wo(144), sc(15), ya(3), ws(14), dr(25), tu(21), sa(100), ld(94), tr(37), ru(34), ny(22), ia(2), ys(13), rt(35), mu(21), na(19), si(25), lt(11), io(13), sw(7), dv(2), dl(5), hd(1), sy(2), nw(1), gn(1), 
+ [ X ] [ M ] [ U ] [ K ] [; :] | [ Z ] [ J ] [ O ] [ G ] [ Q ]
+  0.1   3.8   4.6   2.1   0.3  |  0.0   0.4  12.4   3.3   0.2
+ [ R ] [ H ] [ E ] [ T ] [ B ] | [ F ] [ N ] [ A ] [ W ] [ I ]
+  8.2  13.1  20.5  15.2   3.0  |  4.0  10.4  13.3   5.0   9.9
+ [ V ] [ L ] [/ ?] [ D ] [ P ] | [. >] [ S ] [, <] [ C ] [ Y ]
+  1.4   8.1   0.3   6.8   2.2  |  2.6   9.3   3.2   3.6   2.6
+  9.7  25.1  25.5  29.6        |       26.7  28.8  11.9  12.7
+Heatmap score: 0.918128
+Finger travel: 15999: [16, 97, 48, 137, 127, 115, 57, 26]
+Adjusted travel: 16977: [20, 100, 65, 138, 128, 124, 54, 31]
+Hand runs mean, max: (1.776507686243595, 1.589733438902085), (10, 8)
+Bad bigraphs: 84
+Fast bigraphs: 6193
+
+real	40m56.437s
+user	40m53.190s
+sys	0m1.004s
+
+0.00100 0.83523 0.83619
+'Brother'(7), 'Mother'(6), 'rophob'(6), 'iffly,'(6), 'remembere'(9), 'fully:'(6), 'mother'(6), 'MotherWo'(8), 'rocket'(6), 'torche'(6), 'become'(6), 'Mother'(6), 'Mother'(6), 'checke'(6), 'Mother'(6), 'Mother'(6), 'betwee'(6), 'together'(8), 'Mother'(6), 'mother'(6), 'orgotte'(7), 'Mother'(6), 'MotherWo'(8), 'Mother'(6), 'Mother?'(7), 'ccepte'(6), 'Mother'(6), 'covere'(6), 'mother'(6), 'fully,'(6), 'Mother'(6), 'ccepte'(6), 'member'(6), 'mother'(6), 'Mother'(6), 'better'(6), 'ccepte'(6), 'Brother'(7), 'covere'(6), 'illsid'(6), 'better'(6), 'fully.'(6), 'Mother'(6), 'remembere'(9), 'betwee'(6), 'Brother'(7), 'better'(6), 'Brother'(7), 'brother'(7), 'brother'(7), 'tretche'(7), 'Brother'(7), 'Brother'(7), 'mother'(6), 'brother'(7), 'betwee'(6), 'Brother'(7), 'proper'(6), 'Remember'(8), 'Brother'(7), 'rewbre'(6), 'MotherWo'(8), 'bottom'(6), 'checke'(6), 'morrow'(6), 'lands.'(6), 'remember'(8), 'betwee'(6), 'together'(8), 'tcher?'(6), 'ccepte'(6), 'brother'(7), 'brother'(7), 'brother'(7), 'tretche'(7), 'brother'(7), 'brother'(7), 'betwee'(6), 'remember'(8), 'Brother'(7), 'mother'(6), 'Mother'(6), 
+ds(19), tc(11), ui(21), ph(3), eo(18), nl(13), oe(9), rk(9), rw(6), ct(2), gt(4), yi(7), wr(1), 
+ro(133), ot(136), th(986), he(992), te(116), in(319), ho(140), ni(37), ht(61), et(77), re(316), an(442), nd(316), il(152), we(81), is(248), id(102), po(24), al(105), la(92), un(146), as(190), ev(53), ve(196), ls(17), lf(85), to(224), sl(11), li(88), ad(68), us(80), lu(6), tr(37), be(119), ns(29), ny(22), pt(11), dn(1), ul(77), yd(1), fl(17), rt(35), sn(8), na(19), uf(8), tw(17), rv(1), bt(2), 
+ [ X ] [ Y ] [ D ] [; :] [ Z ] | [ Q ] [ G ] [ O ] [ P ] [ K ]
+  0.1   2.6   6.8   0.3   0.0  |  0.2   3.3  12.4   2.2   2.1
+ [ A ] [ I ] [ S ] [ N ] [, <] | [ M ] [ T ] [ E ] [ H ] [ R ]
+ 13.3   9.9   9.3  10.4   3.2  |  3.8  15.2  20.5  13.1   8.2
+ [. >] [ U ] [ F ] [ L ] [ J ] | [ C ] [ V ] [/ ?] [ B ] [ W ]
+  2.6   4.6   4.0   8.1   0.4  |  3.6   1.4   0.3   3.0   5.0
+ 15.9  17.1  20.1  22.4        |       27.6  33.2  18.3  15.3
+Heatmap score: 0.927331
+Finger travel: 15859: [28, 66, 95, 89, 127, 96, 51, 64]
+Adjusted travel: 16730: [34, 71, 96, 90, 128, 105, 60, 65]
+Hand runs mean, max: (1.5830196570472606, 1.8642444910807974), (6, 9)
+Bad bigraphs: 123
+Fast bigraphs: 6443
+
+real	40m9.813s
+user	40m7.022s
+sys	0m0.984s
+
+0.00500 0.83408 0.83449
+'rother'(6), 'Mother'(6), 'forget'(6), 'omfort'(6), 'mother'(6), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'ltogether'(9), 'Mother'(6), 'mother'(6), 'forgotte'(8), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'Mother?'(7), 'Mother'(6), 'cunnin'(6), 'mother'(6), 'overlooke'(9), 'Mother'(6), 'mother'(6), 'Mother'(6), 'gle:ol'(6), 'cunnin'(6), 'rother'(6), 'cunnin'(6), 'Mother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'mother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'Mother'(6), 'forefoot'(8), 'usband'(6), 'disapp'(6), 'together'(8), 'leverl'(6), 'Therefore'(9), 'rother'(6), 'Therefore'(9), 'rother'(6), 'rother'(6), 'rother'(6), 'forget'(6), 'rother'(6), 'rother'(6), 'forget'(6), 'mother'(6), 'Mother'(6), 'forget'(6), 'forget'(6), 
+rl(13), ui(21), ns(29), eo(18), sn(8), oe(9), gt(4), yi(7), hf(1), wb(1), 
+ro(133), ot(136), th(986), he(992), te(116), in(319), ho(140), gh(84), ht(61), et(77), re(316), ds(19), an(442), nd(316), fo(115), da(19), is(248), id(102), ca(92), un(146), gl(42), le(227), as(190), ve(196), ft(21), to(224), ge(46), gr(38), ac(95), cu(64), tl(46), ad(68), uc(18), tr(37), rg(8), di(25), ic(30), dn(1), eg(9), nc(34), rt(35), ci(22), du(1), ud(5), lt(11), 
+ [ X ] [ F ] [ O ] [; :] [ Q ] | [ Z ] [ P ] [ S ] [, <] [ Y ]
+  0.1   4.0  12.4   0.3   0.2  |  0.0   2.2   9.3   3.2   2.6
+ [ R ] [ H ] [ E ] [ T ] [ M ] | [ W ] [ D ] [ N ] [ A ] [ I ]
+  8.2  13.1  20.5  15.2   3.8  |  5.0   6.8  10.4  13.3   9.9
+ [ L ] [ V ] [/ ?] [ G ] [ K ] | [ B ] [ C ] [ J ] [. >] [ U ]
+  8.1   1.4   0.3   3.3   2.1  |  3.0   3.6   0.4   2.6   4.6
+ 16.4  18.6  33.2  25.0        |       20.6  20.0  19.0  17.1
+Heatmap score: 0.942628
+Finger travel: 15482: [44, 54, 96, 101, 113, 66, 61, 66]
+Adjusted travel: 16319: [47, 62, 101, 102, 114, 71, 69, 68]
+Hand runs mean, max: (1.9032564450474898, 1.5587520259319287), (9, 6)
+Bad bigraphs: 111
+Fast bigraphs: 6352
+
+real	6m14.170s
+user	6m13.679s
+sys	0m0.168s
+
+0.00100 0.83080 0.83099
+'Indeed'(6), 'indeed'(6), 'eginning.'(9), 'rning.'(6), 'Indeed'(6), 'umming'(6), 'undred'(6), 'under.'(6), 'murderer'(8), 'cunning'(7), 'crying'(6), 'cunning'(7), 'ffalo,'(6), 'ungry.'(6), 'crying'(6), 'splash'(6), 'pools;'(6), 'sloth,b'(7), 'too,wh'(6), 'cunning'(7), 'follow'(6), 'enemy?'(6), 'ncerned'(7), 'undred'(6), 'running'(7), 'Halfwa'(6), 'needed'(6), 'blosso'(6), 'ending'(6), 'follow'(6), 'undered'(7), 'eginning'(8), 'cried.'(6), 'indeed'(6), 'riend.'(6), 'follow'(6), 'cciden'(6), 'cried.'(6), 'indeed'(6), 'follow'(6), 'eginning'(8), 
+rm(11), ue(8), pt(11), rn(28), oa(13), tw(17), yi(7), bt(2), wb(1), dg(1), 
+ot(136), th(986), er(420), ow(128), ri(68), in(319), ng(235), ho(140), ni(37), ht(61), ha(271), at(284), ts(26), re(316), rd(30), nd(316), fo(115), de(84), ta(46), la(92), un(146), so(67), en(202), ry(47), wo(144), st(128), cr(27), ne(131), ws(14), ft(21), to(224), ir(43), dr(25), wh(137), sa(100), tl(46), ie(33), ce(50), ny(22), dn(1), ye(33), xt(3), du(1), rc(10), lt(11), sw(7), nu(5), gu(4), fw(1), gn(1), 
+ [ Q ] [ G ] [ U ] [/ ?] [ Z ] | [ V ] [ K ] [ A ] [ L ] [; :]
+  0.2   3.3   4.6   0.3   0.0  |  1.4   2.1  13.3   8.1   0.3
+ [ I ] [ D ] [ E ] [ N ] [ M ] | [ B ] [ T ] [ O ] [ H ] [ S ]
+  9.9   6.8  20.5  10.4   3.8  |  3.0  15.2  12.4  13.1   9.3
+ [ Y ] [ C ] [. >] [ R ] [ J ] | [ P ] [ W ] [, <] [ X ] [ F ]
+  2.6   3.6   2.6   8.2   0.4  |  2.2   5.0   3.2   0.1   4.0
+ 12.7  13.6  27.8  23.2        |       29.0  28.8  21.3  13.6
+Heatmap score: 0.944744
+Finger travel: 15978: [26, 59, 75, 102, 144, 120, 57, 38]
+Adjusted travel: 16969: [32, 57, 89, 103, 145, 126, 66, 42]
+Hand runs mean, max: (1.6229050279329609, 1.689847346740974), (9, 7)
+Bad bigraphs: 99
+Fast bigraphs: 5794
+
+real	41m53.398s
+user	41m51.722s
+sys	0m0.556s
+
+Processed binary logistics
+==========================
+
+0.00500 0.84023 0.84042
+'approa'(6), 'opport'(6), 'chieve'(6), 'mportan'(7), 'success'(7), 'efficie'(7), 'mportant'(8), 'appropr'(7), 'ccessi'(6), 'ccessi'(6), 'mandator'(8), 'chieve'(6), 'opport'(6), 'opport'(6), 'appropr'(7), 'mportant'(8), 'efficie'(7), 'promot'(6), 'efficie'(7), 'opport'(6), '......'(6), '......'(6), 'approa'(6), 'ssifie'(6), 'ormant'(6), 'approa'(6), 'eceive'(6), 'success.'(8), 'esses.'(6), 'proport'(7), 'chieve'(6), 'efficie'(7), 'efficie'(7), 'iscussi'(7), 'eceive'(6), 'success'(7), 'opport'(6), 'Approa'(6), 'Toward'(6), 'ifecyc'(6), 'Issues.'(7), 'jarat,'(6), 'Mandala'(7), 'Hughes'(6), 'xplorat'(7), '/download/'(10), 
+wl(9), oa(7), yi(11), sh(43), sk(4), rw(2), fs(1), iu(11), xa(4), xo(1), ui(16), rl(2), uy(3), wr(1), td(1), 
+sc(15), ie(93), nt(270), pa(31), ap(118), or(183), na(147), al(342), no(189), ow(99), ge(98), ma(94), an(363), on(391), cs(25), nd(307), at(309), ch(183), lo(208), is(303), su(74), ar(196), ys(50), si(237), po(125), ra(218), us(223), se(204), eh(31), do(41), es(366), lt(38), he(506), hi(108), to(136), ro(170), od(116), ce(126), am(28), ta(113), pt(20), gh(34), ot(45), wo(30), rd(9), rt(55), la(49), op(46), pm(14), hy(1), lm(1), ye(15), ih(6), gs(1), 
+ [ B ] [ U ] [. >] [ K ] [ Z ] | [/ ?] [ X ] [ D ] [ W ] [ J ]
+  2.5   4.8   2.9   0.4   0.1  |  0.1   0.1   5.5   1.7   0.1
+ [ C ] [ I ] [ E ] [ S ] [ F ] | [, <] [ O ] [ T ] [ R ] [ N ]
+  7.1  13.6  20.1  11.2   4.0  |  1.8  12.8  14.7   9.5  12.7
+ [ G ] [ Y ] [; :] [ H ] [ V ] | [ Q ] [ A ] [ M ] [ L ] [ P ]
+  3.3   3.3   0.4   6.7   1.9  |  0.3  12.1   4.1   7.5   4.5
+ 12.9  21.7  23.4  24.4        |       27.3  24.3  18.8  17.3
+Heatmap score: 0.932926
+Finger travel: 16018: [53, 81, 26, 110, 97, 92, 70, 40]
+Adjusted travel: 17128: [54, 83, 44, 111, 99, 100, 74, 44]
+Hand runs mean, max: (1.6271634615384616, 1.7287891515660627), (8, 10)
+Bad bigraphs: 116
+Fast bigraphs: 7200
+
+real	6m17.187s
+user	6m16.659s
+sys	0m0.152s
+
+0.00100 0.83713 0.83838
+'owerme'(6), 'method'(6), 'determ'(6), 'signifi'(7), 'signifi'(7), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'aining'(6), 'ollowed'(7), '/finan'(6), 'ganiza'(6), 'ganiza'(6), 'tellect'(7), 'etwork'(6), 'ganiza'(6), 'otherw'(6), 'bining'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'collect'(7), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'gizing'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'method'(6), 'aining'(6), 'owerme'(6), 'method'(6), 'owerme'(6), 'ganiza'(6), 'owerme'(6), 'owerme'(6), 'romote'(6), 'signifi'(7), 'ector,'(6), 'ganiza'(6), 'agging'(6), 'assify'(6), 'owerme'(6), '......'(6), 'owerme'(6), '......'(6), 'Methodolo'(9), 'assifi'(6), 'ceremo'(6), 'ector,'(6), 'method'(6), 'determ'(6), 'collect'(7), 'collect'(7), 'owerme'(6), 'correl'(6), 'owerme'(6), 'unning'(6), 'owerme'(6), 'electr'(6), 'mower,'(6), 'electr'(6), 'electr'(6), 'owerme'(6), 'Method:'(7), 'owerme'(6), 'signifi'(7), 'signifi'(7), 'determ'(6), 'aining'(6), 'owerme'(6), 'signifi'(7), 'determ'(6), '/signifi'(8), 'signifi'(7), 'signifi'(7), 'signifi'(7), 'electr'(6), 'owerme'(6), 'owerme'(6), 'signifi'(7), 'Agains'(6), 'signifi'(7), 'determ'(6), 'signifi'(7), 'owerme'(6), 'signifi'(7), 'etwork'(6), 'orrowed'(7), 'horter,'(7), 'etwork'(6), 'etwork'(6), 'etter,'(6), 'other,'(6), 'Recomme'(7), 'signifi'(7), 'owerme'(6), 'etwork'(6), 'owerme'(6), 'signifi'(7), 'electr'(6), 'horter'(6), 'commod'(6), 'Agains'(6), 'ganiza'(6), 'owerme'(6), 'owerme'(6), 'ganiza'(6), 'orter,'(6), 'Worker'(6), 'owerme'(6), 'owerme'(6), 'etwork'(6), 'ganiza'(6), 'owerme'(6), 'method'(6), 
+ay(9), oe(10), hr(10), eo(13), fs(1), iu(11), nv(7), ui(16), rl(2), gs(1), 
+pa(31), ap(118), er(342), or(183), na(147), an(363), ag(44), co(142), in(562), rm(78), te(300), ch(183), is(303), ys(50), us(223), eh(31), cr(130), tr(106), re(371), th(638), un(50), ni(69), he(506), as(95), to(136), ro(170), ce(126), de(197), ng(148), ip(31), ig(55), gn(16), mo(71), ke(21), ns(68), yp(20), rd(9), pi(50), rt(55), up(19), rc(31), ps(5), sp(41), pu(12), sn(1), nu(9), ht(5), dr(3), pf(1), yn(1), 
+ [/ ?] [. >] [ G ] [ Q ] [ Z ] | [ J ] [ X ] [ O ] [ M ] [ W ]
+  0.1   2.9   3.3   0.3   0.1  |  0.1   0.1  12.8   4.1   1.7
+ [ I ] [ A ] [ S ] [ N ] [ B ] | [ L ] [ R ] [ E ] [ T ] [ C ]
+ 13.6  12.1  11.2  12.7   2.5  |  7.5   9.5  20.1  14.7   7.1
+ [ U ] [ Y ] [ F ] [ P ] [ V ] | [; :] [ H ] [, <] [ K ] [ D ]
+  4.8   3.3   4.0   4.5   1.9  |  0.4   6.7   1.8   0.4   5.5
+ 18.5  18.4  18.5  22.0        |       24.3  34.7  19.2  14.3
+Heatmap score: 0.947961
+Finger travel: 16402: [45, 56, 66, 87, 110, 119, 40, 61]
+Adjusted travel: 17559: [50, 63, 71, 89, 111, 126, 53, 62]
+Hand runs mean, max: (1.5746102449888641, 1.8129616392661425), (8, 9)
+Bad bigraphs: 80
+Fast bigraphs: 6366
+
+real	43m7.273s
+user	43m2.809s
+sys	0m0.924s
+
+Processed Junglebook and Binary logistics
+=========================================
+
+Starting with Dvorak for including '" instead of ;:
+---------------------------------------------------
+
+0.00500 0.82286 0.82410
+'www..org'(8), 'approac'(7), 'instit'(6), 'progra'(6), 'ollowe'(6), 'tivity'(6), 'people'(6), 'mbinin'(6), 'people'(6), 'appropr'(7), 'tivity'(6), 'people'(6), 'tiviti'(6), 'instit'(6), 'tivity'(6), 'tivity'(6), 'individ'(7), 'collec'(6), 'coopera'(7), 'people'(6), 'ruggle'(6), 'appropr'(7), 'properl'(7), 'appear'(6), 'accura'(6), 'individ'(7), 'proper'(6), 'aller.'(6), 'aller,'(6), '......'(6), '......'(6), 'approac'(7), 'people'(6), 'group.'(6), 'large.'(6), 'popula'(6), 'popula'(6), 'collec'(6), 'collec'(6), 'prepare'(7), 'approac'(7), 'correla'(7), 'tivity'(6), 'tivity'(6), 'tivity'(6), 'erage,'(6), 'finish'(6), 'College'(7), 'propor'(6), 'progra'(6), 'tiviti'(6), 'tiviti'(6), 'kinshi'(6), 'orrowe'(6), 'tivity'(6), 'tivity'(6), 'Instit'(6), 'Approac'(7), 'Coopera'(7), 'clePer'(6), 'prepare'(7), 'Geograp'(7), '."Coopera'(9), 'Explora'(7), 'www..org'(8), 'Coopera'(7), 'Coopera'(7), 'People''(7), 'Instit'(6), 'www.google.co'(13), 'tivity'(6), 'Instit'(6), 'power,'(6), 'o'cloc'(6), 'people'(6), 'llager'(6), 'llager'(6), 'nythin'(6), 'orepaw'(6), 'arrel.'(6), 'people,"'(8), 'llager'(6), 'clearl'(6), 'color,'(6), 'colore'(6), 'People'(6), 'People'(6), 'People'(6), 'People'(6), 'People'(6), 'allowe'(6), 'gle:ol'(6), 'People,"'(8), 'g:"Loo'(6), 'well,"'(6), 'thinkin'(7), 'People."'(8), 'llager'(6), 'nythin'(6), 'ollowe'(6), 'allowe'(6), 'Porcup'(6), 'Peacoc'(6), 'collar;'(7), 'palace'(6), 'shiftin'(7), 'carele'(6), 'proper'(6), 'nythin'(6), 'cropla'(6), 'arcoal,'(7), 'appeare'(7), 'shinin'(6), 'lower,'(6), 'People,"'(8), 'People,'(7), 'People,'(7), 'place."'(7), 'people'(6), 'p."Well'(7), 'People'(6), 'people'(6), 'llager''(7), 'place.'(6), 'place,'(6), 'orrow,'(6), 'people'(6), 'people.'(7), 'ollowe'(6), 'arewell'(7), 'cropla'(6), 
+wl(20), ue(73), oa(20), yi(18), ns(97), eu(7), rw(8), sn(9), nv(8), rl(15), wr(2), td(1), hb(1), lw(3), pg(1), hf(1), dm(1), 
+nt(362), ti(467), pe(158), er(762), or(363), ou(308), ur(159), le(394), nd(623), in(881), hn(125), ol(331), lo(307), is(551), pr(188), ar(353), st(355), ru(84), ra(275), cr(157), ft(120), re(687), au(41), th(1624), cu(83), ty(89), it(388), dy(35), pl(135), ro(303), ce(176), di(120), ts(162), yt(9), cl(38), el(171), oe(19), lp(14), rc(41), fs(1), dv(8), id(123), bt(3), rp(11), ht(66), yn(1), dn(1), yd(1), hd(1), tn(1), 
+ [ G ] [ A ] [ U ] [' "] [ X ] | [ Z ] [ Q ] [ S ] [ F ] [ J ]
+  3.3  12.6   4.7   1.4   0.1  |  0.1   0.2  10.2   4.0   0.2
+ [ C ] [ O ] [ E ] [ R ] [ W ] | [ M ] [ T ] [ N ] [ H ] [ I ]
+  5.4  12.5  20.2   8.8   3.3  |  3.9  14.9  11.5   9.7  11.7
+ [ P ] [; :] [. >] [ L ] [, <] | [ K ] [ D ] [ V ] [ B ] [ Y ]
+  3.4   0.3   2.7   7.8   2.4  |  1.2   6.1   1.7   2.7   2.9
+ 12.0  25.4  27.6  23.8        |       26.4  23.4  16.4  14.9
+Heatmap score: 0.938019
+Finger travel: 32856: [54, 76, 72, 114, 106, 89, 63, 31]
+Adjusted travel: 34820: [56, 81, 86, 116, 107, 94, 66, 35]
+Hand runs mean, max: (1.694260618457466, 1.5197329552168262), (13, 7)
+Bad bigraphs: 285
+Fast bigraphs: 11675
+740.50user 0.15system 12:20.94elapsed 99%CPU (0avgtext+0avgdata 14040maxresident)k
+0inputs+0outputs (0major+1932minor)pagefaults 0swaps
+
+With new set of mutation functions
+----------------------------------
+
+0.00504 0.82938 0.83453
+'www..org'(8), 'Indust'(6), 'roach.'(6), 'ssumin'(6), 'Indust'(6), 'Indust'(6), 'mmuniti'(7), 'instituti'(9), 'mmunity'(7), 'ollowe'(6), 'xistin'(6), 'tuniti'(6), 'tivity'(6), 'xistin'(6), 'mbinin'(6), 'indust'(6), 'Indust'(6), 'indust'(6), 'indust'(6), 'indust'(6), 'tivity'(6), 'tiviti'(6), 'instituti'(9), 'mmuniti'(7), 'tivity'(6), 'tivity'(6), 'Indust'(6), 'tuniti'(6), 'mmunity'(7), 'individu'(8), 'collec'(6), 'tuniti'(6), 'Indust'(6), 'indust'(6), 'indust'(6), 'tuniti'(6), 'ysis,"'(6), 'ysis",'(6), 'Indust'(6), 'individu'(8), 'aller.'(6), '......'(6), 'Indust'(6), '......'(6), 'roach.'(6), 'indust'(6), 'indust'(6), 'large.'(6), 'collec'(6), 'collec'(6), 'Indust'(6), 'study,'(6), 'roach.'(6), 'correla'(7), 'charac'(6), 'Charac'(6), 'tivity'(6), 'tivity'(6), 'tivity'(6), 'charac'(6), 'Charac'(6), 'Charac'(6), 'Indust'(6), 'indust'(6), 'Charac'(6), 'Charac'(6), 'College'(7), 'Indust'(6), 'Charac'(6), 'Charac'(6), 'Charac'(6), 'Indust'(6), 'Charac'(6), 'Indust'(6), 'Substitutin'(11), 'Indust'(6), 'tiviti'(6), 'study,'(6), 'study,'(6), 'Indust'(6), 'tiviti'(6), 'study,'(6), 'Indust'(6), 'nsumin'(6), 'mmunity'(7), 'mmunity'(7), 'orrowe'(6), 'tivity'(6), 'tuniti'(6), 'Indust'(6), 'ssumin'(6), 'mmunity'(7), 'tivity'(6), 'Indust'(6), 'Indust'(6), 'Indust'(6), 'Instituti'(9), 'roache'(6), 'Geogra'(6), 'earch:'(6), 'Worker'(6), 'www..org'(8), 'Indust'(6), 'Instituti'(9), 'www.google.co'(13), 'tivity'(6), 'mputin'(6), 'Instituti'(9), 'jackal'(6), 'jackal'(6), 'llager'(6), 'llager'(6), 'herWol'(6), 'charge.'(7), 'checke'(6), 'arrel.'(6), 'herWol'(6), 'llager'(6), 'clearl'(6), 'colore'(6), 'erlooke'(7), 'disput'(6), 'allowe'(6), 'gle:ol'(6), 'reckle'(6), 'llager'(6), 'ollowe'(6), 'allowe'(6), 'eacock.'(7), 'collar;'(7), 'carele'(6), 'lacker'(6), 'herWol'(6), 'checke'(6), 'charcoal'(8), 'stuff,'(6), 'jackal'(6), 'jackal'(6), 'llager'(6), 'lackha'(6), 'stupid'(6), 'ollowe'(6), 'arewell'(7), 
+oa(20), yi(18), hr(23), rk(27), xi(5), fs(1), iu(11), ui(37), rl(15), kl(7), uy(3), je(2), ix(1), td(1), ej(1), lk(9), rh(1), dm(1), kh(1), 
+nt(362), ti(467), if(78), fi(87), er(762), or(363), co(218), nd(623), in(881), ch(249), is(551), su(89), bi(71), ar(353), st(355), si(262), ra(275), us(303), eh(35), cr(157), ft(120), re(687), ut(135), bu(139), un(196), ni(106), it(388), he(1498), tu(86), wa(118), ha(403), ca(283), ro(303), di(120), ip(41), um(56), wh(176), mu(42), pi(67), fu(29), ea(241), rc(41), rw(8), eo(31), ub(63), id(123), bt(3), nu(14), wr(2), ja(10), pd(1), uf(8), ah(1), 
+ [ V ] [ P ] [ D ] [' "] [ X ] | [ Z ] [ Q ] [ O ] [. >] [ G ]
+  1.7   3.4   6.1   1.4   0.1  |  0.1   0.2  12.5   2.7   3.3
+ [ S ] [ N ] [ T ] [ I ] [ Y ] | [ L ] [ R ] [ A ] [ E ] [ C ]
+ 10.2  11.5  14.9  11.7   2.9  |  7.8   8.8  12.6  20.2   5.4
+ [ F ] [ B ] [ M ] [ U ] [, <] | [ K ] [ H ] [; :] [ J ] [ W ]
+  4.0   2.7   3.9   4.7   2.4  |  1.2   9.7   0.3   0.2   3.3
+ 15.9  17.6  24.9  23.3        |       27.8  25.4  23.1  11.9
+Heatmap score: 0.927342
+Finger travel: 32563: [52, 57, 95, 110, 130, 76, 28, 54]
+Adjusted travel: 35025: [54, 67, 100, 111, 131, 81, 46, 55]
+Hand runs mean, max: (1.5132071061243573, 1.740517348588484), (11, 13)
+Bad bigraphs: 184
+Fast bigraphs: 12080
+751.12user 0.09system 12:31.62elapsed 99%CPU (0avgtext+0avgdata 13872maxresident)k
+0inputs+0outputs (0major+1992minor)pagefaults 0swaps
+
+Starting with a randomly shuffled layout
+----------------------------------------
+
+0.00502 0.81340 0.81428
+'www..o'(6), 'iversit'(7), 'l.com;'(6), 'iversit'(7), 'tervie'(6), 'regressi'(8), 'conclud'(7), 'higher'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'commun'(6), 'conduc'(6), 'commun'(6), 'existi'(6), 'existi'(6), 'company'(7), 'ities,'(6), 'stries'(6), 'iffere'(6), 'better'(6), 'tivities'(8), 'commun'(6), 'Theref'(6), 'conduc'(6), 'commun'(6), 'compon'(6), 'istrib'(6), 'commun'(6), 'ergizi'(6), 'thrive'(6), 'onomy.'(6), 'vestig'(6), 'iversit'(7), 'ertise,'(7), 'iversif'(7), 'conomy'(6), 'mploym'(6), 'mploym'(6), 'ities,'(6), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'either'(6), 'Regressi'(8), 'regressi'(8), 'regressi'(8), 'regressi'(8), 'cumula'(6), 'istrib'(6), 'erties,'(7), 'bigger,'(7), 'Cumula'(6), 'istrib'(6), 'regressi'(8), '......'(6), '......'(6), 'conduc'(6), 'conduc'(6), 'ssifie'(6), 'terests'(7), 'popula'(6), 'popula'(6), 'tervie'(6), 'regressi'(8), 'conduc'(6), 'tereste'(7), 'tervie'(6), 'tervie'(6), 'tervie'(6), 'conduc'(6), 'tervie'(6), 'regressi'(8), 'teristi'(7), 'teristi'(7), 'Cumula'(6), 'teristi'(7), 'teristi'(7), 'teristi'(7), 'istrib'(6), 'teristi'(7), 'teristi'(7), 'istrib'(6), 'teristi'(7), 'teristi'(7), 'teristi'(7), 'teristi'(7), 'Regressi'(8), 'regressi'(8), 'riteri'(6), 'riteri'(6), 'regressi'(8), 'conduc'(6), 'tivities'(8), 'conduc'(6), 'iffers'(6), 'conclu'(6), 'higher'(6), 'bigger'(6), 'higher'(6), 'conduc'(6), 'tivities'(8), 'conduc'(6), 'conclud'(7), 'tervie'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'commun'(6), 'commun'(6), 'thereb'(6), 'company'(7), 'compan'(6), 'compan'(6), 'better,'(7), 'compan'(6), 'higher'(6), 'better'(6), 'Conclu'(6), 'conclud'(7), 'higher'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'existe'(6), 'commun'(6), 'existe'(6), 'Refere'(6), 'issert'(6), 'commod'(6), 'bright'(6), 'iversit'(7), 'Fisher'(6), 'conomy'(6), 'Mandala.'(8), 'conomy.'(7), 'essRese'(7), 'tive,The'(8), 'www..o'(6), 'download'(8), 'Regressi'(8), 'iversit'(7), 'conomy'(6), 'iverse'(6), 'iversit'(7), 'iversit'(7), 'thresh'(6), '"Shere'(6), 'shifte'(6), 'River,'(6), 'ight's'(6), 'ullock'(6), 'either'(6), 'ullock'(6), 'ight,"'(6), 'tigerish'(8), 'feet,"'(6), 'gether'(6), 'i,behi'(6), '"Shere'(6), 'tiger's'(7), 'thieves'(7), '"Shere'(6), 'Pack.W'(6), 'PackCounc'(9), 'could.'(6), 'fight,'(6), 'fighti'(6), 'ther,"'(6), 'better'(6), 'tereste'(7), 'befits'(6), 'ves,be'(6), 'ther,"'(6), 'terrib'(6), 'better'(6), 'acock.'(6), 'better'(6), 'ther,"'(6), '"There'(6), 'terrib'(6), 'shifti'(6), 'there,'(6), '"There'(6), 'oudly.'(6), 'rthis,'(6), 'ight,"'(6), 'downwa'(6), 'opland'(6), 'andman'(6), 'gether,'(7), 'right,"'(7), 'frighte'(7), '"Shere'(6), 'known.'(6), 'Theref'(6), 'right,'(6), 'Theref'(6), 'fighti'(6), '"There'(6), 'ster,"'(6), 'lowly.'(6), 'compan'(6), '"There'(6), 'opland'(6), 
+ie(126), oa(20), yp(21), yw(2), hr(23), up(47), ei(40), fs(1), pu(26), bt(3), kp(1), nl(20), uy(3), ln(2), gs(20), ku(1), py(3), sg(1), ky(1), rh(1), wu(1), dm(1), 
+ti(467), pa(102), ap(131), er(762), rs(100), rg(21), ou(308), na(166), no(337), ge(144), ma(200), co(218), te(416), lo(307), bi(71), si(262), mp(125), se(304), eh(35), tr(143), re(687), au(41), th(1624), cu(83), ul(128), un(196), ve(380), he(1498), hi(392), ca(283), uc(119), rv(14), qu(73), ua(39), gr(67), lu(50), gh(118), um(56), mu(42), rt(90), pm(14), sh(159), nu(14), ht(66), ih(6), uo(1), hb(1), sr(1), 
+ [ D ] [ L ] [ O ] [. >] [ K ] | [ Z ] [ X ] [ I ] [ B ] [ F ]
+  6.1   7.8  12.5   2.7   1.2  |  0.1   0.1  11.7   2.7   4.0
+ [ C ] [ N ] [ A ] [ U ] [ W ] | [, <] [ H ] [ E ] [ T ] [ S ]
+  5.4  11.5  12.6   4.7   3.3  |  2.4   9.7  20.2  14.9  10.2
+ [ M ] [ Q ] [; :] [ P ] [ Y ] | [ J ] [ R ] [' "] [ V ] [ G ]
+  3.9   0.2   0.3   3.4   2.9  |  0.2   8.8   1.4   1.7   3.3
+ 15.4  19.5  25.4  18.2        |       21.4  33.3  19.3  17.5
+Heatmap score: 0.915500
+Finger travel: 33571: [78, 56, 76, 110, 84, 101, 46, 67]
+Adjusted travel: 35961: [80, 64, 86, 111, 86, 110, 58, 70]
+Hand runs mean, max: (1.7031260688145564, 1.8078458276163154), (9, 8)
+Bad bigraphs: 364
+Fast bigraphs: 10861
+709.60user 0.12system 11:49.99elapsed 99%CPU (0avgtext+0avgdata 13920maxresident)k
+0inputs+0outputs (0major+1999minor)pagefaults 0swaps
+
+With tweaked mutate_swap_ranks that swaps only one pair
+-------------------------------------------------------
+
+0.00500 0.82365 0.82498
+'viewed'(6), 'onstant,'(8), 'chieved'(7), 'efficie'(7), 'ortant'(6), 'Medium'(6), 'strong'(6), 'strong'(6), 'onstrat'(7), 'chieve'(6), 'dividu'(6), 'rsonal,'(7), 'ortant'(6), 'efficie'(7), 'medium'(6), 'Medium'(6), 'medium'(6), 'medium'(6), 'efficie'(7), 'medium'(6), 'dividu'(6), '......'(6), '......'(6), 'viewed'(6), 'eceived'(7), 'chieved'(7), 'efficie'(7), 'onstrat'(7), 'efficie'(7), 'equipme'(7), 'equipme'(7), 'eceived'(7), 'ccupied'(7), 'Medium'(6), 'medium'(6), 'ccupied'(7), 'equipme'(7), 'equipme'(7), 'strong.'(7), 'strong'(6), 'equipme'(7), 'strong'(6), 'equipme'(7), 'onstant,'(8), 'strong'(6), 'strong'(6), 'equipme'(7), 'Medium'(6), 'ifecyc'(6), 'jarat,'(6), 'Translator:'(11), 'Jakarta'(7), 'Decembe'(7), 'Medium'(6), 'Ankara'(6), 'Ankara'(6), '.googl'(6), 'Medium'(6), 'Jakarta:'(8), 'Jakarta'(7), 'strong'(6), 'emembe'(6), 'ngsong'(6), 'orgott'(6), 'grass,'(6), 'strong'(6), 'ssons,'(6), 'emembe'(6), 'strong'(6), 'ollar;'(6), 'emembe'(6), 'oonston'(7), 'emembe'(6), 'whimpe'(6), 'emembe'(6), 
+rs(100), ue(73), oa(20), yi(18), gt(9), eu(7), xa(4), xo(1), nl(20), iq(3), ln(2), pf(3), sr(1), hd(1), hm(1), ox(1), wb(1), dm(1), fw(1), 
+ci(92), ie(126), nt(362), ic(243), or(363), rg(21), jo(13), na(166), al(447), no(337), an(805), me(385), ec(247), on(556), at(593), ch(249), ol(331), lo(307), og(191), ar(353), st(355), ra(275), du(135), cy(32), cu(83), lt(49), iv(105), ve(380), he(1498), as(285), to(360), ro(303), uc(119), ce(176), sa(119), vi(56), ng(383), ta(159), ev(114), ot(181), go(50), rt(90), la(141), so(155), ak(62), hu(58), sk(14), iu(11), ye(48), yc(1), ka(9), lk(9), vy(1), 
+ [ Z ] [ J ] [ G ] [; :] [ X ] | [ B ] [ W ] [ U ] [ D ] [ Q ]
+  0.1   0.2   3.3   0.3   0.1  |  2.7   3.3   4.7   6.1   0.2
+ [ N ] [ R ] [ T ] [ O ] [. >] | [ F ] [ C ] [ E ] [ H ] [ I ]
+ 11.5   8.8  14.9  12.5   2.7  |  4.0   5.4  20.2   9.7  11.7
+ [ L ] [ S ] [ K ] [ A ] [, <] | [ P ] [ V ] [' "] [ M ] [ Y ]
+  7.8  10.2   1.2  12.6   2.4  |  3.4   1.7   1.4   3.9   2.9
+ 19.4  19.3  19.3  30.7        |       20.4  26.3  19.7  14.9
+Heatmap score: 0.888032
+Finger travel: 32383: [55, 62, 46, 128, 130, 60, 86, 31]
+Adjusted travel: 34519: [58, 65, 54, 129, 130, 75, 89, 37]
+Hand runs mean, max: (1.597171740118128, 1.5423576603005449), (11, 7)
+Bad bigraphs: 267
+Fast bigraphs: 12003
+759.44user 0.20system 12:39.97elapsed 99%CPU (0avgtext+0avgdata 13836maxresident)k
+0inputs+0outputs (0major+1987minor)pagefaults 0swaps
+
+With swap_fingers instead of swap_colums, using rand.sample
+-----------------------------------------------------------
+
+0.00500 0.83795 0.83835
+'thors:'(6), 'applica'(7), 'pling.'(6), 'applica'(7), 'applying'(8), 'applying'(8), 'applica'(7), 'efforts'(7), 'ailabl'(6), 'aining'(6), 'capabili'(8), 'inabili'(7), 'inancial'(8), 'including'(9), 'bining'(6), 'inancial'(8), 'liabili'(7), 'inancial'(8), 'public'(6), 'erform'(6), 'roveme'(6), 'efforts'(7), 'inancial'(8), 'efforts'(7), 'efforts'(7), 'indica'(6), 'effort'(6), 'Therefore'(9), 'applica'(7), 'efforts'(7), 'applica'(7), 'ducing'(6), 'applying'(8), 'applying'(8), 'applica'(7), 'ically'(6), 'aining'(6), 'efforts'(7), 'including'(9), 'efforts'(7), 'erform'(6), 'applying'(8), 'applica'(7), 'ducing'(6), 'applica'(7), 'erstoo'(6), 'romote'(6), 'cially'(6), 'including'(9), 'lagging'(7), 'applying'(8), 'babili'(6), 'babili'(6), 'babili'(6), '......'(6), '......'(6), 'babili'(6), 'babili'(6), 'ainabl'(6), 'efforts'(7), 'effort'(6), 'terests'(7), 'pling.'(6), 'applica'(7), 'tereste'(7), 'applica'(7), 'applying'(8), 'applica'(7), 'unning'(6), 'indica'(6), 'others'(6), 'applianc'(8), 'Applica'(7), 'ducing'(6), 'Applica'(7), 'Includ'(6), 'applica'(7), 'applica'(7), 'aining'(6), 'applica'(7), 'applica'(7), 'ducing'(6), 'ically'(6), 'babili'(6), 'applica'(7), 'applica'(7), 'indica'(6), 'babili'(6), 'Applica'(7), 'ducing'(6), 'babili'(6), 'willing'(7), 'Applica'(7), 'applica'(7), 'indica'(6), 'babili'(6), 'Applica'(7), 'applica'(7), 'applica'(7), 'applying'(8), 'ducing'(6), 'babili'(6), 'applica'(7), 'indica'(6), 'shorter,'(8), 'includ'(6), 'etter,'(6), 'indica'(6), 'other,'(6), 'applica'(7), 'applying'(8), 'applying'(8), 'effort'(6), 'applica'(7), 'shorter'(7), 'Refere'(6), 'sherme'(6), 'orter,'(6), 'Willia'(6), 'andala.'(7), 'essRese'(7), 've,The'(6), 'ailabl'(6), 'Applica'(7), 'Publica'(7), 'erform'(6), 'rothers'(7), 'Mother'(6), 'again."'(7), 'thresho'(7), 'forest'(6), 'ginning."'(9), 'omfort'(6), 'mother'(6), 'Mother'(6), 'illing'(6), 'Mother'(6), 'Someth'(6), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'others'(6), 'Mother'(6), 'mother,'(7), 'Mother'(6), 'Mother'(6), 'foster'(6), 'Mother'(6), 'Mother'(6), 'Mother'(6), 'cunning'(7), 'mothers'(7), 'Mother'(6), 'playing'(7), 'mother'(6), 'Mother'(6), 'others'(6), 'other,'(6), 'cunning'(7), 'ipping'(6), 'softer'(6), 'illing'(6), 'tereste'(7), 'skers,'(6), 'rooste'(6), 'forest'(6), 'rother,'(7), 'cunningly'(9), 'forest,'(7), 'Mother'(6), 'someth'(6), 'rother,'(7), 'someth'(6), 'rother'(6), 'rothers'(7), 'rothers'(7), 'rother,'(7), 'rother,'(7), 'mother'(6), 'rothers'(7), 'uncil."'(7), 'rother'(6), 'others'(6), 'there,'(6), 'rother'(6), 'forest,'(7), 'unning'(6), 'Mother'(6), 'someth'(6), 'forefoot'(8), 'ossome'(6), 'ether,'(6), 'Therefore,'(10), 'someth'(6), 'lip."W'(6), 'rother'(6), 'others'(6), 'oorste'(6), 'Therefore'(9), 'rother'(6), 'rother'(6), 'ginning'(7), 'rothers'(7), 'rother'(6), 'upidly'(6), 'someth'(6), 'efore,'(6), 'rother'(6), 'mother'(6), 'Mother'(6), 'ginning'(7), 
+dg(10), yi(18), oe(19), hr(23), eo(31), fs(1), iu(11), xa(4), ui(37), nl(20), uy(3), ln(2), pd(1), pg(1), rh(1), wb(1), 
+ci(92), ic(243), er(762), rs(100), or(363), al(447), an(805), nd(623), in(881), rm(89), te(416), il(252), se(304), eh(35), ld(130), tr(143), re(687), nc(166), th(1624), ac(156), cu(83), un(196), ve(380), he(1498), ud(41), dy(35), to(360), ca(283), ro(303), uc(119), di(120), rv(14), mo(144), ke(98), rt(90), so(155), ad(108), sh(159), id(123), da(32), ht(66), dl(6), sr(1), dn(1), yd(1), kh(1), 
+ [ F ] [ M ] [ O ] [ Q ] [ Z ] | [ B ] [ G ] [ L ] [ Y ] [ X ]
+  4.0   3.9  12.5   0.2   0.1  |  2.7   3.3   7.8   2.9   0.1
+ [ S ] [ T ] [ E ] [ R ] [, <] | [ P ] [ D ] [ N ] [ I ] [ A ]
+ 10.2  14.9  20.2   8.8   2.4  |  3.4   6.1  11.5  11.7  12.6
+ [ V ] [ K ] [; :] [ H ] [ J ] | [ W ] [ C ] [' "] [ U ] [. >]
+  1.7   1.2   0.3   9.7   0.2  |  3.3   5.4   1.4   4.7   2.7
+ 15.9  20.0  33.0  21.5        |       24.1  20.7  19.4  15.4
+Heatmap score: 0.936347
+Finger travel: 33273: [52, 49, 99, 86, 160, 68, 73, 26]
+Adjusted travel: 35271: [54, 59, 106, 88, 161, 75, 77, 32]
+Hand runs mean, max: (1.7881112774451098, 1.6797442216745486), (10, 9)
+Bad bigraphs: 183
+Fast bigraphs: 12735
+794.60user 0.13system 13:15.13elapsed 99%CPU (0avgtext+0avgdata 13836maxresident)k
+0inputs+0outputs (0major+1997minor)pagefaults 0swaps
+
+With exothermic score improvements
+----------------------------------
+
+0.00501 0.82526 0.82919
+'approac'(7), 'stituti'(7), 'program'(7), 'hieved'(6), 'tivity'(6), 'compan'(6), 'compar'(6), 'appropr'(7), 'ormanc'(6), 'tivity'(6), 'tivities'(8), 'stituti'(7), 'tivity'(6), 'tivity'(6), 'eeded.'(6), 'study.'(6), 'compon'(6), 'dividu'(6), 'ormanc'(6), 'appropr'(7), 'compar'(6), 'tified'(6), 'dividu'(6), 'probab'(6), 'probab'(6), 'probab'(6), '......'(6), '......'(6), 'probab'(6), 'probab'(6), 'approac'(7), 'ssified'(7), 'iques.'(6), 'questi'(6), 'esides'(6), 'approac'(7), 'tivity'(6), 'tivity.'(7), 'tivity'(6), 'esses.'(6), 'propor'(6), 'bamboo'(6), 'esides'(6), 'bamboo'(6), 'questi'(6), 'program'(7), 'hieved'(6), 'stituti'(7), 'utside'(6), 'tivities.'(9), 'compar'(6), 'probab'(6), 'study.'(6), 'probab'(6), 'studies'(7), 'studied'(7), 'compar'(6), 'probab'(6), 'tivities'(8), 'probab'(6), 'bamboo'(6), 'bamboo,'(7), 'bamboo'(6), 'probab'(6), 'bamboo'(6), 'borrow'(6), 'tivity.'(7), 'compan'(6), 'ities.'(6), 'compan'(6), 'compan'(6), 'compan'(6), 'borrow'(6), 'tives.'(6), 'tivity.'(7), 'compar'(6), 'dvised'(6), 'stituti'(7), 'Approac'(7), 'Issues.'(7), 'xplora'(6), 'ownloa'(6), 'stituti'(7), 'tivity'(6), 'ormanc'(6), 'stituti'(7), 'o'cloc'(6), 'shifted'(7), 'y.They'(6), 'titude'(6), 'teeth.'(6), 'utside'(6), 'hes.The'(7), 'teeth.'(6), 'onor,"'(6), 'narrow'(6), 'thieves'(7), 'color,'(6), 'questi'(6), '"Among'(6), 'esides'(6), 'esides'(6), 'clamor'(6), 'ng:"Loo'(7), 'palm,"'(6), 'collar;'(7), 'shifti'(6), 'utside'(6), 'ownwar'(6), 'croplan'(7), 'morrow'(6), 'arcoal,'(7), 'stuff.'(6), 'marrow'(6), 'clamor'(6), 'orrow,'(6), 'compan'(6), '"Now,"'(6), 'croplan'(7), 
+wl(20), gm(3), ds(38), oa(20), yi(18), sh(159), rw(8), fs(1), iu(11), xa(4), xo(1), ui(37), rl(15), uy(3), wr(2), je(2), sq(6), df(1), ej(1), hd(1), lw(3), ox(1), hf(1), 
+ie(126), pa(102), or(363), na(166), al(447), no(337), ow(227), ma(200), an(805), co(218), on(556), om(186), te(416), is(551), su(89), pr(188), ar(353), st(355), ys(63), si(262), po(149), ra(275), us(303), se(304), eh(35), cr(157), ba(88), es(503), th(1624), ac(156), ve(380), he(1498), hi(392), ab(112), bl(96), ca(283), ro(303), ts(162), am(82), cl(38), mo(144), wo(174), oc(76), la(141), op(80), hy(16), ye(48), nl(20), ht(66), ih(6), 
+ [ K ] [ U ] [. >] [ Q ] [ Z ] | [ X ] [; :] [ L ] [ B ] [ G ]
+  1.2   4.7   2.7   0.2   0.1  |  0.1   0.3   7.8   2.7   3.3
+ [ T ] [ I ] [ E ] [ S ] [ D ] | [, <] [ A ] [ R ] [ N ] [ C ]
+ 14.9  11.7  20.2  10.2   6.1  |  2.4  12.6   8.8  11.5   5.4
+ [ V ] [ Y ] [ J ] [ H ] [ F ] | [' "] [ O ] [ W ] [ P ] [ M ]
+  1.7   2.9   0.2   9.7   4.0  |  1.4  12.5   3.3   3.4   3.9
+ 17.8  19.4  23.1  30.3        |       29.4  19.9  17.6  12.6
+Heatmap score: 0.903386
+Finger travel: 32507: [31, 73, 28, 151, 116, 86, 57, 58]
+Adjusted travel: 34532: [37, 75, 43, 152, 118, 89, 64, 59]
+Hand runs mean, max: (1.7401660706709499, 1.7003714961161769), (9, 7)
+Bad bigraphs: 356
+Fast bigraphs: 13721
+1379.90user 0.21system 23:00.68elapsed 99%CPU (0avgtext+0avgdata 13932maxresident)k
+0inputs+0outputs (0major+1999minor)pagefaults 0swaps
+
+With half exothermic score improvement
+--------------------------------------
+
+0.00500 0.81983 0.82718
+'method'(6), 'rainin'(6), 'developme'(9), 'tellect'(7), 'developed'(9), 'compete'(7), 'people'(6), 'developme'(9), 'Developme'(9), 'develop'(7), 'developed'(9), 'Develop'(7), 'people'(6), 'develop'(7), 'people'(6), 'helple'(6), 'helple'(6), 'collect'(7), 'compet'(6), 'deolog'(6), 'mpleme'(6), 'deolog'(6), 'bottom'(6), 'people'(6), 'mpleme'(6), 'method'(6), 'rainin'(6), 'developme'(9), 'method'(6), 'compete'(7), 'developme'(9), 'assify'(6), '......'(6), '......'(6), 'Methodolog'(10), 'people'(6), 'assifi'(6), 'method'(6), 'collect'(7), 'collect'(7), 'runnin'(6), 'College'(7), 'Method'(6), 'mpleme'(6), 'mpleme'(6), 'mpleme'(6), 'mpleme'(6), 'mpleme'(6), 'pected'(6), 'mpleme'(6), 'pected'(6), 'develop'(7), 'helped'(6), 'become'(6), 'ecomme'(6), 'commod'(6), 'ppleme'(6), 'Decembe'(7), '"Coope'(6), 'People''(7), 'Developme'(9), 'google'(6), 'Develop'(7), 'method'(6), 'Developme'(9), 'o'clock'(7), 'people'(6), 'emembe'(6), 'warnin'(6), 'beetle'(6), 'become'(6), 'checked'(7), 'looked'(6), 'ssary,'(6), 'ltogethe'(8), 'blocked'(7), 'uarry.'(6), 'people'(6), 'looked'(6), 'ccepted'(7), 'looked'(6), 'pebble'(6), 'People'(6), 'People'(6), 'People'(6), 'People'(6), 'ccepted'(7), 'People'(6), 'People'(6), 'rains.'(6), 'ccepted'(7), 'pebble'(6), 'looked'(6), 'People'(6), 'emembe'(6), 'rn.Sur'(6), 'etched'(6), 'looked'(6), 'emembe'(6), 'looked'(6), 'runnin'(6), 'looked'(6), 'bottom'(6), 'checked'(7), 'emembe'(6), 'looked'(6), 'togethe'(7), 'People'(6), 'People'(6), 'doomed'(6), 'People'(6), 'people'(6), 'ccepted'(7), 'pledge'(6), 'People'(6), 'people'(6), 'etched'(6), 'people'(6), 'people'(6), 'emembe'(6), 
+rn(77), dg(10), cl(38), yi(18), oe(19), gt(9), eo(31), ph(5), fs(1), iu(11), lm(5), bt(3), ui(37), uy(3), sw(8), ws(20), td(1), fw(1), 
+if(78), fi(87), rs(100), ur(159), le(394), ed(454), an(805), me(385), co(218), in(881), nf(34), te(416), lo(307), is(551), su(89), ar(353), ys(63), si(262), ho(258), us(303), ld(130), af(117), th(1624), fa(59), lt(49), ve(380), he(1498), as(285), to(360), yz(5), ct(136), et(137), de(281), sa(119), tl(59), ot(181), ns(97), ir(77), dv(8), sn(9), ht(66), fy(3), dl(6), yn(1), sr(1), tc(11), hd(1), dm(1), 
+ [; :] [ U ] [ R ] [ J ] [ X ] | [ Q ] [ K ] [ O ] [ C ] [ P ]
+  0.3   4.7   8.8   0.2   0.1  |  0.2   1.2  12.5   5.4   3.4
+ [ A ] [ I ] [ N ] [ S ] [ W ] | [ G ] [ T ] [ E ] [ L ] [ H ]
+ 12.6  11.7  11.5  10.2   3.3  |  3.3  14.9  20.2   7.8   9.7
+ [. >] [ Y ] [ Z ] [ F ] [, <] | [ B ] [ D ] [' "] [ M ] [ V ]
+  2.7   2.9   0.1   4.0   2.4  |  2.7   6.1   1.4   3.9   1.7
+ 15.7  19.4  20.5  20.3        |       28.4  34.1  17.0  14.7
+Heatmap score: 0.949896
+Finger travel: 33464: [28, 73, 63, 89, 131, 110, 77, 45]
+Adjusted travel: 35210: [33, 77, 69, 90, 133, 116, 81, 50]
+Hand runs mean, max: (1.4903518024446236, 1.7403846153846154), (6, 10)
+Bad bigraphs: 297
+Fast bigraphs: 11898
+1117.56user 0.28system 18:39.00elapsed 99%CPU (0avgtext+0avgdata 13880maxresident)k
+0inputs+0outputs (0major+1995minor)pagefaults 0swaps
+
+With no exothermic, no swap_keys
+--------------------------------
+
+0.00500 0.79540 0.79571
+'etermi'(6), 'terviewe'(8), 'higher'(6), 'level,'(6), 'higher'(6), 'Likewi'(6), 'level,'(6), 'higher'(6), 'level,'(6), 'higher'(6), 'wever,'(6), 'conduc'(6), 'limite'(6), 'tilizi'(6), 'therwi'(6), 'ilitie'(6), 'tivitie'(7), 'metime'(6), 'limite'(6), 'conduc'(6), 'Review'(6), 'ergizi'(6), 'thrive'(6), 'level,'(6), 'wever,'(6), 'either'(6), 'likelih'(7), 'igger,'(6), 'writte'(6), '......'(6), '......'(6), 'conduc'(6), 'conduc'(6), 'religi'(6), 'etermi'(6), 'terviewe'(8), 'conduc'(6), 'terview'(7), 'terview'(7), 'terview'(7), 'conduc'(6), 'terview'(7), 'riteri'(6), 'riteri'(6), 'likelih'(7), 'likelih'(7), 'likelih'(7), 'etermi'(6), 'level,'(6), 'conduc'(6), 'tivitie'(7), 'conduc'(6), 'etermi'(6), 'ilitie'(6), 'higher'(6), 'level,'(6), 'likelih'(7), 'higher'(6), 'conduc'(6), 'limite'(6), 'limite'(6), 'tivitie'(7), 'conduc'(6), 'Likewi'(6), 'terview'(7), 'likelih'(7), 'higher'(6), 'higher'(6), 'higher'(6), 'etermi'(6), 'wever,'(6), 'higher'(6), 'pany's'(6), 'etter,'(6), 'higher'(6), 'higher'(6), 'level,'(6), 'higher'(6), 'Likewi'(6), 'level,'(6), 'higher'(6), 'level,'(6), 'higher'(6), 'lthier'(6), '."Coop'(6), 'tive,The'(8), 'Review,'(7), 'tellige'(7), 'little'(6), 'little'(6), 'ounds.'(6), 'River,'(6), 'days."'(6), 'either'(6), 'tigeri'(6), 'little'(6), 'little'(6), 'little'(6), 'gether'(6), 'killer'(6), 'killer'(6), 'thieve'(6), 'found;'(6), 'little,'(7), 'little'(6), 'metime'(6), 'ter,where'(9), 'nobody'(6), 'writte'(6), 'little'(6), 'Little'(6), 'bounds.'(7), 'where,'(6), 'Little'(6), 'Little'(6), 'elieve,'(7), 'little'(6), 'Little'(6), 'little'(6), 'Little'(6), 'little'(6), 'thee,Little'(11), 'there,'(6), 'little'(6), 'Little'(6), 'little'(6), 'usband'(6), 'gether,'(7), 'right,'(6), 'righte'(6), 'twelve'(6), 'leverl'(6), 'right,'(6), 'little,'(7), 'little'(6), 'little'(6), 'whirle'(6), 'killer'(6), 'Little'(6), 'rewell'(6), 'little'(6), 'soon;fo'(7), 'little'(6), 'cubs."'(6), 
+ie(126), nf(34), au(41), gm(3), rv(14), ua(39), os(60), yp(21), gt(9), so(155), ei(40), rw(8), ny(26), xt(4), fy(3), wr(2), pf(3), yn(1), py(3), 
+ti(467), na(166), no(337), an(805), em(113), me(385), co(218), on(556), nd(623), te(416), we(185), us(303), nc(166), cy(32), li(230), do(103), th(1624), lt(49), un(196), ve(380), it(388), he(1498), hi(392), dy(35), ay(74), et(137), ds(38), wi(176), tl(59), ns(97), tw(41), sn(9), nu(14), wt(1), oy(10), ht(66), uy(3), je(2), uo(1), yo(33), yc(1), ya(3), dn(1), yd(1), hm(1), 
+ [ R ] [ L ] [ I ] [ Z ] [ X ] | [ Q ] [ P ] [. >] [; :] [ B ]
+  8.8   7.8  11.7   0.1   0.1  |  0.2   3.4   2.7   0.3   2.7
+ [ W ] [ H ] [ E ] [ T ] [ K ] | [' "] [ Y ] [ O ] [ A ] [ C ]
+  3.3   9.7  20.2  14.9   1.2  |  1.4   2.9  12.5  12.6   5.4
+ [ V ] [ J ] [, <] [ M ] [ G ] | [ F ] [ N ] [ S ] [ U ] [ D ]
+  1.7   0.2   2.4   3.9   3.3  |  4.0  11.5  10.2   4.7   6.1
+ 13.8  17.7  34.3  23.5        |       23.5  25.5  17.6  14.1
+Heatmap score: 0.818650
+Finger travel: 35495: [57, 52, 117, 91, 128, 98, 45, 67]
+Adjusted travel: 37431: [60, 59, 122, 94, 130, 99, 58, 69]
+Hand runs mean, max: (1.7812460667086218, 1.597115564712493), (11, 7)
+Bad bigraphs: 592
+Fast bigraphs: 10435
+763.87user 0.20system 12:44.67elapsed 99%CPU (0avgtext+0avgdata 13840maxresident)k
+0inputs+0outputs (0major+1998minor)pagefaults 0swaps
+
+Back to STER layout settings, smaller steps
+-------------------------------------------
+
+0.00100 0.83627 0.83654
+'Analysis:'(9), 'analysis'(8), 'analysis.'(9), 'analysis'(8), 'assumin'(7), 'Analysis:'(9), 'availa'(6), 'opport'(6), 'imally'(6), 'trepre'(6), 'skills'(6), 'skills'(6), 'otherw'(6), 'Analysis:'(9), 'ppropr'(6), 'better'(6), 'fulfillm'(8), 'skills.'(7), 'trepre'(6), 'Analysis:'(9), 'opport'(6), 'individual'(10), 'terper'(6), 'opport'(6), 'cooper'(6), 'betwee'(6), 'growth'(6), 'betwee'(6), 'ppropr'(6), 'Analysis:'(9), 'proper'(6), 'ector,'(6), 'trepre'(6), 'trepre'(6), 'opport'(6), 'Analysis'(8), 'Analysis'(8), 'Analysis'(8), 'analysis'(8), 'Analysis'(8), 'Analysis'(8), 'lassify'(7), 'Analysis'(8), 'analysis'(8), 'analysis'(8), 'Analysis:'(9), 'analysis'(8), 'individual'(10), 'betwee'(6), 'propert'(7), 'betwee'(6), '......'(6), 'Analysis:'(9), '......'(6), 'betwee'(6), 'betwee'(6), 'betwee'(6), 'object'(6), 'lassifi'(7), 'ector,'(6), 'analysis'(8), 'Analysis:'(9), 'analysis'(8), 'analysis.'(9), 'Analysis'(8), 'Analysis'(8), 'analysis'(8), 'betwee'(6), 'Analysis:'(9), 'betwee'(6), 'Analysis:'(9), 'proport'(7), 'Analysis:'(9), 'Analysis'(8), 'Analysis'(8), 'Analysis:'(9), 'mainin'(6), 'Analysis:'(9), 'analysis'(8), 'trepre'(6), 'analysis'(8), 'Analysis:'(9), 'analysis.'(9), 'Analysis:'(9), 'analysis'(8), 'nsumin'(6), 'skills.'(7), 'betwee'(6), 'borrowe'(7), 'horter,'(7), 'thereb'(6), 'opport'(6), 'betwee'(6), 'betwee'(6), 'better,'(7), 'betwee'(6), 'betwee'(6), 'other,'(6), 'better'(6), 'analysis'(8), 'Analysis:'(9), 'assumin'(7), 'betwee'(6), 'borrow'(6), 'horter'(6), 'trepre'(6), 'betwee'(6), 'trepre'(6), 'Analysis'(8), 'Dynami'(6), 'Analysis:'(9), 'Analysis'(8), 'Cooper'(6), 'terpret'(7), 'Porter,'(7), 'illiam'(6), 'Analysis'(8), 'Mandala.'(8), 'Robert'(6), '"Cooper'(7), 'Availa'(6), 'Cooper'(6), 'Cooper'(6), 'Analysis:'(9), 'Brother'(7), 'power,'(6), 'rophob'(6), 'fully:'(6), 'otherWo'(7), 'killin'(6), 'torche'(6), 'smanlik'(7), 'betwee'(6), 'together'(8), 'other,'(6), 'orgotte'(7), 'otherWo'(7), 'ccepte'(6), 'ter,where'(9), 'ccepte'(6), 'other,"'(7), 'killin'(6), 'better'(6), 'ccepte'(6), 'Brother,"'(9), 'too,whe'(7), 'illsid'(6), 'better'(6), 'fully.'(6), 'betwee'(6), 'where,'(6), 'Brother,'(8), 'better'(6), 'Brother'(7), 'brother'(7), 'brother'(7), 'tretche'(7), 'Brother,"'(9), '"There'(6), 'Brother,'(8), 'brother'(7), 'betwee'(6), 'Brother'(7), 'there,'(6), 'proper'(6), '"There'(6), 'Brother'(7), 'rewbre'(6), 'otherWo'(7), 'andman'(6), 'lands.'(6), 'how,be'(6), 'betwee'(6), 'together,'(9), 'ccepte'(6), 'brother'(7), 'worth,'(6), 'brother'(7), 'brother'(7), 'tretche'(7), 'orrow,'(6), '"There'(6), 'brother'(7), 'brother'(7), '"There'(6), 'betwee'(6), 'Brother'(7), 
+ds(38), yi(18), oe(19), hr(23), gt(9), nm(9), sk(14), eo(31), fs(1), iu(11), dv(8), lm(5), bt(3), ui(37), nl(20), uy(3), ln(2), df(1), ks(11), rh(1), 
+er(762), or(363), al(447), ge(144), an(805), co(218), nd(623), in(881), te(416), ch(249), is(551), il(252), ys(63), si(262), we(185), us(303), eh(35), cr(157), du(135), tr(143), re(687), th(1624), un(196), he(1498), ud(41), as(285), to(360), ro(303), ce(176), di(120), sa(119), gr(67), gh(118), um(56), ns(97), wh(176), rt(90), ad(108), ls(50), rc(41), rw(8), bo(59), br(52), id(123), rb(4), sn(9), da(32), sy(4), ht(66), wr(2), sl(14), dn(1), dm(1), 
+ [ P ] [ B ] [ O ] [ Q ] [ Z ] | [ X ] [ K ] [ L ] [ Y ] [; :]
+  3.4   2.7  12.5   0.2   0.1  |  0.1   1.2   7.8   2.9   0.3
+ [ C ] [ T ] [ E ] [ R ] [, <] | [ F ] [ S ] [ N ] [ I ] [ A ]
+  5.4  14.9  20.2   8.8   2.4  |  4.0  10.2  11.5  11.7  12.6
+ [ W ] [ G ] [' "] [ H ] [ J ] | [ V ] [ D ] [ M ] [ U ] [. >]
+  3.3   3.3   1.4   9.7   0.2  |  1.7   6.1   3.9   4.7   2.7
+ 12.0  20.9  34.1  21.5        |       23.3  23.2  19.4  15.7
+Heatmap score: 0.937406
+Finger travel: 33494: [51, 62, 110, 86, 112, 95, 73, 28]
+Adjusted travel: 35393: [53, 73, 116, 88, 113, 98, 78, 34]
+Hand runs mean, max: (1.7327895192188851, 1.656093810073049), (9, 10)
+Bad bigraphs: 264
+Fast bigraphs: 13581
+4902.31user 1.22system 1:21:47elapsed 99%CPU (0avgtext+0avgdata 13892maxresident)k
+0inputs+0outputs (0major+2000minor)pagefaults 0swaps
+
+mutate_swap_ranks with larger window
+use 3rd-root for bad_bigraph score
+half exothermic
+non-deterministic random seed
+optimized away redundant keystroke counting
+-------------------------------------------
+
+0.00050 0.79021 0.79041
+'conomic'(7), 'conomic'(7), 'conomic'(7), 'analyz'(6), 'applica'(7), 'amplin'(6), 'regress'(7), 'conclu'(6), 'applica'(7), 'applyin'(7), 'applyin'(7), 'applica'(7), 'communi'(7), 'communi'(7), 'imally'(6), 'conomic'(7), 'inancial'(8), 'ilizin'(6), 'company'(7), 'inancial'(8), 'inancial'(8), 'conomi'(6), 'better'(6), 'inancial'(8), 'communi'(7), 'eeded.'(6), 'Theref'(6), 'applica'(7), 'applica'(7), 'applyin'(7), 'applyin'(7), 'analyz'(6), 'applica'(7), 'communica'(9), 'compon'(6), 'communi'(7), 'ically'(6), 'policy'(6), 'applyin'(7), 'applica'(7), 'applica'(7), 'conomy'(6), 'cially'(6), 'mploym'(6), 'mploym'(6), 'Regress'(7), 'nominal'(7), 'Regress'(7), 'Regress'(7), 'inominal'(8), 'Regress'(7), 'Regress'(7), 'Regress'(7), 'regress'(7), 'applyin'(7), 'regress'(7), 'regress'(7), 'cumula'(6), 'Cumula'(6), 'regress'(7), '......'(6), '......'(6), 'conomic'(7), 'terests'(7), 'popula'(6), 'popula'(6), 'amplin'(6), 'amplin'(6), 'regress'(7), 'applica'(7), 'terested'(8), 'applica'(7), 'applyin'(7), 'regress'(7), 'applica'(7), 'Cumula'(6), 'million'(7), 'iploma'(6), 'esses.'(6), 'applianc'(8), 'Applica'(7), 'Applica'(7), 'analyz'(6), 'Regress'(7), 'regress'(7), 'ollowin'(7), 'ollowin'(7), 'applica'(7), 'regress'(7), 'applica'(7), 'mainin'(6), 'applica'(7), 'applica'(7), 'analyz'(6), 'ically'(6), 'applica'(7), 'applica'(7), 'conclu'(6), 'Applica'(7), 'analyz'(6), 'willin'(6), 'conclu'(6), 'occupi'(6), 'opinion'(7), 'opinion'(7), 'ressed'(6), 'Applica'(7), 'applica'(7), 'Applica'(7), 'applica'(7), 'applica'(7), 'applyin'(7), 'applica'(7), 'occupi'(6), 'communi'(7), 'communi'(7), 'thereb'(6), 'company'(7), 'compani'(7), 'compani'(7), 'better'(6), 'compani'(7), 'better'(6), 'Conclu'(6), 'conclu'(6), 'applica'(7), 'applyin'(7), 'applyin'(7), 'communi'(7), 'applica'(7), 'Refere'(6), 'conomi'(6), 'conomic'(7), 'conomic'(7), 'conomic'(7), 'ynamic'(6), 'ociolo'(6), 'ociolo'(6), 'conomic'(7), 'conomy'(6), 'conomic'(7), 'William'(7), 'conomic'(7), 'Policy'(6), 'conomy'(6), 'essRese'(7), 'ownloa'(6), 'Regress'(7), 'Applica'(7), 'conomy'(6), 'Policy'(6), 'conomic'(7), 'conomic'(7), 'conomic'(7), 'Policy'(6), 'thresh'(6), 'complim'(7), 'joicin'(6), '"Shere'(6), 'teeth.'(6), 'hes.The'(7), 'ffers.'(6), 'teeth.'(6), 'jumpin'(6), 'here."'(6), 'thers.'(6), 'gether'(6), 'moonli'(6), '"Shere'(6), 'complim'(7), '"Shere'(6), 'thee."'(6), 'Council,'(8), 'rderer'(6), 'cunnin'(6), 'moonli'(6), 'playin'(6), 'moonli'(6), 'Council'(7), 'b.There'(7), 'thers.'(6), 'cunnin'(6), 'better'(6), 'terested'(8), 'jumpin'(6), 'Council'(7), 'cunnin'(6), 'better'(6), 'Council'(7), 'better'(6), 'Council'(7), '"There'(6), 'Council'(7), 'Council'(7), 'Council'(7), '"There'(6), 'ther."'(6), 'ressed'(6), 'stered'(6), 'Council'(7), 'Council,'(8), 'ollowin'(7), 'ttered.'(7), 'thered'(6), 'gether'(6), '"Shere'(6), 'Council'(7), 'Theref'(6), '.Theref'(7), 'Council;'(8), '"There'(6), 'Council'(7), 'companion'(9), '"There'(6), 'Council'(7), 'lollin'(6), 'Council'(7), 
+dg(10), oa(20), yi(18), hr(23), gt(9), nm(9), fs(1), iu(11), lm(5), bt(3), ui(37), nl(20), uy(3), ln(2), td(1), rh(1), 
+na(166), no(337), ed(454), an(805), co(218), on(556), in(881), io(231), te(416), ol(331), lo(307), il(252), st(355), ly(165), po(149), se(304), ft(120), tr(143), re(687), nc(166), li(230), ia(122), th(1624), un(196), ni(106), ve(380), he(1498), pl(135), ca(283), ts(162), et(137), de(281), ds(38), ua(39), cl(38), rd(39), rt(90), lp(14), dv(8), nu(14), ht(66), dr(28), yo(33), yn(1), hd(1), 
+ [ X ] [ F ] [. >] [ K ] [ Q ] | [ Z ] [ J ] [ A ] [ U ] [ W ]
+  0.1   4.0   2.7   1.2   0.2  |  0.1   0.2  12.6   4.7   3.3
+ [ H ] [ S ] [ E ] [ T ] [ G ] | [ M ] [ N ] [ O ] [ I ] [ C ]
+  9.7  10.2  20.2  14.9   3.3  |  3.9  11.5  12.5  11.7   5.4
+ [ R ] [ V ] [' "] [ D ] [ B ] | [; :] [ L ] [, <] [ Y ] [ P ]
+  8.8   1.7   1.4   6.1   2.7  |  0.3   7.8   2.4   2.9   3.4
+ 18.6  15.9  24.3  28.4        |       23.9  27.5  19.4  12.0
+Heatmap score: 0.934840
+Finger travel: 32882: [57, 52, 39, 131, 95, 108, 73, 51]
+Adjusted travel: 35031: [61, 54, 56, 132, 97, 111, 82, 54]
+Hand runs mean, max: (1.6430906389301634, 1.7795863004408274), (8, 9)
+Bad bigraphs: 173
+Fast bigraphs: 12606
+71.17user 0.14system 1:11.38elapsed 99%CPU (0avgtext+0avgdata 13980maxresident)k
+0inputs+0outputs (0major+2009minor)pagefaults 0swaps
+
+another run, some recatoring changed the order of debug output
+--------------------------------------------------------------
+
+0.00050 0.78394 0.78472
+ue(73), oa(20), pt(31), yi(18), hr(23), gt(9), nm(9), eu(7), fs(1), lm(5), bt(3), kp(1), nl(20), ln(2), tp(2), pg(1), rh(1), 
+pe(158), na(166), no(337), wl(20), an(805), on(556), nd(623), in(881), io(231), te(416), ol(331), lo(307), su(89), pr(188), il(252), st(355), ly(165), se(304), ld(130), ft(120), tr(143), re(687), nc(166), li(230), do(103), ia(122), ut(135), th(1624), ni(106), ve(380), he(1498), tu(86), ca(283), ts(162), et(137), wo(174), rt(90), fu(29), hu(58), ep(80), ps(13), ny(26), ph(5), sp(77), rp(11), da(32), wn(41), ht(66), dl(6), yo(33), yn(1), dn(1), lw(3), 
+'www..o'(6), 'conomic'(7), 'conomic'(7), 'mail.com;'(9), 'conomic'(7), 'mail.com'(8), 'analyz'(6), 'regress'(7), 'imally'(6), 'trepre'(6), 'conomic'(7), 'inancial'(8), 'ilizin'(6), 'inancial'(8), 'inancial'(8), 'conomi'(6), 'better'(6), 'inancial'(8), 'indica'(6), 'Theref'(6), 'trepre'(6), 'further'(7), 'analyz'(6), 'subseque'(8), 'experts'(7), 'terpers'(7), 'ically'(6), 'strugg'(6), 'onomy.'(6), 'expert'(6), 'conomy'(6), 'cially'(6), 'trepre'(6), 'trepre'(6), 'Regress'(7), 'nominal'(7), 'Regress'(7), 'Regress'(7), 'inominal'(8), 'Regress'(7), 'Regress'(7), 'Regress'(7), 'regress'(7), 'regress'(7), 'regress'(7), 'regress'(7), '......'(6), '......'(6), 'conomic'(7), 'terests'(7), 'represe'(7), 'represe'(7), 'regress'(7), 'tereste'(7), 'represe'(7), 'regress'(7), 'million'(7), 'further'(7), 'indica'(6), 'pursue'(6), 'pursue'(6), 'analyz'(6), 'Regress'(7), 'regress'(7), 'ollowin'(7), 'gures,'(6), 'ollowin'(7), 'regress'(7), 'mainin'(6), 'analyz'(6), 'ically'(6), 'indica'(6), 'trepre'(6), 'analyz'(6), 'willin'(6), 'expresse'(8), 'indica'(6), 'indica'(6), 'thereb'(6), 'better,'(7), 'indica'(6), 'better'(6), 'Refere'(6), 'commodi'(7), 'trepre'(6), 'conomi'(6), 'conomic'(7), 'trepre'(6), 'conomic'(7), 'conomic'(7), 'Dynamic'(7), 'ociolo'(6), 'ociolo'(6), 'conomic'(7), 'ePerspe'(7), 'terpret'(7), 'conomy".'(8), 'conomic'(7), 'William'(7), 'conomic'(7), 'Mandala.'(8), 'conomy.'(7), 'Hughes,'(7), 'essRese'(7), 've,The'(6), 'www..o'(6), 'download'(8), 'Regress'(7), 'conomy'(6), 'conomic'(7), 'conomic'(7), 'conomic'(7), 'olicy.'(6), 'o'cloc'(6), 'thresh'(6), 'joicin'(6), 'suffers'(7), 'bushes'(6), 'gether'(6), 'moonli'(6), 'thrust'(6), 'moonli'(6), 'moonli'(6), 'better'(6), 'tereste'(7), 'skers,'(6), 'ves,be'(6), 'th,but'(6), 'suffer'(6), 'better'(6), 'truste'(6), 'better'(6), 'ncil."'(6), 'there,'(6), 'downwa'(6), 'bushes,'(7), 'truth,'(6), 'window'(6), 'presse'(6), 'window'(6), 'andman''(7), 'thrust'(6), 'stuff,'(6), 'ollowin'(7), 'gether,'(7), 'Theref'(6), 'truth,'(6), 'Theref'(6), 'thrust'(6), 'lowly.'(6), 'lollin'(6), 
+ [ J ] [ C ] [ A ] [; :] [ Z ] | [ Q ] [ K ] [ U ] [ F ] [ X ]
+  0.2   5.4  12.6   0.3   0.1  |  0.2   1.2   4.7   4.0   0.1
+ [ I ] [ D ] [ O ] [ N ] [ M ] | [ G ] [ T ] [ E ] [ S ] [ H ]
+ 11.7   6.1  12.5  11.5   3.9  |  3.3  14.9  20.2  10.2   9.7
+ [ Y ] [ W ] [. >] [ L ] [' "] | [ B ] [ P ] [, <] [ V ] [ R ]
+  2.9   3.3   2.7   7.8   1.4  |  2.7   3.4   2.4   1.7   8.8
+ 14.9  14.7  27.8  25.0        |       25.7  27.3  15.9  18.6
+Heatmap score: 0.937818
+Finger travel: 32504: [31, 66, 105, 104, 112, 72, 52, 57]
+Adjusted travel: 34425: [37, 65, 113, 106, 113, 83, 57, 61]
+Hand runs mean, max: (1.7156637574644005, 1.741696490236705), (9, 8)
+Bad bigraphs: 226
+Fast bigraphs: 13042
+86.59user 0.16system 1:26.88elapsed 99%CPU (0avgtext+0avgdata 13736maxresident)k
+0inputs+0outputs (0major+1996minor)pagefaults 0swaps
+
+noise_step=0.000005
+-------------------
+
+Interesting solution that finds much more good bigraphs at the cost of more bad ones and a pretty bad heatmap. This seems to be an attractive solution, may require correction of the quality function.
+
+0.00050 0.79182 0.79205
+ze(12), yi(18), oe(19), hr(23), eo(31), fs(1), iu(11), xa(4), ui(37), rl(15), uy(3), gs(20), sq(6), vg(1), sg(1), rh(1), 
+ap(131), er(762), or(363), ed(454), an(805), ag(72), me(385), ec(247), co(218), om(186), in(881), te(416), ch(249), ol(331), lo(307), is(551), gi(83), ys(63), si(262), us(303), eh(35), cr(157), tr(143), re(687), do(103), th(1624), un(196), he(1498), as(285), to(360), ro(303), od(139), ce(176), et(137), de(281), sa(119), ng(383), ip(41), ig(120), gn(17), mo(144), ke(98), ot(181), ns(97), yp(21), ug(49), oc(76), ga(34), ps(13), sp(77), ub(63), sn(9), sy(4), gu(17), dl(6), dr(28), kh(1), 
+'www..or'(7), 'owerme'(6), 'l.com;'(6), 'method'(6), 'determ'(6), 'signifi'(7), 'signifi'(7), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'aining'(6), 'ollowed'(7), 'tellect'(7), 'etwork'(6), 'otherw'(6), 'bining'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'eeded.'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'collect'(7), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'method'(6), 'aining'(6), 'owerme'(6), 'method'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'romote'(6), 'signifi'(7), 'ector,'(6), 'agging'(6), 'assify'(6), 'owerme'(6), 'other.'(6), '......'(6), 'owerme'(6), '......'(6), 'Methodolo'(9), 'assifi'(6), 'ceremo'(6), 'ector,'(6), 'method'(6), 'determ'(6), 'collect'(7), 'collect'(7), 'owerme'(6), 'correl'(6), 'owerme'(6), 'unning'(6), 'owerme'(6), 'electr'(6), 'mower,'(6), 'electr'(6), 'electr'(6), 'owerme'(6), 'Method:'(7), 'owerme'(6), 'signifi'(7), 'signifi'(7), 'determ'(6), 'model.'(6), 'aining'(6), 'model.'(6), 'owerme'(6), 'signifi'(7), 'determ'(6), 'signifi'(7), 'signifi'(7), 'signifi'(7), 'signifi'(7), 'electr'(6), 'owerme'(6), 'owerme'(6), 'signifi'(7), 'Agains'(6), 'signifi'(7), 'determ'(6), 'signifi'(7), 'owerme'(6), 'signifi'(7), 'etwork'(6), 'orrowed'(7), 'horter,'(7), 'pany's'(6), 'etwork.'(7), 'etwork'(6), 'etter,'(6), 'other,'(6), 'Recomme'(7), 'signifi'(7), 'owerme'(6), 'etwork'(6), 'owerme'(6), 'signifi'(7), 'electr'(6), 'horter'(6), 'commod'(6), 'Agains'(6), 'owerme'(6), 'owerme'(6), 'orter,'(6), 'Worker'(6), 'www..or'(7), 'owerme'(6), 'owerme'(6), 'etwork'(6), 'le.com.'(7), 'owerme'(6), 'method.'(7), 'rother'(6), 'Mother'(6), 'world.'(6), 'abaqui'(6), 'abaqui'(6), 'abaqui'(6), 'abaqui'(6), 'ginning'(7), 'abaqui'(6), 'abaqui'(6), 'mother'(6), 'abaqui'(6), 'abaqui'(6), 'MotherWol'(9), 'teeth.'(6), 'rocket'(6), 'torche'(6), 'teeth.'(6), 'Mother'(6), 'abaqui'(6), 'Mother'(6), 'checked'(7), 'looked'(6), 'Mother'(6), 'Mother'(6), 'locked'(6), 'abaqui'(6), 'Mother'(6), 'mother,'(7), 'looked'(6), 'Mother'(6), 'agains'(6), 'MotherWol'(9), 'Mother'(6), 'Mother'(6), 'rderer'(6), 'Mother'(6), 'unning'(6), 'color,'(6), 'colored'(7), 'mother'(6), 'erlooked.'(9), 'Mother'(6), 'ter,where'(9), 'mother.'(7), 'Mother'(6), 'llowed'(6), 'le:old'(6), '.There'(6), 'other,'(6), 'unning'(6), 'reckle'(6), 'ipping'(6), 'saying'(6), 'looked'(6), 'rother,'(7), 'too,whe'(7), 'unning'(6), 'Mother'(6), 'ollowed'(7), 'llowed'(6), 'where,'(6), 'rother,'(7), 'abaqui'(6), 'abaqui'(6), 'abaqui'(6), 'agains'(6), 'abaqui'(6), 'rother.'(7), 'rother'(6), 'rother'(6), 'tretched'(8), 'rother,'(7), 'rother,'(7), 'mother'(6), 'rother'(6), 'looked'(6), 'thee,L'(6), 'rother.'(7), 'agains'(6), 'there,'(6), 'looked'(6), 'rother.'(7), 'unning'(6), 'looked'(6), 'MotherWol'(9), 'checked,'(8), 'morrow'(6), 'howled'(6), 'lower,'(6), 'looked.'(7), 'abaqui'(6), 'abaqui'(6), 'ttered.'(7), 'thered'(6), 'ether,'(6), 'dered:'(6), 'doomed'(6), 'elled:'(6), 'agains'(6), 'howled'(6), 'rother'(6), '.There'(6), 'worth,'(6), 'agains'(6), 'rother'(6), 'agains'(6), 'rother'(6), 'ginning'(7), 'tretched'(8), 'orrow,'(6), 'rother'(6), 'rother'(6), 'ollowed'(7), 'rother.'(7), 'rewell'(6), 'howled'(6), 'mother'(6), 'Mother'(6), 'ginning'(7), 
+ [ X ] [ Y ] [ P ] [ J ] [ Q ] | [ Z ] [; :] [ H ] [ K ] [ W ]
+  0.1   2.9   3.4   0.2   0.2  |  0.1   0.3   9.7   1.2   3.3
+ [ A ] [ I ] [ N ] [ S ] [ F ] | [. >] [ E ] [ R ] [ T ] [ C ]
+ 12.6  11.7  11.5  10.2   4.0  |  2.7  20.2   8.8  14.9   5.4
+ [' "] [ U ] [ B ] [ G ] [ V ] | [, <] [ O ] [ L ] [ M ] [ D ]
+  1.4   4.7   2.7   3.3   1.7  |  2.4  12.5   7.8   3.9   6.1
+ 14.1  19.4  17.6  19.6        |       38.3  26.3  20.0  14.7
+Heatmap score: 0.859842
+Finger travel: 34512: [13, 73, 57, 85, 151, 135, 49, 73]
+Adjusted travel: 36736: [20, 77, 61, 86, 154, 135, 70, 74]
+Hand runs mean, max: (1.5466841487820027, 1.848032883147387), (7, 9)
+Bad bigraphs: 203
+Fast bigraphs: 14791
+774.43user 1.51system 12:56.69elapsed 99%CPU (0avgtext+0avgdata 13832maxresident)k
+0inputs+0outputs (0major+2001minor)pagefaults 0swaps
+
+Another run after adding output of current best solution
+--------------------------------------------------------
+
+Lowest bad bigraphs ever on these texts.
+
+0.00050 0.78846 0.78871
+oa(20), yi(18), hr(23), fs(1), iu(11), xa(4), xo(1), ui(37), rl(15), uy(3), je(2), gs(20), sq(6), vg(1), sg(1), ej(1), ox(1), rh(1), 
+sc(30), ie(126), pa(102), ap(131), or(363), na(166), no(337), ma(200), an(805), on(556), om(186), cs(25), at(593), ol(331), lo(307), is(551), su(89), pr(188), ar(353), ys(63), si(262), po(149), ra(275), us(303), se(304), tr(143), es(503), th(1624), iv(105), ve(380), to(360), ha(403), pl(135), ro(303), ce(176), de(281), ds(38), vi(56), ta(159), ev(114), mo(144), ot(181), op(80), ak(62), dv(8), nh(1), ye(48), ka(9), vy(1), ah(1), kh(1), 
+'viewed'(6), 'approa'(6), 'opport'(6), 'mportan'(7), 'success'(7), 'efficie'(7), 'decisi'(6), 'mportant'(8), 'appropr'(7), 'ccessi'(6), 'ccessi'(6), 'eeded.'(6), 'opport'(6), 'dividu'(6), 'opport'(6), 'bottom'(6), 'orkpla'(6), 'appropr'(7), 'mportant'(8), 'efficie'(7), 'promot'(6), 'efficie'(7), 'opport'(6), 'dividu'(6), 'probab'(6), 'probab'(6), 'probab'(6), '......'(6), '......'(6), 'probab'(6), 'probab'(6), 'approa'(6), 'ssified'(7), 'viewed'(6), 'iques.'(6), 'views.'(6), 'esides'(6), 'ormant'(6), 'approa'(6), 'eceived'(7), 'success.'(8), 'esses.'(6), 'proport'(7), 'bamboo'(6), 'esides'(6), 'bamboo'(6), 'efficie'(7), 'cessed'(6), 'cessed'(6), 'efficie'(7), 'Discussi'(8), 'probab'(6), 'probab'(6), 'probab'(6), 'eceived'(7), 'success'(7), 'probab'(6), 'cessed'(6), 'bamboo'(6), 'bamboo,'(7), 'bamboo'(6), 'probab'(6), 'bamboo'(6), 'opport'(6), 'dvised'(6), 'Approa'(6), 'ifecyc'(6), 'Issues.'(7), 'lator:'(6), 'akarta'(6), 'xplorat'(7), 'Ankara'(6), 'Ankara'(6), 'akarta:'(7), 'akarta'(6), 'rophob'(6), 'look,"'(6), 'ortabl'(6), 'throat'(6), 'honor,"'(7), 'esides'(6), 'esides'(6), ':"Look'(6), 'loth,b'(6), 'palm,"'(6), 'ho,nat'(6), 'ollar;'(6), 'bottom'(6), 'roplan'(6), 'roplan'(6), 
+ [ B ] [ K ] [ H ] [; :] [ X ] | [ Z ] [ Q ] [. >] [ U ] [ W ]
+  2.7   1.2   9.7   0.3   0.1  |  0.1   0.2   2.7   4.7   3.3
+ [ N ] [ T ] [ R ] [ A ] [, <] | [ F ] [ S ] [ E ] [ I ] [ D ]
+ 11.5  14.9   8.8  12.6   2.4  |  4.0  10.2  20.2  11.7   6.1
+ [ P ] [ M ] [ L ] [ O ] [' "] | [ G ] [ V ] [ J ] [ Y ] [ C ]
+  3.4   3.9   7.8  12.5   1.4  |  3.3   1.7   0.2   2.9   5.4
+ 17.6  20.0  26.3  29.4        |       19.5  23.1  19.4  14.7
+Heatmap score: 0.900074
+Bad bigraphs:     166
+Fast bigraphs:  12111
+Finger travel: 33055: [57, 49, 135, 116, 85, 28, 73, 66]
+Adjusted travel: 35676: [61, 70, 135, 119, 86, 43, 76, 68]
+Hand runs mean, max: (1.738695831128359, 1.4731006906579425), (8, 8)
+749.83user 1.41system 13:36.21elapsed 92%CPU (0avgtext+0avgdata 13820maxresident)k
+0inputs+0outputs (0major+1991minor)pagefaults 0swaps
+
+With threshold-accepting
+------------------------
+
+0.00500 0.78267 0.78651                                              
+sc(30), dg(10), cs(25), gm(3), yi(18), oe(19), gt(9), rw(8), eo(31), fs(1), iu(11), ui(37), uy(3), wr(2), td(1), dm(1),
+ci(92), ic(243), ap(131), ed(454), an(805), in(881), te(416), lo(307), is(551), ys(63), si(262), we(185), ho(258), us(303), tr(143), re(687), nc(166), th(1624), ac(156), cu(83), lt(49), un(196), he(1498), as(285), to(360), ze(12), ca(283), ro(303), uc(119), et(137), de(281), sa(119), ip(41), tl(59), ot(181), ns(97), yp(21), rd(39), rt(90), ps(13), tw(41), sp(77), ub(63), sn(9), sy(4), wt(1), ht(66), dr(28), hd(1),
+'www..org'(8), 'owledge'(7), 'owerme'(6), 'method'(6), 'determ'(6), 'nifican'(7), 'nifican'(7), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'ollowed'(7), 'capabi'(6), 'financia'(8), 'etwork'(6), 'otherw'(6), 'financia'(8), 'financia'(8), 'owerme'(6), 'owerme'(6), 'financia'(8), 'owerme'(6), 'owerme'(6), 'eeded.'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'owerme'(6), 'basica'(6), 'owerme'(6), 'deolog'(6), 'deolog'(6), 'owerme'(6), 'growth'(6), 'owerme'(6), 'owerme'(6), 'method'(6), 'owerme'(6), 'method'(6), 'owerme'(6), 'owerme'(6), 'owledge'(7), 'owerme'(6), 'owledge.'(8), 'owledge'(7), 'owledge'(7), 'owledge'(7), 'romote'(6), 'nifican'(7), 'ysis,"'(6), 'ysis",'(6), 'assify'(6), 'owerme'(6), 'ificia'(6), 'other.'(6), '......'(6), 'owerme'(6), '......'(6), 'Methodolog'(10), 'assifi'(6), 'method'(6), 'determ'(6), 'owerme'(6), 'owerme'(6), 'ollege'(6), 'owerme'(6), 'owerme'(6), 'Method'(6), 'owerme'(6), 'nifican'(7), 'nifican'(7), 'determ'(6), 'model.'(6), 'model.'(6), 'owerme'(6), 'iscussi'(7), 'nifican'(7), 'determ'(6), 'nificanc'(8), 'nifican'(7), 'nifican'(7), 'nifican'(7), 'owerme'(6), 'owerme'(6), 'nifican'(7), 'nifican'(7), 'determ'(6), 'nifican'(7), 'owerme'(6), 'nifican'(7), 'etwork'(6), 'orrowed'(7), 'horter'(6), 'pany's'(6), 'etwork.'(7), 'owledge'(7), 'etwork'(6), 'nifican'(7), 'owerme'(6), 'etwork'(6), 'owerme'(6), 'nifican'(7), 'horter'(6), 'owerme'(6), 'owerme'(6), 'owledge'(7), 'owledge'(7), 'Basics'(6), 'Worker'(6), 'www..org'(8), 'owerme'(6), 'owerme'(6), 'etwork'(6), 'www.google.'(11), 'owerme'(6), 'method.'(7), 'rother'(6), 'Mother'(6), 'world.'(6), 'mother'(6), 'MotherWol'(9), 'teeth.'(6), 'teeth.'(6), 'Mother'(6), 'Mother'(6), 'looked'(6), 'Mother'(6), 'Mother'(6), 'ltogether'(9), 'Mother'(6), 'mother'(6), 'looked'(6), 'orgotte'(7), 'Mother'(6), 'MotherWol'(9), 'Mother'(6), 'Mother'(6), 'rderer'(6), 'Mother'(6), 'cunnin'(6), 'olored'(6), 'mother'(6), 'erlooked.'(9), 'Mother'(6), 'mother.'(7), 'Mother'(6), 'llowed'(6), '.There'(6), 'cunnin'(6), 'looked'(6), 'rother'(6), 'cunnin'(6), 'Mother'(6), 'ollowed'(7), 'llowed'(6), 'rother'(6), 'rother.'(7), 'rother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'mother'(6), 'rother'(6), 'looked'(6), 'rother.'(7), 'looked'(6), 'rother.'(7), 'looked'(6), 'MotherWol'(9), 'morrow'(6), 'howled'(6), 'looked.'(7), 'ttered.'(7), 'thered'(6), 'together'(8), 'doomed'(6), 'howled'(6), 'rother'(6), '.There'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'rother'(6), 'ollowed'(7), 'rother.'(7), 'rewell'(6), 'howled'(6), 'mother'(6), 'Mother'(6), 
+ [; :] [ Y ] [ P ] [' "] [ J ] | [ Q ] [ K ] [ O ] [ L ] [ X ]
+  0.3   2.9   3.4   1.4   0.2  |  0.2   1.2  12.5   7.8   0.1
+ [ A ] [ I ] [ N ] [ S ] [ F ] | [ M ] [ T ] [ E ] [ H ] [ R ]
+ 12.6  11.7  11.5  10.2   4.0  |  3.9  14.9  20.2   9.7   8.8
+ [, <] [ U ] [ B ] [ C ] [ V ] | [ G ] [ D ] [. >] [ Z ] [ W ]
+  2.4   4.7   2.7   5.4   1.7  |  3.3   6.1   2.7   0.1   3.3
+ 15.4  19.4  17.6  22.9        |       29.6  35.4  17.6  12.2
+Heatmap score: 0.9533
+Bad bigraphs:     209
+Fast bigraphs:  12283
+Finger travel: 33053: [29, 73, 57, 106, 142, 123, 50, 29]
+Adjusted travel: 34629: [34, 77, 61, 107, 144, 128, 54, 33]
+Hand runs mean, max: (1.5559470215958766, 1.7966862064840292), (8, 11)
+560.66user 2.41system 9:23.61elapsed 99%CPU (0avgtext+0avgdata 13832maxresident)k
+0inputs+0outputs (0major+2001minor)pagefaults 0swaps
+
+0.01000 0.77449 0.77979                                              
+oa(20), yi(18), hr(23), nm(9), fs(1), iu(11), lm(5), ui(37), nl(20), uy(3), sw(8), ws(20), ln(2), gs(20), td(1), vg(1), sg(1), rh(1), fw(1),
+ie(126), nt(362), rs(100), rg(21), na(166), kn(35), no(337), ge(144), an(805), co(218), on(556), nd(623), ol(331), lo(307), gy(106), is(551), su(89), gi(83), ys(63), si(262), po(149), us(303), se(304), re(687), eg(55), nc(166), es(503), lt(49), he(1498), to(360), pl(135), ca(283), ta(159), gr(67), cl(38), ig(120), tl(59), gh(118), sh(159), lp(14), da(32), ye(48), kl(7), sr(1), dn(1), lk(9), tn(1),
+'iversi'(6), 'iversi'(6), 'erviewe'(7), 'regressi'(8), 'higher'(6), 'higher'(6), 'higher'(6), 'higher.'(7), 'herwise'(7), 'compan'(6), 'iffere'(6), 'collat'(6), 'mandato'(7), 'eurshi'(6), 'Review'(6), 'compon'(6), 'ergizi'(6), 'bottom'(6), 'iversi'(6), 'iversify'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'Regressi'(8), 'regressi'(8), 'regressi'(8), 'regressi'(8), 'Figure'(6), 'regressi'(8), '......'(6), '......'(6), 'ssifie'(6), 'survive'(7), 'erviewe'(7), 'regressi'(8), 'erviews.'(8), 'erviews'(7), 'erviews'(7), 'erview'(6), 'regressi'(8), 'Figure'(6), 'Figure'(6), 'Figure'(6), 'surveye'(7), 'Figure'(6), 'Figure'(6), 'esses.'(6), 'bamboo'(6), 'bamboo'(6), 'Figure'(6), 'Regressi'(8), 'regressi'(8), 'figures'(7), 'regressi'(8), 'iffers'(6), 'higher'(6), 'igger.'(6), 'higher'(6), 'esire.'(6), 'erviews'(7), 'higher.'(7), 'higher'(6), 'higher.'(7), 'bamboo'(6), 'bamboo,'(7), 'bamboo'(6), 'bamboo'(6), 'higher.'(7), 'compan'(6), 'compan'(6), 'compan'(6), 'compan'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'higher'(6), 'higher.'(7), 'Refere'(6), 'commod'(6), 'eurshi'(6), 'iversi'(6), 'eurshi'(6), 'Fisher'(6), 'Issues.'(7), 'Black,'(6), 'ersey.'(6), 'Mandala'(7), 'Hughes'(6), 'essRese'(7), 'Regressi'(8), 'iversi'(6), 'iverse'(6), 'Review'(6), 'iversi'(6), 'iversi'(6), 'o'clock'(7), 'jackal'(6), 'look,"'(6), 'jackal'(6), 'suffers.'(8), 'igerish'(7), '"Tabaq'(6), 'swers.'(6), 'hieves'(6), 'gry;ye'(6), 'PackCo'(6), 'suffer'(6), 'everywhere'(10), 'palm,"'(6), '"Tabaq'(6), 'cannot'(6), 'cannot'(6), 'bottom'(6), 'opland'(6), 'bandman''(8), 'jackal'(6), 'jackal'(6), 'blood,"'(7), 'cannot'(6), 'uiver.'(6), 'compan'(6), 'blood,'(6), 'opland'(6), 
+ [ B ] [ D ] [ A ] [ J ] [ Q ] | [ X ] [ V ] [. >] [ U ] [ Z ]
+  2.7   6.1  12.6   0.2   0.2  |  0.1   1.7   2.7   4.7   0.1
+ [ C ] [ T ] [ O ] [ N ] [ M ] | [ F ] [ S ] [ E ] [ I ] [ H ]
+  5.4  14.9  12.5  11.5   3.9  |  4.0  10.2  20.2  11.7   9.7
+ [ P ] [ K ] [, <] [ L ] [' "] | [ W ] [ G ] [; :] [ Y ] [ R ]
+  3.4   1.2   2.4   7.8   1.4  |  3.3   3.3   0.3   2.9   8.8
+ 11.4  22.2  27.5  25.1        |       22.6  23.2  19.4  18.6
+Heatmap score: 0.9452
+Bad bigraphs:     202
+Fast bigraphs:  10610
+Finger travel: 32729: [51, 67, 108, 105, 113, 29, 73, 57]
+Adjusted travel: 34962: [52, 78, 113, 107, 113, 45, 75, 62]
+Hand runs mean, max: (1.6132821723730815, 1.6373389234848017), (8, 10)
+487.84user 2.00system 8:10.39elapsed 99%CPU (0avgtext+0avgdata 14020maxresident)k
+0inputs+0outputs (0major+1996minor)pagefaults 0swaps
+
+noise_step=0.000001
+-------------------
+
+0.01000 0.78538 0.78568                                              
+sc(30), dg(10), cs(25), gm(3), oa(20), yi(18), gt(9), rw(8), fs(1), iu(11), nv(8), ui(37), uy(3), wr(2), td(1), dm(1),
+rn(77), na(166), no(337), le(394), ed(454), an(805), on(556), in(881), io(231), te(416), pr(188), st(355), po(149), ra(275), se(304), ld(130), ft(120), ia(122), th(1624), lt(49), un(196), ni(106), he(1498), ct(136), ro(303), ce(176), ts(162), et(137), de(281), ds(38), ua(39), ip(41), tl(59), yp(21), wo(174), pi(67), op(80), rp(11), nu(14), wn(41), ht(66), dl(6), yo(33), yn(1), py(3), hd(1), nw(1),
+'Binary'(6), 'variab'(6), 'approa'(6), 'binary'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'rainin'(6), 'tellect'(7), 'Binary'(6), 'appropria'(9), 'eeded.'(6), 'variab'(6), 'variab'(6), 'effect'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'variab'(6), 'tself.'(6), 'rainin'(6), 'appropria'(9), 'Binary'(6), 'effect'(6), 'ledge.'(6), 'effect'(6), 'provin'(6), 'effect'(6), 'Binary'(6), 'Binary'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'variab'(6), 'variab'(6), 'variab'(6), 'variab'(6), 'variab'(6), 'variab'(6), 'probabi'(7), 'variab'(6), 'probabi'(7), 'probabi'(7), 'variab'(6), '......'(6), 'Binary'(6), '......'(6), 'probabi'(7), 'probabi'(7), 'approa'(6), 'variab'(6), 'variab'(6), 'Provin'(6), 'binary'(6), 'binary'(6), 'Binary'(6), 'variab'(6), 'Variab'(6), 'variab'(6), 'variab'(6), 'variab'(6), 'approa'(6), 'binary'(6), 'Binary'(6), 'runnin'(6), 'ccess.'(6), 'Binary'(6), 'variab'(6), 'esses.'(6), 'propor'(6), 'Binary'(6), 'Binary'(6), 'binary'(6), 'Variab'(6), 'Binary'(6), 'ovarian'(7), 'Variab'(6), 'Binary'(6), 'cessed'(6), 'variab'(6), 'cessed'(6), 'ffected'(7), 'variab'(6), 'variab'(6), 'variab'(6), 'Binary'(6), 'innova'(6), 'binary'(6), 'probabi'(7), 'probabi'(7), 'effect'(6), 'binary'(6), 'effect'(6), 'probabi'(7), 'Binary'(6), 'opinion'(7), 'opinion'(7), 'effect'(6), 'Effect'(6), 'probabi'(7), 'cessed'(6), 'variab'(6), 'Binary'(6), 'probabi'(7), 'eflect'(6), 'nviron'(6), 'nviron'(6), 'eflects'(7), 'borrow'(6), 'provin'(6), 'variab'(6), 'Binary'(6), 'variab'(6), 'nviron'(6), 'eflect'(6), 'borrow'(6), 'nviron'(6), 'Binary'(6), 'Approa'(6), 'Innova'(6), 'ivaria'(6), 'Prawiro'(7), 'Binary'(6), 'Provin'(6), 'bruary'(6), 'avior:'(6), 'Effect'(6), 'Variab'(6), 'Effect'(6), 'abaqui,'(7), 'abaqui'(6), 'abaqui,'(7), 'abaqui,'(7), 'abaqui'(6), 'abaqui'(6), 'warnin'(6), 'abaqui'(6), 'abaqui'(6), 'seemed'(6), 'teeth.'(6), 'eetles'(6), 'arriva'(6), 'ches.The'(8), 'seless'(6), 'teeth.'(6), 'abaqui'(6), 'checked'(7), 'mself.'(6), 'abaqui,b'(8), 'quarry'(6), 'narrow'(6), 'thee."'(6), 'seless'(6), 'eckless'(7), 'rippin'(6), 'abaqui'(6), 'abaqui'(6), 'abaqui'(6), 'abaqui'(6), 'etched'(6), 'runnin'(6), 'ownwar'(6), 'checked'(7), 'estled'(6), 'abaqui'(6), 'abaqui'(6), 'etched'(6), 'orrow,'(6), 'panion'(6), 
+ [ Z ] [ U ] [ A ] [; :] [ Q ] | [ J ] [ K ] [. >] [ F ] [ X ]
+  0.1   4.7  12.6   0.3   0.2  |  0.2   1.2   2.7   4.0   0.1
+ [ R ] [ I ] [ O ] [ N ] [ B ] | [ M ] [ T ] [ E ] [ S ] [ H ]
+  8.8  11.7  12.5  11.5   2.7  |  3.9  14.9  20.2  10.2   9.7
+ [ W ] [ Y ] [, <] [ P ] [ V ] | [ G ] [ D ] [' "] [ C ] [ L ]
+  3.3   2.9   2.4   3.4   1.7  |  3.3   6.1   1.4   5.4   7.8
+ 12.2  19.4  27.5  19.8        |       29.6  24.3  19.6  17.6
+Heatmap score: 0.9491
+Bad bigraphs:     187
+Fast bigraphs:  11324
+Finger travel: 32713: [29, 73, 108, 79, 142, 39, 83, 50]
+Adjusted travel: 34964: [33, 82, 110, 81, 143, 59, 82, 54]
+Hand runs mean, max: (1.6300638270157615, 1.6100541204039502), (9, 8)
+2383.80user 10.27system 39:55.94elapsed 99%CPU (0avgtext+0avgdata 13744maxresident)k
+0inputs+0outputs (0major+1999minor)pagefaults 0swaps
+
