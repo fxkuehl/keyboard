@@ -70,8 +70,8 @@ layout_WORKMAN = [
 #  3.4   3.9   7.8  12.5   1.4  |  3.3   1.7   0.2   2.9   5.4
 # 17.6  20.0  26.3  29.4        |       19.5  23.1  19.4  14.7
 #Heatmap score: 0.900074
-#Bad bigraphs:     166
-#Fast bigraphs:  12111
+#Bad bigrams:     166
+#Fast bigrams:  12111
 #Finger travel: 33055: [57, 49, 135, 116, 85, 28, 73, 66]
 #Adjusted travel: 35676: [61, 70, 135, 119, 86, 43, 76, 68]
 #Hand runs mean, max: (1.738695831128359, 1.4731006906579425), (8, 8)
@@ -89,8 +89,8 @@ layout_NTRA = [
 #  2.9   4.5   2.2   5.9   1.0  |  0.8   7.8   2.5   1.8   3.2
 # 15.7  18.8  18.1  27.1        |       26.1  35.5  16.2  12.6
 #Heatmap score: 0.9373
-#Bad bigraphs:     311
-#Fast bigraphs:  22772
+#Bad bigrams:     311
+#Fast bigrams:  22772
 #Finger travel: 59321: [27, 69, 56, 106, 113, 127, 54, 49]
 #Adjusted travel: 62073: [33, 73, 61, 107, 115, 131, 58, 51]
 #Hand runs mean, max: (1.5600638869065824, 1.7686769899483836), (10, 9)
@@ -111,8 +111,8 @@ layout_AINT = [
 #Finger travel: 32882: [57, 52, 39, 131, 95, 108, 73, 51]
 #Adjusted travel: 35031: [61, 54, 56, 132, 97, 111, 82, 54]
 #Hand runs mean, max: (1.6430906389301634, 1.7795863004408274), (8, 9)
-#Bad bigraphs: 173
-#Fast bigraphs: 12606
+#Bad bigrams: 173
+#Fast bigrams: 12606
 layout_HSETG = [
     'xX', 'fF', '.>', 'kK', 'qQ',   'zZ', 'jJ', 'aA', 'uU', 'wW',
     'hH', 'sS', 'eE', 'tT', 'gG',   'mM', 'nN', 'oO', 'iI', 'cC',
@@ -127,8 +127,8 @@ layout_HSETG = [
 #  3.3   2.9   2.4   3.4   1.7  |  3.3   6.1   1.4   5.4   7.8
 # 12.2  19.4  27.5  19.8        |       29.6  24.3  19.6  17.6
 #Heatmap score: 0.9491
-#Bad bigraphs:     187
-#Fast bigraphs:  11324
+#Bad bigrams:     187
+#Fast bigrams:  11324
 #Finger travel: 32713: [29, 73, 108, 79, 142, 39, 83, 50]
 #Adjusted travel: 34964: [33, 82, 110, 81, 143, 59, 82, 54]
 #Hand runs mean, max: (1.6300638270157615, 1.6100541204039502), (9, 8)
@@ -149,8 +149,8 @@ layout_HSETM = [
 #Finger travel: 33273: [52, 49, 99, 86, 160, 68, 73, 26]
 #Adjusted travel: 35271: [54, 59, 106, 88, 161, 75, 77, 32]
 #Hand runs mean, max: (1.7881112774451098, 1.6797442216745486), (10, 9)
-#Bad bigraphs: 183
-#Fast bigraphs: 12735
+#Bad bigrams: 183
+#Fast bigrams: 12735
 layout_STER = [
     'fF', 'mM', 'oO', 'qQ', 'zZ',   'bB', 'gG', 'lL', 'yY', 'xX',
     'sS', 'tT', 'eE', 'rR', '\'"',  'pP', 'dD', 'nN', 'iI', 'aA',
@@ -165,8 +165,8 @@ layout_STER = [
 #  0.8   4.5   2.2   5.9   3.9  |  2.9   7.8   2.5   3.2   1.8
 # 13.7  18.8  18.1  23.6        |       28.5  35.5  19.7  12.1
 #Heatmap score: 0.9365
-#Bad bigraphs:     294
-#Fast bigraphs:  22674
+#Bad bigrams:     294
+#Fast bigrams:  22674
 #Finger travel: 58489: [11, 69, 56, 137, 131, 127, 44, 19]
 #Adjusted travel: 62570: [18, 72, 62, 138, 132, 132, 58, 23]
 #Hand runs mean, max: (1.5390484416612682, 1.7983133079352676), (9, 10)
@@ -201,23 +201,23 @@ class TextStats:
             else:
                 self.symbol_freq[c] = 1
 
-    def __calc_bigraphs(self):
-        self.bigraphs = {}
+    def __calc_bigrams(self):
+        self.bigrams = {}
         prev = ' '
         for c in self.text.lower():
             if c.isalpha() and prev.isalpha():
-                bigraph = (prev, c)
-                if bigraph in self.bigraphs:
-                    self.bigraphs[bigraph] += 1
+                bigram = (prev, c)
+                if bigram in self.bigrams:
+                    self.bigrams[bigram] += 1
                 else:
-                    self.bigraphs[bigraph] = 1
+                    self.bigrams[bigram] = 1
             prev = c
 
     def __init__(self, text):
         self.text = text
         self.__calc_symbol_freqs()
-        self.__calc_bigraphs()
-        #b = [(s[0]+s[1], f) for s, f in self.bigraphs.items()]
+        self.__calc_bigrams()
+        #b = [(s[0]+s[1], f) for s, f in self.bigrams.items()]
         #b.sort(key=lambda a: a[1])
         #print(b)
 
@@ -245,7 +245,7 @@ def calculate_key_props(key):
 
 # Favourable bigrams that are easy and fast to type
 # Left hand only, right hand will be auto-generated
-fast_bigraphs = [( 1,  2), ( 1, 13),
+fast_bigrams = [( 1,  2), ( 1, 13),
                  ( 2, 13),
                  (10,  2), (10, 12), (10, 13), (10, 23),
                  (11,  2), (11, 12), (11, 13), (11, 23),
@@ -257,14 +257,14 @@ fast_bigraphs = [( 1,  2), ( 1, 13),
                  (23, 10), (23, 11), (23, 12), (23, 20), (23, 21), (23, 22)]
 def mirror_key(k):
     return k + 9 - 2 * (k % 10)
-fast_bigraphs.extend([(mirror_key(a), mirror_key(b)) for a, b in fast_bigraphs])
+fast_bigrams.extend([(mirror_key(a), mirror_key(b)) for a, b in fast_bigrams])
 # Now turn it into a map for fasts lookup
-fast_bigraphs_map = {}
-for a, b in fast_bigraphs:
-    if a in fast_bigraphs_map:
-        fast_bigraphs_map[a].append(b)
+fast_bigrams_map = {}
+for a, b in fast_bigrams:
+    if a in fast_bigrams_map:
+        fast_bigrams_map[a].append(b)
     else:
-        fast_bigraphs_map[a] = [b]
+        fast_bigrams_map[a] = [b]
 
 class Keymap:
     key_props = [calculate_key_props(k) for k in range(30)]
@@ -347,9 +347,9 @@ class Keymap:
             print()
         return runs
 
-    def calc_bigraphs_same_finger(self, t, debug = 0):
+    def calc_bigrams_same_finger(self, t, debug = 0):
         num = 0
-        for sym, freq in t.bigraphs.items():
+        for sym, freq in t.bigrams.items():
             if sym[0] == sym[1]:
                 continue
             if sym[0] in self.keymap and sym[1] in self.keymap:
@@ -363,18 +363,18 @@ class Keymap:
             print()
         return num
 
-    def calc_fast_bigraphs(self, t, debug = 0):
-        global fast_bigraphs_map
+    def calc_fast_bigrams(self, t, debug = 0):
+        global fast_bigrams_map
 
         num = 0
-        for sym, freq in t.bigraphs.items():
+        for sym, freq in t.bigrams.items():
             if sym[0] == sym[1]:
                 continue
             if sym[0] not in self.keymap or sym[1] not in self.keymap:
                 continue
             a = self.keymap[sym[0]][0]
             b = self.keymap[sym[1]][0]
-            if a in fast_bigraphs_map and b in fast_bigraphs_map[a]:
+            if a in fast_bigrams_map and b in fast_bigrams_map[a]:
                 num += freq
                 if debug:
                     print("%s%s(%d), " % (sym[0], sym[1], freq), end="")
@@ -391,8 +391,8 @@ class Keymap:
         self.finger_heatmap = finger_heat(self.normalized_heatmap)
         self.finger_score = score_finger_heat(self.finger_heatmap)
 
-        self.bad_bigraphs = self.calc_bigraphs_same_finger(text, debug)
-        self.fast_bigraphs = self.calc_fast_bigraphs(text, debug)
+        self.bad_bigrams = self.calc_bigrams_same_finger(text, debug)
+        self.fast_bigrams = self.calc_fast_bigrams(text, debug)
 
     def eval(self, text, debug = 0):
         self.eval_opt(text, debug)
@@ -419,8 +419,8 @@ class Keymap:
     def print_short_summary(self):
         self.print_layout_heatmap()
         print("Heatmap score: %.4f" % self.heatmap_score)
-        print("Bad bigraphs:  %6d" % self.bad_bigraphs)
-        print("Fast bigraphs: %6d" % self.fast_bigraphs)
+        print("Bad bigrams:   %6d" % self.bad_bigrams)
+        print("Fast bigrams:  %6d" % self.fast_bigrams)
 
     def print_summary(self):
         self.print_short_summary()
@@ -520,7 +520,7 @@ def max_runs(runs):
 # that this will make it more likely to find good gradients to follow
 # in the search for an optimal layout.
 
-# Swapping fingers does not change same-finger bigraphs.
+# Swapping fingers does not change same-finger bigrams.
 def mutate_swap_fingers(layout, rand):
     a, b = rand.sample((0, 1, 2, 3, 7, 8, 9), k=2)
     if a == 3 or b == 3:
@@ -533,7 +533,7 @@ def mutate_swap_fingers(layout, rand):
                  l[i - b + a] if c == b else
                  l[i])(layout, i, i%10) for i in range(30)]
 
-# Swapping rows does not change same-finger bigraphs. Swap rows in one
+# Swapping rows does not change same-finger bigrams. Swap rows in one
 # hand only.
 def mutate_swap_rows(layout, rand):
     h = rand.randint(0, 1)
@@ -545,7 +545,7 @@ def mutate_swap_rows(layout, rand):
              layout[i] for i in range(30)]
 
 # Swapping keys belonging to the same finger does not change same finger
-# bigraphs.
+# bigrams.
 def mutate_swap_finger_keys(layout, rand):
     f = rand.randint(0, 7)
     if f < 3:
@@ -694,13 +694,13 @@ def optimize_weights(keymap):
     return (math.sqrt(key_score) + math.sqrt(finger_score)) / 2
     #return (key_score + finger_score) / 2
 
-def optimize_bad_bigraphs(keymap):
-    bad_bigraphs = keymap.bad_bigraphs / keymap.strokes
-    return 1.0 - bad_bigraphs**(1/3)
+def optimize_bad_bigrams(keymap):
+    bad_bigrams = keymap.bad_bigrams / keymap.strokes
+    return 1.0 - bad_bigrams**(1/3)
 
-def optimize_fast_bigraphs(keymap):
-    good_bigraphs = keymap.fast_bigraphs / keymap.strokes
-    return math.sqrt(good_bigraphs)
+def optimize_fast_bigrams(keymap):
+    good_bigrams = keymap.fast_bigrams / keymap.strokes
+    return math.sqrt(good_bigrams)
 
 def optimize_travel(keymap):
     global text
@@ -713,8 +713,8 @@ def optimize(keymap):
 
     keymap.eval_opt(text)
     scores = (optimize_weights(keymap),
-              optimize_bad_bigraphs(keymap),
-              optimize_fast_bigraphs(keymap))
+              optimize_bad_bigrams(keymap),
+              optimize_fast_bigrams(keymap))
     w = (1, 2, 1)
     wsum = sum((w[i] * scores[i] for i in range(len(scores))))
 
