@@ -50,29 +50,54 @@ layout_COLEMAK = [
     'zZ', 'xX', 'cC', 'vV', 'bB',   'kK', 'mM', ',<', '.>', '/?'
 ]
 
+layout_COLEMAKDH = [
+    'qQ', 'wW', 'fF', 'pP', 'bB',   'jJ', 'lL', 'uU', 'yY', ';:',
+    'aA', 'rR', 'sS', 'tT', 'gG',   'kK', 'nN', 'eE', 'iI', 'oO',
+    'zZ', 'xX', 'cC', 'dD', 'vV',   'mM', 'hH', ',<', '.>', '/?'
+]
+
 layout_WORKMAN = [
     'qQ', 'dD', 'rR', 'wW', 'bB',   'jJ', 'fF', 'uU', 'pP', ';:',
     'aA', 'sS', 'hH', 'tT', 'gG',   'yY', 'nN', 'eE', 'oO', 'iI',
     'zZ', 'xX', 'mM', 'cC', 'vV',   'kK', 'lL', ',<', '.>', '/?'
 ]
 
-# [ F ] [ M ] [ O ] [ Q ] [ Z ] | [ B ] [ G ] [ L ] [ Y ] [ X ]
-#  4.0   3.9  12.5   0.2   0.1  |  2.7   3.3   7.8   2.9   0.1
-# [ S ] [ T ] [ E ] [ R ] [, <] | [ P ] [ D ] [ N ] [ I ] [ A ]
-# 10.2  14.9  20.2   8.8   2.4  |  3.4   6.1  11.5  11.7  12.6
-# [ V ] [ K ] [; :] [ H ] [ J ] | [ W ] [ C ] [' "] [ U ] [. >]
-#  1.7   1.2   0.3   9.7   0.2  |  3.3   5.4   1.4   4.7   2.7
-# 15.9  20.0  33.0  21.5        |       24.1  20.7  19.4  15.4
-#Heatmap score: 0.936347
-#Finger travel: 33273: [52, 49, 99, 86, 160, 68, 73, 26]
-#Adjusted travel: 35271: [54, 59, 106, 88, 161, 75, 77, 32]
-#Hand runs mean, max: (1.7881112774451098, 1.6797442216745486), (10, 9)
-#Bad bigraphs: 183
-#Fast bigraphs: 12735
-layout_STER = [
-    'fF', 'mM', 'oO', 'qQ', 'zZ',   'bB', 'gG', 'lL', 'yY', 'xX',
-    'sS', 'tT', 'eE', 'rR', ',<',   'pP', 'dD', 'nN', 'iI', 'aA',
-    'vV', 'kK', ';:', 'hH', 'jJ',   'wW', 'cC', '\'"','uU', '.>'
+# [ B ] [ K ] [ H ] [; :] [ X ] | [ Z ] [ Q ] [. >] [ U ] [ W ]
+#  2.7   1.2   9.7   0.3   0.1  |  0.1   0.2   2.7   4.7   3.3
+# [ N ] [ T ] [ R ] [ A ] [, <] | [ F ] [ S ] [ E ] [ I ] [ D ]
+# 11.5  14.9   8.8  12.6   2.4  |  4.0  10.2  20.2  11.7   6.1
+# [ P ] [ M ] [ L ] [ O ] [' "] | [ G ] [ V ] [ J ] [ Y ] [ C ]
+#  3.4   3.9   7.8  12.5   1.4  |  3.3   1.7   0.2   2.9   5.4
+# 17.6  20.0  26.3  29.4        |       19.5  23.1  19.4  14.7
+#Heatmap score: 0.900074
+#Bad bigraphs:     166
+#Fast bigraphs:  12111
+#Finger travel: 33055: [57, 49, 135, 116, 85, 28, 73, 66]
+#Adjusted travel: 35676: [61, 70, 135, 119, 86, 43, 76, 68]
+#Hand runs mean, max: (1.738695831128359, 1.4731006906579425), (8, 8)
+layout_NTRA = [
+    'bB', 'kK', 'hH', ';:', 'xX',   'zZ', 'qQ', '\'"','uU', 'wW',
+    'nN', 'tT', 'rR', 'aA', ',<',   'fF', 'sS', 'eE', 'iI', 'dD',
+    'pP', 'mM', 'lL', 'oO', '.>',   'gG', 'vV', 'jJ', 'yY', 'cC'
+]
+
+# [; :] [ Y ] [ P ] [ J ] [ Z ] | [ X ] [ Q ] [ O ] [ F ] [ W ]
+#  0.3   2.6   3.8   0.6   0.1  |  0.2   0.3  13.0   4.3   2.7
+# [ A ] [ I ] [ N ] [ T ] [ M ] | [ L ] [ R ] [ E ] [ S ] [ C ]
+# 12.5  11.7  12.1  15.5   3.9  |  6.8  10.2  19.9  10.1   6.7
+# [. >] [ U ] [ B ] [ D ] [ K ] | [' "] [ H ] [, <] [ V ] [ G ]
+#  2.9   4.5   2.2   5.9   1.0  |  0.8   7.8   2.5   1.8   3.2
+# 15.7  18.8  18.1  27.1        |       26.1  35.5  16.2  12.6
+#Heatmap score: 0.9373
+#Bad bigraphs:     311
+#Fast bigraphs:  22772
+#Finger travel: 59321: [27, 69, 56, 106, 113, 127, 54, 49]
+#Adjusted travel: 62073: [33, 73, 61, 107, 115, 131, 58, 51]
+#Hand runs mean, max: (1.5600638869065824, 1.7686769899483836), (10, 9)
+layout_AINT = [
+    ';:', 'yY', 'pP', 'jJ', 'zZ',   'xX', 'qQ', 'oO', 'fF', 'wW',
+    'aA', 'iI', 'nN', 'tT', 'mM',   'lL', 'rR', 'eE', 'sS', 'cC',
+    '\'"','uU', 'bB', 'dD', 'kK',   ',<', 'hH', '.>', 'vV', 'gG'
 ]
 
 # [ X ] [ F ] [. >] [ K ] [ Q ] | [ Z ] [ J ] [ A ] [ U ] [ W ]
@@ -94,25 +119,6 @@ layout_HSETG = [
     'rR', 'vV', ',<', 'dD', 'bB',   ';:', 'lL', '\'"','yY', 'pP'
 ]
 
-# [ B ] [ K ] [ H ] [; :] [ X ] | [ Z ] [ Q ] [. >] [ U ] [ W ]
-#  2.7   1.2   9.7   0.3   0.1  |  0.1   0.2   2.7   4.7   3.3
-# [ N ] [ T ] [ R ] [ A ] [, <] | [ F ] [ S ] [ E ] [ I ] [ D ]
-# 11.5  14.9   8.8  12.6   2.4  |  4.0  10.2  20.2  11.7   6.1
-# [ P ] [ M ] [ L ] [ O ] [' "] | [ G ] [ V ] [ J ] [ Y ] [ C ]
-#  3.4   3.9   7.8  12.5   1.4  |  3.3   1.7   0.2   2.9   5.4
-# 17.6  20.0  26.3  29.4        |       19.5  23.1  19.4  14.7
-#Heatmap score: 0.900074
-#Bad bigraphs:     166
-#Fast bigraphs:  12111
-#Finger travel: 33055: [57, 49, 135, 116, 85, 28, 73, 66]
-#Adjusted travel: 35676: [61, 70, 135, 119, 86, 43, 76, 68]
-#Hand runs mean, max: (1.738695831128359, 1.4731006906579425), (8, 8)
-layout_NTRA = [
-    'bB', 'kK', 'hH', ';:', 'xX',   'zZ', 'qQ', '.>', 'uU', 'wW',
-    'nN', 'tT', 'rR', 'aA', ',<',   'fF', 'sS', 'eE', 'iI', 'dD',
-    'pP', 'mM', 'lL', 'oO', '\'"',  'gG', 'vV', 'jJ', 'yY', 'cC'
-]
-
 # [ Z ] [ U ] [ A ] [; :] [ Q ] | [ J ] [ K ] [. >] [ F ] [ X ]
 #  0.1   4.7  12.6   0.3   0.2  |  0.2   1.2   2.7   4.0   0.1
 # [ R ] [ I ] [ O ] [ N ] [ B ] | [ M ] [ T ] [ E ] [ S ] [ H ]
@@ -126,10 +132,48 @@ layout_NTRA = [
 #Finger travel: 32713: [29, 73, 108, 79, 142, 39, 83, 50]
 #Adjusted travel: 34964: [33, 82, 110, 81, 143, 59, 82, 54]
 #Hand runs mean, max: (1.6300638270157615, 1.6100541204039502), (9, 8)
-layout_RIONB = [
-    'zZ', 'uU', 'aA', ';:', 'qQ',   'jJ', 'kK', '.>', 'fF', 'xX',
-    'rR', 'iI', 'oO', 'nN', 'bB',   'mM', 'tT', 'eE', 'sS', 'hH',
-    'wW', 'yY', ',<', 'pP', 'vV',   'gG', 'dD', '\'"','cC', 'lL'
+layout_HSETM = [
+    'xX', 'fF', '.>', 'kK', 'jJ',   'qQ', ';:', 'aA', 'uU', 'zZ',
+    'hH', 'sS', 'eE', 'tT', 'mM',   'bB', 'nN', 'oO', 'iI', 'rR',
+    'lL', 'cC', ',<', 'dD', 'gG',   'vV', 'pP', '\'"','yY', 'wW'
+]
+
+# [ F ] [ M ] [ O ] [ Q ] [ Z ] | [ B ] [ G ] [ L ] [ Y ] [ X ]
+#  4.0   3.9  12.5   0.2   0.1  |  2.7   3.3   7.8   2.9   0.1
+# [ S ] [ T ] [ E ] [ R ] [, <] | [ P ] [ D ] [ N ] [ I ] [ A ]
+# 10.2  14.9  20.2   8.8   2.4  |  3.4   6.1  11.5  11.7  12.6
+# [ V ] [ K ] [; :] [ H ] [ J ] | [ W ] [ C ] [' "] [ U ] [. >]
+#  1.7   1.2   0.3   9.7   0.2  |  3.3   5.4   1.4   4.7   2.7
+# 15.9  20.0  33.0  21.5        |       24.1  20.7  19.4  15.4
+#Heatmap score: 0.936347
+#Finger travel: 33273: [52, 49, 99, 86, 160, 68, 73, 26]
+#Adjusted travel: 35271: [54, 59, 106, 88, 161, 75, 77, 32]
+#Hand runs mean, max: (1.7881112774451098, 1.6797442216745486), (10, 9)
+#Bad bigraphs: 183
+#Fast bigraphs: 12735
+layout_STER = [
+    'fF', 'mM', 'oO', 'qQ', 'zZ',   'bB', 'gG', 'lL', 'yY', 'xX',
+    'sS', 'tT', 'eE', 'rR', '\'"',  'pP', 'dD', 'nN', 'iI', 'aA',
+    'vV', 'kK', ';:', 'hH', 'jJ',   'wW', 'cC', ',<', 'uU', '.>'
+]
+
+# [; :] [ Y ] [ P ] [ W ] [ Z ] | [ Q ] [ J ] [ O ] [ K ] [ X ]
+#  0.3   2.6   3.8   2.7   0.1  |  0.3   0.6  13.0   1.0   0.2
+# [ A ] [ I ] [ N ] [ C ] [ F ] | [ L ] [ R ] [ E ] [ T ] [ S ]
+# 12.5  11.7  12.1   6.7   4.3  |  6.8  10.2  19.9  15.5  10.1
+# [' "] [ U ] [ B ] [ D ] [ M ] | [. >] [ H ] [, <] [ G ] [ V ]
+#  0.8   4.5   2.2   5.9   3.9  |  2.9   7.8   2.5   3.2   1.8
+# 13.7  18.8  18.1  23.6        |       28.5  35.5  19.7  12.1
+#Heatmap score: 0.9365
+#Bad bigraphs:     294
+#Fast bigraphs:  22674
+#Finger travel: 58489: [11, 69, 56, 137, 131, 127, 44, 19]
+#Adjusted travel: 62570: [18, 72, 62, 138, 132, 132, 58, 23]
+#Hand runs mean, max: (1.5390484416612682, 1.7983133079352676), (9, 10)
+layout_STERL = [
+    'xX', 'kK', 'oO', 'jJ', 'qQ',   'zZ', 'wW', 'pP', 'yY', ';:',
+    'sS', 'tT', 'eE', 'rR', 'lL',   'fF', 'cC', 'nN', 'iI', 'aA',
+    'vV', 'gG', ',<', 'hH', '.>',   'mM', 'dD', 'bB', 'uU', '\'"'
 ]
 
 
@@ -138,11 +182,14 @@ layouts = {
     "Dvorak": layout_DVORAK,
     "PLUM": layout_PLUM,
     "Colemak": layout_COLEMAK,
+    "Colemak-DH": layout_COLEMAKDH,
     "Workman": layout_WORKMAN,
-    "STER": layout_STER,
-    "HSETG": layout_HSETG,
     "NTRA": layout_NTRA,
-    "RIONB": layout_RIONB
+    "AINT": layout_AINT,
+    "HSETG": layout_HSETG,
+    "HSETM": layout_HSETM,
+    "STER": layout_STER,
+    "STERL": layout_STERL
 }
 
 class TextStats:
