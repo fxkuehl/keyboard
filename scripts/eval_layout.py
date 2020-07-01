@@ -367,7 +367,7 @@ class Keymap:
             print()
         return runs
 
-    def calc_bigrams_same_finger(self, t, debug = 0):
+    def calc_bigrams_same_finger(self, t, freq_map=None):
         num = 0
         for sym, freq in t.bigrams.items():
             if sym[0] == sym[1]:
@@ -377,13 +377,11 @@ class Keymap:
                 f2 = self.keymap[sym[1]][3]
                 if f1 == f2:
                     num += freq
-                    if debug:
-                        print("%s%s(%d), " % (sym[0], sym[1], freq), end="")
-        if debug:
-            print()
+                    if freq_map != None:
+                        freq_map[sym] = freq
         return num
 
-    def calc_fast_bigrams(self, t, debug = 0):
+    def calc_fast_bigrams(self, t, freq_map=None):
         global fast_bigrams_map
 
         num = 0
@@ -396,13 +394,11 @@ class Keymap:
             b = self.keymap[sym[1]][0]
             if a in fast_bigrams_map and b in fast_bigrams_map[a]:
                 num += freq
-                if debug:
-                    print("%s%s(%d), " % (sym[0], sym[1], freq), end="")
-        if debug:
-            print()
+                if freq_map != None:
+                    freq_map[sym] = freq
         return num
 
-    def eval_opt(self, text, debug = 0):
+    def eval_opt(self, text, full=False):
         self.heatmap = self.calc_heatmap(text)
         self.strokes = sum(self.heatmap)
         self.heatmap_score = score_heatmap(self.heatmap)
@@ -411,11 +407,19 @@ class Keymap:
         self.finger_heatmap = finger_heat(self.normalized_heatmap)
         self.finger_score = score_finger_heat(self.finger_heatmap)
 
-        self.bad_bigrams = self.calc_bigrams_same_finger(text, debug)
-        self.fast_bigrams = self.calc_fast_bigrams(text, debug)
+        if full:
+            self.bad_bigram_freq = {}
+            self.fast_bigram_freq = {}
+        else:
+            self.bad_bigram_freq = None
+            self.fast_bigram_freq = None
+        self.bad_bigrams = self.calc_bigrams_same_finger(text,
+                freq_map=self.bad_bigram_freq)
+        self.fast_bigrams = self.calc_fast_bigrams(text,
+                freq_map = self.fast_bigram_freq)
 
     def eval(self, text, debug = 0):
-        self.eval_opt(text, debug)
+        self.eval_opt(text, full=True)
 
         self.finger_travel = self.calc_finger_travel(text)
         self.adjusted_travel = self.calc_adjusted_travel(text)
@@ -424,29 +428,95 @@ class Keymap:
 
         self.hand_runs = self.calc_hand_runs(text, debug)
 
-    def print_layout_heatmap(self):
+    def print_layout_heatmap(self, file=sys.stdout):
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
         h = self.normalized_heatmap
         f = self.finger_heatmap
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]))
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]))
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:20]))
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:20]))
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[20:30]))
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[20:30]))
-        print("%5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f))
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]), file=file)
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[0:10]), file=file)
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:20]), file=file)
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[10:20]), file=file)
+        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[20:30]), file=file)
+        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f" % tuple(h[20:30]), file=file)
+        print("%5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f" % tuple(f), file=file)
 
-    def print_short_summary(self):
-        self.print_layout_heatmap()
-        print("Heatmap score: %.4f" % self.heatmap_score)
-        print("Bad bigrams:   %6d" % self.bad_bigrams)
-        print("Fast bigrams:  %6d" % self.fast_bigrams)
+    def print_short_summary(self, file=sys.stdout):
+        self.print_layout_heatmap(file=file)
+        print("Heatmap score: %.4f" % self.heatmap_score, file=file)
+        print("Bad bigrams:   %6d" % self.bad_bigrams, file=file)
+        print("Fast bigrams:  %6d" % self.fast_bigrams, file=file)
 
-    def print_summary(self):
-        self.print_short_summary()
-        print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]))
-        print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]))
-        print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))))
+    def print_summary(self, file=sys.stdout):
+        self.print_short_summary(file=file)
+        print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]), file=file)
+        print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]), file=file)
+        print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))), file=file)
+
+        print("\nBad bigrams: ", end="", file=file)
+        # Sort most frequent first
+        items = list(self.bad_bigram_freq.items())
+        items.sort(key=lambda item: item[1], reverse=True)
+        for sym, freq in items:
+            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
+        print(file=file)
+        print("\nFast bigrams: ", end="", file=file)
+        # Sort most frequent first
+        items = list(self.fast_bigram_freq.items())
+        items.sort(key=lambda item: item[1], reverse=True)
+        for sym, freq in items:
+            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
+        print(file=file)
+
+    def save_to_db(self):
+        """
+        Generate a unique file name from the layout and store
+        its information. If the name already exits, the layout
+        has already been discovered and nothing needs to be
+        saved. In that case append a # character to indicate a
+        count of how often a given layout has been found.
+
+        The name is made up of all the alphabetic characters
+        in the layout in order. Punctuations are replaced with
+        _, since their exact position is less relevant.
+
+        To eliminate redundancy due to symmetry, the layout is
+        mirrored such that the letter A is always in the left
+        hand.
+
+        The file format is a python script with the layout
+        formated as a list, and additional information in a
+        multi-line string comment. Eventually this is going to
+        be made a functioning script to evaluate a stored
+        layout with other input texts.
+        """
+        if self.keymap['a'][2] != 0:
+            layout = []
+            for i in range(3):
+                row = self.layout[i*10 : i*10 + 10]
+                row.reverse()
+                layout += row
+        else:
+            layout = self.layout[:]
+        name = ''.join((k[0] if k[0].isalpha() else '_' for k in layout))
+        path = '/'.join(('db', name))
+        try:
+            with open(path, 'x') as dbfile:
+                print('"""', file=dbfile)
+                self.print_summary(file=dbfile)
+                print('"""', file=dbfile)
+                print("\nlayout = [\n   ", end='', file=dbfile)
+                for i in range(30):
+                    print("%5s" % repr(self.layout[i]),
+                          end = '\n]\n\n' if i == 29 else
+                                ',\n   ' if i % 10 == 9 else
+                                ',   ' if i % 10 == 4 else
+                                ',',
+                          file=dbfile)
+                print("# The number of # on the following line counts discoveries of this layout.",
+                        end='\n#', file=dbfile)
+        except FileExistsError:
+            with open(path, 'a') as dbfile:
+                print("#", end='', file=dbfile)
 
 keymaps = {}
 for name, layout in layouts.items():
@@ -705,10 +775,10 @@ def swap_fingers(layout, mask):
 
 text = TextStats(sys.stdin.read())
 
-for name, keymap in keymaps.items():
-    print("*** Layout: %s ***" % name)
-    keymap.eval(text)
-    keymap.print_summary()
+#for name, keymap in keymaps.items():
+#    print("*** Layout: %s ***" % name)
+#    keymap.eval(text)
+#    keymap.print_summary()
 
 
 
@@ -763,6 +833,7 @@ new_layout = anneal(layout_DVORAK, optimize, seed=None, shuffle=True)
 new_keymap = Keymap(new_layout)
 new_keymap.eval(text, 6)
 new_keymap.print_summary()
+new_keymap.save_to_db()
 
 # max_means = 0
 # min_means = 100
