@@ -5,6 +5,7 @@ import math
 import time
 import random
 import operator
+import itertools
 
 # Keyboard layout evaluator
 
@@ -279,13 +280,6 @@ fast_bigrams = [( 1,  2), ( 1, 13),
 def mirror_key(k):
     return k + 9 - 2 * (k % 10)
 fast_bigrams.extend([(mirror_key(a), mirror_key(b)) for a, b in fast_bigrams])
-# Now turn it into a map for fasts lookup
-fast_bigrams_map = {}
-for a, b in fast_bigrams:
-    if a in fast_bigrams_map:
-        fast_bigrams_map[a].append(b)
-    else:
-        fast_bigrams_map[a] = [b]
 
 class Keymap:
     key_props = [calculate_key_props(k) for k in range(30)]
@@ -368,35 +362,40 @@ class Keymap:
             print()
         return runs
 
+    finger_keys = (
+            (0, 10, 20),
+            (1, 11, 21),
+            (2, 12, 22),
+            (3, 4, 13, 14, 23, 24),
+            (5, 6, 15, 16, 25, 26),
+            (7, 17, 27),
+            (8, 18, 28),
+            (9, 19, 29))
     def calc_bigrams_same_finger(self, t, freq_map=None):
         num = 0
-        for sym, freq in t.bigrams.items():
-            if sym[0] == sym[1]:
-                continue
-            if sym[0] in self.keymap and sym[1] in self.keymap:
-                f1 = self.keymap[sym[0]][3]
-                f2 = self.keymap[sym[1]][3]
-                if f1 == f2:
-                    num += freq
+        for keys in self.finger_keys:
+            for a, b in itertools.permutations(keys, 2):
+                bigram = (self.layout[a][0], self.layout[b][0])
+                try:
+                    num += t.bigrams[bigram]
                     if freq_map != None:
-                        freq_map[sym] = freq
+                        freq_map[bigram] = t.bigrams[bigram]
+                except KeyError:
+                    pass
         return num
 
     def calc_fast_bigrams(self, t, freq_map=None):
-        global fast_bigrams_map
+        global fast_bigrams
 
         num = 0
-        for sym, freq in t.bigrams.items():
-            if sym[0] == sym[1]:
-                continue
-            if sym[0] not in self.keymap or sym[1] not in self.keymap:
-                continue
-            a = self.keymap[sym[0]][0]
-            b = self.keymap[sym[1]][0]
-            if a in fast_bigrams_map and b in fast_bigrams_map[a]:
-                num += freq
+        for a, b in fast_bigrams:
+            bigram = (self.layout[a][0], self.layout[b][0])
+            try:
+                num += t.bigrams[bigram]
                 if freq_map != None:
-                    freq_map[sym] = freq
+                    freq_map[bigram] = t.bigrams[bigram]
+            except KeyError:
+                pass
         return num
 
     def eval_opt(self, text, full=False):
@@ -706,7 +705,7 @@ def anneal(layout, function, seed=None, shuffle=False):
     best_score = function(Keymap(layout))
     accepted_score = best_score
     best_layout = layout
-    print_interval = 100
+    print_interval = 1000
     count = print_interval
     last_time = time.time()
     rate = 0
