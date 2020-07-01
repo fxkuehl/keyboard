@@ -633,7 +633,10 @@ def anneal(layout, function, seed=None, shuffle=False):
     noise_step = 0.000001
     noise_floor = 0.005
     best_score = function(Keymap(layout))
+    accepted_score = best_score
     best_layout = layout
+    print_interval = 100
+    count = print_interval
 
     while noise > noise_floor:
         new_layout = mutate(layout, rand)
@@ -642,7 +645,10 @@ def anneal(layout, function, seed=None, shuffle=False):
 
         if new_score > best_score:
             print("%.5f %.5f %.5f" % (noise, new_score, best_score))
-            print("                                                                     ")
+            count = 1
+            # VT100 clear line (top row of the last keymap)
+            print("\x1b[2K")
+            # Print a new keymap one row lower
             new_keymap.print_short_summary()
             # VT100: cursor up 11 rows
             print("\x1b[11A", end="")
@@ -661,11 +667,22 @@ def anneal(layout, function, seed=None, shuffle=False):
 
         if noisy_score > best_score:
             layout = new_layout
-            print("%.5f %.5f %.5f" % (noise, new_score, best_score), end='\r')
+            accepted_score = new_score
         elif new_score + 5*noise < best_score:
             # We're stuck in a local optimum with little hope of
             # getting back to the best known optimum. Reset.
             layout = best_layout
+
+        count -= 1
+        if count <= 0:
+            flag = ' '
+            if accepted_score < 0:
+                accepted_score = -accepted_score
+                flag = '!'
+            print("%.5f %.5f %.5f%c" % (noise, accepted_score, best_score,
+                                        flag), end='\r')
+            count = print_interval
+            accepted_score = -accepted_score
 
     print()
     return best_layout
