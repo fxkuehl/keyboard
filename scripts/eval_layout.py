@@ -2,6 +2,7 @@
 
 import sys
 import math
+import time
 import random
 import operator
 
@@ -707,6 +708,8 @@ def anneal(layout, function, seed=None, shuffle=False):
     best_layout = layout
     print_interval = 100
     count = print_interval
+    last_time = time.time()
+    rate = 0
 
     while noise > noise_floor:
         new_layout = mutate(layout, rand)
@@ -716,6 +719,7 @@ def anneal(layout, function, seed=None, shuffle=False):
         if new_score > best_score:
             print("%.5f %.5f %.5f" % (noise, new_score, best_score))
             count = 1
+            last_time = None
             # VT100 clear line (top row of the last keymap)
             print("\x1b[2K")
             # Print a new keymap one row lower
@@ -745,12 +749,18 @@ def anneal(layout, function, seed=None, shuffle=False):
 
         count -= 1
         if count <= 0:
+            this_time = time.time()
+            if last_time:
+                delta_time = this_time - last_time
+                rate = print_interval / delta_time
+            last_time = this_time
             flag = ' '
             if accepted_score < 0:
                 accepted_score = -accepted_score
                 flag = '!'
-            print("%.5f %.5f %.5f%c" % (noise, accepted_score, best_score,
-                                        flag), end='\r')
+            print("%.5f %.5f %.5f %6.0f%c" %
+                    (noise, accepted_score, best_score, rate, flag),
+                    end='\r')
             count = print_interval
             accepted_score = -accepted_score
 
