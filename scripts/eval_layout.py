@@ -405,7 +405,8 @@ class Keymap:
         self.normalized_heatmap = normalize(self.heatmap,
                 sum(key_weights) / self.strokes)
         self.finger_heatmap = finger_heat(self.normalized_heatmap)
-        self.finger_score = score_finger_heat(self.finger_heatmap)
+        finger_heatmap = finger_heat(self.heatmap)
+        self.finger_score = score_finger_heat(finger_heatmap)
 
         if full:
             self.bad_bigram_freq = {}
@@ -802,12 +803,9 @@ def optimize_runs(keymap):
 def optimize_weights(keymap):
     global text
 
-    heatmap = keymap.calc_heatmap(text)
-    fingers = finger_heat(heatmap)
-    key_score = score_heatmap(heatmap)
-    finger_score = score_finger_heat(fingers)
     #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
-    return (math.sqrt(key_score) + math.sqrt(finger_score)) / 2
+    return (math.sqrt(keymap.heatmap_score) +
+            math.sqrt(keymap.finger_score)) / 2
     #return (key_score + finger_score) / 2
 
 def optimize_bad_bigrams(keymap):
