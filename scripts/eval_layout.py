@@ -76,9 +76,28 @@ layout_WORKMAN = [
 #Adjusted travel: 35676: [61, 70, 135, 119, 86, 43, 76, 68]
 #Hand runs mean, max: (1.738695831128359, 1.4731006906579425), (8, 8)
 layout_NTRA = [
-    'bB', 'kK', 'hH', ';:', 'xX',   'zZ', 'qQ', '\'"','uU', 'wW',
-    'nN', 'tT', 'rR', 'aA', ',<',   'fF', 'sS', 'eE', 'iI', 'dD',
-    'pP', 'mM', 'lL', 'oO', '.>',   'gG', 'vV', 'jJ', 'yY', 'cC'
+    'bB', 'kK', 'hH', 'qQ', 'xX',   'zZ', 'jJ', '.>', 'uU', 'wW',
+    'nN', 'tT', 'rR', 'aA', '\'"',  'fF', 'sS', 'eE', 'iI', 'dD',
+    'pP', 'mM', 'lL', 'oO', ';:',   'gG', 'vV', ',<', 'yY', 'cC'
+]
+
+# [ B ] [ G ] [ H ] [ Q ] [ X ] | [ J ] [ W ] [. >] [ Y ] [ Z ]
+#  2.2   3.2   7.8   0.3   0.2  |  0.6   2.7   2.9   2.6   0.1
+# [ N ] [ T ] [ R ] [ O ] [, <] | [ F ] [ C ] [ E ] [ I ] [ S ]
+# 12.1  15.5  10.2  13.0   2.5  |  4.3   6.7  19.9  11.7  10.1
+# [ P ] [ K ] [ L ] [ A ] [; :] | [ M ] [ D ] [' "] [ U ] [ V ]
+#  3.8   1.0   6.8  12.5   0.3  |  3.9   5.9   0.8   4.5   1.8
+# 18.1  19.7  24.8  28.9        |       24.1  23.7  18.8  12.0
+#Heatmap score: 0.9212
+#Bad bigrams:      286
+#Fast bigrams:   21592
+#Finger travel: 58455: [56, 44, 116, 115, 144, 31, 69, 18]
+#Adjusted travel: 63244: [60, 60, 118, 118, 144, 47, 71, 24]
+#Hand runs mean, max: (1.755061942187292, 1.4950978773974186), (9, 9)
+layout_NTRO = [
+    'bB', 'gG', 'hH', 'qQ', 'xX',   'jJ', 'wW', '.>', 'yY', 'zZ',
+    'nN', 'tT', 'rR', 'oO', '\'"',  'fF', 'cC', 'eE', 'iI', 'sS',
+    'pP', 'kK', 'lL', 'aA', ';:',   'mM', 'dD', ',<', 'uU', 'vV'
 ]
 
 # [; :] [ Y ] [ P ] [ J ] [ Z ] | [ X ] [ Q ] [ O ] [ F ] [ W ]
@@ -185,6 +204,7 @@ layouts = {
     "Colemak-DH": layout_COLEMAKDH,
     "Workman": layout_WORKMAN,
     "NTRA": layout_NTRA,
+    "NTRO": layout_NTRO,
     "AINT": layout_AINT,
     "HSETG": layout_HSETG,
     "HSETM": layout_HSETM,
