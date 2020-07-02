@@ -1,0 +1,38 @@
+"""
+ [; :] [ Y ] [ P ] [ J ] [ Z ] | [ X ] [ Q ] [ O ] [ F ] [ W ]
+  0.3   2.6   3.8   0.6   0.1  |  0.2   0.3  13.0   4.3   2.7
+ [ A ] [ I ] [ N ] [ T ] [ M ] | [ L ] [ R ] [ E ] [ S ] [ C ]
+ 12.5  11.7  12.1  15.5   3.9  |  6.8  10.2  19.9  10.1   6.7
+ [. >] [ U ] [ B ] [ D ] [ K ] | [' "] [ H ] [, <] [ V ] [ G ]
+  2.9   4.5   2.2   5.9   1.0  |  0.8   7.8   2.5   1.8   3.2
+ 15.7  18.8  18.1  27.1        |       26.1  35.5  16.2  12.6
+Heatmap score: 0.9373
+Bad bigrams:      311
+Fast bigrams:   22772
+Finger travel: 59321: [27, 69, 56, 106, 113, 127, 54, 49]
+Adjusted travel: 62073: [33, 73, 61, 107, 115, 131, 58, 51]
+Hand runs mean, max: (1.5600638869065824, 1.7686769899483836), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 rl:25 oe:22 sf:21 iu:11 tm:8 np:7 uy:3 tk:3 dm:3 rh:3 pb:2 bn:2 td:2 km:1 lr:1 fs:1 
+
+Fast bigrams: he:2172 in:1658 er:1566 an:1561 re:1239 at:1107 or:1105 nd:1091 ti:1052 nt:892 it:770 co:717 ro:715 ve:677 se:486 ce:469 rs:447 fo:444 ch:370 ta:368 ge:320 sh:311 un:281 di:238 ut:237 so:234 cr:212 du:198 ty:194 id:179 ad:175 ap:173 gh:169 rf:142 fr:116 gr:103 ud:91 ub:83 ip:79 rc:70 eh:64 rg:51 da:48 pt:46 yp:27 yt:11 dn:5 tp:3 tn:3 db:1 sr:1 hs:1 
+"""
+
+layout = [
+    ';:', 'yY', 'pP', 'jJ', 'zZ',    'xX', 'qQ', 'oO', 'fF', 'wW',
+    'aA', 'iI', 'nN', 'tT', 'mM',    'lL', 'rR', 'eE', 'sS', 'cC',
+    '.>', 'uU', 'bB', 'dD', 'kK',   '\'"', 'hH', ',<', 'vV', 'gG'
+]
+
+# The number of # on the following line counts discoveries of this layout.
+#
+# Good overall scores
+# Somewhat high finger travel distance, but quite balanced, only right ring finger travelling a bit more
+# Doesn't have th as a fast bigram, that may be a good thing for the "the" 3-gram that I found awkward in other layouts
+# Right ring finger busier than middle finger
+
+# This layout was only found once. With some tweaks to the quality function, I may find more similar layouts.
+
+# So far this is my favourite layout, all things considered. I also like the catchy name "AINT".
+# Or AINT-UBDK = Ain't my usual badly designed keymap.
+# For adoption I'd tweak it to move '" and ;: to their Dvorak positions and ,< H .> in the right hand

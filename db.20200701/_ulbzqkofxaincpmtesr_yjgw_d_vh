@@ -1,0 +1,28 @@
+"""
+ [ X ] [ F ] [ O ] [ K ] [ Q ] | [ Z ] [ B ] [ L ] [ U ] [; :]
+  0.2   4.3  13.0   1.0   0.3  |  0.1   2.2   6.8   4.5   0.3
+ [ R ] [ S ] [ E ] [ T ] [ M ] | [ P ] [ C ] [ N ] [ I ] [ A ]
+ 10.2  10.1  19.9  15.5   3.9  |  3.8   6.7  12.1  11.7  12.5
+ [ H ] [ V ] [. >] [ D ] [, <] | [ W ] [ G ] [ J ] [ Y ] [' "]
+  7.8   1.8   2.9   5.9   2.5  |  2.7   3.2   0.6   2.6   0.8
+ 18.1  16.2  35.8  29.2        |       18.7  19.5  18.8  13.7
+Heatmap score: 0.9484
+Bad bigrams:      317
+Fast bigrams:   22645
+Finger travel: 58472: [50, 54, 123, 128, 101, 56, 69, 11]
+Adjusted travel: 61795: [55, 56, 129, 130, 102, 60, 76, 18]
+Hand runs mean, max: (1.844560420089559, 1.6098881555546773), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 nl:32 yi:32 oe:22 sf:21 iu:11 tm:8 rh:3 tk:3 dm:3 bc:3 uy:3 td:2 pb:2 wp:2 ln:2 fs:1 km:1 pg:1 wb:1 
+
+Fast bigrams: th:2373 he:2172 in:1658 an:1561 re:1239 to:881 ed:856 te:848 st:792 ng:749 al:742 ro:715 ve:677 de:608 ac:521 se:486 tr:460 fo:444 ca:428 ic:405 nc:396 il:334 ts:314 uc:310 et:279 ot:272 so:234 ig:231 ul:207 rt:178 ci:151 ag:137 ft:131 cu:125 gy:113 gi:105 cl:101 ht:97 rd:79 ga:69 ds:65 gn:47 dr:38 dv:11 hd:4 yn:1 yc:1 
+"""
+
+layout = [
+    'xX', 'fF', 'oO', 'kK', 'qQ',    'zZ', 'bB', 'lL', 'uU', ';:',
+    'rR', 'sS', 'eE', 'tT', 'mM',    'pP', 'cC', 'nN', 'iI', 'aA',
+    'hH', 'vV', '.>', 'dD', ',<',    'wW', 'gG', 'jJ', 'yY','\'"'
+]
+
+# The number of # on the following line counts discoveries of this layout.
+#############

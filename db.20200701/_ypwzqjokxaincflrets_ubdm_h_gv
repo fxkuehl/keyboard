@@ -1,0 +1,33 @@
+"""
+ [ X ] [ K ] [ O ] [ J ] [ Q ] | [ Z ] [ W ] [ P ] [ Y ] [; :]
+  0.2   1.0  13.0   0.6   0.3  |  0.1   2.7   3.8   2.6   0.3
+ [ S ] [ T ] [ E ] [ R ] [ L ] | [ F ] [ C ] [ N ] [ I ] [ A ]
+ 10.1  15.5  19.9  10.2   6.8  |  4.3   6.7  12.1  11.7  12.5
+ [ V ] [ G ] [. >] [ H ] [, <] | [ M ] [ D ] [ B ] [ U ] [' "]
+  1.8   3.2   2.9   7.8   2.5  |  3.9   5.9   2.2   4.5   0.8
+ 12.1  19.7  35.8  28.2        |       23.6  18.1  18.8  13.7
+Heatmap score: 0.9365
+Bad bigrams:      294
+Fast bigrams:   22674
+Finger travel: 58321: [19, 44, 123, 132, 137, 56, 69, 11]
+Adjusted travel: 62405: [23, 58, 129, 133, 138, 62, 72, 18]
+Hand runs mean, max: (1.7983133079352676, 1.5390484416612682), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 rl:25 oe:22 iu:11 gt:9 np:7 kg:3 tk:3 rh:3 dm:3 uy:3 pb:2 bn:2 lr:1 wf:1 fw:1 mf:1 df:1 
+
+Fast bigrams: th:2373 he:2172 in:1658 er:1566 an:1561 re:1239 or:1105 nd:1091 to:881 te:848 ro:715 ve:677 ac:521 se:486 tr:460 rs:447 ca:428 ic:405 nc:396 ge:320 sh:311 uc:310 un:281 di:238 so:234 du:198 id:179 rt:178 ad:175 ap:173 gh:169 ci:151 gr:103 ht:97 ud:91 ub:83 ip:79 eh:64 rk:56 da:48 cy:39 rv:31 yp:27 dn:5 ko:1 sr:1 hs:1 yc:1 db:1 
+"""
+
+layout = [
+    'xX', 'kK', 'oO', 'jJ', 'qQ',    'zZ', 'wW', 'pP', 'yY', ';:',
+    'sS', 'tT', 'eE', 'rR', 'lL',    'fF', 'cC', 'nN', 'iI', 'aA',
+    'vV', 'gG', '.>', 'hH', ',<',    'mM', 'dD', 'bB', 'uU','\'"'
+]
+
+# The number of # on the following line counts discoveries of this layout.
+######
+# Great scores, very low bad bigrams
+# Mostly balanced finger travel distances easy on the weak fingers
+# Left middle finger is very busy with E+O
+# Right ring finger is busier than right middle finger
+# Typing "the" feels awkward

@@ -1,0 +1,32 @@
+"""
+ [ X ] [ K ] [. >] [ W ] [ B ] | [ Z ] [ Q ] [ A ] [ U ] [ V ]
+  0.2   1.0   2.9   2.7   2.2  |  0.1   0.3  12.5   4.5   1.8
+ [ R ] [ T ] [ E ] [ C ] [ F ] | [, <] [ N ] [ O ] [ I ] [ S ]
+ 10.2  15.5  19.9   6.7   4.3  |  2.5  12.1  13.0  11.7  10.1
+ [ H ] [ M ] [; :] [ D ] [ P ] | [ J ] [ L ] [' "] [ Y ] [ G ]
+  7.8   3.9   0.3   5.9   3.8  |  0.6   6.8   0.8   2.6   3.2
+ 18.1  20.4  23.2  25.6        |       22.4  26.4  18.8  15.1
+Heatmap score: 0.9413
+Bad bigrams:      293
+Fast bigrams:   20039
+Finger travel: 56825: [50, 47, 27, 163, 85, 87, 69, 48]
+Adjusted travel: 61195: [53, 53, 43, 163, 86, 92, 78, 52]
+Hand runs mean, max: (1.6585325693209512, 1.7403807505389703), (10, 10)
+
+Bad bigrams: ui:78 hr:38 nl:32 yi:32 gs:32 oa:30 iu:11 tm:8 rh:3 tk:3 bc:3 pf:3 uy:3 wp:2 pb:2 ln:2 km:1 wb:1 wf:1 fw:1 db:1 df:1 dp:1 pd:1 nq:1 vg:1 sg:1 
+
+Fast bigrams: he:2172 in:1658 an:1561 on:1421 re:1239 ct:920 ed:856 te:848 ng:749 me:669 ec:639 de:608 io:581 li:505 ce:469 no:443 ol:439 lo:390 ch:370 il:334 ns:310 na:307 un:281 ly:271 ia:254 ni:241 so:234 cr:212 sa:185 ck:141 ua:128 go:97 rd:79 ls:71 rc:70 yo:62 gl:61 gn:47 dr:38 nu:22 sl:21 tc:16 sn:9 hd:4 dm:3 td:2 kc:1 yn:1 
+"""
+
+layout = [
+    'xX', 'kK', '.>', 'wW', 'bB',    'zZ', 'qQ', 'aA', 'uU', 'vV',
+    'rR', 'tT', 'eE', 'cC', 'fF',    ',<', 'nN', 'oO', 'iI', 'sS',
+    'hH', 'mM', ';:', 'dD', 'pP',    'jJ', 'lL','\'"', 'yY', 'gG'
+]
+
+# The number of # on the following line counts discoveries of this layout.
+#
+# Very good heatmap, bad bigram and finger travel scores
+# Average to low fast bigrams score, no th
+# Left index fingex travels a lot
+# pf is a bad bigram, common in German
