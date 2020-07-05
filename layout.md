@@ -236,11 +236,15 @@ The algorithm was implemented in Python. This language makes it easy to work wit
 
 The current implementation can evaluate about 8000 keyboard layouts per second on a Ryzen 5 2400G running 3.6GHz. This is about a factor 30 improvement from an initial naive implementation, after switching to an efficient O(1) implementation of the bigram metrics, and calculating the number of keystrokes for normalization from the heatmap rather than the input text. Each evaluation of a layout involves 164 lookups in the bigram dictionary. Thus, the program is performing about 1.3 million lookups per second or about 2700 clocks per lookup, including all other overheads. Even with an optimized C++ implementation, this can probably not be improved by more than a factor of 10.
 
+Update: Using pypy, an alternative Python implementation using a JIT compiler, gave an additional speed up of about factor three, evaluating about 2700 layouts per second.
+
 ## Convergence of solutions
 
-The performance optimizations allow the use of a fairly slow annealing schedule that lowers the temperature very gradually, in a reasonable time budget. One run of the program completes in about 15 minutes with the parameters chosen. The solutions seem to converge quite well with a relatively small set of solutions being discovered quite consistently within a narrow range of quality function scores (roughly 0.78 to 0.79).
+The performance optimizations allow the use of a fairly slow annealing schedule that lowers the temperature very gradually, in a reasonable time budget. One run of the program completes in about 5 minutes with the parameters chosen. The solutions seem to converge quite well with a relatively small set of solutions being discovered quite consistently within a narrow range of quality function scores (roughly 0.78 to 0.79).
 
 A run on 4 CPU cores for 8 hours performed 142 runs of the annealing schedule and found 65 unique solutions (counting mirrored versions as the same solution). The most popular solution was found independently by 16 program runs.
+
+Update: Using pypy the run time improved from about 15 minutes to less than 5 minutes.
 
 ---
 
