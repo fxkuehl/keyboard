@@ -252,7 +252,7 @@ Update: Using pypy the run time improved from about 15 minutes to less than 5 mi
 
 ---
 
-# Experiment
+# Experiment 1
 
 Out of 65 unique solutions found by 142 runs of the algorithm I picked 9 solutions to discuss the result. Each layout gets its own subsection showing the layout with the basic metrics and a short discussion.
 
@@ -543,6 +543,106 @@ This layout has very good scores all around and it was one of the more "popular"
 | Times found   |     16 |         |
 
 This was the most "popular" solution, discovered independently by 16 runs. It has very good scores with only the right index finger having to travel significantly more than other fingers. This is another layout where typing "the" feels awkward.
+
+## Statistics
+
+### Overall score distributions
+
+       |                          #         
+       |                          #         
+     20+                          #         
+       |                          #         
+       |                          #         
+       |                          #         
+       |                          #         
+     15+                          # #       
+       |                          # #       
+       |                          # #       
+       |                  #       # #       
+       |                  #       # #       
+     10+                  #       # #       
+       |                  #   # # # #  #    
+       |                  #   # # # ## #    
+       |                  #   # # # ## #    
+       |                  #   # ### ## # #  
+      5+                  ##  # ### ## # # #
+       |                  ##  ##### ## # # #
+       |         #   # ## ######### ## ### #
+       |         # # # ############### ### #
+       |#     #### # ################# ### #
+        +---------+---------+---------+---------
+      0.777     0.782     0.787     0.792   
+
+### Heatmap score distributions
+
+       |                                        #      
+       |                                        #      
+       |                                        #      
+       |                                   #    #      
+     15+                                   #    #      
+       |                                   #    #      
+       |                                   ##   #      
+       |                                  ###   #      
+       |                                  ###   #      
+     10+                                  ####  #      
+       |                        #    #    ####  #      
+       |                        #   ##    ####  #      
+       |                        #   ##    ####  #      
+       |                        #   ##    ####  #      
+      5+#                       #   ##    ##### #      
+       |#                       # # ## #  ##### #      
+       |#                       # # ## #  #######      
+       |#          # ##        #### ## ## #######      
+       |#     #  ### ##  ## # ################### ##  #
+        +---------+---------+---------+---------+---------
+      0.868     0.888     0.908     0.928     0.948   
+
+### Bad bigrams distributions
+
+       |        #                                       
+       |        #                                       
+       |        #                                       
+     15+        #  #                                    
+       |        #  #                                    
+       |        #  #                                    
+       |        #  #                                    
+       |        #  #                                    
+     10+        #  #                                    
+       |        # ##    #       #                       
+       |        # ##    #       #                       
+       |      # # ##   ##   #  ##                       
+       |      # # ##   ## # #  ##                       
+      5+      # # ##   ######  ##                       
+       |      # # ##   ######  ##  #                   #
+       |      # # ##   ######  ##  ##    ##            #
+       |    # # # ##   ########## #####  ##  #  #      #
+       |#   ### # ##   ########## ###### ##  # ## #    #
+        +---------+---------+---------+---------+---------
+        260       310       360       410       460   
+
+### Fast bigrams distributions
+
+       |                   #        #                          
+       |                   #        #                          
+       |                   #        #                          
+     15+                   #       ##                          
+       |                   #       ##                          
+       |                   #       ##                          
+       |                   #       ##                          
+       |                   #       ##                          
+     10+                   #    #  ##                          
+       |                   #    #  ##                          
+       |                   #    #  ##                          
+       |                   #    #  ##                          
+       |                   #   ##  ####   #                    
+      5+                   #   ##  ####   ## #                #
+       |                   #   ##  #####  ## #                #
+       |            #      #  ###  ##### ### #  #    #        #
+       |#           #     ### ###  ##### ### #  #   ## #  ##  #
+       |#         # ##   #### ################  # # ## ## ##  #
+        +---------+---------+---------+---------+---------+---------
+      18450     19950     21450     22950     24450     25950   
+
 
 ---
 
