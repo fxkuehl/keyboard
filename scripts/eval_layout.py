@@ -518,9 +518,10 @@ class Keymap:
 
     def print_short_summary(self, file=sys.stdout):
         self.print_layout_heatmap(file=file)
-        print("Heatmap score: %.4f" % self.heatmap_score, file=file)
-        print("Bad bigrams:   %6d" % self.bad_bigrams, file=file)
-        print("Fast bigrams:  %6d" % self.fast_bigrams, file=file)
+        print("Heatmap score: %.4f (%.4f)" % (self.heatmap_score, self.scores[0]), file=file)
+        print("Bad bigrams:   %6d (%.4f)" % (self.bad_bigrams, self.scores[1]), file=file)
+        print("Fast bigrams:  %6d (%.4f)" % (self.fast_bigrams, self.scores[2]), file=file)
+        print("Overall score: %.4f" % self.overall_score, file=file)
 
     def _mean_runs(self):
         mean = [0, 0]
@@ -748,8 +749,8 @@ def anneal(layout, function, seed=None, shuffle=False):
             print("\x1b[2K")
             # Print a new keymap one row lower
             new_keymap.print_short_summary()
-            # VT100: cursor up 11 rows
-            print("\x1b[11A", end="")
+            # VT100: cursor up 12 rows
+            print("\x1b[12A", end="")
             # Improving the score is like going to a lower energy state,
             # which is exothermic. This allows finding more paths from
             # the new best solution.
