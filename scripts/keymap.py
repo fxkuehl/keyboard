@@ -379,6 +379,7 @@ class Keymap:
                                 ',   ' if i % 10 == 4 else
                                 ',',
                           file=dbfile)
+                print("from eval_layout import eval_layout\neval_layout(layout)\n", file=dbfile)
                 print("# The number of # on the following line counts discoveries of this layout.",
                         end='\n#', file=dbfile)
         except FileExistsError:
