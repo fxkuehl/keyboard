@@ -265,40 +265,18 @@ def calculate_key_props(key):
 
     return (hand, finger, x, y)
 
-# Favourable bigrams that are easy and fast to type
-# Left hand only, right hand will be auto-generated
-fast_bigrams = [( 1,  2), ( 1, 13),
-                 ( 2, 13),
-                 (10,  2), (10, 12), (10, 13), (10, 23),
-                 (11,  2), (11, 12), (11, 13), (11, 23),
-                 (12, 13), (12, 23),
-                 (13,  1), (13,  2), (13, 10), (13, 11), (13, 12), (13, 20),
-                 (20, 12), (20, 13), (20, 22), (20, 23),
-                 (21, 12), (21, 13), (21, 22), (21, 23),
-                 (22, 23),
-                 (23, 10), (23, 11), (23, 12), (23, 20), (23, 21), (23, 22)]
 def mirror_key(k):
     return k + 9 - 2 * (k % 10)
-fast_bigrams.extend([(mirror_key(a), mirror_key(b)) for a, b in fast_bigrams])
 
 class Keymap:
-    key_props = [calculate_key_props(k) for k in range(30)]
-    finger_linkage = ((1   , 0.25, 0  , 0  , 0  , 0  , 0   , 0   ),
-                      (0.25, 1   , 0.5, 0  , 0  , 0  , 0   , 0   ),
-                      (0   , 0.5 , 1  , 0.1, 0  , 0  , 0   , 0   ),
-                      (0   , 0   , 0.1, 1  , 0  , 0  , 0   , 0   ),
-                      (0   , 0   , 0  , 0  , 1  , 0.1, 0   , 0   ),
-                      (0   , 0   , 0  , 0  , 0.1, 1  , 0.5 , 0   ),
-                      (0   , 0   , 0  , 0  , 0  , 0.5, 1   , 0.25),
-                      (0   , 0   , 0  , 0  , 0  , 0  , 0.25, 1   )
-    )
+    _key_props = [calculate_key_props(k) for k in range(30)]
 
     def __init__(self, layout):
         self.layout = layout
         self.keymap = {}
         for i in range(len(layout)):
-            self.keymap[layout[i][0]] = (i, False) + self.key_props[i]
-            self.keymap[layout[i][1]] = (i, True ) + self.key_props[i]
+            self.keymap[layout[i][0]] = (i, False) + self._key_props[i]
+            self.keymap[layout[i][1]] = (i, True ) + self._key_props[i]
 
     def calc_heatmap(self, t):
         heatmap = [0 for k in range(30)]
@@ -321,6 +299,15 @@ class Keymap:
 
         return [int(a) for a in dist]
 
+    _finger_linkage = ((1   , 0.25, 0  , 0  , 0  , 0  , 0   , 0   ),
+                       (0.25, 1   , 0.5, 0  , 0  , 0  , 0   , 0   ),
+                       (0   , 0.5 , 1  , 0.1, 0  , 0  , 0   , 0   ),
+                       (0   , 0   , 0.1, 1  , 0  , 0  , 0   , 0   ),
+                       (0   , 0   , 0  , 0  , 1  , 0.1, 0   , 0   ),
+                       (0   , 0   , 0  , 0  , 0.1, 1  , 0.5 , 0   ),
+                       (0   , 0   , 0  , 0  , 0  , 0.5, 1   , 0.25),
+                       (0   , 0   , 0  , 0  , 0  , 0  , 0.25, 1   )
+    )
     def calc_adjusted_travel(self, t):
         finger_pos = [[0, 0] for f in range(8)]
         dist = [0 for f in range(8)]
@@ -331,8 +318,8 @@ class Keymap:
                 dy = y - finger_pos[f][1]
                 d = math.sqrt(dx*dx + dy*dy)
                 for g in range(8):
-                    finger_pos[g][0] += self.finger_linkage[f][g]*dx
-                    finger_pos[g][1] += self.finger_linkage[f][g]*dy
+                    finger_pos[g][0] += self._finger_linkage[f][g]*dx
+                    finger_pos[g][1] += self._finger_linkage[f][g]*dy
                 dist[f] += d
 
         return [int(a) for a in dist]
@@ -384,11 +371,22 @@ class Keymap:
                     pass
         return num
 
+    # Favourable bigrams that are easy and fast to type
+    # Left hand only, right hand will be auto-generated
+    _fast_bigrams = [( 1,  2), ( 1, 13),
+                     ( 2, 13),
+                     (10,  2), (10, 12), (10, 13), (10, 23),
+                     (11,  2), (11, 12), (11, 13), (11, 23),
+                     (12, 13), (12, 23),
+                     (13,  1), (13,  2), (13, 10), (13, 11), (13, 12), (13, 20),
+                     (20, 12), (20, 13), (20, 22), (20, 23),
+                     (21, 12), (21, 13), (21, 22), (21, 23),
+                     (22, 23),
+                     (23, 10), (23, 11), (23, 12), (23, 20), (23, 21), (23, 22)]
+    _fast_bigrams.extend([(mirror_key(a), mirror_key(b)) for a, b in _fast_bigrams])
     def calc_fast_bigrams(self, t, freq_map=None):
-        global fast_bigrams
-
         num = 0
-        for a, b in fast_bigrams:
+        for a, b in self._fast_bigrams:
             bigram = (self.layout[a][0], self.layout[b][0])
             try:
                 num += t.bigrams[bigram]
