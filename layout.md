@@ -262,6 +262,7 @@ The metrics are presented as follows:
 | Bad bigrams   | Total count | Count for each bigram |
 | Fast bigrams  | Total count | Count for each bigram |
 | Finger travel | Total in units of the key size | Per-finger travel, normalized to a total of 1000 |
+| Overall score | Score of the quality function | None |
 | Times found   | Number of times the solution was found by the algorithm |
 
 Finger travel is not used in the optimization, but it is shown here for reference and comparison with other layouts.
@@ -284,6 +285,7 @@ First the three most popular English keyboard layouts as a reference to provide 
 | Bad bigrams   |   5773 | ed:856 ec:639 de:608 ce:469 tr:460 ol:439 lo:390 un:281 rt:178 rf:142 hn:138 ft:131 fr:116 gr:103 ki:84 um:82 hu:74 mu:67 br:58 ju:56 rg:51 my:50 ny:45 ik:33 rv:31 ws:30 nm:28 za:24 nu:22 hy:19 aq:16 sw:11 gt:9 bt:8 az:6 rb:4 nh:4 ym:3 uy:3 hm:2 vg:1 yn:1 uj:1 |
 | Fast bigrams  |   2816 | li:505 se:486 we:285 fa:245 oj:228 fe:200 af:191 ad:175 va:138 av:129 ef:107 jo:30 oi:28 sf:21 lk:14 xc:12 dv:11 lm:6 wf:1 df:1 fw:1 fs:1 km:1 |
 | Finger travel |  75173 | 4, 25, 162, 223, 204, 55, 86, 6 |
+| Overall score | 0.5563 |         |
 
 The heatmap score for QWERTY is quite bad. It uses the left hand more heavily than the right hand, and some of the most frequently used keys are away from the home row. There are more bad (same-finger) bigrams than fast bigrams in this layout. The index fingers have to travel a lot and so does the left middle finger.
 
@@ -303,6 +305,7 @@ The heatmap score for QWERTY is quite bad. It uses the left hand more heavily th
 | Bad bigrams   |   2412 | ct:920 je:233 gh:169 rn:118 up:99 pi:89 ki:84 ip:79 ui:78 ls:71 tw:62 pu:45 mb:43 ik:33 yi:32 xp:31 rv:31 nv:31 dg:28 yp:27 sl:21 tc:16 xi:15 iu:11 py:7 ix:7 uk:4 hd:4 uy:3 gm:3 dm:3 hm:2 oq:1 ej:1 kp:1 ky:1 ku:1 gd:1 df:1 db:1 hf:1 hb:1 mf:1 wt:1 nr:1 |
 | Fast bigrams  |   7179 | th:2373 nt:892 st:792 ou:514 nc:396 ch:370 sh:311 ke:192 qu:180 ue:138 hn:138 ua:128 ak:104 ht:97 sc:95 au:87 sm:79 rc:70 ok:62 hr:38 ms:36 nm:28 oe:22 ka:10 tm:8 eu:7 nh:4 rh:3 uo:2 ek:1 ko:1 hs:1 |
 | Finger travel |  57323 | 11, 27, 30, 115, 168, 90, 93, 46 |
+| Overall score | 0.6631 |         |
 
 The heatmap and bigram scores are much better than QWERTY. Also finger travel is much reduced. Only the right index finger still travels much more than other fingers.
 
@@ -322,6 +325,7 @@ The heatmap and bigram scores are much better than QWERTY. Also finger travel is
 | Bad bigrams   |    828 | hn:138 ue:138 sc:95 kn:47 pt:46 nk:45 cs:32 nl:32 yi:32 dg:28 nm:28 za:24 sf:21 aq:16 lk:14 dv:11 rw:10 gt:9 bt:8 kl:8 eu:7 az:6 lm:6 nh:4 wr:3 tp:3 pb:2 td:2 ln:2 hm:2 fs:1 pg:1 pd:1 gd:1 dp:1 db:1 vg:1 kh:1 km:1 |
 | Fast bigrams  |  13358 | in:1658 on:1421 en:1130 at:1107 st:792 me:669 ou:514 as:501 tr:460 rs:447 no:443 ne:419 ta:368 ts:314 om:313 im:284 un:281 ie:273 em:252 ni:241 mo:209 af:191 rt:178 rf:142 va:138 mi:136 ft:131 av:129 tw:62 ny:45 rv:31 oe:22 nu:22 xc:12 iu:11 xt:9 wf:1 wt:1 yn:1 |
 | Finger travel |  57648 | 4, 26, 96, 168, 167, 71, 49, 5 |
+| Overall score | 0.7345 |         |
 
 Colemak brings a small improvement in the heatmap score. The index and middle fingers are weighted most heavily. On top of the improvements in Dvorak, Colemak brings another big improvement of the bigram scores. Particularly the number of bad bigrams is only about 1/3 the number in Dvorak. Total finger travel is about the same as in Dvorak, but more evenly distributed to both hands. Both index fingers still travel a lot.
 
@@ -341,6 +345,7 @@ Colemak brings a small improvement in the heatmap score. The index and middle fi
 | Bad bigrams   |    311 | ui:78 eo:48 hr:38 yi:32 rl:25 oe:22 sf:21 iu:11 tm:8 np:7 uy:3 tk:3 dm:3 rh:3 pb:2 bn:2 td:2 km:1 lr:1 fs:1  |
 | Fast bigrams  |  22772 | he:2172 in:1658 er:1566 an:1561 re:1239 at:1107 or:1105 nd:1091 ti:1052 nt:892 it:770 co:717 ro:715 ve:677 se:486 ce:469 rs:447 fo:444 ch:370 ta:368 ge:320 sh:311 un:281 di:238 ut:237 so:234 cr:212 du:198 ty:194 id:179 ad:175 ap:173 gh:169 rf:142 fr:116 gr:103 ud:91 ub:83 ip:79 rc:70 eh:64 rg:51 da:48 pt:46 yp:27 yt:11 dn:5 tp:3 tn:3 db:1 sr:1 hs:1 |
 | Finger travel |  59321 | 27, 69, 56, 106, 113, 127, 54, 49 |
+| Overall score | 0.7925 |         |
 | Times found   |      1 |         |
 
 This is the first solution of the she optimization algorithm shown here. The heatmap score is on par with Colemak. Bigram scores are further improved. Same finger bigrams are reduced by almost another factor 1/3. Fast bigrams are improved by almost factor 2. This sets the standard for other solutions out of the optimization algorithm.
@@ -369,9 +374,12 @@ For adoption of this layout, I would tweak to the  punctuation keys to move `'"`
 | Bad bigrams   |    384 | ui:78 eo:48 hr:38 yi:32 rl:25 oe:22 sf:21 aq:16 iu:11 xa:10 gt:9 tm:8 np:7 uy:3 tk:3 gm:3 kg:3 rh:3 pb:2 bn:2 ax:1 km:1 lr:1 fs:1 |
 | Fast bigrams  |  26582 | he:2172 in:1658 er:1566 an:1561 re:1239 at:1107 or:1105 ti:1052 nt:892 es:861 ed:856 it:770 ng:749 of:749 co:717 ro:715 ve:677 ec:639 de:608 se:486 ce:469 fo:444 ol:439 lo:390 ch:370 ta:368 sh:311 un:281 ut:237 so:234 ig:231 cr:212 fe:200 ty:194 ev:193 do:181 od:180 ap:173 ag:137 os:132 fr:116 oc:113 gi:105 ug:104 ub:83 ip:79 ga:69 eh:64 fl:54 gn:47 gu:47 pt:46 dr:38 yp:27 dl:17 yt:11 tp:3 tn:3 sr:1 |
 | Finger travel |  60698 | 5, 69, 56, 87, 160, 116, 54, 68 |
+| Overall score | 0.7949 |         |
 | Times found   |      5 |         |
 
 This variation of the AINT layout looks quite similar, but has a much worse heatmap score. It compensates for that with a much better fast bigram score. This demonstrates how the weighting of the component metrics of the quality function affects the compromises made in the search for a good layout.
+
+Incidentally, this was the layout with the highest overall score.
 
 Another interesting aspect of this layout is, how the punctuation keys are all on the right index finger. This matches the weighting of those keys and makes it easy to avoid bad bigrams on the index finger handling six keys.
 
@@ -391,6 +399,7 @@ Another interesting aspect of this layout is, how the punctuation keys are all o
 | Bad bigrams   |    313 | ui:78 nf:61 hr:38 yi:32 oa:30 rl:25 iu:11 tm:8 np:7 uy:3 pf:3 tk:3 dm:3 rh:3 bn:2 pb:2 td:2 km:1 lr:1 |
 | Fast bigrams  |  22097 | th:2373 he:2172 in:1658 an:1561 on:1421 ed:856 te:848 st:792 of:749 ng:749 co:717 ve:677 le:638 de:608 io:581 se:486 tr:460 fo:444 no:443 ca:428 nc:396 ts:314 na:307 un:281 et:279 ia:254 ni:241 ld:219 fi:180 rt:178 if:147 ua:128 go:97 ht:97 lt:79 ds:65 yo:62 gn:47 nu:22 dl:17 dv:11 fy:10 hd:4 yn:1 |
 | Finger travel |  59133 | 49, 69, 81, 120, 109, 31, 121, 19 |
+| Overall score | 0.7894 |         |
 | Times found   |      7 |         |
 
 Another layout with similar quality as the first AINT. Very good heatmap and bigram scores. Very balanced finger travel distance, except in this layout the right ring finger travels a lot.
@@ -415,6 +424,7 @@ This layout was found 7 times, which makes it one of the more "popular" or "easi
 | Bad bigrams   |    456 | ue:138 nf:61 hr:38 sk:36 yi:32 oa:30 ze:26 rl:25 ks:16 xa:10 tm:8 eu:7 np:7 dm:3 rh:3 pf:3 ox:3 td:2 bn:2 pb:2 lr:1 nq:1 ax:1 xo:1 |
 | Fast bigrams  |  26147 | th:2373 he:2172 in:1658 er:1566 an:1561 on:1421 re:1239 es:861 ed:856 te:848 of:749 ng:749 co:717 ve:677 me:669 de:608 io:581 se:486 tr:460 fo:444 no:443 us:431 ca:428 nc:396 sh:311 na:307 et:279 ur:272 ia:254 su:247 ni:241 ut:237 ru:207 ul:207 ev:193 fi:180 tu:148 if:147 go:97 lu:87 um:82 mu:67 eh:64 gn:47 ny:45 jo:30 ya:3 sr:1 yn:1 |
 | Finger travel |  59002 | 28, 92, 116, 80, 122, 78, 32, 49 |
+| Overall score | 0.7896 |         |
 | Times found   |      1 |         |
 
 This is a mirrored variant of CION, although with many changes. It has a relatively bad same-finger bigram score that it compensates for with much more fast bigrams. This is another example showing the trade-offs between different component metrics of the quality function.
@@ -435,6 +445,7 @@ This is a mirrored variant of CION, although with many changes. It has a relativ
 | Bad bigrams   |    286 | ui:78 hr:38 yi:32 oa:30 rl:25 aq:16 iu:11 xa:10 gt:9 np:7 tk:3 kg:3 rh:3 ox:3 dm:3 uy:3 bn:2 pb:2 lr:1 xo:1 oq:1 ax:1 wf:1 fw:1 mf:1 df:1 |
 | Fast bigrams  |  21592 | th:2373 an:1561 on:1421 at:1107 or:1105 to:881 ed:856 al:742 ro:715 ve:677 ec:639 de:608 ar:559 pr:544 ra:500 se:486 ce:469 tr:460 no:443 ic:405 ho:373 ta:368 uc:310 na:307 la:307 ie:273 ot:272 po:271 di:238 pl:232 og:203 du:198 id:179 ap:173 gh:169 pa:158 op:154 ci:151 ue:138 ak:104 go:97 sc:95 ud:91 ds:65 cy:39 cs:32 dv:11 ka:10 oh:8 kl:8 nh:4 nr:1 ko:1 yc:1
 | Finger travel |  58383 | 56, 44, 116, 118, 144, 27, 69, 18 |
+| Overall score | 0.7909 |         |
 | Times found   |      1 |         |
 
 This layout has an extremely good same-finger bigram score but slightly lower fast bigram score. Finger travel is slightly lower than in other layouts shown up to now, but the right index finger has to travel more.
@@ -457,6 +468,7 @@ The arrangement of the keys for T, H, R and O looks awkward. Spelling words such
 | Bad bigrams   |    260 | ui:78 hr:38 nl:32 yi:32 oa:30 iu:11 tm:8 rh:3 tk:3 dm:3 bc:3 pf:3 uy:3 ln:2 td:2 wp:2 pb:2 km:1 wb:1 wf:1 pg:1 fw:1 |
 | Fast bigrams  |  18542 | th:2373 he:2172 re:1239 nd:1091 nt:892 ed:856 te:848 of:749 co:717 le:638 de:608 io:581 ac:521 tr:460 fo:444 ca:428 ne:419 ic:405 uc:310 et:279 ia:254 so:234 ld:219 sa:185 fi:180 rt:178 ci:151 if:147 ua:128 cu:125 oc:113 ht:97 sc:95 rd:79 lt:79 yo:62 vo:54 dr:38 cs:32 sf:21 dl:17 fy:10 dn:5 hd:4 tn:3 yc:1 fs:1 |
 | Finger travel |  57290 | 50, 78, 27, 109, 142, 87, 69, 18 |
+| Overall score | 0.7853 |         |
 | Times found   |      1 |         |
 
 This layout has the best same-finger bigram score I have seen in any of the solutions. It also has a very good heatmap score. Finger travel distance is quite low, except for the right index finger.
@@ -481,6 +493,7 @@ Typing "the" feels awkward even though both "th" and "he" are fast bigrams.
 | Bad bigrams   |    293 | ui:78 hr:38 nl:32 yi:32 gs:32 oa:30 iu:11 tm:8 rh:3 tk:3 bc:3 pf:3 uy:3 wp:2 pb:2 ln:2 km:1 wb:1 wf:1 fw:1 db:1 df:1 dp:1 pd:1 nq:1 vg:1 sg:1 |
 | Fast bigrams  |  20039 | he:2172 in:1658 an:1561 on:1421 re:1239 ct:920 ed:856 te:848 ng:749 me:669 ec:639 de:608 io:581 li:505 ce:469 no:443 ol:439 lo:390 ch:370 il:334 ns:310 na:307 un:281 ly:271 ia:254 ni:241 so:234 cr:212 sa:185 ck:141 ua:128 go:97 rd:79 ls:71 rc:70 yo:62 gl:61 gn:47 dr:38 nu:22 sl:21 tc:16 sn:9 hd:4 dm:3 td:2 kc:1 yn:1 |
 | Finger travel |  56825 | 50, 47, 27, 163, 85, 87, 69, 48 |
+| Overall score | 0.7873 |         |
 | Times found   |      1 |         |
 
 This layout has one of the best heatmap scores out of all solutions and also very good bigram scores. Furthermore it has one of the best total finger travel scores. The left index finger stands out negatively, however.
@@ -501,6 +514,7 @@ This layout has one of the best heatmap scores out of all solutions and also ver
 | Bad bigrams   |    294 | ui:78 eo:48 hr:38 yi:32 rl:25 oe:22 iu:11 gt:9 np:7 kg:3 tk:3 rh:3 dm:3 uy:3 pb:2 bn:2 lr:1 wf:1 fw:1 mf:1 df:1 |
 | Fast bigrams  |  22674 | th:2373 he:2172 in:1658 er:1566 an:1561 re:1239 or:1105 nd:1091 to:881 te:848 ro:715 ve:677 ac:521 se:486 tr:460 rs:447 ca:428 ic:405 nc:396 ge:320 sh:311 uc:310 un:281 di:238 so:234 du:198 id:179 rt:178 ad:175 ap:173 gh:169 ci:151 gr:103 ht:97 ud:91 ub:83 ip:79 eh:64 rk:56 da:48 cy:39 rv:31 yp:27 dn:5 ko:1 sr:1 hs:1 yc:1 db:1 |
 | Finger travel |  58321 | 19, 44, 123, 132, 137, 56, 69, 11 |
+| Overall score | 0.7928 |         |
 | Times found   |      6 |         |
 
 This layout has very good scores all around and it was one of the more "popular" solutions, discovered 6 times independently. Finger travel is relatively low and reasonably well balanced.
@@ -521,6 +535,7 @@ This layout has very good scores all around and it was one of the more "popular"
 | Bad bigrams   |    300 | ui:78 eo:48 hr:38 nl:32 yi:32 oe:22 iu:11 tm:8 rh:3 tk:3 dm:3 bc:3 pf:3 uy:3 td:2 wp:2 pb:2 ln:2 km:1 wb:1 wf:1 fw:1 pg:1 |
 | Fast bigrams  |  21320 | th:2373 he:2172 in:1658 an:1561 to:881 ed:856 te:848 st:792 ng:749 al:742 ro:715 ve:677 de:608 ac:521 se:486 tr:460 ca:428 ic:405 nc:396 ho:373 il:334 ts:314 uc:310 et:279 ot:272 so:234 je:233 ig:231 ul:207 rt:178 ci:151 ag:137 cu:125 gy:113 gi:105 cl:101 ht:97 ga:69 ds:65 gn:47 dv:11 hd:4 yn:1 yc:1 |
 | Finger travel |  58321 | 19, 59, 127, 103, 142, 58, 69, 27 |
+| Overall score | 0.7902 |         |
 | Times found   |     16 |         |
 
 This was the most "popular" solution, discovered independently by 16 runs. It has very good scores with only the right index finger having to travel significantly more than other fingers. This is another layout where typing "the" feels awkward.
