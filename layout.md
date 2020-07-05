@@ -127,9 +127,13 @@ The use of different keys for typing an input text can be visualized as a heatma
 
 Weights can be used to express how common the use of a particular key should be. Given a probability distribution of characters in a text, each character probability can be multiplied with its corresponding key weight using a given keyboard layout. A keyboard layout optimized for comfort would maximize the weighted sum. This can also be expressed as a dot-product.
 
+Similarly to individual keys, the finger weights can be evaluated. The weight of the finger is calculated by adding all the weights of the individual keys operated by that finger. The actual usage of the finger is calculated by adding the character frequencies of all characters typed by the finger. The weighted sum or dot-product is a metric for how closely the finger usage matches the weights.
+
 The character probabilities in the input text can be calculated ahead of time. The dot-product has O(1) effort with respect to the size of the input text.
 
-The result of the dot-product should be scaled to the common value range 0 to 1. The lowest possible dot-product should map to 0, the highest to 1. The lowest possible value can be calculated by assigning the most frequent characters to the lowest weighted keys in order and calculating the resulting dot-product. Conversely the highest possible value can be calculated by assigning the most frequent characters to the highest weighted keys. The actual score can be scaled linearly within this range.
+The result of the dot-product should be normalized to the common value range 0 to 1. The lowest possible dot-product should map to 0, the highest to 1. The lowest possible value can be calculated by assigning the most frequent characters to the lowest weighted keys in order and calculating the resulting dot-product. Conversely the highest possible value can be calculated by assigning the most frequent characters to the highest weighted keys. The actual score can be scaled linearly within this range.
+
+The arithmetic mean of the normalized dot products of key and finger usage and weights is forms the heatmap metric.
 
 The choice of key weights is a tuneable quality function parameter (or rather a vector of 30 parameters). To get ambidextrous keyboard layouts, those weights should be symmetric between the left and right hand, which effectively reduces the number of parameters to 15.
 
