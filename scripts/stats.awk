@@ -7,6 +7,7 @@ BEGIN {
 	heatmap_score = 0
 	bad_bigrams_score = 0
 	fast_bigrams_score = 0
+	overall_score = 0
 }
 /Heatmap score/ {
 	heatmap_score = $2 + 0
@@ -19,17 +20,22 @@ BEGIN {
 	if (!fast_bigrams_score)
 		fast_bigrams_score = $2 + 0
 }
+/Overall score/ {
+	if (!overall_score)
+		overall_score = $2 + 0
+}
 /The number of # on the following line/ {
 	trigger = 1
 }
 /^#+$/ {
 	if (trigger) {
-		print length($0), heatmap_score, bad_bigrams_score, fast_bigrams_score
+		print length($0), heatmap_score, bad_bigrams_score, fast_bigrams_score, overall_score
 		total += length($0)
 		trigger = 0
 		heatmap_score = 0
 		bad_bigrams_score = 0
 		fast_bigrams_score = 0
+		overall_score = 0
 	}
 }
 END {
