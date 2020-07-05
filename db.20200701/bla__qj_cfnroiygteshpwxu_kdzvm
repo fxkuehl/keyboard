@@ -6,9 +6,10 @@
  [ P ] [ W ] [ X ] [ U ] [, <] | [ K ] [ D ] [ Z ] [ V ] [ M ]
   3.8   2.7   0.2   4.5   2.5  |  1.0   5.9   0.1   1.8   3.9
  18.1  19.7  25.7  22.5        |       26.6  22.9  18.6  15.9
-Heatmap score: 0.9468
-Bad bigrams:      449
-Fast bigrams:   20309
+Heatmap score: 0.9468 (0.9865)
+Bad bigrams:      449 (0.8339)
+Fast bigrams:   20309 (0.4552)
+Overall score: 0.7774
 Finger travel: 57102: [56, 77, 78, 102, 105, 24, 67, 68]
 Adjusted travel: 61085: [59, 77, 90, 103, 106, 44, 69, 70]
 Hand runs mean, max: (1.7954421941234013, 1.5892640351740657), (9, 8)
@@ -23,6 +24,9 @@ layout = [
     'nN', 'rR', 'oO', 'iI', 'yY',    'gG', 'tT', 'eE', 'sS', 'hH',
     'pP', 'wW', 'xX', 'uU', ',<',    'kK', 'dD', 'zZ', 'vV', 'mM'
 ]
+
+from eval_layout import eval_layout
+eval_layout(layout)
 
 # The number of # on the following line counts discoveries of this layout.
 #

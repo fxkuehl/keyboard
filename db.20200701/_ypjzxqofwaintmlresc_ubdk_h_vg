@@ -6,9 +6,10 @@
  [. >] [ U ] [ B ] [ D ] [ K ] | [' "] [ H ] [, <] [ V ] [ G ]
   2.9   4.5   2.2   5.9   1.0  |  0.8   7.8   2.5   1.8   3.2
  15.7  18.8  18.1  27.1        |       26.1  35.5  16.2  12.6
-Heatmap score: 0.9373
-Bad bigrams:      311
-Fast bigrams:   22772
+Heatmap score: 0.9373 (0.9818)
+Bad bigrams:      311 (0.8530)
+Fast bigrams:   22772 (0.4821)
+Overall score: 0.7925
 Finger travel: 59321: [27, 69, 56, 106, 113, 127, 54, 49]
 Adjusted travel: 62073: [33, 73, 61, 107, 115, 131, 58, 51]
 Hand runs mean, max: (1.5600638869065824, 1.7686769899483836), (10, 9)
@@ -24,15 +25,18 @@ layout = [
     '.>', 'uU', 'bB', 'dD', 'kK',   '\'"', 'hH', ',<', 'vV', 'gG'
 ]
 
+from eval_layout import eval_layout
+eval_layout(layout)
+
 # The number of # on the following line counts discoveries of this layout.
 #
 # Good overall scores
 # Somewhat high finger travel distance, but quite balanced, only right ring finger travelling a bit more
 # Doesn't have th as a fast bigram, that may be a good thing for the "the" 3-gram that I found awkward in other layouts
 # Right ring finger busier than middle finger
-
+#
 # This layout was only found once. With some tweaks to the quality function, I may find more similar layouts.
-
+#
 # So far this is my favourite layout, all things considered. I also like the catchy name "AINT".
 # Or AINT-UBDK = Ain't my usual badly designed keymap.
 # For adoption I'd tweak it to move '" and ;: to their Dvorak positions and ,< H .> in the right hand
