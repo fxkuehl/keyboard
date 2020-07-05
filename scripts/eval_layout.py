@@ -362,7 +362,7 @@ class Keymap:
             print()
         return runs
 
-    finger_keys = (
+    _finger_keys = (
             (0, 10, 20),
             (1, 11, 21),
             (2, 12, 22),
@@ -373,7 +373,7 @@ class Keymap:
             (9, 19, 29))
     def calc_bigrams_same_finger(self, t, freq_map=None):
         num = 0
-        for keys in self.finger_keys:
+        for keys in self._finger_keys:
             for a, b in itertools.permutations(keys, 2):
                 bigram = (self.layout[a][0], self.layout[b][0])
                 try:
@@ -398,15 +398,82 @@ class Keymap:
                 pass
         return num
 
-    def eval_opt(self, text, full=False):
+    _key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
+                    10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
+                     4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
+    _finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
+    _sorted_key_weights = _key_weights[:]
+    _sorted_key_weights.sort()
+    _sorted_finger_weights = _finger_weights[:]
+    _sorted_finger_weights.sort()
+
+    @classmethod
+    def _score_heatmap(cls, heatmap):
+        score = sum(map(operator.mul, heatmap, cls._key_weights))
+
+        sorted_heatmap = heatmap[:]
+        sorted_heatmap.sort()
+        best_score = sum(map(operator.mul,
+                             sorted_heatmap, cls._sorted_key_weights))
+        sorted_heatmap.reverse()
+        worst_score = sum(map(operator.mul,
+                              sorted_heatmap, cls._sorted_key_weights))
+
+        return (score - worst_score) / (best_score - worst_score)
+
+    @staticmethod
+    def _normalize(heatmap, factor):
+        return [h * factor for h in heatmap]
+
+    @staticmethod
+    def _finger_heat(h):
+        f = [h[ 0]+h[10]+h[20],
+             h[ 1]+h[11]+h[21],
+             h[ 2]+h[12]+h[22],
+             h[ 3]+h[ 4]+h[13]+h[14]+h[23]+h[24],
+             h[ 5]+h[ 6]+h[15]+h[16]+h[25]+h[26],
+             h[ 7]+h[17]+h[27],
+             h[ 8]+h[18]+h[28],
+             h[ 9]+h[19]+h[29]]
+        return f
+
+    @classmethod
+    def _score_finger_heat(cls, heatmap):
+        score = sum(map(operator.mul, heatmap, cls._finger_weights))
+
+        sorted_heatmap = heatmap[:]
+        sorted_heatmap.sort()
+        best_score = sum(map(operator.mul,
+                             sorted_heatmap, cls._sorted_finger_weights))
+        sorted_heatmap.reverse()
+        worst_score = sum(map(operator.mul,
+                              sorted_heatmap, cls._sorted_finger_weights))
+
+        return (score - worst_score) / (best_score - worst_score)
+
+    def _heatmap_metric(self):
+        #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
+        return (math.sqrt(self.heatmap_score) +
+                math.sqrt(self.finger_score)) / 2
+        #return (key_score + finger_score) / 2
+
+    def _same_finger_bigrams_metric(self):
+        bad_bigrams = self.bad_bigrams / self.strokes
+        return 1.0 - bad_bigrams**(1/3)
+
+    def _fast_bigrams_metric(self):
+        good_bigrams = self.fast_bigrams / self.strokes
+        return math.sqrt(good_bigrams)
+
+    def eval_score(self, text, full=False):
         self.heatmap = self.calc_heatmap(text)
         self.strokes = sum(self.heatmap)
-        self.heatmap_score = score_heatmap(self.heatmap)
-        self.normalized_heatmap = normalize(self.heatmap,
-                sum(key_weights) / self.strokes)
-        self.finger_heatmap = finger_heat(self.normalized_heatmap)
-        finger_heatmap = finger_heat(self.heatmap)
-        self.finger_score = score_finger_heat(finger_heatmap)
+        self.heatmap_score = self._score_heatmap(self.heatmap)
+        self.normalized_heatmap = self._normalize(self.heatmap,
+                sum(self._key_weights) / self.strokes)
+        self.finger_heatmap = self._finger_heat(self.normalized_heatmap)
+        finger_heatmap = self._finger_heat(self.heatmap)
+        self.finger_score = self._score_finger_heat(finger_heatmap)
 
         if full:
             self.bad_bigram_freq = {}
@@ -419,13 +486,21 @@ class Keymap:
         self.fast_bigrams = self.calc_fast_bigrams(text,
                 freq_map = self.fast_bigram_freq)
 
+        self.scores = (self._heatmap_metric(),
+                       self._same_finger_bigrams_metric(),
+                       self._fast_bigrams_metric())
+        w = (1, 2, 1)
+        self.overall_score = sum((w[i] * self.scores[i] for i in range(len(self.scores)))) / sum(w)
+
+        return self.overall_score
+
     def eval(self, text, debug = 0):
-        self.eval_opt(text, full=True)
+        self.eval_score(text, full=True)
 
         self.finger_travel = self.calc_finger_travel(text)
         self.adjusted_travel = self.calc_adjusted_travel(text)
-        self.normalized_travel = normalize(self.finger_travel, 1000 / self.strokes)
-        self.norm_adj_travel = normalize(self.adjusted_travel, 1000 / self.strokes)
+        self.normalized_travel = self._normalize(self.finger_travel, 1000 / self.strokes)
+        self.norm_adj_travel = self._normalize(self.adjusted_travel, 1000 / self.strokes)
 
         self.hand_runs = self.calc_hand_runs(text, debug)
 
@@ -447,11 +522,42 @@ class Keymap:
         print("Bad bigrams:   %6d" % self.bad_bigrams, file=file)
         print("Fast bigrams:  %6d" % self.fast_bigrams, file=file)
 
+    def _mean_runs(self):
+        mean = [0, 0]
+        for hand in range(2):
+            nom = 0
+            denom = 0
+            for length, num in self.hand_runs[hand].items():
+                nom += length*num
+                denom += num
+            if denom:
+                mean[hand] = nom / denom
+        return (mean[0], mean[1])
+
+    def _median_runs(self):
+        median = [0, 0]
+        for hand in range(2):
+            num = 0
+            for length, num in self.hand_runs[hand].items():
+                num += num
+            lengths = list(runs[hand].keys())
+            lengths.sort()
+            num /= 2
+            for length in lengths:
+                num -= runs[hand][length]
+                if num <= 0:
+                    median[hand] = length
+                    break
+        return (median[0], median[1])
+
+    def _max_runs(self):
+        return (max(self.hand_runs[0].keys()), max(self.hand_runs[1].keys()))
+
     def print_summary(self, file=sys.stdout):
         self.print_short_summary(file=file)
         print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]), file=file)
         print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]), file=file)
-        print("Hand runs mean, max: %s, %s" % (repr(mean_runs(self.hand_runs)), repr(max_runs(self.hand_runs))), file=file)
+        print("Hand runs mean, max: %s, %s" % (repr(self._mean_runs()), repr(self._max_runs())), file=file)
 
         print("\nBad bigrams: ", end="", file=file)
         # Sort most frequent first
@@ -523,89 +629,6 @@ keymaps = {}
 for name, layout in layouts.items():
     keymaps[name] = Keymap(layout)
 
-#key_weights = [1,     12, 21,  6, 3,   3,  6, 21, 12,  1,
-#               3,  5, 12, 18, 18, 9,   9, 18, 18, 12,  5,  3,
-#               4,      6,  6,  6, 3,   3,  6,  6,  6,  4]
-key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
-               10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
-                4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
-finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
-sorted_key_weights = key_weights[:]
-sorted_key_weights.sort()
-sorted_finger_weights = finger_weights[:]
-sorted_finger_weights.sort()
-
-def score_heatmap(heatmap):
-    global key_weights, sorted_key_weigts
-
-    score = sum(map(operator.mul, heatmap, key_weights))
-
-    sorted_heatmap = heatmap[:]
-    sorted_heatmap.sort()
-    best_score = sum(map(operator.mul, sorted_heatmap, sorted_key_weights))
-    sorted_heatmap.reverse()
-    worst_score = sum(map(operator.mul, sorted_heatmap, sorted_key_weights))
-
-    return (score - worst_score) / (best_score - worst_score)
-
-def normalize(heatmap, factor):
-    return [h * factor for h in heatmap]
-
-def finger_heat(h):
-    f = [h[ 0]+h[10]+h[20],
-         h[ 1]+h[11]+h[21],
-         h[ 2]+h[12]+h[22],
-         h[ 3]+h[ 4]+h[13]+h[14]+h[23]+h[24],
-         h[ 5]+h[ 6]+h[15]+h[16]+h[25]+h[26],
-         h[ 7]+h[17]+h[27],
-         h[ 8]+h[18]+h[28],
-         h[ 9]+h[19]+h[29]]
-    return f
-
-def score_finger_heat(heatmap):
-    global finger_weights, sorted_finger_weights
-
-    score = sum(map(operator.mul, heatmap, finger_weights))
-
-    sorted_heatmap = heatmap[:]
-    sorted_heatmap.sort()
-    best_score = sum(map(operator.mul, sorted_heatmap, sorted_finger_weights))
-    sorted_heatmap.reverse()
-    worst_score = sum(map(operator.mul, sorted_heatmap, sorted_finger_weights))
-
-    return (score - worst_score) / (best_score - worst_score)
-
-def mean_runs(runs):
-    mean = [0, 0]
-    for hand in range(2):
-        nom = 0
-        denom = 0
-        for length, num in runs[hand].items():
-            nom += length*num
-            denom += num
-        if denom:
-            mean[hand] = nom / denom
-    return (mean[0], mean[1])
-
-def median_runs(runs):
-    median = [0, 0]
-    for hand in range(2):
-        num = 0
-        for length, num in runs[hand].items():
-            num += num
-        lengths = list(runs[hand].keys())
-        lengths.sort()
-        num /= 2
-        for length in lengths:
-            num -= runs[hand][length]
-            if num <= 0:
-                median[hand] = length
-                break
-    return (median[0], median[1])
-
-def max_runs(runs):
-    return (max(runs[0].keys()), max(runs[1].keys()))
-
 # Different transformations to a keyboard layout that make bigger
 # changes while trying to leave some properties intact. The hope is,
 # that this will make it more likely to find good gradients to follow
@@ -655,7 +678,7 @@ def mutate_swap_finger_keys(layout, rand):
 # map score
 #
 # Calculate a ranking of keys by weight to help with that
-ranked_weight_index = [(key_weights[i], i) for i in range(30)]
+ranked_weight_index = [(Keymap._key_weights[i], i) for i in range(30)]
 ranked_weight_index.sort(key = lambda a: a[0])
 key_from_rank = [wi[1] for wi in ranked_weight_index]
 def mutate_swap_ranks(layout, rand):
@@ -707,7 +730,7 @@ def anneal(layout, function, seed=None, shuffle=False):
     best_score = function(Keymap(layout))
     accepted_score = best_score
     best_layout = layout
-    print_interval = 1000
+    print_interval = 10000
     count = print_interval
     last_time = time.time()
     rate = 0
@@ -768,99 +791,24 @@ def anneal(layout, function, seed=None, shuffle=False):
     print()
     return best_layout
 
-def swap_fingers(layout, mask):
-    swap = (((0, 9), (10, 19), (20, 29)),
-            ((1, 8), (11, 18), (21, 28)),
-            ((2, 7), (12, 17), (22, 27)),
-            ((3, 6), (4, 5), (13, 16), (14, 15), (23, 26), (24, 25)))
-
-    new_layout = layout[:]
-
-    for bit in range(4):
-        if (1 << bit) & mask:
-            for l, r in swap[bit]:
-                new_layout[r] = layout[l]
-                new_layout[l] = layout[r]
-
-    return new_layout
-
 text = TextStats(sys.stdin.read())
 
-#for name, keymap in keymaps.items():
-#    print("*** Layout: %s ***" % name)
-#    keymap.eval(text)
-#    keymap.print_summary()
-
-
-
-def optimize_runs(keymap):
-    global text
-
-    runs = keymap.calc_hand_runs(text)
-    means = mean_runs(runs)
-    mean = sum(means) / len(means)
-    return (1.0 - 1/mean)
-
-def optimize_weights(keymap):
-    global text
-
-    #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
-    return (math.sqrt(keymap.heatmap_score) +
-            math.sqrt(keymap.finger_score)) / 2
-    #return (key_score + finger_score) / 2
-
-def optimize_bad_bigrams(keymap):
-    bad_bigrams = keymap.bad_bigrams / keymap.strokes
-    return 1.0 - bad_bigrams**(1/3)
-
-def optimize_fast_bigrams(keymap):
-    good_bigrams = keymap.fast_bigrams / keymap.strokes
-    return math.sqrt(good_bigrams)
-
-def optimize_travel(keymap):
-    global text
-
-    travel = sum(keymap.calc_finger_travel(text)) / keymap.strokes / 2
-    return 1 - travel
+if False:
+    for name, keymap in keymaps.items():
+        print("*** Layout: %s ***" % name)
+        keymap.eval(text)
+        keymap.print_summary()
+    sys.exit(0)
 
 def optimize(keymap):
     global text
 
-    keymap.eval_opt(text)
-    scores = (optimize_weights(keymap),
-              optimize_bad_bigrams(keymap),
-              optimize_fast_bigrams(keymap))
-    w = (1, 2, 1)
-    wsum = sum((w[i] * scores[i] for i in range(len(scores))))
-
-    return wsum / sum(w)
+    keymap.eval_score(text)
+    return keymap.overall_score
 
 new_layout = anneal(layout_DVORAK, optimize, seed=None, shuffle=True)
-#new_layout = layout_GAU
 
 new_keymap = Keymap(new_layout)
 new_keymap.eval(text, 6)
 new_keymap.print_summary()
 new_keymap.save_to_db()
-
-# max_means = 0
-# min_means = 100
-# max_keymap = None
-# min_keymap = None
-# for swap_mask in range(8):
-#     swap_layout = swap_fingers(new_layout, swap_mask)
-#     swap_keymap = Keymap(swap_layout)
-#     runs = swap_keymap.calc_hand_runs(text)
-#     means = sum(mean_runs(runs))
-#     print("%d: %f" % (swap_mask, means))
-#     if means > max_means:
-#         max_means = means
-#         max_keymap = swap_keymap
-#     if means < min_means:
-#         min_means = means
-#         min_keymap = swap_keymap
-
-# max_keymap.eval(text, 6)
-# max_keymap.print_summary()
-# min_keymap.eval(text, 6)
-# min_keymap.print_summary()
