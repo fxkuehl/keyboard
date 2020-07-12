@@ -1,0 +1,38 @@
+"""
+ [ Q ] [ G ] [. >] [ J ] [ X ] | [ Z ] [; :] [ O ] [ U ] [ W ]
+  0.3   3.2   2.9   0.6   0.2  |  0.1   0.3  13.0   4.5   2.7
+ [ R ] [ T ] [ E ] [ S ] [ F ] | [ P ] [ N ] [ A ] [ I ] [ C ]
+ 10.2  15.5  19.9  10.1   4.3  |  3.8  12.1  12.5  11.7   6.7
+ [ L ] [ K ] [, <] [ D ] [ V ] | [ B ] [ H ] [' "] [ Y ] [ M ]
+  6.8   1.0   2.5   5.9   1.8  |  2.2   7.8   0.8   2.6   3.9
+ 17.3  19.7  25.3  22.8        |       26.3  26.4  18.8  13.3
+Heatmap score: 0.9517 (0.9878)
+Bad bigrams:      475 (0.8308)
+Fast bigrams:   17957 (0.4281)
+Fast trigrams:   1968 (0.2004)
+Awkward trigs:   1146 (0.7730)
+Overall score: 0.6751
+Finger travel: 56351: [48, 44, 51, 106, 114, 86, 69, 53]
+Adjusted travel: 60090: [51, 53, 61, 107, 116, 95, 71, 56]
+Hand runs mean, max: (1.516593091099929, 1.6981164859605227), (8, 9)
+
+Bad bigrams: hn:138 ui:78 ds:65 yi:32 oa:30 rl:25 ph:24 sf:21 dv:11 iu:11 gt:9 np:7 nh:4 tk:3 kg:3 uy:3 pb:2 bn:2 lr:1 fs:1 df:1 hb:1 o':1 a':1 'a:1 
+
+Fast bigrams: in:1658 an:1561 on:1421 re:1239 es:861 ed:856 te:848 st:792 co:717 ha:640 le:638 de:608 io:581 hi:557 se:486 ma:471 rs:447 no:443 ca:428 nc:396 ch:370 ts:314 na:307 un:281 ia:254 ni:241 ld:219 rd:79 ls:71 dr:38 gs:32 nm:28 nu:22 sl:21 dl:17 ih:6 td:2 uo:2 hm:2 sg:1 sr:1 ah:1 
+
+Fast trigrams: ion:550 con:364 man:294 res:206 ted:205 can:99 red:82 led:74 les:54 tes:21 ian:19 
+
+Awkward trigrams: anc:190 hin:98 han:70 est:60 ina:60 sed:58 inc:51 ona:46 lde:44 des:42 uni:42 ste:39 cha:39 chi:35 nco:29 onc:27 unc:25 ani:24 onm:20 rse:18 rst:17 nch:15 rde:13 dre:13 sle:10 dle:8 ano:8 ldr:6 nio:6 oni:5 tse:4 lse:4 inu:4 una:3 gst:2 rdl:2 edl:1 sre:1 std:1 uno:1 chm:1 ino:1 anu:1 nia:1 hma:1 
+"""
+
+layout = [
+    'qQ', 'gG', '.>', 'jJ', 'xX',    'zZ', ';:', 'oO', 'uU', 'wW',
+    'rR', 'tT', 'eE', 'sS', 'fF',    'pP', 'nN', 'aA', 'iI', 'cC',
+    'lL', 'kK', ',<', 'dD', 'vV',    'bB', 'hH','\'"', 'yY', 'mM'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

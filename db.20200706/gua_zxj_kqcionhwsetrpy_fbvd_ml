@@ -1,0 +1,38 @@
+"""
+ [ Q ] [ K ] [. >] [ J ] [ X ] | [ Z ] [; :] [ A ] [ U ] [ G ]
+  0.3   1.0   2.9   0.6   0.2  |  0.1   0.3  12.5   4.5   3.2
+ [ R ] [ T ] [ E ] [ S ] [ W ] | [ H ] [ N ] [ O ] [ I ] [ C ]
+ 10.2  15.5  19.9  10.1   2.7  |  7.8  12.1  13.0  11.7   6.7
+ [ L ] [ M ] [, <] [ D ] [ V ] | [ B ] [ F ] [' "] [ Y ] [ P ]
+  6.8   3.9   2.5   5.9   1.8  |  2.2   4.3   0.8   2.6   3.8
+ 17.3  20.4  25.3  21.3        |       26.8  26.4  18.8  13.7
+Heatmap score: 0.9425 (0.9854)
+Bad bigrams:      520 (0.8256)
+Fast bigrams:   17828 (0.4265)
+Fast trigrams:   1768 (0.1900)
+Awkward trigs:    935 (0.7879)
+Overall score: 0.6735
+Finger travel: 57047: [48, 47, 51, 97, 119, 87, 69, 60]
+Adjusted travel: 61217: [51, 56, 63, 97, 121, 93, 78, 61]
+Hand runs mean, max: (1.5290807344064385, 1.728782093943746), (8, 10)
+
+Bad bigrams: hn:138 ui:78 ds:65 nf:61 yi:32 ws:30 oa:30 rl:25 sw:11 dv:11 iu:11 tm:8 nh:4 tk:3 uy:3 bn:2 lr:1 km:1 hb:1 hf:1 a':1 o':1 'a:1 pg:1 
+
+Fast bigrams: in:1658 an:1561 on:1421 re:1239 es:861 ed:856 te:848 st:792 of:749 co:717 le:638 de:608 io:581 se:486 rs:447 fo:444 no:443 ca:428 nc:396 ts:314 na:307 un:281 po:271 ia:254 ni:241 ld:219 fi:180 if:147 ua:128 rd:79 ls:71 dr:38 sk:36 nu:22 sl:21 dl:17 ks:16 np:7 pf:3 td:2 sr:1 
+
+Fast trigrams: ion:550 con:364 res:206 ted:205 can:99 red:82 pon:79 led:74 les:54 tes:21 ian:19 uan:15 
+
+Awkward trigrams: anc:190 est:60 ina:60 sed:58 inc:51 ona:46 lde:44 des:42 uni:42 ste:39 nco:29 fin:29 onc:27 unc:25 nif:25 ani:24 rse:18 rst:17 rde:13 dre:13 sle:10 dle:8 ano:8 ldr:6 nio:6 oni:5 tse:4 lse:4 unp:4 inu:4 ofi:4 una:3 inp:3 rdl:2 pfi:2 edl:1 sre:1 std:1 uno:1 anu:1 ino:1 nua:1 nia:1 nof:1 fon:1 
+"""
+
+layout = [
+    'qQ', 'kK', '.>', 'jJ', 'xX',    'zZ', ';:', 'aA', 'uU', 'gG',
+    'rR', 'tT', 'eE', 'sS', 'wW',    'hH', 'nN', 'oO', 'iI', 'cC',
+    'lL', 'mM', ',<', 'dD', 'vV',    'bB', 'fF','\'"', 'yY', 'pP'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

@@ -1,0 +1,38 @@
+"""
+ [ W ] [. >] [ D ] [ J ] [ X ] | [ Z ] [ Q ] [ O ] [ U ] [ K ]
+  2.7   2.9   5.9   0.6   0.2  |  0.1   0.3  13.0   4.5   1.0
+ [ C ] [ A ] [ T ] [ S ] [ F ] | [ L ] [ N ] [ E ] [ I ] [ H ]
+  6.7  12.5  15.5  10.1   4.3  |  6.8  12.1  19.9  11.7   7.8
+ [ P ] [' "] [ B ] [ G ] [ V ] | [, <] [ R ] [; :] [ Y ] [ M ]
+  3.8   0.8   2.2   3.2   1.8  |  2.5  10.2   0.3   2.6   3.9
+ 13.2  16.2  23.7  20.1        |       32.0  33.3  18.8  12.7
+Heatmap score: 0.9530 (0.9881)
+Bad bigrams:      449 (0.8339)
+Fast bigrams:   18242 (0.4315)
+Fast trigrams:   1495 (0.1747)
+Awkward trigs:   1131 (0.7740)
+Overall score: 0.6727
+Finger travel: 60082: [53, 31, 77, 89, 150, 100, 69, 40]
+Adjusted travel: 63924: [54, 43, 82, 90, 152, 113, 71, 42]
+Hand runs mean, max: (1.2972756903019496, 1.8554897918467779), (6, 10)
+
+Bad bigrams: rn:118 ui:78 eo:48 gs:32 nl:32 yi:32 rl:25 oe:22 sf:21 iu:11 bt:8 uy:3 wp:2 td:2 ln:2 hm:2 a':1 'a:1 db:1 sg:1 fs:1 vg:1 lr:1 nq:1 nr:1 kh:1 km:1 
+
+Fast bigrams: he:2172 in:1658 er:1566 on:1421 re:1239 en:1130 at:1107 ct:920 st:792 me:669 io:581 ri:521 as:501 no:443 ne:419 ho:373 ts:314 un:281 ie:273 rm:256 ni:241 sa:185 ad:175 ir:150 hn:138 ag:137 sp:133 sc:95 ga:69 ds:65 pt:46 hr:38 ps:33 cs:32 nm:28 nu:22 gt:9 nh:4 rh:3 uo:2 pg:1 
+
+Fast trigrams: ion:550 her:363 men:288 hen:114 ien:86 cts:61 ats:10 hon:8 mer:7 ier:6 ads:1 pts:1 
+
+Awkward trigrams: eri:148 hno:130 one:111 ine:105 erm:66 rie:57 rme:52 ire:49 ner:49 rin:44 uni:42 ren:42 ast:30 rio:29 nme:28 sat:25 onm:20 eno:14 eni:10 hre:9 gat:8 hni:7 sag:6 nio:6 oni:5 une:4 inu:4 irm:4 enu:4 enh:4 nie:4 sad:3 erh:3 hri:2 asp:1 pga:1 gas:1 uno:1 hne:1 ino:1 rhe:1 
+"""
+
+layout = [
+    'wW', '.>', 'dD', 'jJ', 'xX',    'zZ', 'qQ', 'oO', 'uU', 'kK',
+    'cC', 'aA', 'tT', 'sS', 'fF',    'lL', 'nN', 'eE', 'iI', 'hH',
+    'pP','\'"', 'bB', 'gG', 'vV',    ',<', 'rR', ';:', 'yY', 'mM'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

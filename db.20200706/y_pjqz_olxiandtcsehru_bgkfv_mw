@@ -1,0 +1,38 @@
+"""
+ [ Y ] [. >] [ P ] [ J ] [ Q ] | [ Z ] [; :] [ O ] [ L ] [ X ]
+  2.6   2.9   3.8   0.6   0.3  |  0.1   0.3  13.0   6.8   0.2
+ [ I ] [ A ] [ N ] [ D ] [ T ] | [ C ] [ S ] [ E ] [ H ] [ R ]
+ 11.7  12.5  12.1   5.9  15.5  |  6.7  10.1  19.9   7.8  10.2
+ [ U ] [, <] [ B ] [ G ] [ K ] | [ F ] [ V ] [' "] [ M ] [ W ]
+  4.5   2.5   2.2   3.2   1.0  |  4.3   1.8   0.8   3.9   2.7
+ 18.8  17.9  18.1  26.6        |       23.3  33.8  18.4  13.1
+Heatmap score: 0.8862 (0.9644)
+Bad bigrams:      427 (0.8367)
+Fast bigrams:   15949 (0.4034)
+Fast trigrams:   1866 (0.1952)
+Awkward trigs:    780 (0.8003)
+Overall score: 0.6728
+Finger travel: 59651: [69, 51, 56, 111, 106, 105, 81, 26]
+Adjusted travel: 63191: [71, 59, 61, 112, 108, 115, 83, 32]
+Hand runs mean, max: (1.573442061814155, 1.8002324926025082), (10, 10)
+
+Bad bigrams: sc:95 ui:78 eo:48 yi:32 cs:32 dg:28 oe:22 sf:21 iu:11 rw:10 gt:9 np:7 lm:6 e':5 uy:3 tk:3 kg:3 wr:3 pb:2 bn:2 td:2 hm:2 gd:1 fs:1 o':1 
+
+Fast bigrams: he:2172 in:1658 an:1561 re:1239 nd:1091 es:861 ng:749 ro:715 ve:677 se:486 rs:447 lo:390 ho:373 sh:311 we:285 un:281 di:238 so:234 ig:231 du:198 ev:193 id:179 ad:175 ap:173 ag:137 os:132 gi:105 ug:104 ud:91 ip:79 ls:71 ga:69 da:48 gn:47 gu:47 rv:31 ws:30 sl:21 sw:11 dn:5 pd:1 dp:1 hs:1 sr:1 
+
+Fast trigrams: and:719 ing:567 res:206 ind:131 und:61 ung:57 ang:33 hes:30 rev:18 los:13 ros:11 wev:10 hos:9 wes:1 
+
+Awkward trigrams: she:148 ndi:74 ndu:59 sho:59 din:56 ves:53 ign:47 lso:38 ose:32 gan:27 rse:18 adi:17 gin:17 rsh:15 rve:14 sev:12 igu:11 ngi:11 udi:11 nda:7 swe:7 rso:6 eso:5 idu:4 ngu:4 lse:4 slo:4 iga:3 idn:2 adu:2 dip:2 dig:2 dan:2 gun:2 esh:2 adn:1 dap:1 sre:1 
+"""
+
+layout = [
+    'yY', '.>', 'pP', 'jJ', 'qQ',    'zZ', ';:', 'oO', 'lL', 'xX',
+    'iI', 'aA', 'nN', 'dD', 'tT',    'cC', 'sS', 'eE', 'hH', 'rR',
+    'uU', ',<', 'bB', 'gG', 'kK',    'fF', 'vV','\'"', 'mM', 'wW'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

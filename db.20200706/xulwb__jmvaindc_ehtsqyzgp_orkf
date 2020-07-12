@@ -1,0 +1,38 @@
+"""
+ [ V ] [ M ] [ J ] [' "] [; :] | [ B ] [ W ] [ L ] [ U ] [ X ]
+  1.8   3.9   0.6   0.8   0.3  |  2.2   2.7   6.8   4.5   0.2
+ [ S ] [ T ] [ H ] [ E ] [. >] | [ C ] [ D ] [ N ] [ I ] [ A ]
+ 10.1  15.5   7.8  19.9   2.9  |  6.7   5.9  12.1  11.7  12.5
+ [ F ] [ K ] [ R ] [ O ] [, <] | [ P ] [ G ] [ Z ] [ Y ] [ Q ]
+  4.3   1.0  10.2  13.0   2.5  |  3.8   3.2   0.1   2.6   0.3
+ 16.2  20.4  18.6  39.5        |       24.6  19.0  18.8  13.0
+Heatmap score: 0.8455 (0.9532)
+Bad bigrams:      377 (0.8433)
+Fast bigrams:   20050 (0.4523)
+Fast trigrams:   3438 (0.2649)
+Awkward trigs:    896 (0.7909)
+Overall score: 0.6913
+Finger travel: 58088: [54, 47, 59, 160, 144, 50, 69, 5]
+Adjusted travel: 62318: [56, 61, 65, 161, 145, 56, 75, 12]
+Hand runs mean, max: (1.832191780821918, 1.6939221346648983), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 nl:32 yi:32 dg:28 oe:22 sf:21 aq:16 iu:11 xa:10 tm:8 e':5 tk:3 rh:3 bc:3 uy:3 wp:2 pb:2 ln:2 fs:1 km:1 o':1 wb:1 db:1 dp:1 pd:1 pg:1 gd:1 ax:1 
+
+Fast bigrams: th:2373 he:2172 in:1658 an:1561 nd:1091 to:881 es:861 te:848 of:749 ng:749 al:742 me:669 se:486 fo:444 ho:373 il:334 sh:311 et:279 ot:272 em:252 di:238 so:234 je:233 ig:231 ld:219 ul:207 fe:200 du:198 id:179 ad:175 ag:137 os:132 ef:107 gi:105 ud:91 ga:69 eh:64 da:48 gn:47 dl:17 oh:8 dn:5 ej:1 
+
+Fast trigrams: the:1579 and:719 ing:567 she:148 ind:131 tho:90 uld:78 sho:59 ang:33 ild:33 ald:1 
+
+Awkward trigrams: oth:111 ndi:74 ndu:59 din:56 eho:54 ign:47 met:41 eth:40 ose:32 hes:30 seh:29 gan:27 tes:21 hem:21 mes:18 tem:17 efo:17 adi:17 gin:17 dul:14 set:12 ldi:12 udi:11 ngi:11 hos:9 fet:8 hot:7 ote:7 nda:7 fes:6 eso:5 ofe:5 ndl:5 sof:4 het:4 idu:4 gal:4 sem:3 adl:3 iga:3 sef:2 esh:2 ldn:2 adu:2 idl:2 idn:2 dan:2 dig:2 tef:1 tos:1 tof:1 fos:1 udl:1 adn:1 dal:1 dil:1 
+"""
+
+layout = [
+    'vV', 'mM', 'jJ','\'"', ';:',    'bB', 'wW', 'lL', 'uU', 'xX',
+    'sS', 'tT', 'hH', 'eE', '.>',    'cC', 'dD', 'nN', 'iI', 'aA',
+    'fF', 'kK', 'rR', 'oO', ',<',    'pP', 'gG', 'zZ', 'yY', 'qQ'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+##

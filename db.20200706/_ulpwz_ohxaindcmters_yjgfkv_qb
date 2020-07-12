@@ -1,0 +1,38 @@
+"""
+ [' "] [ U ] [ L ] [ P ] [ W ] | [ Z ] [; :] [ O ] [ H ] [ X ]
+  0.8   4.5   6.8   3.8   2.7  |  0.1   0.3  13.0   7.8   0.2
+ [ A ] [ I ] [ N ] [ D ] [ C ] | [ M ] [ T ] [ E ] [ R ] [ S ]
+ 12.5  11.7  12.1   5.9   6.7  |  3.9  15.5  19.9  10.2  10.1
+ [. >] [ Y ] [ J ] [ G ] [ F ] | [ K ] [ V ] [, <] [ Q ] [ B ]
+  2.9   2.6   0.6   3.2   4.3  |  1.0   1.8   2.5   0.3   2.2
+ 16.2  18.8  19.5  26.6        |       22.7  35.5  18.3  12.5
+Heatmap score: 0.9405 (0.9849)
+Bad bigrams:      357 (0.8461)
+Fast bigrams:   18867 (0.4388)
+Fast trigrams:   1673 (0.1848)
+Awkward trigs:   1031 (0.7809)
+Overall score: 0.6803
+Finger travel: 58898: [31, 69, 56, 168, 72, 127, 52, 23]
+Adjusted travel: 63191: [36, 77, 61, 169, 75, 134, 62, 27]
+Hand runs mean, max: (1.6438014204345686, 1.7601855032634834), (10, 10)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 nl:32 bs:31 dg:28 oe:22 iu:11 tm:8 uy:3 pf:3 tk:3 rh:3 sb:3 ln:2 wp:2 'a:1 a':1 pd:1 pg:1 wf:1 dp:1 df:1 gd:1 fw:1 km:1 
+
+Fast bigrams: th:2373 in:1658 an:1561 re:1239 nd:1091 to:881 te:848 st:792 ng:749 al:742 ro:715 ve:677 se:486 tr:460 ho:373 il:334 be:316 ts:314 et:279 ot:272 di:238 so:234 ig:231 ld:219 ul:207 du:198 ev:193 id:179 rt:178 ad:175 ag:137 gi:105 ht:97 ud:91 ga:69 da:48 gn:47 rv:31 dl:17 bt:8 dn:5 
+
+Fast trigrams: and:719 ing:567 ind:131 uld:78 bet:35 ang:33 ild:33 rev:18 rot:17 set:12 sev:12 ret:10 hot:7 ald:1 
+
+Awkward trigrams: str:212 oth:111 tho:90 ndi:74 ndu:59 din:56 ign:47 eth:40 ste:39 gan:27 tre:25 tro:24 rth:18 adi:17 gin:17 dul:14 rve:14 rts:13 ldi:12 udi:11 ngi:11 sto:11 rte:10 etr:9 nda:7 ote:7 ets:6 ndl:5 idu:4 gal:4 hte:4 ots:4 tse:4 adl:3 iga:3 ldn:2 adu:2 idl:2 idn:2 dan:2 dig:2 udl:1 adn:1 dal:1 dil:1 hts:1 rto:1 vet:1 
+"""
+
+layout = [
+   '\'"', 'uU', 'lL', 'pP', 'wW',    'zZ', ';:', 'oO', 'hH', 'xX',
+    'aA', 'iI', 'nN', 'dD', 'cC',    'mM', 'tT', 'eE', 'rR', 'sS',
+    '.>', 'yY', 'jJ', 'gG', 'fF',    'kK', 'vV', ',<', 'qQ', 'bB'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

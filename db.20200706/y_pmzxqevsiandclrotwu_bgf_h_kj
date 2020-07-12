@@ -1,0 +1,38 @@
+"""
+ [ Y ] [. >] [ P ] [ M ] [ Z ] | [ X ] [ Q ] [ E ] [ V ] [ S ]
+  2.6   2.9   3.8   3.9   0.1  |  0.2   0.3  19.9   1.8  10.1
+ [ I ] [ A ] [ N ] [ D ] [ C ] | [ L ] [ R ] [ O ] [ T ] [ W ]
+ 11.7  12.5  12.1   5.9   6.7  |  6.8  10.2  13.0  15.5   2.7
+ [ U ] [, <] [ B ] [ G ] [ F ] | [; :] [ H ] [' "] [ K ] [ J ]
+  4.5   2.5   2.2   3.2   4.3  |  0.3   7.8   0.8   1.0   0.6
+ 18.8  17.9  18.1  24.1        |       25.6  33.8  18.3  13.4
+Heatmap score: 0.8240 (0.9474)
+Bad bigrams:      359 (0.8458)
+Fast bigrams:   18616 (0.4359)
+Fast trigrams:   2514 (0.2265)
+Awkward trigs:    831 (0.7961)
+Overall score: 0.6829
+Finger travel: 59097: [69, 51, 56, 141, 111, 107, 30, 35]
+Adjusted travel: 63103: [71, 59, 61, 141, 112, 114, 44, 37]
+Hand runs mean, max: (1.5761883299240718, 1.818276220145379), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 ws:30 dg:28 rl:25 oe:22 iu:11 sw:11 np:7 e':5 uy:3 dm:3 gm:3 rh:3 tk:3 pb:2 bn:2 mf:1 df:1 gd:1 lr:1 o':1 
+
+Fast bigrams: th:2373 in:1658 er:1566 an:1561 re:1239 or:1105 nd:1091 to:881 te:848 ng:749 ro:715 ve:677 tr:460 ho:373 we:285 un:281 wh:242 di:238 ig:231 wo:226 du:198 id:179 rt:178 ad:175 ap:173 ag:137 gi:105 ug:104 ht:97 ud:91 ip:79 ga:69 da:48 gn:47 gu:47 rv:31 jo:30 rw:10 oh:8 dn:5 wr:3 pd:1 dp:1 hw:1 
+
+Fast trigrams: and:719 ing:567 tor:295 ver:252 ter:203 wer:138 ind:131 und:61 ung:57 wor:52 ang:33 jor:6 
+
+Awkward trigrams: ore:92 tho:90 ort:81 ndi:74 ndu:59 din:56 ign:47 who:47 gan:27 tre:25 tro:24 ert:20 rth:18 adi:17 gin:17 erv:17 rve:14 igu:11 ngi:11 udi:11 rte:10 hor:10 nda:7 erw:6 idu:4 ngu:4 ero:4 hte:4 iga:3 orw:3 rwo:3 idn:2 adu:2 dip:2 dig:2 dan:2 gun:2 adn:1 dap:1 rto:1 
+"""
+
+layout = [
+    'yY', '.>', 'pP', 'mM', 'zZ',    'xX', 'qQ', 'eE', 'vV', 'sS',
+    'iI', 'aA', 'nN', 'dD', 'cC',    'lL', 'rR', 'oO', 'tT', 'wW',
+    'uU', ',<', 'bB', 'gG', 'fF',    ';:', 'hH','\'"', 'kK', 'jJ'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

@@ -1,0 +1,38 @@
+"""
+ [' "] [ U ] [ L ] [ K ] [ Z ] | [ X ] [ V ] [ E ] [ H ] [ P ]
+  0.8   4.5   6.8   1.0   0.1  |  0.2   1.8  19.9   7.8   3.8
+ [ A ] [ I ] [ N ] [ D ] [ T ] | [ F ] [ S ] [ O ] [ R ] [ C ]
+ 12.5  11.7  12.1   5.9  15.5  |  4.3  10.1  13.0  10.2   6.7
+ [. >] [ Y ] [ M ] [ G ] [ B ] | [, <] [ J ] [; :] [ Q ] [ W ]
+  2.9   2.6   3.9   3.2   2.2  |  2.5   0.6   0.3   0.3   2.7
+ 16.2  18.8  22.7  28.0        |       19.4  33.3  18.3  13.2
+Heatmap score: 0.8445 (0.9595)
+Bad bigrams:      384 (0.8423)
+Fast bigrams:   16538 (0.4108)
+Fast trigrams:   2165 (0.2102)
+Awkward trigs:    672 (0.8100)
+Overall score: 0.6792
+Finger travel: 59966: [31, 69, 90, 124, 88, 101, 52, 53]
+Adjusted travel: 63857: [36, 79, 93, 125, 89, 108, 64, 54]
+Hand runs mean, max: (1.7234754715665423, 1.7534211951615815), (10, 10)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 nl:32 nm:28 dg:28 oe:22 sf:21 iu:11 gt:9 bt:8 lm:6 uy:3 kg:3 tk:3 rh:3 ln:2 td:2 wp:2 'a:1 a':1 db:1 gd:1 fs:1 
+
+Fast bigrams: he:2172 in:1658 an:1561 re:1239 nd:1091 es:861 ng:749 al:742 co:717 ro:715 se:486 ce:469 rs:447 il:334 sh:311 di:238 so:234 ig:231 oj:228 wo:226 ld:219 ul:207 du:198 id:179 ad:175 ag:137 os:132 gi:105 sc:95 ud:91 ga:69 da:48 gn:47 cs:32 ws:30 jo:30 dl:17 sw:11 dn:5 hs:1 sr:1 
+
+Fast trigrams: and:719 ing:567 roj:228 res:206 ind:131 ces:97 uld:78 ang:33 ild:33 cos:31 hes:30 ros:11 ald:1 
+
+Awkward trigrams: she:148 ndi:74 ndu:59 din:56 sco:48 ign:47 ose:32 gan:27 rse:18 adi:17 gin:17 rsh:15 dul:14 ldi:12 udi:11 ngi:11 esc:10 nda:7 rso:6 ndl:5 eso:5 idu:4 gal:4 adl:3 iga:3 ldn:2 adu:2 idl:2 idn:2 dan:2 dig:2 esh:2 udl:1 adn:1 dal:1 dil:1 sre:1 
+"""
+
+layout = [
+   '\'"', 'uU', 'lL', 'kK', 'zZ',    'xX', 'vV', 'eE', 'hH', 'pP',
+    'aA', 'iI', 'nN', 'dD', 'tT',    'fF', 'sS', 'oO', 'rR', 'cC',
+    '.>', 'yY', 'mM', 'gG', 'bB',    ',<', 'jJ', ';:', 'qQ', 'wW'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

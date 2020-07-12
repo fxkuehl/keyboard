@@ -1,0 +1,38 @@
+"""
+ [ Y ] [ K ] [ O ] [ Q ] [ X ] | [ Z ] [ F ] [ P ] [. >] [; :]
+  2.6   1.0  13.0   0.3   0.2  |  0.1   4.3   3.8   2.9   0.3
+ [ H ] [ T ] [ E ] [ R ] [ L ] | [ S ] [ D ] [ N ] [ A ] [ I ]
+  7.8  15.5  19.9  10.2   6.8  | 10.1   5.9  12.1  12.5  11.7
+ [ V ] [ M ] [, <] [ J ] [ W ] | [ C ] [ G ] [ B ] [' "] [ U ]
+  1.8   3.9   2.5   0.6   2.7  |  6.7   3.2   2.2   0.8   4.5
+ 12.1  20.4  35.5  20.8        |       30.4  18.1  16.2  16.6
+Heatmap score: 0.9082 (0.9682)
+Bad bigrams:      547 (0.8226)
+Fast bigrams:   17845 (0.4267)
+Fast trigrams:   2691 (0.2344)
+Awkward trigs:    718 (0.8058)
+Overall score: 0.6800
+Finger travel: 59993: [42, 47, 127, 83, 179, 56, 31, 43]
+Adjusted travel: 64187: [44, 64, 131, 85, 180, 60, 42, 46]
+Hand runs mean, max: (1.7992125984251968, 1.62516491910284), (11, 11)
+
+Bad bigrams: sc:95 ui:78 ds:65 eo:48 cs:32 gs:32 dg:28 rl:25 wl:24 oe:22 sf:21 hy:19 iu:11 rw:10 tm:8 np:7 tk:3 lw:3 wr:3 pb:2 bn:2 vy:1 km:1 lr:1 fs:1 sg:1 df:1 gd:1 a':1 'a:1 
+
+Fast bigrams: he:2172 in:1658 er:1566 an:1561 re:1239 or:1105 nd:1091 to:881 te:848 ng:749 ro:715 ve:677 tr:460 ho:373 un:281 di:238 je:233 ig:231 du:198 id:179 rt:178 ad:175 ap:173 ag:137 gi:105 ug:104 ud:91 ip:79 ga:69 rk:56 da:48 gn:47 gu:47 hr:38 rv:31 dn:5 rh:3 ko:1 ej:1 pd:1 dp:1 
+
+Fast trigrams: and:719 ing:567 her:363 tor:295 ver:252 ter:203 ind:131 und:61 ung:57 ang:33 hor:10 
+
+Awkward trigrams: ore:92 ort:81 ndi:74 ndu:59 din:56 ign:47 ork:30 gan:27 tre:25 tro:24 hro:23 ert:20 erv:17 adi:17 gin:17 rve:14 igu:11 ngi:11 udi:11 rte:10 hre:9 nda:7 ero:4 idu:4 ngu:4 erh:3 iga:3 idn:2 adu:2 dip:2 dig:2 dan:2 gun:2 rhe:1 rto:1 rej:1 jer:1 adn:1 dap:1 
+"""
+
+layout = [
+    'yY', 'kK', 'oO', 'qQ', 'xX',    'zZ', 'fF', 'pP', '.>', ';:',
+    'hH', 'tT', 'eE', 'rR', 'lL',    'sS', 'dD', 'nN', 'aA', 'iI',
+    'vV', 'mM', ',<', 'jJ', 'wW',    'cC', 'gG', 'bB','\'"', 'uU'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#

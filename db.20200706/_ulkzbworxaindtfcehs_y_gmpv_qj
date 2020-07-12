@@ -1,0 +1,38 @@
+"""
+ [' "] [ U ] [ L ] [ K ] [ Z ] | [ B ] [ W ] [ O ] [ R ] [ X ]
+  0.8   4.5   6.8   1.0   0.1  |  2.2   2.7  13.0  10.2   0.2
+ [ A ] [ I ] [ N ] [ D ] [ T ] | [ F ] [ C ] [ E ] [ H ] [ S ]
+ 12.5  11.7  12.1   5.9  15.5  |  4.3   6.7  19.9   7.8  10.1
+ [. >] [ Y ] [, <] [ G ] [ M ] | [ P ] [ V ] [; :] [ Q ] [ J ]
+  2.9   2.6   2.5   3.2   3.9  |  3.8   1.8   0.3   0.3   0.6
+ 16.2  18.8  21.4  29.7        |       21.5  33.3  18.3  10.9
+Heatmap score: 0.8821 (0.9696)
+Bad bigrams:      345 (0.8479)
+Fast bigrams:   15901 (0.4028)
+Fast trigrams:   1907 (0.1973)
+Awkward trigs:    780 (0.8003)
+Overall score: 0.6776
+Finger travel: 59582: [31, 69, 78, 136, 129, 100, 53, 8]
+Adjusted travel: 63554: [36, 78, 80, 138, 130, 108, 61, 13]
+Hand runs mean, max: (1.693121332059506, 1.7589730535655843), (10, 9)
+
+Bad bigrams: ui:78 eo:48 hr:38 yi:32 nl:32 dg:28 oe:22 iu:11 gt:9 tm:8 uy:3 kg:3 dm:3 tk:3 gm:3 bc:3 pf:3 rh:3 ln:2 td:2 wp:2 pb:2 'a:1 a':1 km:1 gd:1 wb:1 wf:1 fw:1 
+
+Fast bigrams: he:2172 in:1658 an:1561 nd:1091 ng:749 al:742 co:717 ro:715 ve:677 ec:639 se:486 ce:469 ho:373 ch:370 il:334 di:238 so:234 je:233 ig:231 ld:219 cr:212 ul:207 du:198 ev:193 id:179 ad:175 ag:137 oc:113 gi:105 sc:95 ud:91 rc:70 ga:69 da:48 gn:47 cs:32 dl:17 dn:5 
+
+Fast trigrams: and:719 ing:567 jec:232 ind:131 uld:78 soc:44 roc:39 ang:33 ild:33 sec:15 sev:12 hec:3 ald:1 
+
+Awkward trigrams: ech:137 ndi:74 ndu:59 din:56 sco:48 ign:47 che:36 eco:35 rch:34 rce:29 gan:27 sch:18 adi:17 gin:17 oce:17 dul:14 ldi:12 scr:12 cro:12 cho:12 udi:11 ngi:11 nda:7 ndl:5 idu:4 gal:4 adl:3 iga:3 ldn:2 adu:2 idl:2 idn:2 dan:2 dig:2 ecr:2 udl:1 adn:1 dal:1 dil:1 rco:1 
+"""
+
+layout = [
+   '\'"', 'uU', 'lL', 'kK', 'zZ',    'bB', 'wW', 'oO', 'rR', 'xX',
+    'aA', 'iI', 'nN', 'dD', 'tT',    'fF', 'cC', 'eE', 'hH', 'sS',
+    '.>', 'yY', ',<', 'gG', 'mM',    'pP', 'vV', ';:', 'qQ', 'jJ'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#
