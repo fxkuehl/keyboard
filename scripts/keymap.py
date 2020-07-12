@@ -137,17 +137,19 @@ class Keymap:
 
     # Favourable bigrams that are easy and fast to type
     # Left hand only, right hand will be auto-generated
-    _fast_bigrams = [( 1,  2), ( 1, 13),
-                     ( 2, 13),
-                     (10,  2), (10, 12), (10, 13), (10, 23),
-                     (11,  2), (11, 12), (11, 13), (11, 23),
-                     (12, 13), (12, 23),
-                     (13,  1), (13,  2), (13, 10), (13, 11), (13, 12), (13, 20),
-                     (20, 12), (20, 13), (20, 22), (20, 23),
-                     (21, 12), (21, 13), (21, 22), (21, 23),
-                     (22, 23),
-                     (23, 10), (23, 11), (23, 12), (23, 20), (23, 21), (23, 22)]
-    _fast_bigrams.extend([(_mirror_key(a), _mirror_key(b)) for a, b in _fast_bigrams])
+    # From fast bigrams we can also construct fast and awkward 3-grams.
+    # Fast ones are 3-grams that go in one direction left-right or
+    # right-left. Awkward ones are those that change direction.
+    _fast_bigrams_lr = [( 1,  2), ( 1, 13),
+                        ( 2, 13),
+                        (10,  2), (10, 12), (10, 13), (10, 23),
+                        (11,  2), (11, 12), (11, 13), (11, 23),
+                        (12, 13), (12, 23),
+                        (20, 12), (20, 13), (20, 23)]
+    _fast_bigrams_rl = [(13,  1), (13,  2), (13, 10), (13, 11), (13, 12), (13, 20),
+                        (23, 10), (23, 11), (23, 12), (23, 20)]
+    _fast_bigrams = _fast_bigrams_lr + _fast_bigrams_rl
+    _fast_bigrams += [(_mirror_key(a), _mirror_key(b)) for a, b in _fast_bigrams]
     def calc_fast_bigrams(self, t, freq_map=None):
         num = 0
         for a, b in self._fast_bigrams:
@@ -159,6 +161,41 @@ class Keymap:
             except KeyError:
                 pass
         return num
+
+    _fast_trigrams = [(a[0], a[1], b[1]) for a, b in
+            itertools.permutations(_fast_bigrams_lr, 2) if a[1] == b[0]]
+    _fast_trigrams += [(a[0], a[1], b[1]) for a, b in
+            itertools.permutations(_fast_bigrams_rl, 2) if a[1] == b[0]]
+    _fast_trigrams += [(_mirror_key(a), _mirror_key(b), _mirror_key(c))
+                       for a, b, c in _fast_trigrams]
+    _awkward_trigrams = [(a[0], a[1], b[1]) for a, b in
+                         itertools.product(_fast_bigrams_lr, _fast_bigrams_rl)
+                         if a[1] == b[0] and a[0] != b[1]]
+    _awkward_trigrams += [(a[0], a[1], b[1]) for a, b in
+                          itertools.product(_fast_bigrams_rl, _fast_bigrams_lr)
+                          if a[1] == b[0] and a[0] != b[1]]
+    _awkward_trigrams += [(_mirror_key(a), _mirror_key(b), _mirror_key(c))
+                          for a, b, c in _awkward_trigrams]
+    #print("fast bigrams:", len(_fast_bigrams))
+    #print("fast trigrams:", len(_fast_trigrams))
+    #print(_fast_trigrams)
+    #print("awkward trigrams:", len(_awkward_trigrams))
+    #print(_awkward_trigrams)
+    def _calc_trigrams(self, t, trigrams, freq_map=None):
+        num = 0
+        for a, b, c in trigrams:
+            trigram = (self.layout[a][0], self.layout[b][0], self.layout[c][0])
+            try:
+                num += t.trigrams[trigram]
+                if freq_map != None:
+                    freq_map[trigram] = t.trigrams[trigram]
+            except KeyError:
+                pass
+        return num
+    def calc_fast_trigrams(self, t, freq_map=None):
+        return self._calc_trigrams(t, self._fast_trigrams, freq_map=freq_map)
+    def calc_awkward_trigrams(self, t, freq_map=None):
+        return self._calc_trigrams(t, self._awkward_trigrams, freq_map=freq_map)
 
     _finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
     _sorted_key_weights = key_weights[:]
@@ -224,6 +261,17 @@ class Keymap:
         good_bigrams = self.fast_bigrams / self.strokes
         return math.sqrt(good_bigrams)
 
+    def _fast_trigram_metric(self):
+        # Fast trigrams only move in one direction. So worst case is
+        # two overlapping trigrams in four key strokes. Hence normalize
+        # with self.strokes/2.
+        fast_trigrams = self.fast_trigrams / (self.strokes/2)
+        return math.sqrt(fast_trigrams)
+
+    def _awkward_trigram_metric(self):
+        awkward_trigrams = self.awkward_trigrams / self.strokes
+        return 1.0 - awkward_trigrams**(1/3)
+
     def eval_score(self, text, full=False):
         self.heatmap = self.calc_heatmap(text)
         self.strokes = sum(self.heatmap)
@@ -237,18 +285,28 @@ class Keymap:
         if full:
             self.bad_bigram_freq = {}
             self.fast_bigram_freq = {}
+            self.fast_trigram_freq = {}
+            self.awkward_trigram_freq = {}
         else:
             self.bad_bigram_freq = None
             self.fast_bigram_freq = None
+            self.fast_trigram_freq = None
+            self.awkward_trigram_freq = None
         self.bad_bigrams = self.calc_bigrams_same_finger(text,
                 freq_map=self.bad_bigram_freq)
         self.fast_bigrams = self.calc_fast_bigrams(text,
-                freq_map = self.fast_bigram_freq)
+                freq_map=self.fast_bigram_freq)
+        self.fast_trigrams = self.calc_fast_trigrams(text,
+                freq_map=self.fast_trigram_freq)
+        self.awkward_trigrams = self.calc_awkward_trigrams(text,
+                freq_map=self.awkward_trigram_freq)
 
         self.scores = (self._heatmap_metric(),
                        self._same_finger_bigrams_metric(),
-                       self._fast_bigrams_metric())
-        w = (1, 2, 1)
+                       self._fast_bigrams_metric(),
+                       self._fast_trigram_metric(),
+                       self._awkward_trigram_metric())
+        w = (1, 2, 1, 1, 1)
         self.overall_score = sum((w[i] * self.scores[i] for i in range(len(self.scores)))) / sum(w)
 
         return self.overall_score
@@ -280,6 +338,8 @@ class Keymap:
         print("Heatmap score: %.4f (%.4f)" % (self.heatmap_score, self.scores[0]), file=file)
         print("Bad bigrams:   %6d (%.4f)" % (self.bad_bigrams, self.scores[1]), file=file)
         print("Fast bigrams:  %6d (%.4f)" % (self.fast_bigrams, self.scores[2]), file=file)
+        print("Fast trigrams: %6d (%.4f)" % (self.fast_trigrams, self.scores[3]), file=file)
+        print("Awkward trigs: %6d (%.4f)" % (self.awkward_trigrams, self.scores[4]), file=file)
         print("Overall score: %.4f" % self.overall_score, file=file)
 
     def _mean_runs(self):
@@ -313,6 +373,14 @@ class Keymap:
     def _max_runs(self):
         return (max(self.hand_runs[0].keys()), max(self.hand_runs[1].keys()))
 
+    @staticmethod
+    def _print_gram_freqs(items, file=sys.stdout):
+        # Sort most frequent first
+        items.sort(key=lambda item: item[1], reverse=True)
+        for sym, freq in items:
+            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
+        print(file=file)
+
     def print_summary(self, file=sys.stdout):
         self.print_short_summary(file=file)
         print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]), file=file)
@@ -320,19 +388,13 @@ class Keymap:
         print("Hand runs mean, max: %s, %s" % (repr(self._mean_runs()), repr(self._max_runs())), file=file)
 
         print("\nBad bigrams: ", end="", file=file)
-        # Sort most frequent first
-        items = list(self.bad_bigram_freq.items())
-        items.sort(key=lambda item: item[1], reverse=True)
-        for sym, freq in items:
-            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
-        print(file=file)
+        self._print_gram_freqs(list(self.bad_bigram_freq.items()), file=file)
         print("\nFast bigrams: ", end="", file=file)
-        # Sort most frequent first
-        items = list(self.fast_bigram_freq.items())
-        items.sort(key=lambda item: item[1], reverse=True)
-        for sym, freq in items:
-            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
-        print(file=file)
+        self._print_gram_freqs(list(self.fast_bigram_freq.items()), file=file)
+        print("\nFast trigrams: ", end="", file=file)
+        self._print_gram_freqs(list(self.fast_trigram_freq.items()), file=file)
+        print("\nAwkward trigrams: ", end="", file=file)
+        self._print_gram_freqs(list(self.awkward_trigram_freq.items()), file=file)
 
     def save_to_db(self):
         """
