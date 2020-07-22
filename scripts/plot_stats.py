@@ -46,18 +46,22 @@ class Buckets:
             x += 10
         print()
 
-heat_buckets = Buckets(0.002)
+heat_buckets = Buckets(0.003)
 bad_buckets = Buckets(5)
-fast_buckets = Buckets(150)
+fast_buckets = Buckets(200)
+slow_buckets = Buckets(150)
+fasttri_buckets = Buckets(50)
 score_buckets = Buckets(0.0005)
 
 for line in sys.stdin:
     try:
-        num, heat, bad, fast, score = line.split()
+        num, heat, bad, fast, slow, fasttri, score = line.split()
 
         heat_buckets.add(float(heat), int(num))
         bad_buckets.add(float(bad), int(num))
         fast_buckets.add(float(fast), int(num))
+        slow_buckets.add(float(slow), int(num))
+        fasttri_buckets.add(float(fasttri), int(num))
         score_buckets.add(float(score), int(num))
     except ValueError:
         pass
@@ -85,3 +89,15 @@ print("Fast bigrams distributions")
 print("==========================")
 print()
 fast_buckets.plot("  %5d   ")
+
+print()
+print("Slow bigrams distribution")
+print("=========================")
+print()
+slow_buckets.plot("  %5d   ")
+
+print()
+print("Fast trigrams distribution")
+print("==========================")
+print()
+fasttri_buckets.plot("  %5d   ")

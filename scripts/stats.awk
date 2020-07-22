@@ -7,6 +7,8 @@ BEGIN {
 	heatmap_score = 0
 	bad_bigrams_score = 0
 	fast_bigrams_score = 0
+	slow_bigrams_score = 0
+	fast_trigrams_score = 0
 	overall_score = 0
 }
 /Heatmap score/ {
@@ -20,6 +22,14 @@ BEGIN {
 	if (!fast_bigrams_score)
 		fast_bigrams_score = $2 + 0
 }
+/Slow bigrams/ {
+	if (!slow_bigrams_score)
+		slow_bigrams_score = $2 + 0
+}
+/Fast trigrams/ {
+	if (!fast_trigrams_score)
+		fast_trigrams_score = $2 + 0
+}
 /Overall score/ {
 	if (!overall_score)
 		overall_score = $2 + 0
@@ -29,12 +39,14 @@ BEGIN {
 }
 /^#+$/ {
 	if (trigger) {
-		print length($0), heatmap_score, bad_bigrams_score, fast_bigrams_score, overall_score
+		print length($0), heatmap_score, bad_bigrams_score, fast_bigrams_score, slow_bigrams_score, fast_trigrams_score, overall_score
 		total += length($0)
 		trigger = 0
 		heatmap_score = 0
 		bad_bigrams_score = 0
 		fast_bigrams_score = 0
+		slow_bigrams_score = 0
+		fast_trigrams_score = 0
 		overall_score = 0
 	}
 }
