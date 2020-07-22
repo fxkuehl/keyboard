@@ -3,10 +3,6 @@ import math
 import operator
 import itertools
 
-key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
-               10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
-                4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
-
 # Translate layouts into efficient lookup tables (maps):
 # keymap_... = {symbol : (key, shift, hand, finger, x, y), ...}
 #
@@ -197,23 +193,45 @@ class Keymap:
     def calc_awkward_trigrams(self, t, freq_map=None):
         return self._calc_trigrams(t, self._awkward_trigrams, freq_map=freq_map)
 
+    _key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
+                    10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
+                     4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
+    @staticmethod
+    def _vector_distance(v1, v2):
+        """ Vector distance measure that measures the magnitude of the
+        ratio of elements rather than the absolute value difference. """
+        return math.sqrt(sum(math.log(a / b)**2 for a, b in zip(v1, v2)))
+
     _finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
-    _sorted_key_weights = key_weights[:]
+    _sorted_key_weights = _key_weights[:]
     _sorted_key_weights.sort()
     _sorted_finger_weights = _finger_weights[:]
     _sorted_finger_weights.sort()
 
-    @classmethod
-    def _score_heatmap(cls, heatmap):
-        score = sum(map(operator.mul, heatmap, key_weights))
+    def _score_heatmap(self):
+        score = self._vector_distance(self.normalized_heatmap,
+                                      self._key_weights)
 
-        sorted_heatmap = heatmap[:]
+        sorted_heatmap = self.normalized_heatmap[:]
+        sorted_heatmap.sort()
+        best_score = self._vector_distance(sorted_heatmap,
+                                           self._sorted_key_weights)
+        sorted_heatmap.reverse()
+        worst_score = self._vector_distance(sorted_heatmap,
+                                            self._sorted_key_weights)
+
+        return (score - worst_score) / (best_score - worst_score)
+
+    def _score_heatmap2(self):
+        score = sum(map(operator.mul, self.heatmap, self._key_weights))
+
+        sorted_heatmap = self.heatmap[:]
         sorted_heatmap.sort()
         best_score = sum(map(operator.mul,
-                             sorted_heatmap, cls._sorted_key_weights))
+                             sorted_heatmap, self._sorted_key_weights))
         sorted_heatmap.reverse()
         worst_score = sum(map(operator.mul,
-                              sorted_heatmap, cls._sorted_key_weights))
+                              sorted_heatmap, self._sorted_key_weights))
 
         return (score - worst_score) / (best_score - worst_score)
 
@@ -233,17 +251,32 @@ class Keymap:
              h[ 9]+h[19]+h[29]]
         return f
 
-    @classmethod
-    def _score_finger_heat(cls, heatmap):
-        score = sum(map(operator.mul, heatmap, cls._finger_weights))
+    def _score_finger_heat(self):
+        score = self._vector_distance(self.finger_heatmap,
+                                      self._finger_weights)
 
-        sorted_heatmap = heatmap[:]
+        sorted_heatmap = self.finger_heatmap[:]
+        sorted_heatmap.sort()
+        best_score = self._vector_distance(sorted_heatmap,
+                                           self._sorted_finger_weights)
+        sorted_heatmap.reverse()
+        worst_score = self._vector_distance(sorted_heatmap,
+                                            self._sorted_finger_weights)
+
+        return (score - worst_score)**2 / (best_score - worst_score)**2
+
+    def _score_finger_heat2(self):
+        finger_heatmap = self._finger_heat(self.heatmap)
+
+        score = sum(map(operator.mul, finder_heatmap, self._finger_weights))
+
+        sorted_heatmap = finger_heatmap[:]
         sorted_heatmap.sort()
         best_score = sum(map(operator.mul,
-                             sorted_heatmap, cls._sorted_finger_weights))
+                             sorted_heatmap, self._sorted_finger_weights))
         sorted_heatmap.reverse()
         worst_score = sum(map(operator.mul,
-                              sorted_heatmap, cls._sorted_finger_weights))
+                              sorted_heatmap, self._sorted_finger_weights))
 
         return (score - worst_score) / (best_score - worst_score)
 
@@ -275,12 +308,11 @@ class Keymap:
     def eval_score(self, text, full=False):
         self.heatmap = self.calc_heatmap(text)
         self.strokes = sum(self.heatmap)
-        self.heatmap_score = self._score_heatmap(self.heatmap)
         self.normalized_heatmap = self._normalize(self.heatmap,
-                sum(key_weights) / self.strokes)
+                sum(self._key_weights) / self.strokes)
+        self.heatmap_score = self._score_heatmap()
         self.finger_heatmap = self._finger_heat(self.normalized_heatmap)
-        finger_heatmap = self._finger_heat(self.heatmap)
-        self.finger_score = self._score_finger_heat(finger_heatmap)
+        self.finger_score = self._score_finger_heat()
 
         if full:
             self.bad_bigram_freq = {}

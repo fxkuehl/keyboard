@@ -4,7 +4,7 @@ import sys
 import time
 import random
 from textstats import TextStats
-from keymap import Keymap, key_weights
+from keymap import Keymap
 
 # The Dvorak layout serves as a good starting point for the set of symbols
 # represented by the core 30 keys.
@@ -63,7 +63,7 @@ def mutate_swap_finger_keys(layout, rand):
 # map score
 #
 # Calculate a ranking of keys by weight to help with that
-ranked_weight_index = [(key_weights[i], i) for i in range(30)]
+ranked_weight_index = [(Keymap._key_weights[i], i) for i in range(30)]
 ranked_weight_index.sort(key = lambda a: a[0])
 key_from_rank = [wi[1] for wi in ranked_weight_index]
 def mutate_swap_ranks(layout, rand):
