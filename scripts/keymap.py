@@ -148,6 +148,9 @@ class Keymap:
                       for a, b in _slow_bigrams]
     for bigram in _fast_bigrams:
         _slow_bigrams.remove(bigram)
+    # No need to count same-finger bigrams twice
+    for bigram in _same_finger_bigrams:
+        _slow_bigrams.remove(bigram)
 
     def _calc_bigrams(self, t, bigrams, freq_map=None):
         num = 0
