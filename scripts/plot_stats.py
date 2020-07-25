@@ -47,11 +47,11 @@ class Buckets:
         print()
 
 heat_buckets = Buckets(0.003)
-bad_buckets = Buckets(5)
-fast_buckets = Buckets(200)
+bad_buckets = Buckets(6)
+fast_buckets = Buckets(250)
 slow_buckets = Buckets(150)
 fasttri_buckets = Buckets(50)
-score_buckets = Buckets(0.0005)
+score_buckets = Buckets(0.0003)
 
 for line in sys.stdin:
     try:
