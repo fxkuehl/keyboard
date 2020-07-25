@@ -257,15 +257,19 @@ class Keymap:
         score = self._vector_distance(self.finger_heatmap,
                                       self._finger_weights)
 
-        sorted_heatmap = self.finger_heatmap[:]
+        sorted_heatmap = self.normalized_heatmap[:]
         sorted_heatmap.sort()
-        best_score = self._vector_distance(sorted_heatmap,
-                                           self._sorted_finger_weights)
-        sorted_heatmap.reverse()
-        worst_score = self._vector_distance(sorted_heatmap,
+        sorted_finger_heat = [
+                sum(sorted_heatmap[27:30]), sum(sorted_heatmap[24:27]),
+                sum(sorted_heatmap[21:24]), sum(sorted_heatmap[18:21]),
+                sum(sorted_heatmap[12:18]), sum(sorted_heatmap[ 6:12]),
+                sum(sorted_heatmap[ 3: 6]), sum(sorted_heatmap[ 0: 3])
+        ]
+        best_score = 0
+        worst_score = self._vector_distance(sorted_finger_heat,
                                             self._sorted_finger_weights)
 
-        return (score - worst_score)**2 / (best_score - worst_score)**2
+        return (score - worst_score) / (best_score - worst_score)
 
     def _score_finger_heat2(self):
         finger_heatmap = self._finger_heat(self.heatmap)
@@ -285,7 +289,7 @@ class Keymap:
     def _heatmap_metric(self):
         #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
         return (math.sqrt(self.heatmap_score) +
-                math.sqrt(self.finger_score)) / 2
+                self.finger_score) / 2
         #return (key_score + finger_score) / 2
 
     def _bad_bigrams_metric(self):
@@ -371,7 +375,7 @@ class Keymap:
 
     def print_short_summary(self, file=sys.stdout):
         self.print_layout_heatmap(file=file)
-        print("Heatmap score: %.4f (%.4f)" % (self.heatmap_score, self.scores[0]), file=file)
+        print("Heatmap score: %.4f %.4f (%.4f)" % (self.heatmap_score, self.finger_score, self.scores[0]), file=file)
         print("Bad bigrams:   %6d (%.4f)" % (self.bad_bigrams, self.scores[1]), file=file)
         print("Slow bigrams:  %6d (%.4f)" % (self.slow_bigrams, self.scores[2]), file=file)
         #print("Fast bigrams:  %6d (%.4f)" % (self.fast_bigrams, self.scores[2]), file=file)
