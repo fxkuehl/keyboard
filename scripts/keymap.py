@@ -201,7 +201,8 @@ class Keymap:
     def _vector_distance(v1, v2):
         """ Vector distance measure that measures the magnitude of the
         ratio of elements rather than the absolute value difference. """
-        return math.sqrt(sum(math.log(a / b)**2 for a, b in zip(v1, v2)))
+        return math.sqrt(sum(math.log(a / b)**2 if a != 0 and b != 0 else 1
+                             for a, b in zip(v1, v2)))
 
     _finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
     _sorted_key_weights = _key_weights[:]
