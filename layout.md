@@ -21,11 +21,11 @@ The remainder of this document is divided into several sections.
 
 **Assumptions and Limitations** defines the scope of this project, what parts of the keyboard layout are part of the attempted optimization, and a brief discussion of the size of the search space.
 
-**Quality function** describes the design of the quality function, which quantifies for the search algorithm what makes a good keyboard layout.
+**Quality function** describes the design of the quality function, which quantifies for the search algorithm what makes a good keyboard layout. Then it reviews existing keyboard layouts with respect to the quality function and its metrics to provide context and a reference for the optimization.
 
 **Optimization algorithm** describes the basic elements of the simulated annealing algorithm that was implemented, concluding with its performance and convergence to good solutions.
 
-**Results** presents a selection of keyboard layouts found by the algorithm.
+**Results** presents and discusses a selection of keyboard layouts found by the algorithm.
 
 ---
 
@@ -253,6 +253,181 @@ Both approaches are being applied in the experiments below. Preprocessing uses a
 
 The texts used in these experiments were copied from [8] and then preprocessed against a growing canonical word list.
 
+## Review of existing keyboard layouts
+
+This section applies the quality function and its metrics to existing keyboard layouts. The scores and discussion of the results provide context and a reference for the solutions found by the optimization algorithm discussed in the next section.
+
+Each keyboard layout is shown with key and finger weights normalized to match the weights used in the heatmap metric of the quality function.
+
+The metrics are presented as follows:
+
+| Metric        | Value       | Details |
+| ------------- | ----------- | :------ |
+| Overall score | Score of the quality function | |
+| Heatmap       | 0 to 1 key metric | 0 to 1 finger metric |
+| Bad bigrams   | Total count | Count for each bigram |
+| Slow bigrams  | Total count |         |
+| Fast 3-grams  | Total count | Count for each 3-gram |
+| Fast bigrams  | Total count | Count for each bigram |
+| Finger travel | Total in units of the key size | Per-finger travel, normalized per 1000 keystrokes |
+| Run length    | Avg # consecutive keystrokes: Left hand | Right hand |
+
+Fast bigrams, finger travel and run length are not directly optimized for, but they are shown here for reference and comparison with other layouts. Finger travel is indirectly affected by the heatmap. Run length and fast bigrams are implicitly optimized by the definition of slow bigrams, which penalize non-fast bigrams in the same hand.
+
+### QWERTY
+
+    [ Q ] [ W ] [ E ] [ R ] [ T ] | [ Y ] [ U ] [ I ] [ O ] [ P ]
+     0.3   2.7  20.0  10.2  15.6  |  2.6   4.6  11.7  13.1   3.8
+    [ A ] [ S ] [ D ] [ F ] [ G ] | [ H ] [ J ] [ K ] [ L ] [; :]
+    12.5  10.2   6.0   4.3   3.2  |  7.8   0.6   1.1   6.8   0.3
+    [ Z ] [ X ] [ C ] [ V ] [ B ] | [ N ] [ M ] [, <] [. >] [/ ?]
+     0.1   0.2   6.8   1.8   2.2  | 12.1   3.9   2.5   2.9   0.2
+    13.0  13.1  32.7  37.3        |       31.5  15.3  22.8   4.3
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.5064 |         |
+| Heatmap       | 0.4204 |  0.7115 |
+| Bad bigrams   |   5773 | ed:856 ec:639 de:608 ce:469 tr:460 ol:439 lo:390 un:281 rt:178 rf:142 hn:138 ft:131 fr:116 gr:103 ki:84 um:82 hu:74 mu:67 br:58 ju:56 rg:51 my:50 ny:45 ik:33 rv:31 ws:30 nm:28 za:24 nu:22 hy:19 aq:16 sw:11 gt:9 bt:8 az:6 rb:4 nh:4 ym:3 uy:3 hm:2 vg:1 yn:1 uj:1 |
+| Slow bigrams  |  23848 |         |
+| Fast 3-grams  |     23 | adv:11 fea:9 few:3 |
+| Fast bigrams  |   3656 | io:581 as:501 ea:401 we:285 fa:245 oj:228 fe:200 af:191 sa:185 ad:175 va:138 av:129 ef:107 ds:65 ew:54 da:48 jo:30 oi:28 sf:21 lk:14 dv:11 kl:8 lm:6 wf:1 df:1 fw:1 fs:1 km:1 |
+| Finger travel |  75173 | 4, 25, 162, 223, 204, 55, 86, 6 |
+| Run length    |   1.68 | 1.48    |
+
+The heatmap score for QWERTY is quite bad. It uses the left hand more heavily than the right hand, and some of the most frequently used keys are away from the home row. There are more bad (same-finger) bigrams than fast bigrams in this layout. The index fingers have to travel a lot and so does the left middle finger.
+
+### Dvorak
+
+    [' "] [, <] [. >] [ P ] [ Y ] | [ F ] [ G ] [ C ] [ R ] [ L ]
+     0.8   2.5   2.9   3.8   2.6  |  4.3   3.2   6.7  10.2   6.8
+    [ A ] [ O ] [ E ] [ U ] [ I ] | [ D ] [ H ] [ T ] [ N ] [ S ]
+    12.5  13.0  19.9   4.5  11.7  |  5.9   7.8  15.5  12.1  10.1
+    [; :] [ Q ] [ J ] [ K ] [ X ] | [ B ] [ M ] [ W ] [ V ] [ Z ]
+     0.3   0.3   0.6   1.0   0.2  |  2.2   3.9   2.7   1.8   0.1
+    13.7  15.9  23.4  23.8        |       27.2  25.0  24.1  17.0
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.6169 |         |
+| Heatmap       | 0.6117 | 0.9270  |
+| Bad bigrams   |   2412 | ct:920 je:233 gh:169 rn:118 up:99 pi:89 ki:84 ip:79 ui:78 ls:71 tw:62 pu:45 mb:43 ik:33 yi:32 xp:31 rv:31 nv:31 dg:28 yp:27 sl:21 tc:16 xi:15 iu:11 py:7 ix:7 uk:4 hd:4 uy:3 gm:3 dm:3 hm:2 oq:1 ej:1 kp:1 ky:1 ku:1 gd:1 df:1 db:1 hf:1 hb:1 mf:1 wt:1 nr:1 |
+| Slow bigrams  |   9837 |         |
+| Fast 3-grams  |     65 | rch:34 sch:18 nth:8 uea:2 stm:1 ntm:1 hts:1 |
+| Fast bigrams  |   7962 | th:2373 nt:892 st:792 ou:514 ea:401 ch:370 ts:314 sh:311 ns:310 cr:212 ke:192 ue:138 hn:138 ua:128 ak:104 ht:97 sc:95 au:87 sm:79 rc:70 ok:62 eo:48 hr:38 ms:36 cs:32 oa:30 nm:28 oe:22 ka:10 sn:9 tm:8 eu:7 nh:4 rh:3 tn:3 uo:2 ek:1 ko:1 hs:1 |
+| Finger travel |  57323 | 11, 27, 30, 115, 168, 90, 93, 46 |
+| Run length    |   1.23 | 1.39    |
+
+The heatmap and bigram scores are much better than QWERTY. Especially the per-finger heatmap is very good. Also finger travel is much reduced. Only the right index finger still travels much more than other fingers.
+
+Dvorak is optimized for alternating hands between keystokes. This is proven by the short average run length and the much lower score of slow bigrams.
+
+Dvorak nearly tripples the number of fast 3-grams, though that number is still very small in absolute terms.
+
+### Colemak
+
+    [ Q ] [ W ] [ F ] [ P ] [ G ] | [ J ] [ L ] [ U ] [ Y ] [; :]
+     0.3   2.7   4.3   3.8   3.2  |  0.6   6.8   4.6   2.6   0.3
+    [ A ] [ R ] [ S ] [ T ] [ D ] | [ H ] [ N ] [ E ] [ I ] [ O ]
+    12.5  10.2  10.2  15.6   6.0  |  7.8  12.1  20.0  11.7  13.1
+    [ Z ] [ X ] [ C ] [ V ] [ B ] | [ K ] [ M ] [, <] [. >] [/ ?]
+     0.1   0.2   6.8   1.8   2.2  |  1.1   3.9   2.5   2.9   0.2
+    13.0  13.1  21.2  32.5        |       32.3  27.1  17.2  13.6
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.6668 |         |
+| Heatmap       | 0.7342 | 0.8797  |
+| Bad bigrams   |    828 | hn:138 ue:138 sc:95 kn:47 pt:46 nk:45 cs:32 nl:32 yi:32 dg:28 nm:28 za:24 sf:21 aq:16 lk:14 dv:11 rw:10 gt:9 bt:8 kl:8 eu:7 az:6 lm:6 nh:4 wr:3 tp:3 pb:2 td:2 ln:2 hm:2 fs:1 pg:1 pd:1 gd:1 dp:1 db:1 vg:1 kh:1 km:1 |
+| Slow bigrams  |  13156 |         |
+| Fast 3-grams  |    604 | tra:172 aft:104 ien:86 oun:79 art:59 ars:32 ast:30 rst:17 oin:13 nio:6 arv:2 nei:2 neo:1 meo:1 |
+| Fast bigrams  |  15410 | in:1658 on:1421 en:1130 at:1107 st:792 me:669 io:581 ar:559 ou:514 as:501 ra:500 tr:460 rs:447 no:443 ne:419 ta:368 ts:314 om:313 im:284 un:281 ie:273 em:252 fa:245 ni:241 mo:209 af:191 sa:185 rt:178 va:138 mi:136 ft:131 av:129 ei:73 tw:62 eo:48 ny:45 rv:31 oi:28 oe:22 nu:22 uy:3 uo:2 wf:1 wt:1 fw:1 sr:1 yn:1 |
+| Finger travel |  57648 | 4, 26, 96, 168, 167, 71, 49, 5 |
+| Run length    |   1.38 | 1.62    |
+
+Colemak brings a further improvement in the heatmap score although the per-finger heatmap is slightly worse. The index and middle fingers are weighted most heavily. On top of the improvements in Dvorak, Colemak brings another big improvement of bad bigrams by factor 3 and fast bigrams by factor 2.
+
+Colemak has more slow bigrams than Dvorak, which goes along with a longer average run length. Total finger travel is about the same as in Dvorak, but more evenly distributed to both hands. Both index fingers still travel a lot.
+
+Colemak has nearly 10 times as many fast 3-grams as Dvorak and over 25 times as many as QWERTY.
+
+### Colemak-DHm
+
+    [ Q ] [ W ] [ F ] [ P ] [ B ] | [ J ] [ L ] [ U ] [ Y ] [; :]
+     0.3   2.7   4.3   3.8   2.2  |  0.6   6.8   4.6   2.6   0.3
+    [ A ] [ R ] [ S ] [ T ] [ G ] | [ M ] [ N ] [ E ] [ I ] [ O ]
+    12.5  10.2  10.2  15.6   3.2  |  3.9  12.1  20.0  11.7  13.1
+    [ Z ] [ X ] [ C ] [ D ] [ V ] | [ K ] [ H ] [, <] [. >] [/ ?]
+     0.1   0.2   6.8   6.0   1.8  |  1.1   7.8   2.5   2.9   0.2
+    13.0  13.1  21.2  32.5        |       32.3  27.1  17.2  13.6
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.6723 |         |
+| Heatmap       | 0.7541 | 0.8797  |
+| Bad bigrams   |    828 | hn:138 ue:138 sc:95 kn:47 pt:46 nk:45 cs:32 nl:32 yi:32 dg:28 nm:28 za:24 sf:21 aq:16 lk:14 dv:11 rw:10 gt:9 bt:8 kl:8 eu:7 az:6 lm:6 nh:4 wr:3 tp:3 pb:2 td:2 ln:2 hm:2 fs:1 pg:1 pd:1 gd:1 dp:1 db:1 vg:1 kh:1 km:1 |
+| Slow bigrams  |  11732 |         |
+| Fast 3-grams  |    638 | tra:172 aft:104 ien:86 oun:79 art:59 hei:43 ard:34 ars:32 ast:30 rst:17 oin:13 nio:6 dra:3 nei:2 heo:2 neo:1 |
+| Fast bigrams  |  16834 | he:2172 in:1658 on:1421 en:1130 at:1107 st:792 io:581 ar:559 hi:557 ou:514 as:501 ra:500 tr:460 rs:447 no:443 ne:419 ho:373 ta:368 ts:314 un:281 ie:273 fa:245 ni:241 af:191 sa:185 rt:178 ad:175 ft:131 rd:79 ei:73 ds:65 eh:64 tw:62 da:48 eo:48 ny:45 dr:38 oi:28 oe:22 nu:22 oh:8 ih:6 uy:3 uo:2 wf:1 wt:1 fw:1 sr:1 yn:1 |
+| Finger travel |  58574 | 4, 26, 96, 170, 147, 71, 49, 5 |
+| Run length    |   1.38 | 1.62    |
+
+This is a minor modification of Colemak that affects only the placement of keys for the index fingers, making the common keys "D" and "H" more comfortable to reach [12]. This results in a small improvement of the key heatmap score and enables a few more fast bigrams and 3-grams than plain Colemak.
+
+Out of all existing layouts considered here, this is the one with the highest overall score, followed closely by plain Colemak.
+
+### Workman
+
+    [ Q ] [ D ] [ R ] [ W ] [ B ] | [ J ] [ F ] [ U ] [ P ] [; :]
+     0.3   6.0  10.2   2.7   2.2  |  0.6   4.3   4.6   3.8   0.3
+    [ A ] [ S ] [ H ] [ T ] [ G ] | [ Y ] [ N ] [ E ] [ O ] [ I ]
+    12.5  10.2   7.8  15.6   3.2  |  2.6  12.1  20.0  13.1  11.7
+    [ Z ] [ X ] [ M ] [ C ] [ V ] | [ K ] [ L ] [, <] [. >] [/ ?]
+     0.1   0.2   3.9   6.8   1.8  |  1.1   6.8   2.5   2.9   0.2
+    13.0  16.3  21.9  32.2        |       27.4  27.1  19.8  12.3
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.6425 |         |
+| Heatmap       | 0.7814 | 0.9144  |
+| Bad bigrams   |   2695 | ct:920 ly:271 po:271 rm:256 op:154 ue:138 lf:103 ds:65 tw:62 nf:61 fl:54 kn:47 ny:45 nk:45 hr:38 nl:32 za:24 aq:16 tc:16 lk:14 fy:10 gt:9 bt:8 kl:8 eu:7 az:6 rh:3 bc:3 hm:2 ln:2 wb:1 wt:1 vg:1 yn:1 ky:1 |
+| Slow bigrams  |   8587 |         |
+| Fast 3-grams  |   1234 | ion:550 tha:276 tra:172 ien:86 art:59 cha:39 ast:30 ash:10 noi:3 iol:2 iel:2 nei:2 ths:1 pun:1 neo:1 |
+| Fast bigrams  |  19584 | th:2373 in:1658 on:1421 en:1130 at:1107 st:792 ha:640 le:638 io:581 ar:559 ac:521 li:505 as:501 ra:500 tr:460 el:446 no:443 ol:439 ca:428 ne:419 lo:390 ch:370 ta:368 il:334 ts:314 sh:311 un:281 ie:273 ni:241 sa:185 rt:178 up:99 ht:97 sc:95 rd:79 ui:78 ei:73 eo:48 pu:45 dr:38 cs:32 oi:28 oe:22 nu:22 iu:11 np:7 td:2 ah:1 hs:1 |
+| Finger travel |  58593 | 4, 47, 100, 169, 138, 71, 61, 5 |
+| Run length    |   1.49 | 1.58    |
+
+The Workman layout was designed to minimize lateral movement in order to minimize the risk of repetitive strain injury. It is a more significant departure from Colemak than Colemak-DHm. It succeeds in achieving better heatmap scores and also has more fast bigrams and 3-grams than Colemak variants. However, its overall score is lower due to a 3x increase in same-finger bigrams.
+
+Notwithstanding the same-finger bigram score, out of all existing layouts considered here, Workman comes closest to the layouts found by the optimization algorithm discussed in the next section.
+
+### PLUM
+
+    [ P ] [ L ] [ U ] [ M ] [; :] | [' "] [ C ] [ F ] [ G ] [ Q ]
+     3.8   6.8   4.5   3.9   0.3  |  0.8   6.7   4.3   3.2   0.3
+    [ R ] [ E ] [ A ] [ D ] [ O ] | [ N ] [ T ] [ H ] [ I ] [ S ]
+    10.2  19.9  12.5   5.9  13.0  | 12.1  15.5   7.8  11.7  10.1
+    [ K ] [ J ] [ V ] [ B ] [, <] | [. >] [ W ] [ X ] [ Y ] [ Z ]
+     1.0   0.6   1.8   2.2   2.5  |  2.9   2.7   0.2   2.6   0.1
+    15.0  27.3  18.8  27.9        |       40.8  12.2  17.4  10.5
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.5584 |         |
+| Heatmap       | 0.7114 | 0.7862  |
+| Bad bigrams   |   6413 | ct:920 nt:892 le:638 pr:544 el:446 nc:396 om:313 je:233 ig:231 mo:209 do:181 od:180 va:138 av:129 ua:128 gy:113 gi:105 wn:99 bo:90 au:87 tw:62 rk:56 ob:46 mb:43 yi:32 n':30 tc:16 rp:15 t':15 sq:7 't:5 dm:3 tn:3 nw:2 kp:1 ej:1 db:1 'c:1 wt:1 hf:1 |
+| Slow bigrams  |  15774 |         |
+| Fast 3-grams  |   1040 | his:208 thi:195 der:145 red:82 rea:73 whi:62 ked:52 ead:45 tis:28 ber:26 sit:24 rad:17 dul:14 lud:13 dar:13 wis:13 rab:11 bar:7 dur:6 rud:1 reb:1 eab:1 kab:1 tiz:1 ths:1 |
+| Fast bigrams  |  16572 | th:2373 er:1566 re:1239 ti:1052 ed:856 st:792 it:770 is:763 de:608 ar:559 hi:557 ra:500 si:403 ea:401 be:316 ts:314 sh:311 ur:272 wi:243 wh:242 ld:219 ru:207 ul:207 du:198 ab:194 ke:192 ad:175 ft:131 ba:122 ak:104 ht:97 ud:91 lu:87 rd:79 br:58 iz:50 da:48 dr:38 ws:30 sf:21 dl:17 zi:15 eb:11 sw:11 ka:10 gt:9 ih:6 rb:4 ek:1 hw:1 fs:1 hs:1 |
+| Finger travel |  61638 | 46, 66, 60, 144, 214, 32, 59, 4 |
+| Run length    |   1.87 | 1.62    |
+
+The PLUM keyboard[13] was an attempt to market a matrix keyboard with an easy to learn layout, aimed at users who are not already touch-typing with QWERTY. It places the most common letters of the Engish language on the home row, arranged to form the words "read on this".
+
+This layout is a slight variation on the original PLUM layout, which placed the TAB and Backspace keys in the middle of the keyboard. I replaced those key positions with `;:` and `'"` to match other layouts compared here more closely.
+
+With the common words on the home row, the layout achieves good scores for fast bigrams and 3-grams, only slightly lower than Workman. However, the main disadvantage is a very high number of same-finger bigrams, even worse than QWERTY. The heatmap scores and finger travel are also not as good as other ergonimic-optimized keyboard layouts.
+
 ---
 
 # Optimization algorithm
@@ -298,106 +473,15 @@ A run on 4 CPU cores for about 13 hours performed 247 runs of the annealing sche
 
 # Results
 
-Out of 119 unique solutions found by 247 runs of the algorithm I picked 9 solutions to discuss the results. Each layout gets its own subsection showing the layout with the basic metrics and a short discussion. The last subsection shows graphs of the distribution of all solutions with respect to various metrics.
+Out of 119 unique solutions found by 247 runs of the algorithm I picked 9 solutions to discuss the results. Each layout gets its own subsection showing the layout with the basic metrics and a short discussion.
 
-Each keyboard layout is shown with key and finger weights normalized to match the weights used in the heatmap metric of the quality function.
+This is followed by a discussion of common patterns in multiple solutions.
 
-The metrics are presented as follows:
+The last subsection shows graphs of the distribution of all solutions with respect to various metrics.
 
-| Metric        | Value       | Details |
-| ------------- | ----------- | :------ |
-| Overall score | Score of the quality function | |
-| Heatmap       | 0 to 1 key metric | 0 to 1 finger metric |
-| Bad bigrams   | Total count | Count for each bigram |
-| Slow bigrams  | Total count |         |
-| Fast 3-grams  | Total count | Count for each 3-gram |
-| Fast bigrams  | Total count | Count for each bigram |
-| Finger travel | Total in units of the key size | Per-finger travel, normalized per 1000 keystrokes |
-| Run length    | Avg # consecutive keystrokes: Left hand | Right hand |
-| Times found   | # of times solution was found in 247 runs | |
+## Examples of optimized Layouts
 
-Fast bigrams, finger travel and run length are not directly optimized for, but they are shown here for reference and comparison with other layouts. Finger travel is indirectly affected by the heatmap. Run length and fast bigrams are implicitly optimized by the definition of slow bigrams, which penalize non-fast bigrams in the same hand.
-
-First the three most popular English keyboard layouts as a reference to provide context for the values of the metrics in the optimized layouts.
-
-## QWERTY
-
-    [ Q ] [ W ] [ E ] [ R ] [ T ] | [ Y ] [ U ] [ I ] [ O ] [ P ]
-     0.3   2.7  20.0  10.2  15.6  |  2.6   4.6  11.7  13.1   3.8
-    [ A ] [ S ] [ D ] [ F ] [ G ] | [ H ] [ J ] [ K ] [ L ] [; :]
-    12.5  10.2   6.0   4.3   3.2  |  7.8   0.6   1.1   6.8   0.3
-    [ Z ] [ X ] [ C ] [ V ] [ B ] | [ N ] [ M ] [, <] [. >] [/ ?]
-     0.1   0.2   6.8   1.8   2.2  | 12.1   3.9   2.5   2.9   0.2
-    13.0  13.1  32.7  37.3        |       31.5  15.3  22.8   4.3
-
-| Metric        | Value  | Details |
-| ------------- | -----: | :------ |
-| Overall score | 0.5064 |         |
-| Heatmap       | 0.4204 |  0.7115 |
-| Bad bigrams   |   5773 | ed:856 ec:639 de:608 ce:469 tr:460 ol:439 lo:390 un:281 rt:178 rf:142 hn:138 ft:131 fr:116 gr:103 ki:84 um:82 hu:74 mu:67 br:58 ju:56 rg:51 my:50 ny:45 ik:33 rv:31 ws:30 nm:28 za:24 nu:22 hy:19 aq:16 sw:11 gt:9 bt:8 az:6 rb:4 nh:4 ym:3 uy:3 hm:2 vg:1 yn:1 uj:1 |
-| Slow bigrams  |  23848 |         |
-| Fast 3-grams  |     23 | adv:11 fea:9 few:3 |
-| Fast bigrams  |   3656 | io:581 as:501 ea:401 we:285 fa:245 oj:228 fe:200 af:191 sa:185 ad:175 va:138 av:129 ef:107 ds:65 ew:54 da:48 jo:30 oi:28 sf:21 lk:14 dv:11 kl:8 lm:6 wf:1 df:1 fw:1 fs:1 km:1 |
-| Finger travel |  75173 | 4, 25, 162, 223, 204, 55, 86, 6 |
-| Run length    |   1.68 | 1.48    |
-
-The heatmap score for QWERTY is quite bad. It uses the left hand more heavily than the right hand, and some of the most frequently used keys are away from the home row. There are more bad (same-finger) bigrams than fast bigrams in this layout. The index fingers have to travel a lot and so does the left middle finger.
-
-## Dvorak
-
-    [' "] [, <] [. >] [ P ] [ Y ] | [ F ] [ G ] [ C ] [ R ] [ L ]
-     0.8   2.5   2.9   3.8   2.6  |  4.3   3.2   6.7  10.2   6.8
-    [ A ] [ O ] [ E ] [ U ] [ I ] | [ D ] [ H ] [ T ] [ N ] [ S ]
-    12.5  13.0  19.9   4.5  11.7  |  5.9   7.8  15.5  12.1  10.1
-    [; :] [ Q ] [ J ] [ K ] [ X ] | [ B ] [ M ] [ W ] [ V ] [ Z ]
-     0.3   0.3   0.6   1.0   0.2  |  2.2   3.9   2.7   1.8   0.1
-    13.7  15.9  23.4  23.8        |       27.2  25.0  24.1  17.0
-
-| Metric        | Value  | Details |
-| ------------- | -----: | :------ |
-| Overall score | 0.6169 |         |
-| Heatmap       | 0.6117 | 0.9270  |
-| Bad bigrams   |   2412 | ct:920 je:233 gh:169 rn:118 up:99 pi:89 ki:84 ip:79 ui:78 ls:71 tw:62 pu:45 mb:43 ik:33 yi:32 xp:31 rv:31 nv:31 dg:28 yp:27 sl:21 tc:16 xi:15 iu:11 py:7 ix:7 uk:4 hd:4 uy:3 gm:3 dm:3 hm:2 oq:1 ej:1 kp:1 ky:1 ku:1 gd:1 df:1 db:1 hf:1 hb:1 mf:1 wt:1 nr:1 |
-| Slow bigrams  |   9837 |         |
-| Fast 3-grams  |     65 | rch:34 sch:18 nth:8 uea:2 stm:1 ntm:1 hts:1 |
-| Fast bigrams  |   7962 | th:2373 nt:892 st:792 ou:514 ea:401 ch:370 ts:314 sh:311 ns:310 cr:212 ke:192 ue:138 hn:138 ua:128 ak:104 ht:97 sc:95 au:87 sm:79 rc:70 ok:62 eo:48 hr:38 ms:36 cs:32 oa:30 nm:28 oe:22 ka:10 sn:9 tm:8 eu:7 nh:4 rh:3 tn:3 uo:2 ek:1 ko:1 hs:1 |
-| Finger travel |  57323 | 11, 27, 30, 115, 168, 90, 93, 46 |
-| Run length    |   1.23 | 1.39    |
-
-The heatmap and bigram scores are much better than QWERTY. Especially the per-finger heatmap is very good. Also finger travel is much reduced. Only the right index finger still travels much more than other fingers.
-
-Dvorak is optimized for alternating hands between keystokes. This is proven by the short average run length and the much lower score of slow bigrams.
-
-Dvorak nearly tripples the number of fast 3-grams, though that number is still very small in absolute terms.
-
-## Colemak
-
-    [ Q ] [ W ] [ F ] [ P ] [ G ] | [ J ] [ L ] [ U ] [ Y ] [; :]
-     0.3   2.7   4.3   3.8   3.2  |  0.6   6.8   4.6   2.6   0.3
-    [ A ] [ R ] [ S ] [ T ] [ D ] | [ H ] [ N ] [ E ] [ I ] [ O ]
-    12.5  10.2  10.2  15.6   6.0  |  7.8  12.1  20.0  11.7  13.1
-    [ Z ] [ X ] [ C ] [ V ] [ B ] | [ K ] [ M ] [, <] [. >] [/ ?]
-     0.1   0.2   6.8   1.8   2.2  |  1.1   3.9   2.5   2.9   0.2
-    13.0  13.1  21.2  32.5        |       32.3  27.1  17.2  13.6
-
-| Metric        | Value  | Details |
-| ------------- | -----: | :------ |
-| Overall score | 0.6668 |         |
-| Heatmap       | 0.7342 | 0.8797  |
-| Bad bigrams   |    828 | hn:138 ue:138 sc:95 kn:47 pt:46 nk:45 cs:32 nl:32 yi:32 dg:28 nm:28 za:24 sf:21 aq:16 lk:14 dv:11 rw:10 gt:9 bt:8 kl:8 eu:7 az:6 lm:6 nh:4 wr:3 tp:3 pb:2 td:2 ln:2 hm:2 fs:1 pg:1 pd:1 gd:1 dp:1 db:1 vg:1 kh:1 km:1 |
-| Slow bigrams  |  13156 |         |
-| Fast 3-grams  |    604 | tra:172 aft:104 ien:86 oun:79 art:59 ars:32 ast:30 rst:17 oin:13 nio:6 arv:2 nei:2 neo:1 meo:1 |
-| Fast bigrams  |  15410 | in:1658 on:1421 en:1130 at:1107 st:792 me:669 io:581 ar:559 ou:514 as:501 ra:500 tr:460 rs:447 no:443 ne:419 ta:368 ts:314 om:313 im:284 un:281 ie:273 em:252 fa:245 ni:241 mo:209 af:191 sa:185 rt:178 va:138 mi:136 ft:131 av:129 ei:73 tw:62 eo:48 ny:45 rv:31 oi:28 oe:22 nu:22 uy:3 uo:2 wf:1 wt:1 fw:1 sr:1 yn:1 |
-| Finger travel |  57648 | 4, 26, 96, 168, 167, 71, 49, 5 |
-| Run length    |   1.38 | 1.62    |
-
-Colemak brings a further improvement in the heatmap score although the per-finger heatmap is slightly worse. The index and middle fingers are weighted most heavily. On top of the improvements in Dvorak, Colemak brings another big improvement of bad bigrams by factor 3 and fast bigrams by factor 2.
-
-Colemak has more slow bigrams than Dvorak, which goes along with a longer average run length. Total finger travel is about the same as in Dvorak, but more evenly distributed to both hands. Both index fingers still travel a lot.
-
-Colemak has nearly 10 times as many fast 3-grams as Dvorak and over 25 times as many as QWERTY.
-
-## REAT
+### REAT
 
     [ Z ] [. >] [ O ] [ K ] [ Q ] | [ J ] [ W ] [ L ] [ U ] [ X ]
      0.1   2.9  13.0   1.0   0.3  |  0.6   2.7   6.8   4.5   0.2
@@ -421,17 +505,19 @@ Colemak has nearly 10 times as many fast 3-grams as Dvorak and over 25 times as 
 
 This is the highest scoring solution found by the annealing algorithm on this text sample. It was also the most frequently found one with 18 times out of 247 program runs.
 
-The overall score is a further improvement on Colemak. Looking at individual metrics, the improvements are quite dramatic. The heatmap score is nearly perfect, which only shows that this had a high weight in the overall score. Comparing this directly to existing layouts like Colemak is not really fair given that they may have been optimized for a different choice of key weights.
+The overall score is a further improvement on Colemak. Looking at some of the individual metrics, the improvements are quite dramatic. The heatmap score is nearly perfect, which only shows that this had a high weight in the overall score. However, there is a slight imbalance between hands of 56:44. Comparing this directly to existing layouts like Colemak is not really fair, given that they may have been optimized for a different choice of key weights.
 
-The bad bigrams score, on the other hand, is very objective. It is nearly factor 3 better than Colemak and more than factor 8 better than Dvorak. Fast bigrams are improved, but Colemak was already quite good at that. Where this layout really distinguishes itself from previous layouts is in the fast 3-gram metric, where it scores almost a factor 4 higher than Colemak and factor 36 higher than Dvorak.
+The bad bigrams score, on the other hand, is very objective. It is nearly factor 3 better than Colemak and more than factor 8 better than Dvorak and Workman. Fast bigrams are improved, but Colemak and Workman were already quite good at that. Where this layout really distinguishes itself is in the fast 3-gram metric, where it scores almost a factor 2 higher than Workman, factor 4 higher than Colemak, and factor 36 higher than Dvorak.
 
-The slow bigram number is smaller than Dvorak. However that does not translate directly to a shorter average run length. This has to be expected, given that this layout has much more fast bigrams and 3-grams in the same hand. The average run length is even slightly higher than in Colemak.
+The slow bigram number is smaller than Dvorak. However that does not translate directly to a shorter average run length. This has to be expected, given that this layout has much more fast bigrams and 3-grams contributing to the average run length. It is even slightly higher than in Colemak.
 
 Overall finger travel distance is similar to Colemak and Dvorak. However, it is more evenly distributed with significantly less travel for the index fingers.
 
+In summary, this layout outperforms Workman in the fast bigram and 3-gram scores while fixing the same-finger bigram problem of that layout. For Workman users, the placement of "F" may be uncomfortable, requiring a lateral motion. Rearranging the "F", "W" and "P" keys would be an easy fix that would not affect any of the bigram and 3-gram scores. "Z", "Q", "B" and the punctuation keys could be rearranged more logically without affecting the bigram and 3-gram scores significantly.
+
 The remaining layouts in this section have slightly lower overall scores than this one. However, analyzing them allows some insight into the trade-offs made by the algorithm and highlights different strategies found by the simulated annealing algorithm to optimize for the multi-objective quality function.
 
-## NEOI
+### NEOI
 
     [ Z ] [' "] [ A ] [, <] [ X ] | [ J ] [ B ] [ R ] [ M ] [ V ]
      0.1   0.8  12.5   2.5   0.2  |  0.6   2.2  10.2   3.9   1.8
@@ -453,15 +539,17 @@ The remaining layouts in this section have slightly lower overall scores than th
 | Run length    |   1.42 | 1.31    |
 | Times found   |      1 |         |
 
-This layout shows a heavy emphasis on a small number of slow bigrams. In turn it sacrifices on most of the other metrics while still attaining a fairly good overall score.
+This layout shows a heavy emphasis on a small number of slow bigrams. In turn it sacrifices on most of the other metrics while still attaining a fairly good overall score. This layout achieves very good balance between hands of 51:49.
 
 It emulates the strategy of the Dvorak layout to move all vowels to the same (left) hand. Similar to Dvorak, all the punctuation symbols are also in the same hand. However, unlike Dvorak it does not place all vowels in the home row. There are many other differences. One interesting and counter-intuitive optimization is the placement of "H" and "R". The heatmap would prefer "R" in the home row and "H" above. However, that would break the "TH" fast bigram.
 
+The placement of the frequent letter "D" in the central column would not make users of Colemak-DHm or Workman layouts happy. A small modification could be applied to swap "F" and "D". However, that sacrifices a fast 3-gram "fts". It turns out that this 3-gram comes from the frequent use of the word "craftsmen" in one of the sample texts used in the optimization. This demonstrates how important a good representative text sample is for the optimization. In this case it optimized for something that may not generalize well, while compromising on another important metric. If the "fts" 3-gram were to be preserved, "B", "D" and "W" could be rearranged to avoid lateral motion and having the finger stretch up to "D". This would not affect any of the bigram or 3-gram scores.
+
 The slow bigram score is close to half that of Dvorak's. As a result this layout gets close to Dvorak's very low average run length while still achieving a significantly higher number fast bigrams (~2x) and 3-grams (~14x).
 
-Compared to REAT, it has slightly more bad bigrams. More significantly, it achieves only a little more than 1/3 the number of fast 3-grams and 2/3 the number of fast bigrams. These scores are still significantly better than Dvorak and Colemak.
+Compared to REAT, it has slightly more bad bigrams. More significantly, it achieves only a little more than 1/3 the number of fast 3-grams and 2/3 the number of fast bigrams. These scores are still significantly better than Dvorak and Colemak, but lower than Workman.
 
-## SINC
+### SINC
 
     [ X ] [ U ] [ L ] [ W ] [ J ] | [ Z ] [ Q ] [ R ] [ O ] [; :]
      0.2   4.5   6.8   2.7   0.6  |  0.1   0.3  10.2  13.0   0.3
@@ -483,19 +571,23 @@ Compared to REAT, it has slightly more bad bigrams. More significantly, it achie
 | Run length    |   1.48 | 1.67    |
 | Times found   |     13 |         |
 
-This is the third-most popular solution found by the algorithm and the third-highest overall score. It puts the emphasis on the fast 3-gram score, which is about 28% higher than in the REAT layout and more than 3x that of NEOI. This is mostly thanks to making "the" a fast trigram. This requires some compromises, which negatively affect other scores.
+This is the third-most popular solution found by the algorithm and the third-highest overall score. It puts the emphasis on the fast 3-gram score, which is about 28% higher than in the REAT layout and more than 3x that of NEOI. This is mostly thanks to making "the" a fast 3-gram. This requires some compromises which negatively affect other scores.
 
-In this solution, placing "E" on the right pinky finger negatively affects the heatmap score. This is most pronounced in the finger heatmap score. In fact, since the "the" 3-gram has such a big impact, it was important to weigh the heat map metrics strong enough in the quality function for this type of solution not to become overwhelmingly popular.
+In this solution, placing "E" on the right pinky finger negatively affects the heatmap score. This is most pronounced in the finger heatmap score. In fact, since the "the" 3-gram has such a big impact, it was important to weigh the heat map metrics strong enough in the quality function for this type of solution not to become overwhelmingly popular. The placement of "O" and "A" on the right ring-finger adds stress to another weak finger on the right hand. This creates a slight imbalance between both hands of 44:56. In this case the ring finger also has to travel a lot between two relatively frequent keys.
 
-## EAHT
+Swapping "F" and "W" would be an obvious improvement for Workman users with a strong preference against lateral movement.
+
+A small change to the punctuation keys could be made to make it more similar to Colemak. Furthermore the hands could be swapped to reduce the strain on the right pinky, which would have to stretch to many other keys on a standard keyboard. Then the punctuation keys would feel like a reverse Dvorak with the top and bottom rows exchanged.
+
+### EAHT
 
     [; :] [ O ] [ R ] [ Q ] [ Z ] | [ J ] [ W ] [ P ] [ U ] [ X ]
-     0.3  13.0  10.2   0.3   0.1  |  0.6   2.7   3.8   4.5   0.2 
+     0.3  13.0  10.2   0.3   0.1  |  0.6   2.7   3.8   4.5   0.2
     [ E ] [ A ] [ H ] [ T ] [. >] | [ F ] [ C ] [ N ] [ I ] [ S ]
-    19.9  12.5   7.8  15.5   2.9  |  4.3   6.7  12.1  11.7  10.1 
+    19.9  12.5   7.8  15.5   2.9  |  4.3   6.7  12.1  11.7  10.1
     [, <] [' "] [ L ] [ D ] [ K ] | [ M ] [ G ] [ B ] [ Y ] [ V ]
-     2.5   0.8   6.8   5.9   1.0  |  3.9   3.2   2.2   2.6   1.8 
-    22.8  26.4  24.8  25.8        |       21.3  18.1  18.8  12.1 
+     2.5   0.8   6.8   5.9   1.0  |  3.9   3.2   2.2   2.6   1.8
+    22.8  26.4  24.8  25.8        |       21.3  18.1  18.8  12.1
 
 | Metric        | Value  | Details |
 | ------------- | -----: | :------ |
@@ -509,11 +601,11 @@ In this solution, placing "E" on the right pinky finger negatively affects the h
 | Run length    |   1.77 | 1.42    |
 | Times found   |      8 |         |
 
-This is a mirrored variant of SINC with a nearly identical home row. However, this solution emphasizes a small bad bigrams score. This is the smallest number of bad bigrams of any solution found.
+This is a mirrored variant of SINC with a nearly identical home row. However, this solution emphasizes a small bad bigrams score. This is the smallest number of bad bigrams of any solution found. It further increases the hand imbalance to 59:41.
 
 The major compromise to achieve this seems to be the increase of slow bigrams. There is also an increase in finger travel for the left middle finger (compared to the right middle finger in SINC).
 
-## SNIC
+### SNIC
 
     [ X ] [ B ] [ U ] [ V ] [ J ] | [ Z ] [ Q ] [ H ] [ A ] [; :]
      0.2   2.2   4.5   1.8   0.6  |  0.1   0.3   7.8  12.5   0.3 
@@ -535,9 +627,9 @@ The major compromise to achieve this seems to be the increase of slow bigrams. T
 | Run length    |   1.45 | 1.79    |
 | Times found   |     14 |         |
 
-This is the second-most popular solution, though somewhat lower on the overall score ranking. This is another one with "the" as a fast 3-gram. It's scores are quite similar to SINC.
+This is the second-most popular solution, though somewhat lower on the overall score ranking. This is another one with "the" as a fast 3-gram. It's scores are quite similar to SINC. Compared to SINC, it improves the use of the home row in the right hand. Its hand imbalance is as bad as EAHT.
 
-## EORT
+### EORT
 
     [; :] [ A ] [ H ] [ K ] [ Q ] | [ Z ] [ W ] [ U ] [ L ] [ X ]
      0.3  12.5   7.8   1.0   0.3  |  0.1   2.7   4.5   6.8   0.2
@@ -559,9 +651,9 @@ This is the second-most popular solution, though somewhat lower on the overall s
 | Run length    |   1.73 | 1.51    |
 | Times found   |      5 |         |
 
-This is a mirrored variant of SNIC with a nearly identical home row. It has a better key heatmap score and slightly more fast 3-grams, but also more bad bigrams (mostly due to "pt" and "nl"). The right index finger needs to travel more.
+This is a mirrored variant of SNIC with a nearly identical home row. It has a better key heatmap score and slightly more fast 3-grams, but also more bad bigrams (mostly due to "pt" and "nl"). The right index finger needs to travel more. Hand balance is 56:44, similar to REAT and SINC.
 
-## CAIN
+### CAIN
 
     [; :] [ F ] [ H ] [ J ] [ Q ] | [ Z ] [ W ] [ O ] [ U ] [ X ]
      0.3   4.3   7.8   0.6   0.3  |  0.1   2.7  13.0   4.5   0.2
@@ -583,9 +675,9 @@ This is a mirrored variant of SNIC with a nearly identical home row. It has a be
 | Run length    |   1.68 | 1.63    |
 | Times found   |      7 |         |
 
-Yet another approach to the "the" fast 3-gram. This one achieves surprisingly good finger heatmap and bad bigrams scores quite close to REAT. Even though it adds the "the" fast 3-gram, its fast 3-gram score is not much higher than REAT. However, the overall score is negatively affected by a significantly increased number of slow bigrams.
+Yet another approach to the "the" fast 3-gram. This one achieves surprisingly good finger heatmap and bad bigrams scores quite close to REAT. Even though it adds the "the" fast 3-gram, its fast 3-gram score is not much higher than REAT. However, the overall score is negatively affected by a significantly increased number of slow bigrams. This layout achieves very good hand balance of 51:49.
 
-## NIAC
+### NIAC
 
     [ Z ] [ U ] [ O ] [ V ] [ X ] | [ Q ] [ J ] [ H ] [ G ] [; :]
      0.1   4.5  13.0   1.8   0.2  |  0.3   0.6   7.8   3.2   0.3
@@ -607,9 +699,9 @@ Yet another approach to the "the" fast 3-gram. This one achieves surprisingly go
 | Run length    |   1.63 | 1.66    |
 | Times found   |      2 |         |
 
-This is a mirrored variant of cain with a nearly identical home row. It achieves significantly more fast 3-grams and fewer slow bigrams, but compromises on the heatmap and bad bigrams.
+This is a mirrored variant of CAIN with a nearly identical home row. It achieves significantly more fast 3-grams and fewer slow bigrams, but compromises on the heatmap and bad bigrams ("gs" and "xc"). It's hand balance of 48:52 is still very good.
 
-## TEAR
+### TEAR
 
     [ K ] [. >] [ O ] [ Q ] [ Z ] | [ J ] [ W ] [ U ] [ B ] [ X ]
      1.0   2.9  13.0   0.3   0.1  |  0.6   2.7   4.5   2.2   0.2
@@ -631,13 +723,19 @@ This is a mirrored variant of cain with a nearly identical home row. It achieves
 | Run length    |   1.76 | 1.46    |
 | Times found   |      2 |         |
 
-It all ends in tears. (Sorry, I had to.)
-
-I included this one as another example of not having "the" as a fast 3-gram, which makes it similar to REAT. The right hand looks similar to SINC, EAHT and REAT.
+I included this one as another example of not having "the" as a fast 3-gram, which makes it similar to REAT. The right hand looks similar to SINC and REAT. Consequently, the hand balance is also very close to those layouts.
 
 The fast 3-gram score is slightly lower than REAT. The major compromise seems to be the lower key heatmap score and the bigger number of slow bigrams.
 
 The total finger travel distance is one of the lowest seen among all solutions. However, it is unevenly distributed with more travel for the right index finger.
+
+## Common patterns
+
+The bad bigram metrics seem to favour certain combination of letters on the same finger that reoccur in most solutions. These are groups of letters which do not form common bigrams in the English language. The two most prominent ones are U-I-Y and A-O.
+
+The index fingers have to handle 6 keys each. There is pressure to place less common symbols there which also do not form common bigrams. Sometimes this is achieved by placing punctuation symbols on an index finger. This can be seen for example in NEOI where U-I-Y is combine with X and two punctuations on the left index finder. NEOI is atypical in the sense that most other layouts place consonants on the index fingers. NEOI is special because it has all vowels in the same hand.
+
+Layout's which do not place all vowels in the same hand typically move "E" to the other hand, which is both very common, and is involved in many bigrams. The other common split observed is E-A-O in one hand, and I-U-Y in the other.
 
 ## Statistics
 
@@ -883,6 +981,15 @@ The total finger travel distance is one of the lowest seen among all solutions. 
         +---------+---------+---------+---------+---------+---------+---------
         750      1250      1750      2250      2750      3250      3750   
 
+# TODO
+
+* Automatically mirror layouts to make them easier to compare
+* Adjust key weights to discourage lateral movement for the index fingers rather than fixing up discovered layouts after the fact
+* Make hand balance an explicit criteria in the quality function
+* Build a more representative English text sample
+* Investigate other languages (German, being my first language, is a good starting point)
+* Investigate optimizing layouts for two languages (e.g. German and English)
+
 ---
 
 # References
@@ -898,3 +1005,5 @@ The total finger travel distance is one of the lowest seen among all solutions. 
 [9] [10 Fast Fingers typing test](https://10fastfingers.com/typing-test/english)<br>
 [10] [Python.org](https://www.python.org/)<br>
 [11] [A fast, compliant alternative implementation of Python](https://www.pypy.org/)
+[12] [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/)
+[13] [PLUM keyboard](https://en.wikipedia.org/wiki/PLUM_keyboard)
