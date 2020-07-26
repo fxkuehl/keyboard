@@ -11,7 +11,7 @@ Most keyboard layouts in use today are based on historical keyboard designs for 
 
 A few attempts have been made to redesign computer keyboards for ergonomic considerations, both in terms of physical layout and the mapping of symbols to keys. On the physical side, ergonomic keyboards are often split designs with the two halves at an angle to put the wrists into a more neutral position. However, most of the more affordable or main-stream designs still carry over the row stagger. More radical designs either choose a regular matrix (ortholinear) layout or a column stagger that attempts to match the different lengths of the fingers. There are many designs that reduce the number of physical keys to the ones within easy reach without having to move the hands. On such keyboards, more functions and symbols are activated by switching layers. [2]
 
-In terms of ergonomic keymaps, the oldest example I'm aware of is the Dvorak [3] layout, which was patented in 1936. More modern layouts for the English language include Colemak [4] and variations, Workman [5], Neo [6].
+In terms of ergonomic keymaps, the oldest example I'm aware of is the Dvorak [3] layout, which was patented in 1936. More modern layouts for the English language include Colemak [4] and variations, Workman [5]. The Neo [6] layout is optimized for the German language.
 
 I have personally used QWERTZ (German version of QWERTY), QWERTY, Dvorak and Colemak. Learning a new layout is a time-consuming process. Whether using one keyboard layout over another leads to more speed or comfort is hard to judge objectively for any individual.
 
@@ -37,7 +37,7 @@ Any user willing to adopt a radically different keyboard layout for purposes of 
 
 ## Reduced keyboard layout
 
-I am going to assume three rows of keys with 1O keys per row available for typing. A QWERTY layout can be represented in this reduced keyboard as follows:
+I am going to assume three rows of keys with 10 keys per row available for typing. A QWERTY layout can be represented in this reduced keyboard as follows:
 
         Q | W | E | R   T || Y   U | I | O | P
         A | S | D | F   G || H   J | K | L | ;:
@@ -129,11 +129,11 @@ Weights can be used to express how common the use of a particular key should be.
 
 > d = sqrt((A<sub>1</sub> - B<sub>1</sub>)<sup>2</sup> + ...+ (A<sub>n</sub> - B<sub>n</sub>)<sup>2</sup>)
 
-This distance measure has the property that the element with the biggest deviation will have the biggest effect on the overall distance value. However, a deviation from O.1 to 1 and a deviation from 10.1 to 11 will be measured equally far. For key usage frequencies this is not a good measure because in the first case, a key is over-used or under-used by a factor 10. In the second case it is over-used or under-used by about 1.089. A measure that would express that "factor of deviation", which scales with the magnitude of the values would be better. I am proposing the following distance metric:
+This distance measure has the property that the element with the biggest deviation will have the biggest effect on the overall distance value. However, a deviation from 0.1 to 1 and a deviation from 10.1 to 11 will be measured equally far. For key usage frequencies this is not a good measure because in the first case, a key is over-used or under-used by a factor 10. In the second case it is over-used or under-used by about 1.089. A measure that would express that "factor of deviation", which scales with the magnitude of the values would be better. I am proposing the following distance metric:
 
 > d = sqrt((log A<sub>1</sub>/B<sub>1</sub>)<sup>2</sup> + ...+ (log A<sub>n</sub>/B<sub>n</sub>)<sup>2</sup>)
 
-As long as neither A nor B are 0, this metric provides a useful distance measure between key weights and a heatmap.
+The logarithm measures the magnitude of the ration of A and B. Furthermore *log A/B = -log B/A*, i.e. the magnitude of both ratios is the same, only the sign differs. If either A or B are 0, this metric goes to infinity. As long as neither A nor B are 0, this metric provides a useful distance measure between key weights and a heatmap.
 
 Similarly to individual keys, the finger weights can be evaluated. The weight of the finger is calculated by adding all the weights of the individual keys operated by that finger. The actual usage of the finger is calculated by adding the character frequencies of all characters typed by the finger.
 
@@ -143,11 +143,11 @@ The distance should be normalized to the common value range 0 to 1. The lowest p
 
 For finger weights and heatmaps this calculation is a bit more difficult. The finger heatmap can get much closer to 0 distance by combining key frequencies differently. To simplify the calculation we can assume that it will get close enough to 0 that it's not worth calculating the actual best possible value for the actual character frequencies of a given input text. The biggest possible distance can be approximated with prior knowledge of the finger weights (see the weight parameters in the next section): Placing the most frequent keys on the pinky fingers, the next most frequent keys on the ring fingers, the next most frequent keys on the index fingers (which take 6 keys each) and the least frequent ones on the middle fingers.
 
-The arithmetic mean of the normalized distance metric of key and finger usage and weights forms the heatmap metric. The finger and key metrics can also be weight differently or scaled non-linearly, e.g. using a square root function. Using a square root changes the slope of the metric, with a smaller slope at higher values. That means, the sensitivity to heatmap changes is reduced for higher heatmap scores. This can allow more flexibility in trade-offs of heatmap against other quality metrics.
+The arithmetic mean of the normalized distance metric of key and finger usage and weights forms the heatmap metric. The finger and key metrics can also be weighed differently or scaled non-linearly, e.g. using a square root function. Using a square root changes the slope of the metric, with a smaller slope at higher values. That means, the sensitivity to heatmap changes is reduced for higher heatmap scores. This can allow more flexibility in trade-offs of "good enough" heatmap scores against other quality metrics.
 
 After some experimentation I chose to weigh the finger and key heatmap distances equally but apply a square root function to the key metric.
 
-The choice of key weights is a tuneable quality function parameter (or rather a vector of 30 parameters). To get ambidextrous keyboard layouts, those weights should be symmetric between the left and right hand, which effectively reduces the number of parameters to 15.
+The choice of key weights is a tuneable quality function parameter (or rather a vector of 30 parameters). To get ambidextrous keyboard layouts, those weights should be symmetric between the left and right hand, which effectively reduces the number of parameters from 30 to 15.
 
 ### Fast, slow and bad bigrams
 
@@ -155,29 +155,29 @@ The set of all potential bigrams (2-symbol sequences) can be determined from the
 
 From the keyboard layout a set of fast, slow, and bad bigrams can be generated. Fast bigrams are those, which are particularly comfortable or fast to type. Rolling motions from finger to finger without having to stretch uncomfortably should be favoured by the optimal keyboard layout. For example the sequence "AD" on the QWERTY layout would be a good bigram.
 
-Bad bigrams are those, which use the same finger to type different letters. For example the sequence very common bigram "ED" is a bad bigram in the QWERTY layout.
+Bad bigrams are those, which use the same finger to type different letters. For example the very common bigram "ED" is a bad bigram in the QWERTY layout.
 
-Any bigram that uses the same hand but is neither fast nor bad increases the number of consecutive keys one hand would have to type on average before alternating hands without much benefit. This can lead to fatigue and to slowing down the flow of typing. Therefore I call these "slow bigrams". For example the Dvorak layout is heavily optimized for alternating hands between keystrokes. So Dvorak has very few slow bigrams but also very few fast bigrams.
+Any bigram that uses the same hand, but is neither fast nor bad, increases the number of consecutive keys one hand would have to type on average before alternating hands, without much benefit. This can lead to fatigue and to slowing down the flow of typing. Therefore I call these "slow bigrams". For example the Dvorak layout is heavily optimized for alternating hands between keystrokes. So Dvorak has very few slow bigrams but also very few fast bigrams.
 
-A good keyboard layout would balance good and slow bigrams, trying to maximize good bigrams while minimizing slow bigrams as much as possible.
+A good keyboard layout would balance fast and slow bigrams, trying to maximize fast bigrams while minimizing slow bigrams as much as possible.
 
-From the fast, bad and slow bigrams of the keyboard layout and the bigram frequencies of the input text, a count of fast, bad, and slow bigrams can be calculated. These counts can be scaled by the total number of keystrokes to give a range from 0 to 1. We want the number of bad bigrams to be very small. So the quality function should be more sensitive in the small value range. This can be achieved with square root or 3rd root functions. For very small values this function has a very steep slope. That means the quality function will be very sensitive to small changes when the number of bigrams is small. For larger values the slope becomes more shallow, thus the sensitivity decreases.
+From the set of fast, bad and slow bigrams of the keyboard layout and the bigram frequencies of the input text, a count of fast, bad, and slow bigrams can be calculated. These counts can be scaled by the total number of keystrokes to give a range from 0 to 1. We want the number of bad bigrams to be very small. So the quality function should be more sensitive in the small value range. This can be achieved with square root or 3rd root functions. For very small values this function has a very steep slope. That means the quality function will be very sensitive to small changes when the number of bigrams is small. For larger values the slope becomes more shallow, thus the sensitivity decreases.
 
-Calculating the frequency of bigrams using this method is O(1) with respect to the size of the input text. The number of bigrams in the lookup table depends on the input text. However, a good hash table implementation for the lookup should also be O(1).
+Calculating the frequency of bigrams using this method is O(1) with respect to the size of the input text. The number of bigrams in the lookup table does depend on the input text; however, a good hash table implementation for the lookup should also be O(1).
 
-The set of good and bad bigrams is a choice of parameters of the quality function.
+The set of fast bigrams is a choice of parameters of the quality function. The set of bad bigrams is objectively defined as all bigrams using the same finger to type different symbols. The set of slow bigrams is objectively defined as the set of all bigrams using the same hand minus the bad and fast bigram sets. Thus the set of fast bigrams is the only tuneable parameter of this metric.
 
 ### Fast 3-grams
 
-Taking this one step further, one can also consider 3-grams and 4-grams that can be typed fast, with one rolling motion of the fingers on one hand. Useful 4-grams would be very rare and are not considered, here. However, fast 3-grams are worth optimizing for. For example "oin" as in "ointment" and "ast" as in "last" would be considered fast 3-grams in the Colemak layout.
+Taking this one step further, one can also consider 3-grams and 4-grams that can be typed fast, with one rolling motion of the fingers on the same hand. Useful 4-grams would be very rare and are not considered, here. However, fast 3-grams are worth optimizing for. For example "oin" as in "ointment" and "ast" as in "last" would be considered fast 3-grams in the Colemak layout.
 
-Algorithmically, fast 3-grams can be derived from two fast bigrams that travel in the same direction where the first one's second key is the same as the second one's first key. For example "oin" in Colemak is composed of the two fast bigrams "oi" and "in".
+Algorithmically, fast 3-grams can be derived from two fast bigrams travelling in the same direction, where the first one's second key is the same as the second one's first key. For example "oin" in Colemak is composed of the two fast bigrams "oi" and "in".
 
-The frequencies of trigrams in the input text can be calculated ahead of time and stored in a lookup table. Then the frequncy of fast bigrams in a given keyboard layout can be calculated in the same way as the bigram frequencies in O(1) with respect to the length of the input text.
+The frequencies of 3-grams in the input text can be calculated ahead of time and stored in a lookup table. Then the frequncy of fast 3-grams in a given keyboard layout can be calculated in the same way as the bigram frequencies in O(1) with respect to the length of the input text by adding up frequencies of fast 3-grams of the keyboard layout found in the lookup table.
 
 Again, they can be scaled to a value range from 0 to 1 by dividing by the total number of keystrokes. However, the biggest possible number of 3-grams in a degenerate input text is only half the total number of key strokes, because with four fingers in each hand only two overlapping 3-grams can be typed before having to start a new one. E.g. in Colemak, the text "arstarst..." repeating would be counted as overlapping "ars" and "rst" 3-grams, with the total number being two 3-grams for every four key-strokes. Thus the scaling factor should be only half the number of keystrokes.
 
-If the fast 3-grams are automatically generated from fast bigrams, this metric has no tuneable parameters.
+If fast 3-grams are automatically generated from fast bigrams, this metric has no tuneable parameters.
 
 ### Other metrics
 
@@ -205,7 +205,7 @@ Aggressive column stagger on some ergonomic keyboards can compensate for some of
 
 ### Fast bigrams
 
-Which bigrams are easy to type may be somewhat subjective. This is the set chosen in my implementation expressed in terms of the left hand of the QWERTY layout. They are separate into two sets, left-to-right and right-to-left in order to facilitate automatic generation of fast 3-grams:
+Which bigrams are easy to type may be somewhat subjective. This is the set chosen in my implementation expressed in terms of the left hand of the QWERTY layout. They are separated into two sets, left-to-right and right-to-left in order to facilitate automatic generation of fast 3-grams:
 
 #### Left-to-right
 >WE, WF,<br>
@@ -234,11 +234,11 @@ Bad bigrams, slow bigrams, and fast 3-grams are automatically generated by the p
 
 Only bad bigrams and slow bigrams are calculated in the quality function. Since the set of slow bigrams excludes fast bigrams, it is an indirect measure of fast bigrams. The same could be said for bad bigrams, which are also excluded from the set of slow bigrams. However, bad bigrams use a different non-linear scaling to optimize for very small values.
 
-Thus the total number of bigrams and 3-grams that need to be looked to evaluate the quality function of one keyboard layout is 96 + 256 + 56 = 408.
+Thus the total number of bigrams and 3-grams that need to be looked up to evaluate the quality function of one keyboard layout is 96 + 256 + 56 = 408.
 
 ### Input text
 
-The input text used to evaluate the quality function can also be understood as a parameter. It determines the language that the keyboard layout gets optimized for.
+The input text used to evaluate the quality function can also be understood as a parameter. It determines the language and vocabulary that the keyboard layout gets optimized for.
 
 From early experience it appears that the size and diversity of the input text is important for making a keyboard layout that generalizes to most texts. For example initial experiments using a chapter from the Junglebook as input gave a skewed perception of common bigrams that did not generalize to other texts. For example the bigram "ow" is quite common in this text from the name "Mowgli", but it is not common in the English language in general.
 
@@ -249,15 +249,20 @@ These problems with input texts can be addressed in two different ways:
 * Concatenating many diverse texts
 * Preprocessing texts to remove unusual names or typos
 
-Both approaches are being applied in the experiments below. Preprocessing uses a word list to filter all words in the text. Rejected words are output into a new "missing words" list that can be manually vetted. Any real words can be added to the canonical word list. Typos and unusual names can be left out.
+Both approaches are being applied in the experiments below. Preprocessing uses a word list to filter all words in the text. Rejected words are output into a new "missing words" list that can be manually vetted. Any real words can be added to the canonical word list before rerunning the preprocessing step. Typos and unusual names can be left out.
 
-The texts used in these experiments were copied from [8] and then preprocessed against a growing canonical word list.
+The texts used in these experiments were copied from [8] and then preprocessed against a growing canonical word list. The following four texts were used from that source:
+
+1. Alice in Wonderland, Chapter 1
+2. Jungle Book
+3. Academic - Contractor's Performance in Construction
+4. Academic - Binary Logistic Analysis
 
 ## Review of existing keyboard layouts
 
 This section applies the quality function and its metrics to existing keyboard layouts. The scores and discussion of the results provide context and a reference for the solutions found by the optimization algorithm discussed in the next section.
 
-Each keyboard layout is shown with key and finger weights normalized to match the weights used in the heatmap metric of the quality function.
+Each keyboard layout is shown with key and finger weights normalized, to match the weights used in the heatmap metric of the quality function.
 
 The metrics are presented as follows:
 
@@ -272,7 +277,7 @@ The metrics are presented as follows:
 | Finger travel | Total in units of the key size | Per-finger travel, normalized per 1000 keystrokes |
 | Run length    | Avg # consecutive keystrokes: Left hand | Right hand |
 
-Fast bigrams, finger travel and run length are not directly optimized for, but they are shown here for reference and comparison with other layouts. Finger travel is indirectly affected by the heatmap. Run length and fast bigrams are implicitly optimized by the definition of slow bigrams, which penalize non-fast bigrams in the same hand.
+Fast bigrams, finger travel and run length are not explicitly included in the quality function. They are shown here for reference and comparison with other layouts. Finger travel is indirectly affected by the heatmap. Run length and fast bigrams are implicitly optimized by the definition of slow bigrams, which penalize non-fast bigrams in the same hand.
 
 ### QWERTY
 
@@ -320,9 +325,9 @@ The heatmap score for QWERTY is quite bad. It uses the left hand more heavily th
 
 The heatmap and bigram scores are much better than QWERTY. Especially the per-finger heatmap is very good. Also finger travel is much reduced. Only the right index finger still travels much more than other fingers.
 
-Dvorak is optimized for alternating hands between keystokes. This is proven by the short average run length and the much lower score of slow bigrams.
+Dvorak is optimized for alternating hands between keystrokes. This is reflected by the short average run length and the much lower score of slow bigrams.
 
-Dvorak nearly tripples the number of fast 3-grams, though that number is still very small in absolute terms.
+Dvorak nearly triples the number of fast 3-grams, though that number is still very small in absolute terms.
 
 ### Colemak
 
@@ -345,9 +350,9 @@ Dvorak nearly tripples the number of fast 3-grams, though that number is still v
 | Finger travel |  57648 | 4, 26, 96, 168, 167, 71, 49, 5 |
 | Run length    |   1.38 | 1.62    |
 
-Colemak brings a further improvement in the heatmap score although the per-finger heatmap is slightly worse. The index and middle fingers are weighted most heavily. On top of the improvements in Dvorak, Colemak brings another big improvement of bad bigrams by factor 3 and fast bigrams by factor 2.
+Colemak brings a further improvement in the heatmap score, although the per-finger heatmap is slightly worse. The index and middle fingers are weighted most heavily. On top of the improvements in Dvorak, Colemak brings another big improvement of bad bigrams by factor 3 and fast bigrams by factor 2.
 
-Colemak has more slow bigrams than Dvorak, which goes along with a longer average run length. Total finger travel is about the same as in Dvorak, but more evenly distributed to both hands. Both index fingers still travel a lot.
+Colemak has more slow bigrams than Dvorak, along with a longer average run length. Total finger travel is about the same as in Dvorak, but more evenly distributed to both hands. Both index fingers still travel a lot.
 
 Colemak has nearly 10 times as many fast 3-grams as Dvorak and over 25 times as many as QWERTY.
 
@@ -372,7 +377,7 @@ Colemak has nearly 10 times as many fast 3-grams as Dvorak and over 25 times as 
 | Finger travel |  58574 | 4, 26, 96, 170, 147, 71, 49, 5 |
 | Run length    |   1.38 | 1.62    |
 
-This is a minor modification of Colemak that affects only the placement of keys for the index fingers, making the common keys "D" and "H" more comfortable to reach [12]. This results in a small improvement of the key heatmap score and enables a few more fast bigrams and 3-grams than plain Colemak.
+This is a minor modification of Colemak that affects only the placement of keys for the index fingers, making the common keys "D" and "H" more comfortable to reach [12] without lateral motion. This results in a small improvement of the key heatmap score and enables a few more fast bigrams and 3-grams than plain Colemak.
 
 Out of all existing layouts considered here, this is the one with the highest overall score, followed closely by plain Colemak.
 
@@ -424,9 +429,9 @@ Notwithstanding the same-finger bigram score, out of all existing layouts consid
 
 The PLUM keyboard[13] was an attempt to market a matrix keyboard with an easy to learn layout, aimed at users who are not already touch-typing with QWERTY. It places the most common letters of the Engish language on the home row, arranged to form the words "read on this".
 
-This layout is a slight variation on the original PLUM layout, which placed the TAB and Backspace keys in the middle of the keyboard. I replaced those key positions with `;:` and `'"` to match other layouts compared here more closely.
+The layout shown here is a slight variation on the original PLUM layout, which placed the TAB and Backspace keys in the middle of the keyboard. I replaced those key positions with `;:` and `'"` to match other layouts compared here more closely.
 
-With the common words on the home row, the layout achieves good scores for fast bigrams and 3-grams, only slightly lower than Workman. However, the main disadvantage is a very high number of same-finger bigrams, even worse than QWERTY. The heatmap scores and finger travel are also not as good as other ergonimic-optimized keyboard layouts.
+With the common words on the home row, the layout achieves good scores for fast bigrams and 3-grams, only slightly lower than Workman. However, the main disadvantage is a very high number of same-finger bigrams, even worse than QWERTY. The heatmap scores and finger travel are also not as good as other ergonomic-optimized keyboard layouts.
 
 ---
 
@@ -434,7 +439,7 @@ With the common words on the home row, the layout achieves good scores for fast 
 
 ## Metaheuristic
 
-I chose to implement a metaheuristic based on Simulated Annealing to find an optimal keyboard layout. Simulated annealing works by accepting worse solutions based on a temperature parameter that is gradually reduced as the optimization progresses.
+I chose to implement a metaheuristic based on Simulated Annealing [14] to find an optimal keyboard layout. Simulated annealing works by accepting worse solutions based on a temperature parameter that is gradually reduced as the optimization progresses.
 
 I made some modifications to the basic algorithm in order to improve convergence to good solutions, or in other words, reduce the chances of getting stuck in a local optimum:
 
@@ -475,7 +480,7 @@ A run on 4 CPU cores for about 13 hours performed 247 runs of the annealing sche
 
 Out of 119 unique solutions found by 247 runs of the algorithm I picked 9 solutions to discuss the results. Each layout gets its own subsection showing the layout with the basic metrics and a short discussion.
 
-This is followed by a discussion of common patterns in multiple solutions.
+This is followed by a discussion of common patterns observed in multiple solutions.
 
 The last subsection shows graphs of the distribution of all solutions with respect to various metrics.
 
@@ -739,6 +744,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
 
 ## Statistics
 
+The plots in this section are bar charts where each bar represents the number of solutions in a small range of score values. This provides a visual representation of the distribution of scores. All distributions display strong peaks around popular solutions. Some of them are skewed in one direction.
+
 ### Overall score distribution
 
        |                                            #                   
@@ -773,6 +780,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
         +---------+---------+---------+---------+---------+---------+---------
       0.723     0.726     0.729     0.732     0.735     0.738     0.741   
 
+Overall scores are distributed in a fairly narrow range, with values significantly higher than existing layouts. The distribution is skewed towards higher values with a peak at the highest score, representing the 18 program runs that found the REAT layout.
+
 ### Heatmap score distribution
 
      25+                                  #              
@@ -802,6 +811,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
        |#    ###  # ###  #  #### ###################  # #
         +---------+---------+---------+---------+---------
       0.822     0.852     0.882     0.912     0.942   
+
+The heatmap score is distributed more widely than the overall score. Lower scores in one metric can be compensated by higher scores in other metrics, resulting in a wider distribution of the scores of individual metrics. Eve the lowest scores recorded here still outperform existing keyboard layouts.
 
 ### Bad bigrams distribution
 
@@ -854,6 +865,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
        |##################################  # ##  #                      #
         +---------+---------+---------+---------+---------+---------+---------
         246       306       366       426       486       546       606   
+
+This distribution is strongly skewed towards smaller values. It has a high peak around 288, which is the value seen in popular layouts such as REAT and SINC. There is a smaller peak at the best (lowest) score of 246, which corresponds to EAHT and similar layouts. There is one outlier at over 600 bad bigrams.
 
 ### Fast bigrams distribution
 
@@ -919,6 +932,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
         +---------+---------+---------+---------+---------+---------
       13250     15750     18250     20750     23250     25750   
 
+This distribution is skewed towards higher values with a strong peak around 24500, representing popular layouts such as REAT and SNIC.
+
 ### Slow bigrams distribution
 
        |                                  #                             
@@ -953,6 +968,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
         +---------+---------+---------+---------+---------+---------+---------
        3900      5400      6900      8400      9900     11400     12900   
 
+This distribution covers a very wide range of values with the highest peak right in the middle. It doesn't appear to be skewed one way or the other.
+
 ### Fast 3-grams distribution
 
        |                                             #                    
@@ -981,6 +998,8 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
         +---------+---------+---------+---------+---------+---------+---------
         750      1250      1750      2250      2750      3250      3750   
 
+This distribution is also spread out over a wide range of values with the lowest values worse than the Workman layout. NEOI is a representative of the lower range. It is, however, skewed towards higher values with several peaks between roughly 2200 and 3500. It is slightly skewed towards higher values.
+
 # TODO
 
 * Automatically mirror layouts to make them easier to compare
@@ -1004,6 +1023,7 @@ Layout's which do not place all vowels in the same hand typically move "E" to th
 [8] SteveP's fork of the [Keyboard Layout Analyzer](https://stevep99.github.io/keyboard-layout-analyzer/#/main)<br>
 [9] [10 Fast Fingers typing test](https://10fastfingers.com/typing-test/english)<br>
 [10] [Python.org](https://www.python.org/)<br>
-[11] [A fast, compliant alternative implementation of Python](https://www.pypy.org/)
-[12] [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/)
-[13] [PLUM keyboard](https://en.wikipedia.org/wiki/PLUM_keyboard)
+[11] [A fast, compliant alternative implementation of Python](https://www.pypy.org/)<br>
+[12] [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/)<br>
+[13] [PLUM keyboard](https://en.wikipedia.org/wiki/PLUM_keyboard)<br>
+[14] [Simulated Annealing](https://en.wikipedia.org/wiki/Simulated_annealing)<br>
