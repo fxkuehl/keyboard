@@ -1,0 +1,38 @@
+"""
+ [; :] [ L ] [ H ] [ K ] [ Q ] | [ Z ] [ B ] [ U ] [, <] [ X ]
+  0.3   6.8   7.8   1.0   0.3  |  0.1   2.2   4.5   2.5   0.2 
+ [ A ] [ N ] [ R ] [ T ] [ M ] | [ P ] [ C ] [ I ] [ E ] [ S ]
+ 12.5  12.1  10.2  15.5   3.9  |  3.8   6.7  11.7  19.9  10.1 
+ [ O ] [ J ] [. >] [ D ] [ V ] | [ W ] [ G ] [ Y ] [' "] [ F ]
+ 13.0   0.6   2.9   5.9   1.8  |  2.7   3.2   2.6   0.8   4.3 
+ 25.9  19.5  20.9  28.4        |       18.7  18.8  23.3  14.5 
+Heatmap score: 0.9492 0.8500 (0.9121)
+Bad bigrams:      293 (0.8559)
+Slow bigrams:    8980 (0.6973)
+Fast trigrams:   2419 (0.2222)
+Overall score: 0.7332
+Fast bigrams:   23134
+Finger travel: 56735: [81, 56, 76, 123, 101, 69, 33, 37]
+Adjusted travel: 60549: [85, 62, 81, 125, 102, 71, 48, 39]
+Hand runs mean, max: (1.7162906321784825, 1.418729184353164), (8, 9)
+
+Bad bigrams: ui:78 hr:38 nl:32 yi:32 oa:30 sf:21 dv:11 iu:11 tm:8 e':5 rh:3 tk:3 dm:3 bc:3 uy:3 ln:2 td:2 pb:2 wp:2 km:1 pg:1 wb:1 fs:1 
+
+Slow bigrams: al:742 ma:471 ol:439 pe:428 lo:390 ho:373 be:316 om:313 la:307 we:285 rm:256 wi:243 oj:228 ld:219 bu:211 mo:209 hn:138 va:138 ue:138 am:136 sp:133 av:129 ep:127 gy:113 ov:108 ak:104 ug:104 ey:103 bi:101 up:99 by:99 pi:89 ys:85 ub:83 ex:81 ip:79 ye:72 ok:62 's:61 rk:56 vo:54 ew:54 iz:50 fu:49 kn:47 gu:47 nk:45 pu:45 lv:41 cy:39 ib:37 ps:33 nv:31 rv:31 xp:31 bs:31 jo:30 ws:30 nm:28 yp:27 ze:26 rl:25 dl:17 aq:16 xi:15 zi:15 lk:14 ja:12 xc:12 sy:11 sw:11 eb:11 ka:10 uf:10 fy:10 kl:8 oh:8 xe:7 eu:7 ix:7 py:7 yz:7 lm:6 aj:6 i':6 hd:4 nh:4 y':4 yw:4 sb:3 s':3 pf:3 f':3 yb:3 hm:2 g':2 lr:1 kh:1 ko:1 nq:1 oq:1 u':1 b':1 zy:1 fw:1 'c:1 yc:1 wu:1 wf:1 
+
+Fast bigrams: th:2373 an:1561 on:1421 at:1107 or:1105 nd:1091 nt:892 to:881 es:861 is:763 ro:715 ha:640 ec:639 ar:559 ra:500 se:486 ce:469 tr:460 no:443 us:431 ic:405 si:403 ta:368 ge:320 uc:310 na:307 ie:273 ot:272 su:247 ig:231 fe:200 do:181 od:180 fi:180 rt:178 ad:175 ci:151 if:147 cu:125 rn:118 ef:107 gi:105 ht:97 sc:95 tl:92 lt:79 rd:79 eg:78 ei:73 da:48 dr:38 cs:32 gs:32 dn:5 tn:3 ah:1 nr:1 sg:1 
+
+Fast trigrams: and:719 tha:276 tra:172 ont:153 ant:104 ond:102 ces:97 fec:93 ies:82 ort:81 suc:62 art:59 fic:59 sig:49 ord:39 gis:38 ard:34 rna:34 cie:25 tro:24 gie:21 fig:17 ges:16 sec:15 dro:8 sic:7 cif:7 cus:6 cis:5 ief:5 eig:4 dra:3 tna:1 cef:1 gif:1 
+"""
+
+layout = [
+    ';:', 'lL', 'hH', 'kK', 'qQ',    'zZ', 'bB', 'uU', ',<', 'xX',
+    'aA', 'nN', 'rR', 'tT', 'mM',    'pP', 'cC', 'iI', 'eE', 'sS',
+    'oO', 'jJ', '.>', 'dD', 'vV',    'wW', 'gG', 'yY','\'"', 'fF'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#
