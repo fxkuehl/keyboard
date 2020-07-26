@@ -56,8 +56,8 @@ def main():
     ]
     layout_COLEMAKDH = [
         'qQ', 'wW', 'fF', 'pP', 'bB',   'jJ', 'lL', 'uU', 'yY', ';:',
-        'aA', 'rR', 'sS', 'tT', 'gG',   'kK', 'nN', 'eE', 'iI', 'oO',
-        'zZ', 'xX', 'cC', 'dD', 'vV',   'mM', 'hH', ',<', '.>', '/?'
+        'aA', 'rR', 'sS', 'tT', 'gG',   'mM', 'nN', 'eE', 'iI', 'oO',
+        'zZ', 'xX', 'cC', 'dD', 'vV',   'kK', 'hH', ',<', '.>', '/?'
     ]
     layout_WORKMAN = [
         'qQ', 'dD', 'rR', 'wW', 'bB',   'jJ', 'fF', 'uU', 'pP', ';:',
