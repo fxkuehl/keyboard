@@ -186,7 +186,7 @@ def optimize(keymap):
 
 new_layout = anneal(layout_DVORAK, optimize, seed=None, shuffle=True)
 
-new_keymap = Keymap(new_layout)
+new_keymap = Keymap(new_layout, auto_mirror=True)
 new_keymap.eval(text, 6)
 new_keymap.print_summary()
 new_keymap.save_to_db()

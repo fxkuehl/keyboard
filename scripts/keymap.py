@@ -31,7 +31,22 @@ def _mirror_key(k):
 class Keymap:
     _key_props = [_calculate_key_props(k) for k in range(30)]
 
-    def __init__(self, layout):
+    @staticmethod
+    def _mirror_layout(layout):
+        return [layout[i + 9 - 2*(i % 10)] for i in range(30)]
+
+    def __init__(self, layout, auto_mirror=False):
+        """ Initialize a keymap
+
+        @layout:       The layout to use
+        @auto_mirror:  Mirror automoatically so "A" is in the left hand """
+        if auto_mirror:
+            try:
+                i = layout.index('aA')
+                if i % 10 >= 5:
+                    layout = self._mirror_layout(layout)
+            except ValueError:
+                pass
         self.layout = layout
         self.keymap = {}
         for i in range(len(layout)):
@@ -449,25 +464,13 @@ class Keymap:
         in the layout in order. Punctuations are replaced with
         _, since their exact position is less relevant.
 
-        To eliminate redundancy due to symmetry, the layout is
-        mirrored such that the letter A is always in the left
-        hand.
-
         The file format is a python script with the layout
         formated as a list, and additional information in a
         multi-line string comment. Eventually this is going to
         be made a functioning script to evaluate a stored
         layout with other input texts.
         """
-        if self.keymap['a'][2] != 0:
-            layout = []
-            for i in range(3):
-                row = self.layout[i*10 : i*10 + 10]
-                row.reverse()
-                layout += row
-        else:
-            layout = self.layout[:]
-        name = ''.join((k[0] if k[0].isalpha() else '_' for k in layout))
+        name = ''.join((k[0] if k[0].isalpha() else '_' for k in self.layout))
         path = '/'.join(('db', name))
         try:
             with open(path, 'x') as dbfile:

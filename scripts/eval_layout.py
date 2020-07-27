@@ -12,16 +12,16 @@ def print_help(ret):
     print("  -d | --db      Save layout to database")
     sys.exit(ret)
 
-def eval_layout_with_text(layout, text):
-    keymap = Keymap(layout)
+def eval_layout_with_text(layout, auto_mirror, text):
+    keymap = Keymap(layout, auto_mirror)
     keymap.eval(text)
     keymap.print_summary()
     if save_to_db:
         keymap.save_to_db()
 
-def eval_layout(layout):
+def eval_layout(layout, auto_mirror=True):
     text = TextStats(sys.stdin.read())
-    eval_layout_with_text(layout, text)
+    eval_layout_with_text(layout, auto_mirror, text)
 
 save_to_db = False
 for arg in sys.argv[1:]:
@@ -76,7 +76,7 @@ def main():
     text = TextStats(sys.stdin.read())
     for name, layout in layouts.items():
         print("*** Layout: %s ***" % name)
-        eval_layout_with_text(layout, text)
+        eval_layout_with_text(layout, False, text)
 
 if __name__ == "__main__":
     main()
