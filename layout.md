@@ -734,6 +734,81 @@ The fast 3-gram score is slightly lower than REAT. The major compromise seems to
 
 The total finger travel distance is one of the lowest seen among all solutions. However, it is unevenly distributed with more travel for the right index finger.
 
+### Hand-edited solutions for possible adoption
+
+This section presents hand-edited versions of three of the layouts representing three classes of solutions:
+
+* Middle of the road (REAT)
+* Optimized for alternating hands (NEOI)
+* Optimized for the most fast 3-grams (SINC)
+
+Edits focus on improving lateral movement and cosmetic changes rearranging punctuation keys.
+
+### REAT
+
+    [ Z ] [, <] [ O ] [. >] [ Q ] | [ J ] [ F ] [ L ] [ U ] [ X ]
+     0.1   2.5  13.0   2.9   0.3  |  0.6   4.3   6.8   4.5   0.2
+    [ R ] [ E ] [ A ] [ T ] [ B ] | [ P ] [ C ] [ N ] [ I ] [ S ]
+    10.2  19.9  12.5  15.5   2.2  |  3.8   6.7  12.1  11.7  10.1
+    [ H ] [; :] [' "] [ D ] [ K ] | [ W ] [ G ] [ M ] [ Y ] [ V ]
+     7.8   0.3   0.8   5.9   1.0  |  2.7   3.2   3.9   2.6   1.8
+    18.1  22.8  26.4  27.9        |       21.3  22.7  18.8  12.1
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.7407 |         |
+| Heatmap       | 0.9071 | 0.9196  |
+| Bad bigrams   |    288 | ui:78 hr:38 nl:32 yi:32 oa:30 nm:28 iu:11 bt:8 lm:6 rh:3 tk:3 pf:3 uy:3 td:2 wp:2 ln:2 o':1 a':1 'a:1 db:1 wf:1 fw:1 pg:1 |
+| Slow bigrams  |   7841 |         |
+| Fast 3-grams  |   2391 | ing:567 hat:295 tor:295 ter:203 der:145 sin:114 red:82 rea:73 eat:61 had:55 rat:51 inc:51 sig:49 ead:45 hea:43 gis:38 hed:28 vin:28 gni:24 clu:19 rot:17 rad:17 giv:14 dar:13 niv:12 ret:10 tar:10 sic:7 vic:7 nis:7 cis:5 het:4 civ:2 |
+| Fast bigrams  |  24607 | th:2373 he:2172 in:1658 er:1566 re:1239 at:1107 or:1105 to:881 ed:856 te:848 is:763 ng:749 ro:715 ha:640 de:608 ar:559 ra:500 tr:460 ic:405 si:403 ea:401 nc:396 ta:368 uc:310 ns:310 et:279 ot:272 iv:242 ni:241 ig:231 ul:207 rt:178 ad:175 ci:151 vi:150 cu:125 gi:105 cl:101 ht:97 sc:95 lu:87 rd:79 ls:71 eh:64 da:48 gn:47 dr:38 cs:32 gs:32 nv:31 sl:21 sn:9 hd:4 ah:1 sg:1 vg:1 |
+| Finger travel |  57505 | 49, 27, 86, 117, 126, 90, 69, 19 |
+| Run length    |   1.67 | 1.48    |
+
+### NEOI
+
+    [ Z ] [, <] [ A ] [. >] [ X ] | [ J ] [ D ] [ R ] [ M ] [ V ]
+     0.1   2.5  12.5   2.9   0.2  |  0.6   5.9  10.2   3.9   1.8
+    [ N ] [ E ] [ O ] [ I ] [ Y ] | [ W ] [ C ] [ H ] [ T ] [ S ]
+    12.1  19.9  13.0  11.7   2.6  |  2.7   6.7   7.8  15.5  10.1
+    [ P ] [' "] [ Q ] [ U ] [; :] | [ B ] [ F ] [ L ] [ K ] [ G ]
+     3.8   0.8   0.3   4.5   0.3  |  2.2   4.3   6.8   1.0   3.2
+    16.0  23.3  25.8  22.2        |       22.4  24.8  20.4  15.1
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.7318 |         |
+| Heatmap       | 0.8469 | 0.9520  |
+| Bad bigrams   |    330 | ui:78 hr:38 yi:32 gs:32 oa:30 rl:25 aq:16 xi:15 iu:11 tm:8 np:7 ix:7 e':5 bj:4 uy:3 bc:3 rh:3 tk:3 oq:1 db:1 df:1 wb:1 wf:1 fw:1 lr:1 km:1 vg:1 sg:1 |
+| Slow bigrams  |   5207 |         |
+| Fast 3-grams  |    892 | ion:550 ien:86 cts:61 fts:59 peo:38 uen:27 ian:19 nou:9 gth:9 nai:8 neu:7 poi:7 noi:3 nei:2 eou:2 stc:2 neo:1 thf:1 hts:1 |
+| Fast bigrams  |  17578 | th:2373 in:1658 an:1561 on:1421 en:1130 ct:920 st:792 io:581 ou:514 rs:447 no:443 pe:428 ne:419 ch:370 ts:314 sh:311 na:307 un:281 ie:273 po:271 rm:256 ia:254 ni:241 ai:216 cr:212 gh:169 op:154 ue:138 ft:131 ep:127 up:99 ht:97 sc:95 pi:89 ip:79 ei:73 rc:70 eo:48 pu:45 cs:32 oi:28 nu:22 oe:22 sf:21 tc:16 gt:9 eu:7 i':6 uo:2 'a:1 a':1 sr:1 hf:1 fs:1 hs:1 |
+| Finger travel |  57979 | 34, 11, 81, 120, 125, 121, 47, 48 |
+| Run length    |   1.42 | 1.31    |
+
+### SINC -> EAHT
+
+    [; :] [ O ] [ R ] [ Q ] [ Z ] | [ J ] [ F ] [ L ] [ U ] [ X ]
+     0.3  13.0  10.2   0.3   0.1  |  0.6   4.3   6.8   4.5   0.2
+    [ E ] [ A ] [ H ] [ T ] [ B ] | [ P ] [ C ] [ N ] [ I ] [ S ]
+    19.9  12.5   7.8  15.5   2.2  |  3.8   6.7  12.1  11.7  10.1
+    [' "] [, <] [. >] [ D ] [ K ] | [ W ] [ G ] [ M ] [ Y ] [ V ]
+     0.8   2.5   2.9   5.9   1.0  |  2.7   3.2   3.9   2.6   1.8
+    21.1  28.0  20.9  25.1        |       21.3  22.7  18.8  12.1
+
+| Metric        | Value  | Details |
+| ------------- | -----: | :------ |
+| Overall score | 0.7382 |         |
+| Heatmap       | 0.8983 | 0.8786  |
+| Bad bigrams   |    290 | ui:78 hr:38 nl:32 yi:32 oa:30 nm:28 iu:11 bt:8 lm:6 e':5 rh:3 tk:3 pf:3 uy:3 td:2 wp:2 ln:2 db:1 fw:1 pg:1 wf:1 |
+| Slow bigrams  |   8993 |         |
+| Fast 3-grams  |   3055 | the:1579 ing:567 tha:276 sin:114 ort:81 eat:61 inc:51 sig:49 ead:45 gis:38 vin:28 tre:25 gni:24 tro:24 ert:20 clu:19 giv:14 niv:12 sic:7 vic:7 nis:7 cis:5 civ:2 |
+| Fast bigrams  |  23453 | th:2373 he:2172 in:1658 er:1566 re:1239 at:1107 or:1105 to:881 ed:856 te:848 is:763 ng:749 ro:715 ha:640 de:608 tr:460 ic:405 si:403 ea:401 nc:396 ta:368 uc:310 ns:310 et:279 ot:272 iv:242 ni:241 ig:231 ul:207 rt:178 ad:175 ci:151 vi:150 cu:125 gi:105 cl:101 ht:97 sc:95 lu:87 ls:71 eh:64 da:48 gn:47 cs:32 gs:32 nv:31 sl:21 t':15 sn:9 't:5 hd:4 ah:1 'a:1 a':1 sg:1 vg:1 |
+| Finger travel |  58343 | 11, 109, 79, 91, 124, 90, 69, 19 |
+| Run length    |   1.67 | 1.48    |
+
+Moving the `'"` key slightly affected the bigrams scores. Under-utilizing this key also had an unexpectedly large affect on the key heatmap metric. Finger travel increased slightly.
+
 ## Common patterns
 
 The bad bigram metrics seem to favour certain combination of letters on the same finger that reoccur in most solutions. These are groups of letters which do not form common bigrams in the English language. The two most prominent ones are U-I-Y and A-O.
@@ -1008,6 +1083,14 @@ This distribution is also spread out over a wide range of values with the lowest
 * Build a more representative English text sample
 * Investigate other languages (German, being my first language, is a good starting point)
 * Investigate optimizing layouts for two languages (e.g. German and English)
+
+# Conclusion
+
+It was demonstrated that keyboard layouts can be algorithmically optimized. A quality function was defined, which can be computed efficiently. A simulated annealing algorithm was developed, which is able to converge on a set of good solutions, which significantly outperform existing keyboard layouts in common metrics.
+
+It was shown in a few examples, that the choice of input text or texts affects the generality of the solution. More work is needed to build a representative sample of the English language. Other languages can be considered in the future. In particular it would be interesting to optimize keyboard layouts for multiple languages.
+
+Some tweaks to the quality function could improve the results further and make manual tweaks of the generated solutions unnecessary or purely cosmetic.
 
 ---
 
