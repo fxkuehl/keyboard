@@ -217,8 +217,7 @@ class Keymap:
     def _vector_distance(v1, v2):
         """ Vector distance measure that measures the magnitude of the
         ratio of elements rather than the absolute value difference. """
-        return math.sqrt(sum(math.log(a / b)**2 if a != 0 and b != 0 else 1
-                             for a, b in zip(v1, v2)))
+        return math.sqrt(sum((1.0 - a/b)**2 for a, b in zip(v1, v2)))
 
     _finger_weights = [15, 25, 30, 30,   30, 30, 25, 15]
     _sorted_key_weights = _key_weights[:]
@@ -304,8 +303,7 @@ class Keymap:
 
     def _heatmap_metric(self):
         #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
-        return (math.sqrt(self.heatmap_score) +
-                self.finger_score) / 2
+        return (self.heatmap_score + 2*self.finger_score) / 3
         #return (key_score + finger_score) / 2
 
     def _bad_bigrams_metric(self):
