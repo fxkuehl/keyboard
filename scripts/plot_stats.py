@@ -46,9 +46,9 @@ class Buckets:
             x += 10
         print()
 
-heat_buckets = Buckets(0.003)
+heat_buckets = Buckets(0.001)
 bad_buckets = Buckets(6)
-fast_buckets = Buckets(250)
+fast_buckets = Buckets(150)
 slow_buckets = Buckets(150)
 fasttri_buckets = Buckets(50)
 score_buckets = Buckets(0.0003)
