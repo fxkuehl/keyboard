@@ -210,9 +210,9 @@ class Keymap:
                 pass
         return num
 
-    _key_weights = [ 1,  6,  7,  2, 1,   1,  2,  7,  6,  1,
-                    10, 12, 15, 10, 4,   4, 10, 15, 12, 10,
-                     4,  2,  3,  5, 3,   3,  5,  3,  2,  4]
+    _key_weights = [ 1,  8,  9,  4, 1,   1,  4,  9,  8,  1,
+                    10, 15, 18, 12, 3,   3, 12, 18, 15, 10,
+                     4,  2,  3,  8, 2,   2,  8,  3,  2,  4]
     @staticmethod
     def _vector_distance(v1, v2):
         """ Vector distance measure that measures the magnitude of the
@@ -220,7 +220,7 @@ class Keymap:
         return math.sqrt(sum(math.log(a / b)**2 if a != 0 and b != 0 else 1
                              for a, b in zip(v1, v2)))
 
-    _finger_weights = [15, 20, 25, 25,   25, 25, 20, 15]
+    _finger_weights = [15, 25, 30, 30,   30, 30, 25, 15]
     _sorted_key_weights = _key_weights[:]
     _sorted_key_weights.sort()
     _sorted_finger_weights = _finger_weights[:]
