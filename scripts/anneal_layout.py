@@ -109,9 +109,9 @@ def anneal(layout, function, seed=None, shuffle=False):
     rand.seed(seed)
     if shuffle:
         layout = rand.sample(layout, k=len(layout))
-    noise = 0.5
+    noise = 0.1
     noise_step = 0.000001
-    noise_floor = 0.005
+    noise_floor = 0.01
     best_score = function(Keymap(layout))
     accepted_score = best_score
     best_layout = layout
