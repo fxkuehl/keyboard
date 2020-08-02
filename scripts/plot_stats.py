@@ -15,35 +15,49 @@ class Buckets:
         except KeyError:
             self.buckets[bucket] = val
 
-    def plot(self, format):
+    def plot(self, format, div=4):
         min_x = min(self.buckets.keys())
         max_x = max(self.buckets.keys())
-        y = max(self.buckets.values())
-        while y > 0:
-            if y % 5 == 0:
-                print("    %3u+" % y, end='')
+        y = (max(self.buckets.values()) - 1) // div
+        while y >= 0:
+            if y % 2 == 0:
+                print("    %3u┤" % ((y + 0.5) * div), end='')
             else:
-                print("       |", end='')
+                print("       │", end='')
             x = min_x
             while x <= max_x:
-                if x in self.buckets and self.buckets[x] >= y:
-                    print("#", end='')
-                else:
+                if x not in self.buckets or self.buckets[x] <= y*div:
                     print(" ", end='')
+                elif self.buckets[x] <= (y + 1/8)*div:
+                    print("▁", end='')
+                elif self.buckets[x] <= (y + 2/8)*div:
+                    print("▂", end='')
+                elif self.buckets[x] <= (y + 3/8)*div:
+                    print("▃", end='')
+                elif self.buckets[x] <= (y + 4/8)*div:
+                    print("▄", end='')
+                elif self.buckets[x] <= (y + 5/8)*div:
+                    print("▅", end='')
+                elif self.buckets[x] <= (y + 6/8)*div:
+                    print("▆", end='')
+                elif self.buckets[x] <= (y + 7/8)*div:
+                    print("▇", end='')
+                else:
+                    print("█", end='')
                 x += 1
             y -= 1
             print()
-        print("        ", end='')
+        print("       └", end='')
         x = min_x
         while x <= max_x:
-            print("+---------", end='')
-            x += 10
+            print("┬─────", end='')
+            x += 6
         print()
-        print("    ", end='')
+        print("     ", end='')
         x = min_x
         while x <= max_x:
             print(format % (x * self.bucket_size), end='')
-            x += 10
+            x += 6
         print()
 
 score_buckets = Buckets(0.0004)
@@ -75,46 +89,46 @@ print()
 print("Overall score distributions")
 print("===========================")
 print()
-score_buckets.plot("  %5.3f   ")
+score_buckets.plot(" %5.3f", 8)
 
 print()
 print("Heatmap score distributions")
 print("===========================")
 print()
-heat_buckets.plot("  %5.3f   ")
+heat_buckets.plot(" %5.3f")
 
 print()
 print("Finger score distributions")
 print("==========================")
 print()
-finger_buckets.plot("  %5.3f   ")
+finger_buckets.plot(" %5.3f", 8)
 
 print()
 print("Bad bigrams distributions")
 print("=========================")
 print()
-bad_buckets.plot("  %5.2f   ")
+bad_buckets.plot(" %5.2f")
 
 print()
 print("Slow bigrams distribution")
 print("=========================")
 print()
-slow_buckets.plot("   %3d    ")
+slow_buckets.plot("  %3d ")
 
 print()
 print("Fast trigrams distribution")
 print("==========================")
 print()
-fasttri_buckets.plot(" %5.1f    ")
+fasttri_buckets.plot("%5.1f ")
 
 print()
 print("Fast bigrams distributions")
 print("==========================")
 print()
-fast_buckets.plot("   %3d    ")
+fast_buckets.plot("  %3d ")
 
 print()
 print("Finger travel distributions")
 print("===========================")
 print()
-travel_buckets.plot("   %3d    ")
+travel_buckets.plot("  %3d ")
