@@ -46,23 +46,28 @@ class Buckets:
             x += 10
         print()
 
-heat_buckets = Buckets(0.001)
-bad_buckets = Buckets(6)
-fast_buckets = Buckets(150)
-slow_buckets = Buckets(150)
-fasttri_buckets = Buckets(50)
-score_buckets = Buckets(0.0003)
+score_buckets = Buckets(0.0004)
+heat_buckets = Buckets(0.00125)
+finger_buckets = Buckets(0.004)
+bad_buckets = Buckets(0.08)
+slow_buckets = Buckets(2)
+fasttri_buckets = Buckets(0.6)
+fast_buckets = Buckets(2)
+travel_buckets = Buckets(1)
 
 for line in sys.stdin:
     try:
-        num, heat, bad, fast, slow, fasttri, score = line.split()
+        #num, heat, bad, fast, slow, fasttri, score = line.split()
+        num, score, heat, finger, bad, slow, fasttri, fast, travel = line.split()
 
+        score_buckets.add(float(score), int(num))
         heat_buckets.add(float(heat), int(num))
+        finger_buckets.add(float(finger), int(num))
         bad_buckets.add(float(bad), int(num))
-        fast_buckets.add(float(fast), int(num))
         slow_buckets.add(float(slow), int(num))
         fasttri_buckets.add(float(fasttri), int(num))
-        score_buckets.add(float(score), int(num))
+        fast_buckets.add(float(fast), int(num))
+        travel_buckets.add(float(travel), int(num))
     except ValueError:
         pass
 
@@ -79,25 +84,37 @@ print()
 heat_buckets.plot("  %5.3f   ")
 
 print()
+print("Finger score distributions")
+print("==========================")
+print()
+finger_buckets.plot("  %5.3f   ")
+
+print()
 print("Bad bigrams distributions")
 print("=========================")
 print()
-bad_buckets.plot("  %5d   ")
-
-print()
-print("Fast bigrams distributions")
-print("==========================")
-print()
-fast_buckets.plot("  %5d   ")
+bad_buckets.plot("  %5.2f   ")
 
 print()
 print("Slow bigrams distribution")
 print("=========================")
 print()
-slow_buckets.plot("  %5d   ")
+slow_buckets.plot("   %3d    ")
 
 print()
 print("Fast trigrams distribution")
 print("==========================")
 print()
-fasttri_buckets.plot("  %5d   ")
+fasttri_buckets.plot(" %5.1f    ")
+
+print()
+print("Fast bigrams distributions")
+print("==========================")
+print()
+fast_buckets.plot("   %3d    ")
+
+print()
+print("Finger travel distributions")
+print("===========================")
+print()
+travel_buckets.plot("   %3d    ")

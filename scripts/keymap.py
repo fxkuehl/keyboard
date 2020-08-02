@@ -325,6 +325,37 @@ class Keymap:
         fast_trigrams = self.fast_trigrams / (self.strokes/2)
         return math.sqrt(fast_trigrams)
 
+    # Curves to change sensitivity of metrics in range 0-1 and to
+    # optimize for large or small values
+    _curves = {
+            # Optimize for large values
+            # - Identity
+            "x" : lambda x: x,
+            # - Lower sensitivity for large values
+            "sqrt(x)" : lambda x: math.sqrt(x),
+            "curt(x)" : lambda x: x**(1.0/3.0),
+            "1-(1-x)^2": lambda x: 1.0 - (1.0 - x)**2,
+            "1-(1-x)^3": lambda x: 1.0 - (1.0 - x)**3,
+            # - Higher sensitivity for large values
+            "x^2" : lambda x: x**2,
+            "x^3" : lambda x: x**3,
+            "1-sqrt(1-x)" : lambda x: 1.0 - math.sqrt(1.0 - x),
+            "1-curt(1-x)" : lambda x: 1.0 - (1.0 - x)**(1.0/3.0),
+            # Optimize for small values
+            # - Identity
+            "1-x" : lambda x: 1.0 - x,
+            # - Higher sensitivity for small values
+            "(1-x)^2" : lambda x: (1.0 - x)**2,
+            "(1-x)^3" : lambda x: (1.0 - x)**3,
+            "1-sqrt(x)" : lambda x: 1.0 - math.sqrt(x),
+            "1-curt(x)" : lambda x: 1.0 - x**(1.0/3.0),
+            # - Lower sensitivity for small values
+            "sqrt(1-x)" : lambda x: math.sqrt(1.0 - x),
+            "curt(1-x)" : lambda x: (1.0 - x)**(1.0/3.0),
+            "1-x^2" : lambda x: 1.0 - x**2,
+            "1-x^3" : lambda x: 1.0 - x**3
+    }
+
     def eval_score(self, text, full=False):
         self.heatmap = self.calc_heatmap(text)
         self.strokes = sum(self.heatmap)
@@ -346,20 +377,27 @@ class Keymap:
             self.fast_trigram_freq = None
         self.bad_bigrams = self.calc_bad_bigrams(text,
                 freq_map=self.bad_bigram_freq)
-        #self.fast_bigrams = self.calc_fast_bigrams(text,
-        #        freq_map=self.fast_bigram_freq)
         self.slow_bigrams = self.calc_slow_bigrams(text,
                 freq_map=self.slow_bigram_freq)
         self.fast_trigrams = self.calc_fast_trigrams(text,
                 freq_map=self.fast_trigram_freq)
 
-        self.scores = (self._heatmap_metric(),
-                       self._bad_bigrams_metric(),
-                       self._slow_bigrams_metric(),
-                       #self._fast_bigrams_metric(),
-                       self._fast_trigram_metric())
-        w = (1, 3, 1, 1)
-        self.overall_score = sum((w[i] * self.scores[i] for i in range(len(self.scores)))) / sum(w)
+        self.scores = (
+                self.heatmap_score,
+                self.finger_score,
+                self.bad_bigrams/self.strokes,
+                self.slow_bigrams/self.strokes,
+                self.fast_trigrams/(self.strokes/2)
+        )
+        c = ("x", "x", "1-curt(x)", "1-sqrt(x)", "sqrt(x)")
+        self.curved_scores = [self._curves[c[i]](self.scores[i])
+                              for i in range(len(self.scores))]
+        weights = (1, 2, 9, 3, 3)
+        s = sum(weights)
+        w = [w/s for w in weights]
+        self.weighted_scores = [w[i] * self.curved_scores[i]
+                                for i in range(len(self.scores))]
+        self.overall_score = sum(self.weighted_scores)
 
         return self.overall_score
 
@@ -379,22 +417,35 @@ class Keymap:
         l = [a == b.lower() and '[ ' + b + ' ]' or '[' + a + ' ' + b + ']' for a, b in self.layout]
         h = self.normalized_heatmap
         f = self.finger_heatmap
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[0:10]), file=file)
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f " % tuple(h[0:10]), file=file)
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[10:20]), file=file)
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f " % tuple(h[10:20]), file=file)
-        print(" %5.5s %5.5s %5.5s %5.5s %5.5s | %5.5s %5.5s %5.5s %5.5s %5.5s" % tuple(l[20:30]), file=file)
-        print("%5.1f %5.1f %5.1f %5.1f %5.1f  |%5.1f %5.1f %5.1f %5.1f %5.1f " % tuple(h[20:30]), file=file)
-        print("%5.1f %5.1f %5.1f %5.1f        |      %5.1f %5.1f %5.1f %5.1f " % tuple(f), file=file)
+        fh = (f[0], f[1], f[2], f[3], sum(f[0:4]), sum(f[4:8]), f[4], f[5], f[6], f[7])
+        print(" %5.5s  %5.5s  %5.5s  %5.5s  %5.5s  |  %5.5s  %5.5s  %5.5s  %5.5s  %5.5s" \
+                % tuple(l[0:10]), file=file)
+        print("%5.1f  %5.1f  %5.1f  %5.1f  %5.1f   | %5.1f  %5.1f  %5.1f  %5.1f  %5.1f " \
+                % tuple(h[0:10]), file=file)
+        print(" %5.5s  %5.5s  %5.5s  %5.5s  %5.5s  |  %5.5s  %5.5s  %5.5s  %5.5s  %5.5s" \
+                % tuple(l[10:20]), file=file)
+        print("%5.1f  %5.1f  %5.1f  %5.1f  %5.1f   | %5.1f  %5.1f  %5.1f  %5.1f  %5.1f " \
+                % tuple(h[10:20]), file=file)
+        print(" %5.5s  %5.5s  %5.5s  %5.5s  %5.5s  |  %5.5s  %5.5s  %5.5s  %5.5s  %5.5s" \
+                % tuple(l[20:30]), file=file)
+        print("%5.1f  %5.1f  %5.1f  %5.1f  %5.1f   | %5.1f  %5.1f  %5.1f  %5.1f  %5.1f " \
+                % tuple(h[20:30]), file=file)
+        print("%5.1f +%5.1f +%5.1f +%5.1f = %5.1f  | %5.1f =%5.1f +%5.1f +%5.1f +%5.1f " \
+                % tuple(fh), file=file)
 
     def print_short_summary(self, file=sys.stdout):
         self.print_layout_heatmap(file=file)
-        print("Heatmap score: %.4f %.4f (%.4f)" % (self.heatmap_score, self.finger_score, self.scores[0]), file=file)
-        print("Bad bigrams:   %6d (%.4f)" % (self.bad_bigrams, self.scores[1]), file=file)
-        print("Slow bigrams:  %6d (%.4f)" % (self.slow_bigrams, self.scores[2]), file=file)
-        #print("Fast bigrams:  %6d (%.4f)" % (self.fast_bigrams, self.scores[2]), file=file)
-        print("Fast trigrams: %6d (%.4f)" % (self.fast_trigrams, self.scores[3]), file=file)
-        print("Overall score: %.4f" % self.overall_score, file=file)
+        print("Heatmap [key finger]:     %6.4f   %6.4f  |    %6.4f + %6.4f" \
+                % (self.heatmap_score, self.finger_score,
+                   self.weighted_scores[0], self.weighted_scores[1]), file=file)
+        print("Bigrams/kKS [bad slow]: %6.2f   %6.2f    |  + %6.4f + %6.4f" \
+                % (self.bad_bigrams*1000/self.strokes,
+                   self.slow_bigrams*1000/self.strokes,
+                   self.weighted_scores[2], self.weighted_scores[3]), file=file)
+        print("3-grams/kKS [fast]:     %6.2f             |  + %6.4f" \
+                % (self.fast_trigrams*1000/self.strokes,
+                   self.weighted_scores[4]), file=file)
+        print("Overall score:                             |  = %6.4f" % self.overall_score, file=file)
 
     def _mean_runs(self):
         mean = [0, 0]
@@ -437,10 +488,15 @@ class Keymap:
 
     def print_summary(self, file=sys.stdout):
         self.print_short_summary(file=file)
-        print("Fast bigrams:  %6d" % self.fast_bigrams, file=file)
-        print("Finger travel: %d: %s" % (sum(self.finger_travel), [int(a) for a in self.normalized_travel]), file=file)
-        print("Adjusted travel: %d: %s" % (sum(self.adjusted_travel), [int(a) for a in self.norm_adj_travel]), file=file)
-        print("Hand runs mean, max: %s, %s" % (repr(self._mean_runs()), repr(self._max_runs())), file=file)
+        print("Bigrams/kKS [fast]:     %6.2f" \
+                % (self.fast_bigrams*1000/self.strokes), file=file)
+        print("Finger travel/kKS: %6.2f (%.2f %.2f %.2f %.2f | %.2f %.2f %.2f %.2f)" \
+                % ((sum(self.normalized_travel),) + tuple(self.normalized_travel)),
+                file=file)
+        mean_runs = self._mean_runs()
+        max_runs = self._max_runs()
+        print("Hand runs [mean max]: (%.2f | %.2f) (%d | %d)" \
+                % (mean_runs + max_runs), file=file)
 
         print("\nBad bigrams: ", end="", file=file)
         self._print_gram_freqs(list(self.bad_bigram_freq.items()), file=file)

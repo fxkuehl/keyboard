@@ -133,8 +133,8 @@ def anneal(layout, function, seed=None, shuffle=False):
             print("\x1b[2K")
             # Print a new keymap one row lower
             new_keymap.print_short_summary()
-            # VT100: cursor up 13 rows
-            print("\x1b[13A", end="")
+            # VT100: cursor up 12 rows
+            print("\x1b[12A", end="")
             # Improving the score is like going to a lower energy state,
             # which is exothermic. This allows finding more paths from
             # the new best solution.
