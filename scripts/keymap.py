@@ -239,19 +239,6 @@ class Keymap:
 
         return (score - worst_score) / (best_score - worst_score)
 
-    def _score_heatmap2(self):
-        score = sum(map(operator.mul, self.heatmap, self._key_weights))
-
-        sorted_heatmap = self.heatmap[:]
-        sorted_heatmap.sort()
-        best_score = sum(map(operator.mul,
-                             sorted_heatmap, self._sorted_key_weights))
-        sorted_heatmap.reverse()
-        worst_score = sum(map(operator.mul,
-                              sorted_heatmap, self._sorted_key_weights))
-
-        return (score - worst_score) / (best_score - worst_score)
-
     @staticmethod
     def _normalize(heatmap, factor):
         return [h * factor for h in heatmap]
@@ -285,45 +272,6 @@ class Keymap:
                                             self._sorted_finger_weights)
 
         return (score - worst_score) / (best_score - worst_score)
-
-    def _score_finger_heat2(self):
-        finger_heatmap = self._finger_heat(self.heatmap)
-
-        score = sum(map(operator.mul, finder_heatmap, self._finger_weights))
-
-        sorted_heatmap = finger_heatmap[:]
-        sorted_heatmap.sort()
-        best_score = sum(map(operator.mul,
-                             sorted_heatmap, self._sorted_finger_weights))
-        sorted_heatmap.reverse()
-        worst_score = sum(map(operator.mul,
-                              sorted_heatmap, self._sorted_finger_weights))
-
-        return (score - worst_score) / (best_score - worst_score)
-
-    def _heatmap_metric(self):
-        #return (2.0 - (1.0 - key_score)**2 - (1.0 - finger_score)**2) / 2
-        return (self.heatmap_score + 2*self.finger_score) / 3
-        #return (key_score + finger_score) / 2
-
-    def _bad_bigrams_metric(self):
-        bad_bigrams = self.bad_bigrams / self.strokes
-        return 1.0 - bad_bigrams**(1/3)
-
-    def _slow_bigrams_metric(self):
-        slow_bigrams = self.slow_bigrams / self.strokes
-        return 1.0 - math.sqrt(slow_bigrams)
-
-    def _fast_bigrams_metric(self):
-        fast_bigrams = self.fast_bigrams / self.strokes
-        return math.sqrt(fast_bigrams)
-
-    def _fast_trigram_metric(self):
-        # Fast trigrams only move in one direction. So worst case is
-        # two overlapping trigrams in four key strokes. Hence normalize
-        # with self.strokes/2.
-        fast_trigrams = self.fast_trigrams / (self.strokes/2)
-        return math.sqrt(fast_trigrams)
 
     # Curves to change sensitivity of metrics in range 0-1 and to
     # optimize for large or small values
