@@ -426,12 +426,12 @@ class Keymap:
     def _max_runs(self):
         return (max(self.hand_runs[0].keys()), max(self.hand_runs[1].keys()))
 
-    @staticmethod
-    def _print_gram_freqs(items, file=sys.stdout):
+    def _print_gram_freqs(self, items, file=sys.stdout):
         # Sort most frequent first
         items.sort(key=lambda item: item[1], reverse=True)
         for sym, freq in items:
-            print("%s:%d" % (''.join(sym), freq), end=' ', file=file)
+            print("%s:%.2f" % (''.join(sym), freq*1000/self.strokes),
+                    end=' ', file=file)
         print(file=file)
 
     def print_summary(self, file=sys.stdout):
