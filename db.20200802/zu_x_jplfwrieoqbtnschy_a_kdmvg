@@ -1,0 +1,36 @@
+"""
+ [ Z ]  [ U ]  [. >]  [ X ]  [; :]  |  [ J ]  [ P ]  [ L ]  [ F ]  [ W ]
+  0.1    5.3    3.4    0.2    0.4   |   0.7    4.5    8.0    5.0    3.2 
+ [ R ]  [ I ]  [ E ]  [ O ]  [ Q ]  |  [ B ]  [ T ]  [ N ]  [ S ]  [ C ]
+ 12.0   13.7   23.5   15.3    0.4   |   2.6   18.3   14.2   11.9    7.9 
+ [ H ]  [ Y ]  [, <]  [ A ]  [' "]  |  [ K ]  [ D ]  [ M ]  [ V ]  [ G ]
+  9.1    3.0    3.0   14.7    1.0   |   1.2    7.0    4.5    2.1    3.7 
+ 21.3 + 22.1 + 29.8 + 32.0 = 105.2  |  94.8 = 34.2 + 26.8 + 19.0 + 14.9 
+Heatmap [key finger]:     0.9531   0.8551  |    0.0530 + 0.0950
+Bigrams/kKS [bad slow]:   4.00    38.09    |  + 0.4206 + 0.1341
+3-grams/kKS [fast]:       5.26             |  + 0.0171
+Overall score:                             |  = 0.7198
+Bigrams/kKS [fast]:     198.32
+Finger travel/kKS: 593.64 (49.96 69.17 51.61 96.92 | 130.66 90.86 54.90 49.56)
+Hand runs [mean max]: (1.47 | 1.28) (7 | 4)
+
+Bad bigrams: ui:78 pt:46 hr:38 yi:32 nl:32 oa:30 nm:28 sf:21 aq:16 iu:11 xa:10 bt:8 lm:6 bj:4 rh:3 uy:3 ox:3 tp:3 tk:3 pb:2 td:2 ln:2 xo:1 oq:1 o':1 ax:1 a':1 'a:1 pd:1 kp:1 dp:1 db:1 fs:1 
+
+Slow bigrams: mp:261 ry:244 pl:232 ld:219 qu:180 bl:162 ck:141 ue:138 sp:133 ua:128 ay:118 ey:103 wn:99 au:87 ex:81 sm:79 hu:74 ye:72 ls:71 yo:62 tw:62 nf:61 gl:61 iz:50 kn:47 nk:45 eq:44 mb:43 lv:41 sk:36 ms:36 ps:33 nv:31 bs:31 ws:30 ze:26 za:24 wl:24 sl:21 pm:20 hy:19 dl:17 oy:16 ks:16 zi:15 xi:15 lp:15 lk:14 sw:11 dv:11 r':10 tm:8 kl:8 xe:7 ix:7 eu:7 yz:7 np:7 i':6 az:6 iq:5 e':5 y':4 ya:3 lw:3 lb:3 pf:3 sb:3 bc:3 gm:3 dm:3 kg:3 wp:2 nw:2 bn:2 zy:1 u':1 oz:1 'r:1 wf:1 wt:1 wb:1 fw:1 pg:1 vg:1 mf:1 df:1 kc:1 km:1 
+
+Fast bigrams: he:2172 er:1566 re:1239 or:1105 nd:1091 ct:920 nt:892 st:792 ng:749 ro:715 ha:640 io:581 ar:559 hi:557 ri:521 ou:514 ra:500 ea:401 nc:396 ho:373 ts:314 ns:310 ie:273 ur:272 ia:254 ai:216 ru:207 ir:150 ft:131 lf:103 cl:101 sc:95 tl:92 lt:79 ei:73 ds:65 eh:64 fl:54 eo:48 gn:47 cs:32 gs:32 oi:28 dg:28 oe:22 tc:16 sn:9 gt:9 oh:8 ih:6 dn:5 tn:3 uo:2 ah:1 gd:1 sg:1 
+
+Fast trigrams: ria:161 rea:73 our:69 rie:57 hea:43 eir:43 rio:29 air:21 hie:13 reo:2 heo:2 gst:2 
+"""
+
+layout = [
+    'zZ', 'uU', '.>', 'xX', ';:',    'jJ', 'pP', 'lL', 'fF', 'wW',
+    'rR', 'iI', 'eE', 'oO', 'qQ',    'bB', 'tT', 'nN', 'sS', 'cC',
+    'hH', 'yY', ',<', 'aA','\'"',    'kK', 'dD', 'mM', 'vV', 'gG'
+]
+
+from eval_layout import eval_layout
+eval_layout(layout)
+
+# The number of # on the following line counts discoveries of this layout.
+#
